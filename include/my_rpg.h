@@ -30,9 +30,11 @@ bool do_aabb_sprites(sfSprite *sp1, sfSprite *sp2);
 int create_hud(combat_t *combat);
 void move_hud_in(hud_t *hud);
 void move_hud_out(hud_t *hud);
+int init_gauge_bar(entity_t *entity);
+void draw_hud(rpg_t *rpg, entity_t *player, entity_t *ennemy);
 
 // COMBAT
-combat_t *init_combat(rpg_t *rpg);
+combat_t *init_combat(void);
 void combat_loop(rpg_t *rpg, combat_t *combat);
 void olberic_do_attack(entity_t *player, combat_t *combat);
 void olberic_do_idle(entity_t *player);

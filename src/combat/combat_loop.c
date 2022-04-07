@@ -17,6 +17,18 @@ static void animate_boss(entity_t *boss)
     sfClock_restart(boss->clock);
 }
 
+static void check_player_state(entity_t *player, combat_t *combat)
+{
+    if (player->cmb_state == RPG_COMBAT_PLAYER_IDLE)
+        olberic_do_idle(player);
+    if (player->cmb_state == RPG_COMBAT_PLAYER_ATTACK)
+        olberic_do_attack(player, combat);
+    if (player->cmb_state == RPG_COMBAT_PLAYER_PROTECT)
+        olberic_protect(player);
+    if (player->cmb_state == RPG_COMBAT_PLAYER_DEATH)
+        olberic_death(player);
+}
+
 static void get_input(entity_t *player, combat_t *combat)
 {
     if (sfKeyboard_isKeyPressed(sfKeyA) &&
@@ -25,28 +37,25 @@ static void get_input(entity_t *player, combat_t *combat)
         combat->state = RPG_COMBAT_ATTACKING;
         player->rect_left_i = 0;
         player->rect_left_w = 0;
+    } if (sfKeyboard_isKeyPressed(sfKeyP) &&
+    player->cmb_state == RPG_COMBAT_PLAYER_IDLE) {
+        player->cmb_state = RPG_COMBAT_PLAYER_PROTECT;
+        combat->state = RPG_COMBAT_ATTACKING;
     }
     // DEBUG
-    if (sfKeyboard_isKeyPressed(sfKeyP))
-        player->cmb_state = RPG_COMBAT_PLAYER_PROTECT;
     if (sfKeyboard_isKeyPressed(sfKeyD))
         player->cmb_state = RPG_COMBAT_PLAYER_DEATH;
-    if (player->cmb_state == RPG_COMBAT_PLAYER_IDLE)
-        olberic_do_idle(player);
-    if (player->cmb_state == RPG_COMBAT_PLAYER_ATTACK)
-        olberic_do_attack(player, combat);
-    if (player->cmb_state == RPG_COMBAT_PLAYER_PROTECT)
-        olberic_protect(player);
-    if (player->cmb_state == RPG_COMBAT_PLAYER_DEATH) {
-        olberic_death(player);
-    }
+    if (sfKeyboard_isKeyPressed(sfKeyDown))
+        player->life -= 10;
+    // END DEBUG
+    check_player_state(player, combat);
 }
 
 void combat_loop(rpg_t *rpg, combat_t *combat)
 {
     sfRenderWindow_drawSprite(rpg->window, combat->ennemy->sprite, NULL);
     sfRenderWindow_drawSprite(rpg->window, combat->player->sprite, NULL);
-    sfRenderWindow_drawSprite(rpg->window, rpg->combat->hud->sprite, NULL);
+    draw_hud(rpg, combat->player, combat->ennemy);
     if (combat->player->cmb_state == RPG_COMBAT_PLAYER_IDLE)
         move_hud_in(combat->hud);
     else if (combat->player->cmb_state == RPG_COMBAT_PLAYER_ATTACK)

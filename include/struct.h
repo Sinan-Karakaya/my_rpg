@@ -20,12 +20,23 @@ typedef enum combat_state {
     RPG_COMBAT_DEATH,
 } e_combat_state;
 
+typedef struct gauge_bar {
+    sfRectangleShape *rect;
+    sfRectangleShape *rect_grey;
+    sfColor color;
+    sfColor grey_color;
+    sfVector2f pos;
+    sfVector2f size;
+} gauge_bar_t;
+
 typedef struct entity {
     sfTexture *texture;
     sfSprite *sprite;
     sfVector2f pos;
     sfIntRect rect;
     sfClock *clock;
+    gauge_bar_t *bar;
+    bool is_npc;
     int rect_left_i;
     int rect_left_w;
     int life;

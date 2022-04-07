@@ -22,6 +22,10 @@ static int create_ennemy(combat_t *com)
     sfSprite_setTextureRect(com->ennemy->sprite, com->ennemy->rect);
     sfSprite_setScale(com->ennemy->sprite, (sfVector2f){2, 2});
     com->ennemy->clock = sfClock_create();
+    com->ennemy->life = 1000;
+    com->ennemy->is_npc = true;
+    if (init_gauge_bar(com->ennemy))
+        return 1;
     return 0;
 }
 
@@ -43,10 +47,13 @@ static int create_player(combat_t *com)
     com->player->life = 100;
     com->player->cmb_state = RPG_COMBAT_PLAYER_IDLE;
     com->state = RPG_COMBAT_PENDING;
+    com->ennemy->is_npc = false;
+    if (init_gauge_bar(com->player))
+        return 1;
     return 0;
 }
 
-combat_t *init_combat(rpg_t *rpg)
+combat_t *init_combat(void)
 {
     combat_t *combat = malloc(sizeof(combat_t));
 

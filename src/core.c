@@ -28,7 +28,7 @@ int main(int ac, char **av)
 
     if (init_sfml(rpg))
         return 84;
-    rpg->combat = init_combat(rpg);
+    rpg->combat = init_combat();
     rpg->world = malloc(sizeof(world_t));
     rpg->cam.x = 1600;
     rpg->cam.y = 0;
