@@ -34,6 +34,9 @@ int main(int ac, char **av)
     rpg->cam.y = 0;
     rpg->cam.render = malloc(sizeof(render_t));
     rpg->cam.render->point = malloc(sizeof(sfVector2f) * 3);
+    rpg->cam.render->triangle = sfVertexArray_create();
+
+    sfVertexArray_resize(rpg->cam.render->triangle, 3);
     rpg->world->height_map = create_map(MAP_X, MAP_Y);
     if (gameloop(rpg, rpg->combat)) {
         free_rpg(rpg);
