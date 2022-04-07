@@ -10,6 +10,9 @@
 #define RES_X 1920
 #define RES_Y 1080
 
+#define MAP_X 20
+#define MAP_Y 20
+
 #define FONT_PATH "assets/font/itc-souvenir/Souvenir-Bold.otf"
 #define HUD_PATH "assets/hud/hud_guide.png"
 
