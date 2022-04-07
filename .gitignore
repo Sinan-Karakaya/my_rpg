@@ -1,3 +1,9 @@
+# Project
+my_rpg
+.vscode/
+.github/
+vgcore.*
+
 # Prerequisites
 *.d
 
