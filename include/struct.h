@@ -48,6 +48,7 @@ typedef struct combat {
 
 typedef struct render {
     sfVector2f *point;
+    sfVertexArray *triangle;
 } render_t;
 
 typedef struct camera {
