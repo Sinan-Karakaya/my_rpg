@@ -26,10 +26,19 @@ static void get_input(entity_t *player, combat_t *combat)
         player->rect_left_i = 0;
         player->rect_left_w = 0;
     }
-    if (player->cmb_state == RPG_COMBAT_PLAYER_IDLE) {
+    // DEBUG
+    if (sfKeyboard_isKeyPressed(sfKeyP))
+        player->cmb_state = RPG_COMBAT_PLAYER_PROTECT;
+    if (sfKeyboard_isKeyPressed(sfKeyD))
+        player->cmb_state = RPG_COMBAT_PLAYER_DEATH;
+    if (player->cmb_state == RPG_COMBAT_PLAYER_IDLE)
         olberic_do_idle(player);
-    } else if (player->cmb_state == RPG_COMBAT_PLAYER_ATTACK) {
+    if (player->cmb_state == RPG_COMBAT_PLAYER_ATTACK)
         olberic_do_attack(player, combat);
+    if (player->cmb_state == RPG_COMBAT_PLAYER_PROTECT)
+        olberic_protect(player);
+    if (player->cmb_state == RPG_COMBAT_PLAYER_DEATH) {
+        olberic_death(player);
     }
 }
 
@@ -44,6 +53,6 @@ void combat_loop(rpg_t *rpg, combat_t *combat)
         move_hud_out(combat->hud);
     if (get_time(combat->ennemy->clock) > 0.15f)
         animate_boss(combat->ennemy);
-    if (get_time(combat->player->clock) > 0.1f)
+    if (get_time(combat->player->clock) > 0.12f)
         get_input(combat->player, combat);
 }

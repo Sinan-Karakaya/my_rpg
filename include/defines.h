@@ -24,5 +24,5 @@
 #define OLBERIC_WIDTH 23
 #define OLBERIC_HEIGHT 45
 
-extern const int olberic_rect_left[20];
-extern const int olberic_rect_w[20];
+extern const int olberic_rect_left[26];
+extern const int olberic_rect_w[26];

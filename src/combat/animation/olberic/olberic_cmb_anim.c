@@ -33,3 +33,35 @@ void olberic_do_idle(entity_t *player)
     sfSprite_setTextureRect(player->sprite, player->rect);
     sfClock_restart(player->clock);
 }
+
+void olberic_protect(entity_t *player)
+{
+    player->rect_left_i = 20;
+    player->rect_left_w = 20;
+    player->rect.left = olberic_rect_left[player->rect_left_i];
+    player->rect.width = olberic_rect_w[player->rect_left_w];
+    sfSprite_setTextureRect(player->sprite, player->rect);
+    sfClock_restart(player->clock);
+}
+
+void olberic_death(entity_t *player)
+{
+    if (player->rect_left_i < 23) {
+        player->rect_left_i = 23;
+        player->rect_left_w = 23;
+    }
+    if (player->rect_left_i < 25) {
+        player->rect_left_i++;
+        player->rect_left_w++;
+        player->rect.left = olberic_rect_left[player->rect_left_i];
+        player->rect.width = olberic_rect_w[player->rect_left_w];
+    } else {
+        player->rect_left_i = 25;
+        player->rect_left_w = 25;
+        player->rect.left = olberic_rect_left[player->rect_left_i];
+        player->rect.width = olberic_rect_w[player->rect_left_w];
+        player->cmb_state = RPG_COMBAT_PLAYER_DEATH;
+    }
+    sfSprite_setTextureRect(player->sprite, player->rect);
+    sfClock_restart(player->clock);
+}

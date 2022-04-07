@@ -36,6 +36,8 @@ combat_t *init_combat(rpg_t *rpg);
 void combat_loop(rpg_t *rpg, combat_t *combat);
 void olberic_do_attack(entity_t *player, combat_t *combat);
 void olberic_do_idle(entity_t *player);
+void olberic_protect(entity_t *player);
+void olberic_death(entity_t *player);
 
 // MAP
 sfVector2f to2d(sfVector3f p, rpg_t *game);

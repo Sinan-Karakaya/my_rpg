@@ -10,6 +10,7 @@
 typedef enum combat_player_state {
     RPG_COMBAT_PLAYER_IDLE,
     RPG_COMBAT_PLAYER_ATTACK,
+    RPG_COMBAT_PLAYER_PROTECT,
     RPG_COMBAT_PLAYER_DEATH
 } e_combat_player_state;
 
@@ -27,6 +28,7 @@ typedef struct entity {
     sfClock *clock;
     int rect_left_i;
     int rect_left_w;
+    int life;
     e_combat_player_state cmb_state;
 } entity_t;
 
