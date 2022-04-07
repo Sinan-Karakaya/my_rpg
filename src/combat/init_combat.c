@@ -41,7 +41,7 @@ static int create_player(combat_t *com)
     com->player->rect_left_i = 0;
     com->player->rect_left_w = 0;
     com->player->cmb_state = RPG_COMBAT_PLAYER_IDLE;
-    com->state = RPG_COMBAT_CHOOSE;
+    com->state = RPG_COMBAT_PENDING;
     return 0;
 }
 

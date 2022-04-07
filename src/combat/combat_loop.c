@@ -17,18 +17,19 @@ static void animate_boss(entity_t *boss)
     sfClock_restart(boss->clock);
 }
 
-static void get_input(entity_t *player)
+static void get_input(entity_t *player, combat_t *combat)
 {
     if (sfKeyboard_isKeyPressed(sfKeyA) &&
     player->cmb_state == RPG_COMBAT_PLAYER_IDLE) {
         player->cmb_state = RPG_COMBAT_PLAYER_ATTACK;
+        combat->state = RPG_COMBAT_ATTACKING;
         player->rect_left_i = 0;
         player->rect_left_w = 0;
     }
     if (player->cmb_state == RPG_COMBAT_PLAYER_IDLE) {
         olberic_do_idle(player);
     } else if (player->cmb_state == RPG_COMBAT_PLAYER_ATTACK) {
-        olberic_do_attack(player);
+        olberic_do_attack(player, combat);
     }
 }
 
@@ -37,8 +38,12 @@ void combat_loop(rpg_t *rpg, combat_t *combat)
     sfRenderWindow_drawSprite(rpg->window, combat->ennemy->sprite, NULL);
     sfRenderWindow_drawSprite(rpg->window, combat->player->sprite, NULL);
     sfRenderWindow_drawSprite(rpg->window, rpg->combat->hud->sprite, NULL);
+    if (combat->player->cmb_state == RPG_COMBAT_PLAYER_IDLE)
+        move_hud_in(combat->hud);
+    else if (combat->player->cmb_state == RPG_COMBAT_PLAYER_ATTACK)
+        move_hud_out(combat->hud);
     if (get_time(combat->ennemy->clock) > 0.15f)
         animate_boss(combat->ennemy);
     if (get_time(combat->player->clock) > 0.1f)
-        get_input(combat->player);
+        get_input(combat->player, combat);
 }
