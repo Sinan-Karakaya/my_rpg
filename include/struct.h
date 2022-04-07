@@ -14,8 +14,8 @@ typedef enum combat_player_state {
 } e_combat_player_state;
 
 typedef enum combat_state {
-    RPG_COMBAT_CHOOSE,
-    RPG_COMBAT_MELEE,
+    RPG_COMBAT_PENDING,
+    RPG_COMBAT_ATTACKING,
     RPG_COMBAT_DEATH,
 } e_combat_state;
 
@@ -34,6 +34,7 @@ typedef struct hud {
     sfTexture *texture;
     sfSprite *sprite;
     sfVector2f pos;
+    sfClock *clock;
 } hud_t;
 
 typedef struct combat {
