@@ -33,12 +33,7 @@ jobs:
           with:
             fetch-depth: 0
         - name: get_size
-          run: SIZE=$(du -bs --exclude=".git" | cut -f1)
-          if [[ "$SIZE" -le "${{ env.MAX_SIZE }}" ]]; then
-            echo "Size OK"
-          else
-            echo "::error Repo size is too big (>30Mb)"
-          fi
+          run: SIZE=$(du -bs --exclude=".git" | cut -f1) if [[ "$SIZE" -le "${{ env.MAX_SIZE }}" ]]; then echo "Size OK" else echo "::error Repo size is too big (>30Mb)" fi
 
   check_program_compilation:
     runs-on: ubuntu-latest
@@ -58,6 +53,7 @@ jobs:
   push_to_mirror:
     runs-on: ubuntu-latest
     needs: check_program_compilation
+    needs: check_repo_size
     name: push-to-mirror
     if: ${{ github.event_name == 'push' }}
     steps:                                              # <-- must use actions/checkout before mirroring!
