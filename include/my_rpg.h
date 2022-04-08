@@ -12,6 +12,7 @@
 #include <SFML/System.h>
 #include <SFML/Window.h>
 #include <SFML/Graphics.h>
+#include <SFML/Audio.h>
 
 #include "struct.h"
 
@@ -46,3 +47,7 @@ sfVector2f to2d(sfVector3f p, rpg_t *game);
 void draw_map(rpg_t *rpg);
 int **create_map(int heigth, int width);
 void init_world(rpg_t *rpg);
+
+// MUSIC
+
+int play_music(rpg_t *rpg);
