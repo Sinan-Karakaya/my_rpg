@@ -24,6 +24,9 @@ static int create_ennemy(combat_t *com)
     com->ennemy->clock = sfClock_create();
     com->ennemy->life = 1000;
     com->ennemy->is_npc = true;
+    com->ennemy->stat = malloc(sizeof(stats_t));
+    com->ennemy->stat->attack = 10;
+    com->ennemy->stat->defense = 10;
     if (init_gauge_bar(com->ennemy))
         return 1;
     return 0;
@@ -47,7 +50,10 @@ static int create_player(combat_t *com)
     com->player->life = 100;
     com->player->cmb_state = RPG_COMBAT_PLAYER_IDLE;
     com->state = RPG_COMBAT_PENDING;
-    com->ennemy->is_npc = false;
+    com->player->is_npc = false;
+    com->player->stat = malloc(sizeof(stats_t));
+    com->player->stat->attack = 10;
+    com->player->stat->defense = 10;
     if (init_gauge_bar(com->player))
         return 1;
     return 0;

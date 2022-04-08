@@ -14,14 +14,14 @@ static int is_in_screen(sfVector2f *point)
 {
     for (int i = 0; i < 2; i++) {
         if (point[i].x < -250 || point[i].x > 2120 || point[i].y < -250 ||
-         point[i].y > 1180)
+        point[i].y > 1180)
             return 0;
     }
     return 1;
 }
 
-static void draw_triangle(sfVector2f *points, rpg_t *game, sfVector2i tex_coord,
- int i)
+static void draw_triangle(sfVector2f *points, rpg_t *game,
+sfVector2i tex_coord, int i)
 {
     float coordx = tex_coord.y +abs(16 * (i - 1));
 

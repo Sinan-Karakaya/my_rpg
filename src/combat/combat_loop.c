@@ -7,16 +7,6 @@
 
 #include "my_rpg.h"
 
-static void animate_boss(entity_t *boss)
-{
-    if (boss->rect.left + boss->rect.width <= 1785)
-        boss->rect.left += BOSS_WIDTH + 65;
-    else
-        boss->rect.left = 0;
-    sfSprite_setTextureRect(boss->sprite, boss->rect);
-    sfClock_restart(boss->clock);
-}
-
 static void check_player_state(entity_t *player, combat_t *combat)
 {
     if (player->cmb_state == RPG_COMBAT_PLAYER_IDLE)
@@ -24,9 +14,10 @@ static void check_player_state(entity_t *player, combat_t *combat)
     if (player->cmb_state == RPG_COMBAT_PLAYER_ATTACK)
         olberic_do_attack(player, combat);
     if (player->cmb_state == RPG_COMBAT_PLAYER_PROTECT)
-        olberic_protect(player);
-    if (player->cmb_state == RPG_COMBAT_PLAYER_DEATH)
+        olberic_protect(player, combat);
+    if (player->cmb_state == RPG_COMBAT_PLAYER_DEATH) {
         olberic_death(player);
+    }
 }
 
 static void get_input(entity_t *player, combat_t *combat)
@@ -38,15 +29,15 @@ static void get_input(entity_t *player, combat_t *combat)
         player->rect_left_i = 0;
         player->rect_left_w = 0;
     } if (sfKeyboard_isKeyPressed(sfKeyP) &&
-    player->cmb_state == RPG_COMBAT_PLAYER_IDLE) {
+    combat->state == RPG_COMBAT_PENDING) {
         player->cmb_state = RPG_COMBAT_PLAYER_PROTECT;
-        combat->state = RPG_COMBAT_ATTACKING;
+        combat->state = RPG_COMBAT_ENNEMY;
     }
     // DEBUG
-    if (sfKeyboard_isKeyPressed(sfKeyD))
-        player->cmb_state = RPG_COMBAT_PLAYER_DEATH;
     if (sfKeyboard_isKeyPressed(sfKeyDown))
         player->life -= 10;
+    if (sfKeyboard_isKeyPressed(sfKeyUp))
+        player->life += 10;
     // END DEBUG
     check_player_state(player, combat);
 }
@@ -58,10 +49,12 @@ void combat_loop(rpg_t *rpg, combat_t *combat)
     draw_hud(rpg, combat->player, combat->ennemy);
     if (combat->player->cmb_state == RPG_COMBAT_PLAYER_IDLE)
         move_hud_in(combat->hud);
-    else if (combat->player->cmb_state == RPG_COMBAT_PLAYER_ATTACK)
+    else /*if (combat->player->cmb_state == RPG_COMBAT_PLAYER_ATTACK ||
+    combat->state == RPG_COMBAT_ENNEMY)*/
         move_hud_out(combat->hud);
     if (get_time(combat->ennemy->clock) > 0.15f)
-        animate_boss(combat->ennemy);
-    if (get_time(combat->player->clock) > 0.12f)
+        animate_boss(combat->ennemy, combat);
+    if (get_time(combat->player->clock) > 0.12f &&
+    combat->state != RPG_COMBAT_ENNEMY)
         get_input(combat->player, combat);
 }

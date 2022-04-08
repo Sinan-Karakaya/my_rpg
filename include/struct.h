@@ -22,6 +22,7 @@ typedef enum combat_state {
     RPG_COMBAT_PENDING,
     RPG_COMBAT_ATTACKING,
     RPG_COMBAT_DEATH,
+    RPG_COMBAT_ENNEMY
 } e_combat_state;
 
 typedef struct gauge_bar {
@@ -32,6 +33,11 @@ typedef struct gauge_bar {
     sfVector2f pos;
     sfVector2f size;
 } gauge_bar_t;
+
+typedef struct stats {
+    int attack;
+    int defense;
+} stats_t;
 
 typedef struct entity {
     sfTexture *texture;
@@ -44,6 +50,7 @@ typedef struct entity {
     int rect_left_i;
     int rect_left_w;
     int life;
+    stats_t *stat;
     e_combat_player_state cmb_state;
 } entity_t;
 
