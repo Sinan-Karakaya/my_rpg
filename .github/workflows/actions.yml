@@ -24,7 +24,7 @@ jobs:
       - name: Check file existence
         run: FIND=$(find . -name "#*#" -o -name "*~" -o -name "*.o" -o -name "*.a" -o -name "*.so" -o -name "*.gcno" -o -name "*.gcda" -o -name "*.gcov" -o -wholename "*/tmp/*"); if [[ $FIND != "" ]]; then for element in $FIND; do echo "::error file=$element,line=1,title=Unwanted file detected::$element"; done; exit 1; fi
 
-  size:
+  check_repo_size:
       runs-on: ubuntu-latest
       needs: check_repository_cleanliness
       name: check_repo_size
