@@ -14,13 +14,13 @@ int event(rpg_t *rpg)
         return 1;
     if (rpg->event.type == sfEvtKeyPressed) {
         if (rpg->event.key.code == sfKeyDown)
-            rpg->cam.y += 10 * rpg->dt;
+            rpg->cam.y += 1000 * rpg->dt;
         if (rpg->event.key.code == sfKeyUp)
-            rpg->cam.y -= 1 * rpg->dt;
+            rpg->cam.y -= 1000 * rpg->dt;
         if (rpg->event.key.code == sfKeyRight)
-            rpg->cam.x += 1 * rpg->dt;
+            rpg->cam.x += 1000 * rpg->dt;
         if (rpg->event.key.code == sfKeyLeft)
-            rpg->cam.x -= 1 * rpg->dt;
+            rpg->cam.x -= 1000 * rpg->dt;
     }
     return 0;
 }
