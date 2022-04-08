@@ -83,4 +83,5 @@ typedef struct rpg {
     combat_t *combat;
     world_t *world;
     camera_t cam;
+    float dt;
 } rpg_t;

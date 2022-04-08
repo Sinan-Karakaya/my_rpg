@@ -11,6 +11,7 @@
 static int gameloop(rpg_t *rpg, combat_t *combat)
 {
     while (sfRenderWindow_isOpen(rpg->window)) {
+        get_dt(rpg->game_clock);
         sfRenderWindow_clear(rpg->window, sfBlack);
         while (sfRenderWindow_pollEvent(rpg->window, &rpg->event))
             if (rpg->event.type == sfEvtClosed)
@@ -29,6 +30,7 @@ int main(int ac, char **av)
     if (init_sfml(rpg))
         return 84;
     rpg->combat = init_combat();
+    sfShader_setTextureUniform(rpg->shader, "firstPass", rpg->combat->player->texture);
     rpg->world = malloc(sizeof(world_t));
     rpg->cam.x = 1600;
     rpg->cam.y = 0;
