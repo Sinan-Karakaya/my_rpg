@@ -33,7 +33,7 @@ jobs:
           with:
             fetch-depth: 0
         - name: get_size
-          run: SIZE=$(du -bs --exclude=".git" | cut -f1); if [[ "$SIZE" -le "${{ env.MAX_SIZE }}" ]]; then echo "Size OK"; else; echo "::error Repo size is too big (>30Mb)"; fi
+          run: SIZE=$(du -bs --exclude=".git" | cut -f1); if [[ "$SIZE" -le "${{ env.MAX_SIZE }}" ]]; then echo "Size OK"; else echo "::error Repo size is too big (>30Mb)"; fi
 
   check_program_compilation:
     runs-on: ubuntu-latest
