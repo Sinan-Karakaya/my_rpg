@@ -7,6 +7,10 @@
 
 #pragma once
 
+#include <SFML/Graphics.h>
+#include <SFML/Audio.h>
+#include "stdbool.h"
+
 typedef enum combat_player_state {
     RPG_COMBAT_PLAYER_IDLE,
     RPG_COMBAT_PLAYER_ATTACK,
@@ -75,6 +79,14 @@ typedef struct world {
     int **object_map;
 } world_t;
 
+typedef struct {
+    sfRenderStates *state;
+} texture_t;
+
+typedef struct music_s {
+    sfMusic *music;
+} music_t;
+
 typedef struct rpg {
     sfRenderWindow *window;
     sfVideoMode mode;
@@ -84,4 +96,6 @@ typedef struct rpg {
     world_t *world;
     camera_t cam;
     float dt;
+    texture_t *texture;
+    music_t *sounds;
 } rpg_t;

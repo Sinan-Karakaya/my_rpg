@@ -32,17 +32,16 @@ int main(int ac, char **av)
     rpg->combat = init_combat();
     sfShader_setTextureUniform(rpg->shader, "firstPass", rpg->combat->player->texture);
     rpg->world = malloc(sizeof(world_t));
-    rpg->cam.x = 1600;
-    rpg->cam.y = 0;
-    rpg->cam.render = malloc(sizeof(render_t));
-    rpg->cam.render->point = malloc(sizeof(sfVector2f) * 3);
-    rpg->cam.render->triangle = sfVertexArray_create();
-
-    sfVertexArray_resize(rpg->cam.render->triangle, 3);
-    rpg->world->height_map = create_map(MAP_X, MAP_Y);
+    init_cam(rpg);
+    init_world(rpg);
+    rpg->texture = init_struct_texture("assets/environement/pr.png");
+    rpg->world->height_map[25][8] = -4;
+    rpg->sounds = malloc(sizeof(music_t));
+    rpg->sounds->music = sfMusic_createFromFile("assets/music/vista.ogg");
+    play_music(rpg);
     if (gameloop(rpg, rpg->combat)) {
         free_rpg(rpg);
-        return 84;
+        return 0;
     }
     return 0;
 }
