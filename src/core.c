@@ -53,14 +53,10 @@ int main(int ac, char **av)
     init_cam(rpg);
     init_world(rpg);
     rpg->texture = init_struct_texture("assets/environement/pr.png");
-<<<<<<< HEAD
-    rpg->world->height_map[50][8] = -4;
-=======
     rpg->world->height_map[25][8] = -4;
     rpg->sounds = malloc(sizeof(music_t));
     rpg->sounds->music = sfMusic_createFromFile("assets/music/vista.ogg");
     play_music(rpg);
->>>>>>> 55e3f27809075f3c7c5f931b4ace3dbc6037a72e
     if (gameloop(rpg, rpg->combat)) {
         free_rpg(rpg);
         return 0;
