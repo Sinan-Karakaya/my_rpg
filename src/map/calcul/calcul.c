@@ -1,4 +1,11 @@
-#include "../../../include/my_rpg.h"
+/*
+** EPITECH PROJECT, 2022
+** my_rpg
+** File description:
+** calcul map
+*/
+
+#include "my_rpg.h"
 
 sfVector2f to2d(sfVector3f p, rpg_t *game)
 {

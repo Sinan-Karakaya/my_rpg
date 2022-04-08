@@ -1,4 +1,13 @@
-#include "../../../include/my_rpg.h"
+/*
+** EPITECH PROJECT, 2022
+** my_rpg
+** File description:
+** init map
+*/
+
+#include <stdlib.h>
+
+#include "my_rpg.h"
 
 texture_t *init_struct_texture(char *path)
 {

@@ -30,7 +30,6 @@ int main(int ac, char **av)
     if (init_sfml(rpg))
         return 84;
     rpg->combat = init_combat();
-    sfShader_setTextureUniform(rpg->shader, "firstPass", rpg->combat->player->texture);
     rpg->world = malloc(sizeof(world_t));
     init_cam(rpg);
     init_world(rpg);

@@ -1,5 +1,14 @@
-#include "../../../include/my_rpg.h"
+/*
+** EPITECH PROJECT, 2022
+** my_rpg
+** File description:
+** draw map
+*/
+
 #include <math.h>
+#include <stdlib.h>
+
+#include "my_rpg.h"
 
 void draw_triangle(sfVector2f *points, rpg_t *game, sfColor color, int i)
 {
