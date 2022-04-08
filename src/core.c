@@ -8,15 +8,34 @@
 #include <stdlib.h>
 #include "my_rpg.h"
 
+int event(rpg_t *rpg)
+{
+    if (rpg->event.type == sfEvtClosed)
+        return 1;
+    if (rpg->event.type == sfEvtKeyPressed) {
+        if (rpg->event.key.code == sfKeyDown)
+            rpg->cam.y += 10 * rpg->dt;
+        if (rpg->event.key.code == sfKeyUp)
+            rpg->cam.y -= 1 * rpg->dt;
+        if (rpg->event.key.code == sfKeyRight)
+            rpg->cam.x += 1 * rpg->dt;
+        if (rpg->event.key.code == sfKeyLeft)
+            rpg->cam.x -= 1 * rpg->dt;
+    }
+    return 0;
+}
+
 static int gameloop(rpg_t *rpg, combat_t *combat)
 {
     while (sfRenderWindow_isOpen(rpg->window)) {
         get_dt(rpg->game_clock);
         sfRenderWindow_clear(rpg->window, sfBlack);
-        while (sfRenderWindow_pollEvent(rpg->window, &rpg->event))
-            if (rpg->event.type == sfEvtClosed)
+        while (sfRenderWindow_pollEvent(rpg->window, &rpg->event)) {
+            if (event(rpg) == 1)
                 return 1;
+        }
         draw_map(rpg);
+        rpg->cam.x += 0.8;
         combat_loop(rpg, combat);
         sfRenderWindow_display(rpg->window);
     }

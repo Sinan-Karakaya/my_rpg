@@ -76,6 +76,7 @@ typedef struct render {
 typedef struct camera {
     float x;
     float y;
+    float r;
     render_t *render;
 } camera_t;
 
