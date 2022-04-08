@@ -20,6 +20,7 @@ SRC = src/core.c \
 	  src/map/create/create.c \
 	  src/map/draw/draw.c	\
 	  src/map/init/init.c \
+	  src/sounds/musics.c	\
 
 OBJ = $(SRC:.c=.o)
 

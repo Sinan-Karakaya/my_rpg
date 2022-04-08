@@ -1,5 +1,14 @@
-#include "../../../include/my_rpg.h"
+/*
+** EPITECH PROJECT, 2022
+** my_rpg
+** File description:
+** draw map
+*/
+
 #include <math.h>
+#include <stdlib.h>
+
+#include "my_rpg.h"
 
 static int is_in_screen(sfVector2f *point)
 {

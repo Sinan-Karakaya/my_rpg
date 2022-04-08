@@ -1,5 +1,13 @@
-#include "../../../include/my_rpg.h"
+/*
+** EPITECH PROJECT, 2022
+** my_rpg
+** File description:
+** create map
+*/
+
 #include <stdlib.h>
+
+#include "my_rpg.h"
 
 int **create_map(int heigth, int width)
 {

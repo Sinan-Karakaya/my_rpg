@@ -11,5 +11,6 @@
 void free_rpg(rpg_t *rpg)
 {
     sfRenderWindow_destroy(rpg->window);
+    sfMusic_destroy(rpg->sounds->music);
     free(rpg);
 }
