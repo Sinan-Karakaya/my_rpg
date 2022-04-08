@@ -26,7 +26,6 @@ bool do_aabb_sprites(sfSprite *sp1, sfSprite *sp2)
     sfIntRect r1 = sfSprite_getTextureRect(sp1);
     sfIntRect r2 = sfSprite_getTextureRect(sp2);
 
-
     if (pos1.x + r1.width <= pos2.x && pos1.x >= pos2.x + r2.width &&
         pos1.y + r1.height <= pos2.y && pos1.y >= pos2.y + r2.height)
         return true;

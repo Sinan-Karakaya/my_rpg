@@ -33,8 +33,8 @@ int init_gauge_bar(entity_t *entity)
         return 1;
     entity->bar->rect = sfRectangleShape_create();
     entity->bar->color = sfColor_fromRGB(0, 255, 0);
-    entity->bar->pos = (sfVector2f){entity->pos.x + (entity->rect.width / 2) - 10, entity->pos.y +
-    entity->rect.height + 90};
+    entity->bar->pos = (sfVector2f){entity->pos.x + (entity->rect.width / 2)
+    - 10, entity->pos.y + entity->rect.height + 90};
     if (!entity->is_npc) {
         entity->bar->size = (sfVector2f){entity->life, 10};
         entity->bar->pos.x -= 22;
@@ -48,7 +48,6 @@ int init_gauge_bar(entity_t *entity)
     init_second_gauge(entity);
     return 0;
 }
-
 
 static void display_update_gauge(entity_t *player, entity_t *ennemy)
 {
@@ -77,7 +76,7 @@ static void update_gauge(entity_t *player, entity_t *ennemy)
         player->cmb_state = RPG_COMBAT_PLAYER_DEATH;
     } if (ennemy->life < 0) {
         ennemy->life = 0;
-        player->cmb_state == RPG_COMBAT_PLAYER_DEATH;
+        player->cmb_state = RPG_COMBAT_PLAYER_DEATH;
     } display_update_gauge(player, ennemy);
 }
 
