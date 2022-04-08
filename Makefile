@@ -10,17 +10,19 @@ SRC = src/core.c \
 	  src/utils/get_time.c \
 	  src/utils/free.c \
 	  src/utils/init.c \
+	  src/utils/get_rand.c \
 	  src/utils/do_aabb.c \
 	  src/combat/init_combat.c \
 	  src/combat/combat_loop.c \
 	  src/combat/hud/guide.c \
 	  src/combat/hud/gauge.c \
 	  src/combat/animation/olberic/olberic_cmb_anim.c \
+	  src/combat/animation/boss/boss.c \
 	  src/map/calcul/calcul.c \
 	  src/map/create/create.c \
 	  src/map/draw/draw.c	\
 	  src/map/init/init.c \
-	  src/sounds/musics.c	\
+	  src/sounds/musics.c
 
 OBJ = $(SRC:.c=.o)
 

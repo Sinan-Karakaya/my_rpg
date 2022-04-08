@@ -17,8 +17,10 @@ void olberic_do_attack(entity_t *player, combat_t *combat)
     } else {
         player->rect_left_i = 19;
         player->rect_left_w = 19;
+        combat->ennemy->life -= player->stat->attack -
+        (combat->ennemy->stat->defense / 2) + get_rand_small_range();
         player->cmb_state = RPG_COMBAT_PLAYER_IDLE;
-        combat->state = RPG_COMBAT_PENDING;
+        combat->state = RPG_COMBAT_ENNEMY;
     }
     sfSprite_setTextureRect(player->sprite, player->rect);
     sfClock_restart(player->clock);
@@ -34,7 +36,7 @@ void olberic_do_idle(entity_t *player)
     sfClock_restart(player->clock);
 }
 
-void olberic_protect(entity_t *player)
+void olberic_protect(entity_t *player, combat_t *combat)
 {
     player->rect_left_i = 20;
     player->rect_left_w = 20;
@@ -42,6 +44,7 @@ void olberic_protect(entity_t *player)
     player->rect.width = olberic_rect_w[player->rect_left_w];
     sfSprite_setTextureRect(player->sprite, player->rect);
     sfClock_restart(player->clock);
+    combat->state = RPG_COMBAT_ENNEMY;
 }
 
 void olberic_death(entity_t *player)

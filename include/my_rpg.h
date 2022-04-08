@@ -23,6 +23,7 @@ int init_sfml(rpg_t *rpg);
 float get_time(sfClock *clock);
 float get_time_mil(sfClock *clock);
 float get_dt(sfClock *game_clock);
+int get_rand_small_range(void);
 void free_rpg(rpg_t *rpg);
 bool do_aabb_mouse(sfMouseMoveEvent mouse, sfSprite *sp);
 bool do_aabb_sprites(sfSprite *sp1, sfSprite *sp2);
@@ -37,10 +38,13 @@ void draw_hud(rpg_t *rpg, entity_t *player, entity_t *ennemy);
 // COMBAT
 combat_t *init_combat(void);
 void combat_loop(rpg_t *rpg, combat_t *combat);
+// COMBAT -> OLBERIC
 void olberic_do_attack(entity_t *player, combat_t *combat);
 void olberic_do_idle(entity_t *player);
-void olberic_protect(entity_t *player);
+void olberic_protect(entity_t *player, combat_t *combat);
 void olberic_death(entity_t *player);
+// COMBAT -> BOSS
+void animate_boss(entity_t *boss, combat_t *combat);
 
 // MAP
 sfVector2f to2d(sfVector3f p, rpg_t *game);
