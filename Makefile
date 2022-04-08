@@ -18,7 +18,8 @@ SRC = src/core.c \
 	  src/combat/animation/olberic/olberic_cmb_anim.c \
 	  src/map/calcul/calcul.c \
 	  src/map/create/create.c \
-	  src/map/draw/draw.c
+	  src/map/draw/draw.c	\
+	  src/map/init/init.c \
 
 OBJ = $(SRC:.c=.o)
 

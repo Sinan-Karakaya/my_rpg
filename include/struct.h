@@ -75,6 +75,10 @@ typedef struct world {
     int **object_map;
 } world_t;
 
+typedef struct {
+    sfRenderStates *state;
+} texture_t;
+
 typedef struct rpg {
     sfRenderWindow *window;
     sfVideoMode mode;
@@ -83,4 +87,5 @@ typedef struct rpg {
     combat_t *combat;
     world_t *world;
     camera_t cam;
+    texture_t *texture;
 } rpg_t;

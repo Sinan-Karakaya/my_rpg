@@ -2,7 +2,7 @@
 
 sfVector2f to2d(sfVector3f p, rpg_t *game)
 {
-    float x = p.x * 50;
+    float x = p.x * 80;
     float y = p.y * 20 + 300;
     float z = p.z * 20;
     float y_divide_by_z;
