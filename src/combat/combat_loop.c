@@ -17,6 +17,7 @@ static void check_player_state(entity_t *player, combat_t *combat)
         olberic_protect(player, combat);
     if (player->cmb_state == RPG_COMBAT_PLAYER_DEATH) {
         olberic_death(player);
+        combat->state = RPG_COMBAT_DEATH;
     }
 }
 
