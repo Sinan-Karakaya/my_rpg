@@ -7,6 +7,7 @@
 
 SRC = src/core.c \
 	  src/const.c \
+	  src/shaders/shader.c \
 	  src/utils/get_time.c \
 	  src/utils/free.c \
 	  src/utils/init.c \

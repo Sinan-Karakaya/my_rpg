@@ -21,25 +21,25 @@ static int is_in_screen(sfVector2f *point)
 }
 
 static void draw_triangle(sfVector2f *points, rpg_t *game,
-sfVector2i tex_coord, int i)
+sfVector2i tex_pos, int i)
 {
-    float coordx = tex_coord.y +abs(16 * (i - 1));
+    float coordx = tex_pos.y +abs(16 * (i - 1));
 
     if (is_in_screen(points) == 0)
         return;
     sfVertex *vertex = sfVertexArray_getVertex(game->cam.render->triangle, 0);
     sfVertexArray *tri = game->cam.render->triangle;
     vertex[0].position = points[0];
-    vertex[0].texCoords = (sfVector2f){tex_coord.x, tex_coord.y};
+    vertex[0].texCoords = (sfVector2f){tex_pos.x, tex_pos.y};
     vertex[0].color = sfWhite;
     vertex[1].position = points[1];
     vertex[1].color = sfWhite;
-    vertex[1].texCoords = (sfVector2f){tex_coord.x +abs(16 * (i - 2)), coordx};
+    vertex[1].texCoords = (sfVector2f){tex_pos.x + abs(16 * (i - 2)), coordx};
     vertex[2].position = points[2];
     vertex[2].color = sfWhite;
-    vertex[2].texCoords = (sfVector2f){tex_coord.x + 16, tex_coord.y + 16};
+    vertex[2].texCoords = (sfVector2f){tex_pos.x + 16, tex_pos.y + 16};
     sfVertexArray_setPrimitiveType(tri, sfTriangleStrip);
-    sfRenderWindow_drawVertexArray(game->window, tri, game->texture->state);
+    sfRenderWindow_drawVertexArray(game->window, tri, game->render);
 }
 
 void draw_map(rpg_t *rpg)
@@ -48,6 +48,7 @@ void draw_map(rpg_t *rpg)
     int **height = rpg->world->height_map;
     sfVector3f point_3d;
     sfVector2i quad_offset = {32, 128};
+
     for (int i = 1; i < MAP_X - 1; i++) {
         for (int j = MAP_Y - 1; j > 0; j--) {
             point_3d = (sfVector3f){i, height[i][j], j};

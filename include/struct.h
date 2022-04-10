@@ -87,13 +87,17 @@ typedef struct world {
     int **object_map;
 } world_t;
 
-typedef struct {
-    sfRenderStates *state;
-} texture_t;
-
 typedef struct music_s {
     sfMusic *music;
 } music_t;
+
+typedef struct shader {
+    sfShader *get;
+    sfSprite *sh_sprite;
+    sfTexture *sh_texture;
+    sfRenderStates *sh_state;
+    sfRenderTexture *render_texture;
+} shader_t;
 
 typedef struct rpg {
     sfRenderWindow *window;
@@ -104,6 +108,7 @@ typedef struct rpg {
     world_t *world;
     camera_t cam;
     float dt;
-    texture_t *texture;
+    sfRenderStates *render;
     music_t *sounds;
+    shader_t *shader;
 } rpg_t;

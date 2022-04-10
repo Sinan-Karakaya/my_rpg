@@ -9,15 +9,21 @@
 
 #include "my_rpg.h"
 
-texture_t *init_struct_texture(char *path)
+/*
+* Possible de donner un shader très sympa au world avec cette ligne notamment:
+* tex->shader = rpg->shader->get
+* Ca nous permettrait de donner un effet de neige
+* ou de pluie au sol par exemple
+*/
+sfRenderStates *init_struct_texture(char *path, rpg_t *rpg)
 {
-    texture_t *tex = malloc(sizeof(texture_t));
+    sfRenderStates *tex = malloc(sizeof(sfRenderStates));
 
-    tex->state = malloc(sizeof(sfRenderStates));
-    tex->state->blendMode = sfBlendAlpha;
-    tex->state->transform = sfTransform_Identity;
-    tex->state->texture = sfTexture_createFromFile(path, NULL);
-    tex->state->shader = NULL;
+    tex = malloc(sizeof(sfRenderStates));
+    tex->blendMode = sfBlendAlpha;
+    tex->transform = sfTransform_Identity;
+    tex->texture = sfTexture_createFromFile(path, NULL);
+    tex->shader = NULL;
     return tex;
 }
 
