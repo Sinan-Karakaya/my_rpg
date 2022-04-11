@@ -29,7 +29,7 @@ sfRenderStates *init_struct_texture(char *path, rpg_t *rpg)
 
 void init_world(rpg_t *game)
 {
-    rpg->world = malloc(sizeof(world_t));
+    game->world = malloc(sizeof(world_t));
     game->world->height_map = create_map(MAP_X, MAP_Y);
     game->world->object_map = create_map(MAP_X, MAP_Y);
     game->world->texture_map = create_map(MAP_X, MAP_Y);
