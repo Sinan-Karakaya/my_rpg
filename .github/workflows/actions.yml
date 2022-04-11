@@ -39,7 +39,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: check_repository_cleanliness
     name: check_program_compilation
-    timeout-minutes: 3
+    timeout-minutes: 5
     container: epitechcontent/epitest-docker:latest
     steps:
       - uses: actions/checkout@v3

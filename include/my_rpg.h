@@ -52,8 +52,11 @@ void draw_map(rpg_t *rpg);
 int **create_map(int heigth, int width);
 void init_world(rpg_t *rpg);
 void init_cam(rpg_t *game);
-texture_t *init_struct_texture(char *path);
+sfRenderStates *init_struct_texture(char *path, rpg_t *rpg);
+
+// SHADER
+void init_shaders(rpg_t *rpg);
+void update_shaders(shader_t *shader, float dt);
 
 // MUSIC
-
 int play_music(rpg_t *rpg);
