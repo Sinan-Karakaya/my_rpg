@@ -108,7 +108,7 @@ typedef struct rpg {
     world_t *world;
     camera_t cam;
     float dt;
-    sfRenderStates *render;
+    sfRenderStates *texture;
     music_t *sounds;
     shader_t *shader;
 } rpg_t;
