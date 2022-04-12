@@ -12,11 +12,12 @@ static void boss_attack(entity_t *boss, entity_t *player, combat_t *combat)
     if (player->cmb_state == RPG_COMBAT_PLAYER_PROTECT) {
         player->life -= (boss->stat->attack - (player->stat->defense / 2) +
         get_rand_small_range()) / 2;
-        player->cmb_state = RPG_COMBAT_PLAYER_IDLE;
     } else {
         player->life -= boss->stat->attack - (player->stat->defense / 2) +
         get_rand_small_range();
     }
+    player->cmb_state = RPG_COMBAT_PLAYER_IDLE;
+    combat->slash->is_active = true;
     combat->state = RPG_COMBAT_PENDING;
 }
 

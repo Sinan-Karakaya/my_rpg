@@ -16,6 +16,11 @@
 #define FONT_PATH "assets/font/itc-souvenir/Souvenir-Bold.otf"
 #define HUD_PATH "assets/hud/hud_guide.png"
 
+#define SLASH_PATH "assets/combat/slash.png"
+#define SLASH_SFX "assets/music/slash.ogg"
+#define SLASH_WIDTH 126
+#define SLASH_HEIGHT 150
+
 #define BOSS_PATH "assets/combat/boss_spritesheet.png"
 #define BOSS_WIDTH 190
 #define BOSS_HEIGHT 170

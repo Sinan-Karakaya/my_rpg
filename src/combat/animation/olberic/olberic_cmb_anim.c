@@ -7,7 +7,7 @@
 
 #include "my_rpg.h"
 
-void olberic_do_attack(entity_t *player, combat_t *combat)
+void olberic_do_attack(entity_t *player, combat_t *combat, rpg_t *rpg)
 {
     if (player->rect_left_i < 10) {
         player->rect_left_i++;
@@ -23,6 +23,7 @@ void olberic_do_attack(entity_t *player, combat_t *combat)
         combat->state = RPG_COMBAT_ENNEMY;
     }
     sfSprite_setTextureRect(player->sprite, player->rect);
+    sfRenderWindow_drawSprite(rpg->window, player->sprite, NULL);
     sfClock_restart(player->clock);
 }
 

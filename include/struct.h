@@ -14,6 +14,7 @@
 typedef enum combat_player_state {
     RPG_COMBAT_PLAYER_IDLE,
     RPG_COMBAT_PLAYER_ATTACK,
+    RPG_COMBAT_PLAYER_ATTACKED,
     RPG_COMBAT_PLAYER_PROTECT,
     RPG_COMBAT_PLAYER_DEATH
 } e_combat_player_state;
@@ -54,17 +55,26 @@ typedef struct entity {
     e_combat_player_state cmb_state;
 } entity_t;
 
+typedef struct sfx {
+    sfSound *sound;
+    sfSoundBuffer *buffer;
+} sfx_t;
+
 typedef struct hud {
     sfTexture *texture;
     sfSprite *sprite;
+    sfIntRect rect;
     sfVector2f pos;
     sfClock *clock;
+    bool is_active;
 } hud_t;
 
 typedef struct combat {
     hud_t *hud;
+    hud_t *slash;
     entity_t *ennemy;
     entity_t *player;
+    sfx_t *sfx;
     e_combat_state state;
 } combat_t;
 

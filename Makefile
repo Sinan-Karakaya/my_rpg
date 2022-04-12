@@ -17,6 +17,7 @@ SRC = src/core.c \
 	  src/combat/combat_loop.c \
 	  src/combat/hud/guide.c \
 	  src/combat/hud/gauge.c \
+	  src/combat/hud/slash.c \
 	  src/combat/animation/olberic/olberic_cmb_anim.c \
 	  src/combat/animation/boss/boss.c \
 	  src/map/calcul/calcul.c \
