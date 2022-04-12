@@ -34,12 +34,14 @@ void move_hud_in(hud_t *hud);
 void move_hud_out(hud_t *hud);
 int init_gauge_bar(entity_t *entity);
 void draw_hud(rpg_t *rpg, entity_t *player, entity_t *ennemy);
+int init_slash(combat_t *combat);
+void do_slash(combat_t *combat, sfRenderWindow *window);
 
 // COMBAT
 combat_t *init_combat(void);
 void combat_loop(rpg_t *rpg, combat_t *combat);
 // COMBAT -> OLBERIC
-void olberic_do_attack(entity_t *player, combat_t *combat);
+void olberic_do_attack(entity_t *player, combat_t *combat, rpg_t *rpg);
 void olberic_do_idle(entity_t *player);
 void olberic_protect(entity_t *player, combat_t *combat);
 void olberic_death(entity_t *player);

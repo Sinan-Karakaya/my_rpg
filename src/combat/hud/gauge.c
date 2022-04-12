@@ -67,7 +67,7 @@ static void display_update_gauge(entity_t *player, entity_t *ennemy)
     ennemy->bar->pos.y});
 }
 
-static void update_gauge(entity_t *player, entity_t *ennemy)
+static void update_gauge(entity_t *player, entity_t *ennemy, combat_t *combat)
 {
     if (player->life > 100)
         player->life = 100;
@@ -82,7 +82,7 @@ static void update_gauge(entity_t *player, entity_t *ennemy)
 
 void draw_hud(rpg_t *rpg, entity_t *player, entity_t *ennemy)
 {
-    update_gauge(player, ennemy);
+    update_gauge(player, ennemy, rpg->combat);
     sfRenderWindow_drawSprite(rpg->window, rpg->combat->hud->sprite, NULL);
     sfRenderWindow_drawRectangleShape(rpg->window, player->bar->rect, NULL);
     sfRenderWindow_drawRectangleShape(rpg->window, player->bar->rect_grey,

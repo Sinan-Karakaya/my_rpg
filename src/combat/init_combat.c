@@ -54,7 +54,7 @@ static int create_player(combat_t *com)
     com->player->stat = malloc(sizeof(stats_t));
     com->player->stat->attack = 10;
     com->player->stat->defense = 10;
-    if (init_gauge_bar(com->player))
+    if (init_gauge_bar(com->player) || init_slash(com))
         return 1;
     return 0;
 }
