@@ -6,7 +6,7 @@
 */
 
 #include <stdlib.h>
-
+#include <stdio.h>
 #include "my_rpg.h"
 
 int **create_map(int heigth, int width)

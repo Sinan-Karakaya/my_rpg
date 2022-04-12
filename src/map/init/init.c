@@ -6,7 +6,6 @@
 */
 
 #include <stdlib.h>
-
 #include "my_rpg.h"
 
 /*
@@ -32,14 +31,14 @@ void init_world(rpg_t *game)
     game->world = malloc(sizeof(world_t));
     game->world->height_map = create_map(MAP_X, MAP_Y);
     game->world->object_map = create_map(MAP_X, MAP_Y);
-    game->world->texture_map = create_map(MAP_X, MAP_Y);
+    game->world->texture_map =  str_to_int_tab();
     game->world->water_map = create_map(MAP_X, MAP_Y);
 }
 
 void init_cam(rpg_t *game)
 {
     game->cam.x = 1600;
-    game->cam.y = 200;
+    game->cam.y = -200;
     game->cam.r = 2;
     game->cam.render = malloc(sizeof(render_t));
     game->cam.render->point = malloc(sizeof(sfVector2f) * 3);

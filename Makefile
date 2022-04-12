@@ -22,6 +22,7 @@ SRC = src/core.c \
 	  src/combat/animation/boss/boss.c \
 	  src/map/calcul/calcul.c \
 	  src/map/create/create.c \
+	  src/map/create/csv_reader.c \
 	  src/map/draw/draw.c	\
 	  src/map/init/init.c \
 	  src/sounds/musics.c

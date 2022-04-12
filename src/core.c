@@ -36,12 +36,13 @@ static int gameloop(rpg_t *rpg, combat_t *combat)
             if (event(rpg) == 1)
                 return 1;
         }
+        draw_water(rpg);
         draw_map(rpg);
-        rpg->cam.x += 0.8;
+        rpg->cam.x -= 0.8;
         combat_loop(rpg, combat);
         temp += rpg->dt;
         update_shaders(rpg->shader, rpg->dt);
-        // sfRenderWindow_drawSprite(rpg->window, rpg->shader->sh_sprite, rpg->shader->sh_state);
+        //sfRenderWindow_drawSprite(rpg->window, rpg->shader->sh_sprite, rpg->shader->sh_state);
         sfRenderWindow_display(rpg->window);
     }
     return 0;
@@ -54,12 +55,12 @@ int main(int ac, char **av)
     if (init_sfml(rpg))
         return 84;
     rpg->combat = init_combat();
-    rpg->world = malloc(sizeof(world_t));
     init_cam(rpg);
     init_world(rpg);
     init_shaders(rpg);
-    rpg->render = init_struct_texture("assets/environement/pr.png", rpg);
-    rpg->world->height_map[25][8] = -4;
+    rpg->texture = init_struct_texture("assets/environement/pr.png", rpg);
+    rpg->world->height_map[1][1] = -4;
+    rpg->world->texture_map[1][1] = 59;
     rpg->sounds = malloc(sizeof(music_t));
     rpg->sounds->music = sfMusic_createFromFile("assets/music/vista.ogg");
     play_music(rpg);
