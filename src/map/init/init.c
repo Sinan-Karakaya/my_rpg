@@ -32,7 +32,7 @@ void init_world(rpg_t *game)
     game->world->height_map = create_map(MAP_X, MAP_Y);
     game->world->object_map = create_map(MAP_X, MAP_Y);
     game->world->texture_map =  str_to_int_tab();
-    game->world->water_map = create_map(MAP_X, MAP_Y);
+    game->world->water_map = create_map(MAP_X + 100, MAP_Y);
 }
 
 void init_cam(rpg_t *game)

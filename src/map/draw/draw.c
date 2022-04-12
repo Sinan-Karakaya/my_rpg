@@ -82,19 +82,18 @@ void draw_water(rpg_t *rpg)
     sfVector2f *point = rpg->cam.render->point;
     int **height = rpg->world->height_map;
     sfVector3f point_3d;
-    sfVector2i quad_offset = {0, 0};
+    sfVector2i quad_offset = {48, 48};
 
-    for (int i = 1; i < MAP_X - 1; i++) {
+    for (int i = 0; i < MAP_X + 299; i++) {
         for (int j = MAP_Y - 1; j > 0; j--) {
-            quad_offset = get_texture_pos(i, j, rpg);
-            point_3d = (sfVector3f){i, 2, j};
+            point_3d = (sfVector3f){i - 50,perlin(i, j, 10) * 2, j};
             point[0] = to2d(point_3d, rpg);
-            point_3d = (sfVector3f){(i + 1), 2, j};
+            point_3d = (sfVector3f){(i - 49), perlin(i + 1, j, 10) * 2, j};
             point[1] = to2d(point_3d, rpg);
-            point_3d = (sfVector3f){(i  + 1), 2, j + 1};
+            point_3d = (sfVector3f){(i  - 49), perlin(i + 1, j + 1, 10) * 2, j + 1};
             point[2] = to2d(point_3d, rpg);
             draw_triangle(point, rpg, quad_offset, 1);
-            point_3d = (sfVector3f){(i), 2, j + 1};
+            point_3d = (sfVector3f){(i - 50), perlin(i, j + 1, 10) * 2, j + 1};
             point[1] = to2d(point_3d, rpg);
             draw_triangle(point, rpg, quad_offset, 2);
         }

@@ -122,3 +122,19 @@ typedef struct rpg {
     music_t *sounds;
     shader_t *shader;
 } rpg_t;
+
+typedef struct perlin {
+    float tmp;
+    float s;
+    float t;
+    float u;
+    float v;
+    float Cx;
+    float Cy;
+    float Li1;
+    float Li2;
+    int gi0;
+    int gi1;
+    int gi2;
+    int gi3;
+} perlin_t;

@@ -55,6 +55,7 @@ int **create_map(int heigth, int width);
 void init_world(rpg_t *rpg);
 void init_cam(rpg_t *game);
 sfRenderStates *init_struct_texture(char *path, rpg_t *rpg);
+float perlin(float x, float y, float res);
 
 // SHADER
 void init_shaders(rpg_t *rpg);
