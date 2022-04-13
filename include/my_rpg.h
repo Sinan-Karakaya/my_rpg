@@ -19,7 +19,9 @@
 #include "defines.h"
 
 // UTILS
-int init_sfml(rpg_t *rpg);
+int handle_args(int ac, char **av);
+int init_sfml(rpg_t *rpg, int debug_mode);
+void print_debug(rpg_t *rpg);
 float get_time(sfClock *clock);
 float get_time_mil(sfClock *clock);
 float get_dt(sfClock *game_clock);

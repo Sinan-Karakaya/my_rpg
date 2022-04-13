@@ -7,6 +7,8 @@
 
 SRC = src/core.c \
 	  src/const.c \
+	  src/args/handle_args.c \
+	  src/utils/debug.c \
 	  src/shaders/shader.c \
 	  src/utils/get_time.c \
 	  src/utils/free.c \
@@ -24,7 +26,7 @@ SRC = src/core.c \
 	  src/map/calcul/perlin.c \
 	  src/map/create/create.c \
 	  src/map/create/csv_reader.c \
-	  src/map/draw/draw.c	\
+	  src/map/draw/draw.c \
 	  src/map/init/init.c \
 	  src/sounds/musics.c
 
@@ -34,14 +36,17 @@ INCLUDE = -I ./include/
 
 CFLAGS = -Wall -Wextra -W $(INCLUDE)
 
-LDFLAGS = -lcsfml-window -lcsfml-system -lcsfml-graphics -lcsfml-audio
+LDFLAGS = -Llib/my -lcsfml-window -lcsfml-system -lcsfml-graphics \
+		  -lcsfml-audio -lmy
 
 NAME = my_rpg
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(OBJ) -o $(NAME) $(LDFLAGS) $(CFLAGS)
+	@make -C lib/my
+	@make clean -C lib/my
+	$(CC) $(OBJ) -o $(NAME) $(CFLAGS) $(LDFLAGS)
 
 clean:
 	rm -f $(OBJ)

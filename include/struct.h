@@ -109,6 +109,12 @@ typedef struct shader {
     sfRenderTexture *render_texture;
 } shader_t;
 
+typedef struct debug {
+    sfText *text;
+    sfFont *font;
+    sfVector2f pos;
+} debug_t;
+
 typedef struct rpg {
     sfRenderWindow *window;
     sfVideoMode mode;
@@ -121,6 +127,8 @@ typedef struct rpg {
     sfRenderStates *texture;
     music_t *sounds;
     shader_t *shader;
+    bool debug_toggle;
+    debug_t *debug;
 } rpg_t;
 
 typedef struct perlin {

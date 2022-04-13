@@ -30,7 +30,7 @@ static int gameloop(rpg_t *rpg, combat_t *combat)
     int temp = 0;
 
     while (sfRenderWindow_isOpen(rpg->window)) {
-        get_dt(rpg->game_clock);
+        rpg->dt = get_dt(rpg->game_clock);
         sfRenderWindow_clear(rpg->window, sfBlack);
         while (sfRenderWindow_pollEvent(rpg->window, &rpg->event)) {
             if (event(rpg) == 1)
@@ -42,6 +42,7 @@ static int gameloop(rpg_t *rpg, combat_t *combat)
         combat_loop(rpg, combat);
         temp += rpg->dt;
         update_shaders(rpg->shader, rpg->dt);
+        print_debug(rpg);
         //sfRenderWindow_drawSprite(rpg->window, rpg->shader->sh_sprite, rpg->shader->sh_state);
         sfRenderWindow_display(rpg->window);
     }
@@ -50,9 +51,12 @@ static int gameloop(rpg_t *rpg, combat_t *combat)
 
 int main(int ac, char **av)
 {
+    int debug_mode = handle_args(ac, av);
     rpg_t *rpg = malloc(sizeof(rpg_t));
 
-    if (init_sfml(rpg))
+    if (debug_mode == -1)
+        return 0;
+    if (!rpg || init_sfml(rpg, debug_mode))
         return 84;
     rpg->combat = init_combat();
     init_cam(rpg);
