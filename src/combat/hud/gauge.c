@@ -63,7 +63,7 @@ static void display_update_gauge(entity_t *player, entity_t *ennemy)
     (sfVector2f){player->bar->pos.x + player->bar->size.x,
     player->bar->pos.y});
     sfRectangleShape_setPosition(ennemy->bar->rect_grey,
-    (sfVector2f){(ennemy->bar->pos.x + ennemy->bar->size.x) / 5,
+    (sfVector2f){(ennemy->bar->pos.x + ennemy->bar->size.x),
     ennemy->bar->pos.y});
 }
 

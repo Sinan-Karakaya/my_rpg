@@ -9,6 +9,10 @@
 
 void olberic_do_attack(entity_t *player, combat_t *combat, rpg_t *rpg)
 {
+    if (get_time(player->clock) > 0.5f)
+        olberic_do_attack(player, combat, rpg);
+    else
+        sfClock_restart(player->clock);
     if (player->rect_left_i < 10) {
         player->rect_left_i++;
         player->rect_left_w++;
