@@ -14,13 +14,13 @@ int event(rpg_t *rpg)
         return 1;
     if (rpg->event.type == sfEvtKeyPressed) {
         if (rpg->event.key.code == sfKeyDown)
-            rpg->cam.y += 1000 * rpg->dt;
+            rpg->cam.y -= 50 * rpg->dt;
         if (rpg->event.key.code == sfKeyUp)
-            rpg->cam.y -= 1000 * rpg->dt;
+            rpg->cam.y += 50 * rpg->dt;
         if (rpg->event.key.code == sfKeyRight)
-            rpg->cam.x += 1000 * rpg->dt;
+            rpg->cam.x += 200 * rpg->dt;
         if (rpg->event.key.code == sfKeyLeft)
-            rpg->cam.x -= 1000 * rpg->dt;
+            rpg->cam.x -= 200 * rpg->dt;
     }
     return 0;
 }
@@ -38,7 +38,6 @@ static int gameloop(rpg_t *rpg, combat_t *combat)
         }
         draw_water(rpg);
         draw_map(rpg);
-        rpg->cam.x -= 0.8;
         combat_loop(rpg, combat);
         temp += rpg->dt;
         update_shaders(rpg->shader, rpg->dt);

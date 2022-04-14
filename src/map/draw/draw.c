@@ -84,8 +84,10 @@ void draw_water(rpg_t *rpg)
     sfVector3f point_3d;
     sfVector2i quad_offset = {48, 48};
 
-    for (int i = 0; i < MAP_X + 299; i++) {
+    for (int i = 0; i < MAP_X + 100; i++) {
         for (int j = MAP_Y - 1; j > 0; j--) {
+            if (i > 55 && i < MAP_X + 40)
+                continue;;
             point_3d = (sfVector3f){i - 50,perlin(i, j, 10) * 2, j};
             point[0] = to2d(point_3d, rpg);
             point_3d = (sfVector3f){(i - 49), perlin(i + 1, j, 10) * 2, j};

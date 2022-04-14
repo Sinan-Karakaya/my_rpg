@@ -38,7 +38,7 @@ void init_world(rpg_t *game)
 void init_cam(rpg_t *game)
 {
     game->cam.x = 1600;
-    game->cam.y = -200;
+    game->cam.y = 400;
     game->cam.r = 2;
     game->cam.render = malloc(sizeof(render_t));
     game->cam.render->point = malloc(sizeof(sfVector2f) * 3);
