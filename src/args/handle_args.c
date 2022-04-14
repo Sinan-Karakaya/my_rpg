@@ -23,9 +23,10 @@ int handle_args(int ac, char **av)
         if (my_strcmp(av[j], "-h") == 0 || my_strcmp(av[j], "--help") == 0) {
             print_help();
             return -1;
-        } if (my_strcmp(av[j], "--debug") == 0) {
+        } if (my_strcmp(av[j], "--debug") == 0 || my_strcmp(av[j], "-d") == 0) {
             my_putstr("Debug mode activated\n");
             return 1;
         }
     }
+    return 0;
 }
