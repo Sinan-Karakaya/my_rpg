@@ -115,6 +115,17 @@ typedef struct debug {
     sfVector2f pos;
 } debug_t;
 
+typedef struct menu {
+    sfSprite *fore_g_sprite;
+    sfTexture *fore_g_texture;
+    sfSprite *mid_g_sprite;
+    sfTexture *mid_g_texture;
+    sfSprite *back_g_sprite;
+    sfTexture *back_g_texture;
+    sfSprite *far_g_sprite;
+    sfTexture *far_g_texture;
+} menu_t;
+
 typedef struct rpg {
     sfRenderWindow *window;
     sfVideoMode mode;
@@ -129,6 +140,7 @@ typedef struct rpg {
     shader_t *shader;
     bool debug_toggle;
     debug_t *debug;
+    menu_t *menu;
 } rpg_t;
 
 typedef struct perlin {

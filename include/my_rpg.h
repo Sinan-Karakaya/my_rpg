@@ -66,3 +66,6 @@ void update_shaders(shader_t *shader, float dt);
 
 // MUSIC
 int play_music(rpg_t *rpg);
+
+//MENU
+int init_menu(rpg_t *rpg);
