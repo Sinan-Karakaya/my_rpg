@@ -13,8 +13,8 @@
 static int is_in_screen(sfVector2f *point)
 {
     for (int i = 0; i < 2; i++) {
-        if (point[i].x < -250 || point[i].x > 2120 || point[i].y < -250 ||
-        point[i].y > 1180)
+        if (point[i].x < -400 || point[i].x > 2400 || point[i].y < -200 ||
+        point[i].y > 1580)
             return 0;
     }
     return 1;
@@ -80,22 +80,23 @@ void draw_map(rpg_t *rpg)
 void draw_water(rpg_t *rpg)
 {
     sfVector2f *point = rpg->cam.render->point;
+    sfTime time = sfClock_getElapsedTime(rpg->world->water_clock);
+    int milli_time = sfTime_asMilliseconds(time) / 70;
     int **height = rpg->world->height_map;
     sfVector3f point_3d;
     sfVector2i quad_offset = {48, 48};
-
     for (int i = 0; i < MAP_X + 100; i++) {
         for (int j = MAP_Y - 1; j > 0; j--) {
             if (i > 55 && i < MAP_X + 40)
                 continue;;
-            point_3d = (sfVector3f){i - 50,perlin(i, j, 10) * 2, j};
+            point_3d = (sfVector3f){i - 50,perlin(i + milli_time, j, 10) * 2, j};
             point[0] = to2d(point_3d, rpg);
-            point_3d = (sfVector3f){(i - 49), perlin(i + 1, j, 10) * 2, j};
+            point_3d = (sfVector3f){(i - 49), perlin(i + 1 + milli_time, j, 10) * 2, j};
             point[1] = to2d(point_3d, rpg);
-            point_3d = (sfVector3f){(i  - 49), perlin(i + 1, j + 1, 10) * 2, j + 1};
+            point_3d = (sfVector3f){(i  - 49), perlin(i + 1 + milli_time, j + 1, 10) * 2, j + 1};
             point[2] = to2d(point_3d, rpg);
             draw_triangle(point, rpg, quad_offset, 1);
-            point_3d = (sfVector3f){(i - 50), perlin(i, j + 1, 10) * 2, j + 1};
+            point_3d = (sfVector3f){(i - 50), perlin(i + milli_time, j + 1, 10) * 2, j + 1};
             point[1] = to2d(point_3d, rpg);
             draw_triangle(point, rpg, quad_offset, 2);
         }

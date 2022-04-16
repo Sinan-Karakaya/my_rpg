@@ -92,8 +92,8 @@ typedef struct camera {
 
 typedef struct world {
     int **height_map;
-    int **water_map;
     int **texture_map;
+    sfClock *water_clock;
     int **object_map;
 } world_t;
 

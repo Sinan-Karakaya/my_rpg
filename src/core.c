@@ -38,6 +38,7 @@ static int gameloop(rpg_t *rpg, combat_t *combat)
         }
         draw_water(rpg);
         draw_map(rpg);
+        draw_object(rpg);
         combat_loop(rpg, combat);
         temp += rpg->dt;
         update_shaders(rpg->shader, rpg->dt);
@@ -62,8 +63,6 @@ int main(int ac, char **av)
     init_world(rpg);
     init_shaders(rpg);
     rpg->texture = init_struct_texture("assets/environement/pr.png", rpg);
-    rpg->world->height_map[1][1] = -4;
-    rpg->world->texture_map[1][1] = 59;
     rpg->sounds = malloc(sizeof(music_t));
     rpg->sounds->music = sfMusic_createFromFile("assets/music/vista.ogg");
     play_music(rpg);
