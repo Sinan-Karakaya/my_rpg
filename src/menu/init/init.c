@@ -7,6 +7,7 @@
 
 #include "my_rpg.h"
 #include <stdlib.h>
+
 int init_menu(rpg_t *rpg)
 {
     rpg->menu = malloc(sizeof(menu_t));
@@ -30,6 +31,32 @@ int init_menu(rpg_t *rpg)
         return 84;
     sfSprite_setTexture(rpg->menu->main->mid_g_sprite, rpg->menu->main->mid_g_texture, sfTrue);
     sfSprite_setScale(rpg->menu->main->mid_g_sprite, (sfVector2f){1.5, 1.5});
+    rpg->menu->is_main = true;
+    rpg->menu->is_option = false;
+    rpg->menu->is_closed = false;
+}
+
+static int init_sound(rpg_t *rpg)
+{
+    rpg->sounds = malloc(sizeof(music_t));
+    if (!rpg->sounds)
+        return 84;
+    rpg->sounds->music = sfMusic_createFromFile("assets/music/vista.ogg");
+    return 0;
+}
+
+static int init_buttons(rpg_t *rpg)
+{
+    size_t nbr_buttons = 3;
+
+    rpg->menu->main->buttons = malloc(sizeof(bt_list_t));
+    if (!rpg->menu->main->buttons)
+        return 84;
+    rpg->menu->main->buttons->nbr_bt = nbr_buttons;
+    rpg->menu->main->buttons->lst_bt = malloc(sizeof(button_t *) * nbr_buttons);
+    if (!rpg->menu->main->buttons->lst_bt)
+        return 84;
+    init_all_buttons(rpg);
 }
 
 int init_all(rpg_t *rpg)
@@ -38,8 +65,9 @@ int init_all(rpg_t *rpg)
     init_cam(rpg);
     init_world(rpg);
     init_shaders(rpg);
+    init_sound(rpg);
+    init_menu(rpg);
+    init_buttons(rpg);
     rpg->texture = init_struct_texture("assets/environement/pr.png", rpg);
-    rpg->sounds = malloc(sizeof(music_t));
-    rpg->sounds->music = sfMusic_createFromFile("assets/music/vista.ogg");
     play_music(rpg);
 }

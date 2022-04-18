@@ -29,7 +29,7 @@ static int gameloop(rpg_t *rpg, combat_t *combat)
 {
     int temp = 0;
 
-    while (sfRenderWindow_isOpen(rpg->window)) {
+    while (sfRenderWindow_isOpen(rpg->window) && rpg->menu->is_closed != true) {
         rpg->dt = get_dt(rpg->game_clock);
         sfRenderWindow_clear(rpg->window, sfBlack);
         while (sfRenderWindow_pollEvent(rpg->window, &rpg->event)) {
@@ -49,6 +49,16 @@ static int gameloop(rpg_t *rpg, combat_t *combat)
     return 0;
 }
 
+static void do_loop(rpg_t *rpg)
+{
+    while (sfRenderWindow_isOpen(rpg->window)) {
+        menuloop(rpg);
+        if (gameloop(rpg, rpg->combat)) {
+            return;
+        }
+    }
+}
+
 int main(int ac, char **av)
 {
     int debug_mode = handle_args(ac, av);
@@ -59,10 +69,7 @@ int main(int ac, char **av)
     if (!rpg || init_sfml(rpg, debug_mode))
         return 84;
     init_all(rpg);
-    menuloop(rpg);
-    if (gameloop(rpg, rpg->combat)) {
-        free_rpg(rpg);
-        return 0;
-    }
+    do_loop(rpg);
+    free_rpg(rpg);
     return 0;
 }
