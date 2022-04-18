@@ -9,7 +9,8 @@
 
 #include <SFML/Graphics.h>
 #include <SFML/Audio.h>
-#include "stdbool.h"
+#include <stdbool.h>
+#include "menu.h"
 
 typedef enum combat_player_state {
     RPG_COMBAT_PLAYER_IDLE,
@@ -114,17 +115,6 @@ typedef struct debug {
     sfFont *font;
     sfVector2f pos;
 } debug_t;
-
-typedef struct menu {
-    sfSprite *fore_g_sprite;
-    sfTexture *fore_g_texture;
-    sfSprite *mid_g_sprite;
-    sfTexture *mid_g_texture;
-    sfSprite *back_g_sprite;
-    sfTexture *back_g_texture;
-    sfSprite *far_g_sprite;
-    sfTexture *far_g_texture;
-} menu_t;
 
 typedef struct rpg {
     sfRenderWindow *window;
