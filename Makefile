@@ -31,7 +31,8 @@ SRC = src/core.c \
 	  src/menu/init/init.c \
 	  src/menu/draw/draw.c \
 	  src/object/draw/draw.c \
-	  src/sounds/musics.c
+	  src/sounds/musics.c	\
+	  src/menu/main_menu/main_menu.c \
 
 OBJ = $(SRC:.c=.o)
 

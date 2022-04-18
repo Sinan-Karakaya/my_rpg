@@ -18,6 +18,9 @@
 
 #include "defines.h"
 
+//INITIALIZATION
+int init_all(rpg_t *rpg);
+
 // UTILS
 int handle_args(int ac, char **av);
 int init_sfml(rpg_t *rpg, int debug_mode);
@@ -69,3 +72,4 @@ int play_music(rpg_t *rpg);
 
 //MENU
 int init_menu(rpg_t *rpg);
+int menuloop(rpg_t *rpg);

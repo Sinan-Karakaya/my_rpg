@@ -7,13 +7,11 @@
 
 #include "my_rpg.h"
 #include <stdlib.h>
-
 int init_menu(rpg_t *rpg)
 {
-    if (!(rpg->menu = malloc(sizeof(menu_t))) ||
-    !(rpg->menu->main = malloc(sizeof(menu_main_t))) ||
-    !(rpg->menu->option = malloc(sizeof(menu_option_t))))
-        return 84;
+    rpg->menu = malloc(sizeof(menu_t));
+    rpg->menu->main = malloc(sizeof(menu_main_t));
+    rpg->menu->option = malloc(sizeof(menu_option_t));
     rpg->menu->main->far_g_sprite = sfSprite_create();
     rpg->menu->main->far_g_texture = sfTexture_createFromFile("assets/menu/background.png", NULL);
     if (!rpg->menu->main->far_g_texture || !rpg->menu->main->far_g_sprite)
@@ -32,5 +30,16 @@ int init_menu(rpg_t *rpg)
         return 84;
     sfSprite_setTexture(rpg->menu->main->mid_g_sprite, rpg->menu->main->mid_g_texture, sfTrue);
     sfSprite_setScale(rpg->menu->main->mid_g_sprite, (sfVector2f){1.5, 1.5});
-    return 0;
+}
+
+int init_all(rpg_t *rpg)
+{
+    rpg->combat = init_combat();
+    init_cam(rpg);
+    init_world(rpg);
+    init_shaders(rpg);
+    rpg->texture = init_struct_texture("assets/environement/pr.png", rpg);
+    rpg->sounds = malloc(sizeof(music_t));
+    rpg->sounds->music = sfMusic_createFromFile("assets/music/vista.ogg");
+    play_music(rpg);
 }
