@@ -12,8 +12,8 @@ static int test_click_on_bt(sfVector2f coord_click, button_t *button)
     sfVector2f pos = sfSprite_getPosition(button->sprite);
     const sfTexture *texture = sfSprite_getTexture(button->sprite);
     sfVector2u size = sfTexture_getSize(texture);
-    size.x = size.x * 2 + 65;
-    size.y = size.y * 2 + 35;
+    size.x = size.x + size.x / 2;
+    size.y = size.y + size.y / 2;
 
     if (coord_click.x >= pos.x
     && coord_click.x < pos.x + size.x
@@ -24,12 +24,12 @@ static int test_click_on_bt(sfVector2f coord_click, button_t *button)
         return false;
 }
 
-int detect_click_on_bt(bt_list_t *bt_list, sfEvent event)
+int detect_click_on_bt(bt_list_t *bt_list, sfEvent event, size_t s, size_t e)
 {
     sfVector2f coord_click = {event.mouseButton.x, event.mouseButton.y};
     bool toggle = false;
 
-    for (size_t i = 0; i < bt_list->nbr_bt; i++) {
+    for (size_t i = s; i < e; i++) {
         if (test_click_on_bt(coord_click, bt_list->lst_bt[i])) {
             toggle = bt_list->lst_bt[i]->toggle;
             bt_list->lst_bt[i]->toggle = (toggle == true) ? false : true;

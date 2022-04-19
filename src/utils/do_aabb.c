@@ -8,11 +8,12 @@
 #include <stdlib.h>
 #include "my_rpg.h"
 
-bool do_aabb_mouse(sfMouseMoveEvent mouse, sfSprite *sp)
+bool do_aabb_mouse(sfMouseButtonEvent mouse, sfSprite *sp)
 {
     sfVector2f pos = sfSprite_getPosition(sp);
     sfIntRect r1 = sfSprite_getTextureRect(sp);
 
+    printf("%d %d\n", mouse.x, mouse.y);
     if (pos.x + r1.width <= mouse.x && pos.x >= mouse.x + r1.width &&
         pos.y + r1.height <= mouse.y && pos.y >= mouse.y + r1.height)
         return true;

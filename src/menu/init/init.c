@@ -42,12 +42,13 @@ static int init_sound(rpg_t *rpg)
     if (!rpg->sounds)
         return 84;
     rpg->sounds->music = sfMusic_createFromFile("assets/music/vista.ogg");
+    rpg->sounds->is_played = true;
     return 0;
 }
 
 static int init_buttons(rpg_t *rpg)
 {
-    size_t nbr_buttons = 3;
+    size_t nbr_buttons = 6;
 
     rpg->menu->main->buttons = malloc(sizeof(bt_list_t));
     if (!rpg->menu->main->buttons)

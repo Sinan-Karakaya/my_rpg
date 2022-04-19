@@ -32,7 +32,7 @@ float get_time_mil(sfClock *clock);
 float get_dt(sfClock *game_clock);
 int get_rand_small_range(void);
 void free_rpg(rpg_t *rpg);
-bool do_aabb_mouse(sfMouseMoveEvent mouse, sfSprite *sp);
+bool do_aabb_mouse(sfMouseButtonEvent mouse, sfSprite *sp);
 bool do_aabb_sprites(sfSprite *sp1, sfSprite *sp2);
 
 // USER INTERFACE
@@ -79,6 +79,7 @@ int menuloop(rpg_t *rpg);
 //BUTTONS
 void buttons_controls(rpg_t *rpg, bt_list_t *bt_list, sfEvent event);
 button_t *create_button(char *str, sfVector2f pos, int ptr_f, char *img);
-int detect_click_on_bt(bt_list_t *bt_list, sfEvent event);
+int detect_click_on_bt(bt_list_t *bt_list, sfEvent event, size_t s, size_t e);
 void init_all_buttons(rpg_t *rpg);
-void display_buttons(rpg_t *rpg);
+void display_buttons_main(rpg_t *rpg);
+void display_buttons_option(rpg_t *rpg);

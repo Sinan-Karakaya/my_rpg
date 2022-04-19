@@ -16,7 +16,7 @@ static void parralax(rpg_t *rpg, sfVector2f actual_pos, int i)
     sfText_setPosition(BUTTONS->lst_bt[i]->text, pos);
 }
 
-void display_buttons(rpg_t *rpg)
+void display_buttons_main(rpg_t *rpg)
 {
     sfVector2f mouse_pos;
     sfVector2f actual_pos;
@@ -30,8 +30,29 @@ void display_buttons(rpg_t *rpg)
     actual_pos.y = mouse_pos.y + 600;
     parralax(rpg, actual_pos, 2);
 
-    for (size_t i = 0; i < rpg->menu->main->buttons->nbr_bt; i++) {
+    for (size_t i = 0; i < 3; i++) {
         sfRenderWindow_drawSprite(rpg->window, BUTTONS->lst_bt[i]->sprite, NULL);
         sfRenderWindow_drawText(rpg->window, BUTTONS->lst_bt[i]->text, NULL);
     }
 }
+
+void display_buttons_option(rpg_t *rpg)
+{
+    sfVector2f mouse_pos;
+    sfVector2f actual_pos;
+
+    mouse_pos = (sfVector2f){sfMouse_getPositionRenderWindow(rpg->window).x/ 5
+    , sfMouse_getPositionRenderWindow(rpg->window).y / 5};
+    actual_pos = (sfVector2f){mouse_pos.x + 656, mouse_pos.y + 285};
+    parralax(rpg, actual_pos, 0);
+    actual_pos.y = mouse_pos.y + 445;
+    parralax(rpg, actual_pos, 1);
+    actual_pos.y = mouse_pos.y + 600;
+    parralax(rpg, actual_pos, 2);
+
+    for (size_t i = 3; i < 6; i++) {
+        sfRenderWindow_drawSprite(rpg->window, BUTTONS->lst_bt[i]->sprite, NULL);
+        sfRenderWindow_drawText(rpg->window, BUTTONS->lst_bt[i]->text, NULL);
+    }
+}
+

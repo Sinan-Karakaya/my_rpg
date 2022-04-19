@@ -100,6 +100,7 @@ typedef struct world {
 
 typedef struct music_s {
     sfMusic *music;
+    bool is_played;
 } music_t;
 
 typedef struct shader {

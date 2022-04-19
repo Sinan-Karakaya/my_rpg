@@ -43,8 +43,6 @@ static void print_option(rpg_t *rpg)
     , sfMouse_getPositionRenderWindow(rpg->window).y / 12 - 400};
     sfSprite_setPosition(rpg->menu->main->mid_g_sprite, mouse_pos);
     sfRenderWindow_drawSprite(rpg->window, rpg->menu->main->mid_g_sprite, NULL);
-    sfRenderWindow_display(rpg->window);
-    sfRenderWindow_pollEvent(rpg->window, &rpg->event);
 }
 
 static void manage_controls(rpg_t *rpg)
@@ -55,25 +53,31 @@ static void manage_controls(rpg_t *rpg)
         if (event.type == sfEvtClosed) {
             rpg->menu->is_closed = true;
             rpg->menu->is_main = false;
+            rpg->menu->is_option = false;
             sfRenderWindow_close(rpg->window);
         }
-        buttons_controls(rpg, BUTTONS, event);
+        if (event.type == sfEvtMouseButtonPressed) {
+            buttons_controls(rpg, BUTTONS, event);
+        }
     }
 }
 
 int menuloop(rpg_t *rpg)
 {
-    while (rpg->menu->is_main == true && rpg->menu->is_closed == false) {
+    while ((rpg->menu->is_main == true && rpg->menu->is_closed == false) ||
+    (rpg->menu->is_option == true && rpg->menu->is_closed == false)) {
         manage_controls(rpg);
-        detect_click_on_bt(rpg->menu->main->buttons, rpg->event);
-        if (rpg->menu->is_main == true) {
+        if (rpg->menu->is_main == true && rpg->menu->is_option == false) {
             print_menu(rpg);
-            display_buttons(rpg);
+            display_buttons_main(rpg);
             sfRenderWindow_display(rpg->window);
             sfRenderWindow_pollEvent(rpg->window, &rpg->event);
         }
-        if (rpg->menu->is_option == true) {
+        if (rpg->menu->is_option == true && rpg->menu->is_main == false) {
             print_option(rpg);
+            display_buttons_option(rpg);
+            sfRenderWindow_display(rpg->window);
+            sfRenderWindow_pollEvent(rpg->window, &rpg->event);
         }
     }
     return 0;
