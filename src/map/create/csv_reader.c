@@ -13,12 +13,11 @@ char *csv_reader(void)
 {
     FILE *file = fopen("texture.map", "r");
     char *code;
-    int **map = create_map(MAP_X, MAP_Y);
     size_t n = 0;
     int c;
 
     if (file == NULL)
-        return map; //could not open file
+        return NULL; //could not open file
 
     code = malloc(sizeof(char) * (MAP_X * MAP_Y) * 4);
 
@@ -34,6 +33,8 @@ int **str_to_int_tab()
 {
     int **map = create_map(MAP_X, MAP_Y);
     char *code = csv_reader();
+    if ((code = csv_reader()) == NULL)
+        return map;
     int i = 0;
     int j = 0;
     int k = 0;

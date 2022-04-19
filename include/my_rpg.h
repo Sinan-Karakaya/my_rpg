@@ -64,6 +64,8 @@ void init_world(rpg_t *rpg);
 void init_cam(rpg_t *game);
 sfRenderStates *init_struct_texture(char *path, rpg_t *rpg);
 float perlin(float x, float y, float res);
+void destroy_world(rpg_t *game);
+int **str_to_int_tab();
 
 // SHADER
 void init_shaders(rpg_t *rpg);
@@ -82,3 +84,7 @@ button_t *create_button(char *str, sfVector2f pos, int ptr_f, char *img);
 int detect_click_on_bt(bt_list_t *bt_list, sfEvent event);
 void init_all_buttons(rpg_t *rpg);
 void display_buttons(rpg_t *rpg);
+
+
+//OBJECT
+void draw_object(rpg_t *rpg);
