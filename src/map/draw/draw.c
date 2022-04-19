@@ -84,7 +84,9 @@ void draw_water(rpg_t *rpg)
     int milli_time = sfTime_asMilliseconds(time) / 70;
     int **height = rpg->world->height_map;
     sfVector3f point_3d;
-    sfVector2i quad_offset = {48, 48};
+    int x_pos = 16 * (22 % (sfTexture_getSize(rpg->texture->texture).x / 16));
+    int y_pos = 16 * (22 / (sfTexture_getSize(rpg->texture->texture).x / 16));
+    sfVector2i quad_offset = {x_pos, y_pos};
     for (int i = 0; i < MAP_X + 100; i++) {
         for (int j = MAP_Y - 1; j > 0; j--) {
             if (i > 55 && i < MAP_X + 40)

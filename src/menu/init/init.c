@@ -34,6 +34,7 @@ int init_menu(rpg_t *rpg)
     rpg->menu->is_main = true;
     rpg->menu->is_option = false;
     rpg->menu->is_closed = false;
+    return 0;
 }
 
 static int init_sound(rpg_t *rpg)
@@ -58,6 +59,7 @@ static int init_buttons(rpg_t *rpg)
     if (!rpg->menu->main->buttons->lst_bt)
         return 84;
     init_all_buttons(rpg);
+    return 0;
 }
 
 int init_all(rpg_t *rpg)
@@ -71,4 +73,5 @@ int init_all(rpg_t *rpg)
     init_buttons(rpg);
     rpg->texture = init_struct_texture("assets/environement/pr.png", rpg);
     play_music(rpg);
+    return 0;
 }
