@@ -12,8 +12,8 @@ static int test_click_on_bt(sfVector2f coord_click, button_t *button)
     sfVector2f pos = sfSprite_getPosition(button->sprite);
     const sfTexture *texture = sfSprite_getTexture(button->sprite);
     sfVector2u size = sfTexture_getSize(texture);
-    size.x = size.x + size.x / 2;
-    size.y = size.y + size.y / 2;
+    size.x = size.x + size.x;
+    size.y = size.y + size.y;
 
     if (coord_click.x >= pos.x
     && coord_click.x < pos.x + size.x

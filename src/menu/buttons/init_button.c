@@ -15,8 +15,8 @@ static sfSprite *init_sprite(sfVector2f pos, char *filename)
     sfSprite *sprite = sfSprite_create();
     sfVector2f scaling = {2, 2};
 
-    pos.x = pos.x - 65;
-    pos.y = pos.y - 35;
+    pos.x = pos.x;
+    pos.y = pos.y;
     sfSprite_setScale(sprite, scaling);
     sfSprite_setPosition(sprite, pos);
     sfSprite_setTexture(sprite, texture, sfTrue);
@@ -65,6 +65,7 @@ static button_t *build_button(char *txt, sfVector2f pos, int ptr, char *name)
     button->rect = sfRectangleShape_create();
     sfRectangleShape_setPosition(button->rect, pos);
     sfRectangleShape_setSize(button->rect, size_rect);
+    sfRectangleShape_setScale(button->rect, (sfVector2f){2, 2});
     return button;
 }
 
