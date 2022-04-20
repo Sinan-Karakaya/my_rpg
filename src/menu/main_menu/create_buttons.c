@@ -19,6 +19,7 @@ void init_all_buttons(rpg_t *rpg)
     (sfVector2f){910, 400}, 100, "assets/menu/button.png");
     rpg->menu->main->buttons->lst_bt[4] = create_button("Debug",
     (sfVector2f){910, 600}, 100, "assets/menu/button.png");
-    rpg->menu->main->buttons->lst_bt[5] = create_button("Return to menu",
+    rpg->menu->main->buttons->lst_bt[4]->toggle = true;
+    rpg->menu->main->buttons->lst_bt[5] = create_button("<- Back",
     (sfVector2f){910, 800}, 100, "assets/menu/button.png");
 }
