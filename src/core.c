@@ -13,8 +13,7 @@ int event(rpg_t *rpg)
     if (rpg->event.type == sfEvtClosed) {
         sfRenderWindow_close(rpg->window);
         return 1;
-    }
-    if (rpg->event.type == sfEvtKeyPressed) {
+    } if (rpg->event.type == sfEvtKeyPressed) {
         if (rpg->event.key.code == sfKeyEscape) {
             rpg->menu->option->is_active = true;
         }
