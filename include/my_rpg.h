@@ -68,6 +68,11 @@ float perlin(float x, float y, float res);
 void destroy_world(rpg_t *game);
 int **str_to_int_tab();
 
+// OVERWORLD
+void overworld_loop(rpg_t *rpg);
+int init_player_overworld(rpg_t *rpg);
+void animate_player_overworld(rpg_t *rpg);
+
 // SHADER
 void init_shaders(rpg_t *rpg);
 void update_shaders(shader_t *shader, float dt);

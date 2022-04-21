@@ -12,9 +12,6 @@ bool do_aabb_mouse(sfMouseButtonEvent mouse, sfSprite *sp)
 {
     sfVector2f pos = sfSprite_getPosition(sp);
     sfIntRect r1 = sfSprite_getTextureRect(sp);
-    printf("Mouse %d %d\n", mouse.x, mouse.y);
-    printf("Sprite %f %f\n", pos.x, pos.y);
-    printf("Rect %d %d\n",r1.width, r1.height);
 
     if (pos.x + r1.width <= mouse.x && pos.x >= mouse.x + r1.width &&
         pos.y + r1.height <= mouse.y && pos.y >= mouse.y + r1.height) {

@@ -39,6 +39,8 @@ SRC = src/core.c \
 	  src/menu/main_menu/display_buttons.c \
 	  src/menu/options/option_ig.c \
 	  src/menu/options/option_menu.c \
+	  src/overworld/oveworld_loop.c \
+	  src/overworld/player_overworld.c \
 
 OBJ = $(SRC:.c=.o)
 
@@ -54,8 +56,7 @@ NAME = my_rpg
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@make -C lib/my
-	@make clean -C lib/my
+	@$(MAKE) -C lib/my
 	$(CC) $(OBJ) -o $(NAME) $(CFLAGS) $(LDFLAGS)
 
 clean:

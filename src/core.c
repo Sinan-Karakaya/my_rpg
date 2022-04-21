@@ -21,9 +21,9 @@ int event(rpg_t *rpg)
         buttons_controls_option_ig(rpg, BUTTONSO, rpg->event);
     if (rpg->event.type == sfEvtKeyPressed) {
         if (rpg->event.key.code == sfKeyDown)
-            rpg->cam.y -= 50 * rpg->dt;
+            rpg->cam.y -= 60 * rpg->dt;
         if (rpg->event.key.code == sfKeyUp)
-            rpg->cam.y += 50 * rpg->dt;
+            rpg->cam.y += 60 * rpg->dt;
         if (rpg->event.key.code == sfKeyRight)
             rpg->cam.x += 200 * rpg->dt;
         if (rpg->event.key.code == sfKeyLeft)
@@ -50,11 +50,11 @@ static int gameloop(rpg_t *rpg, combat_t *combat)
             draw_water(rpg);
             draw_map(rpg);
             //draw_object(rpg);
-            combat_loop(rpg, combat);
+            // combat_loop(rpg, combat);
+            overworld_loop(rpg);
             temp += rpg->dt;
             update_shaders(rpg->shader, rpg->dt);
             print_debug(rpg);
-            //sfRenderWindow_drawSprite(rpg->window, rpg->shader->sh_sprite, rpg->shader->sh_state);
         }
         sfRenderWindow_display(rpg->window);
     }

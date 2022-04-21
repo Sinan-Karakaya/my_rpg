@@ -57,5 +57,5 @@ void print_debug(rpg_t *rpg)
     sfText_setString(rpg->debug->text, my_strcat("FPS: ",
     convert_to_str(rpg->dt * 1000)));
     sfRenderWindow_drawText(rpg->window, rpg->debug->text, NULL);
-    print_hitboxes(rpg);
+    // print_hitboxes(rpg);
 }
