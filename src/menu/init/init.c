@@ -33,7 +33,7 @@ int init_menu(rpg_t *rpg)
 {
     if (!(rpg->menu = malloc(sizeof(menu_t))) ||
     !(rpg->menu->main = malloc(sizeof(menu_main_t)) ||
-    !(rpg->menu->option = malloc(sizeof(menu_option_t))))
+    !(rpg->menu->option = malloc(sizeof(menu_option_t)))))
         return 84;
     rpg->menu->main->far_g_sprite = sfSprite_create();
     rpg->menu->main->far_g_texture = sfTexture_createFromFile(MENU_BG, NULL);
