@@ -18,7 +18,7 @@
 #define MENU_FAR "assets/menu/farground.png"
 #define MENU_MID "assets/menu/midground.png"
 
-#define SHADER_PATH "shader/fragmentShader.fs"
+#define SHADER_PATH "shader/fragment_shader.fs"
 
 // Thanks Epitech's norm
 #define OW rpg->overworld
