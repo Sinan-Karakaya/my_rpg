@@ -46,7 +46,7 @@ static void do_button_option(rpg_t *rpg, int i)
     }
 }
 
-void buttons_controls(rpg_t *rpg, bt_list_t *bt_list, sfEvent event)
+void buttons_controls_menu(rpg_t *rpg, bt_list_t *bt_list, sfEvent event)
 {
     int button;
 

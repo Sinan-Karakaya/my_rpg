@@ -48,6 +48,8 @@ typedef struct menu_option_s {
     sfTexture *back_g_texture;
     sfSprite *far_g_sprite;
     sfTexture *far_g_texture;
+    bt_list_t *buttons;
+    bool is_active;
 } menu_option_t;
 
 typedef struct menu {

@@ -34,6 +34,7 @@ int init_menu(rpg_t *rpg)
     rpg->menu->is_main = true;
     rpg->menu->is_option = false;
     rpg->menu->is_closed = false;
+    rpg->menu->option->is_active = false;
     return 0;
 }
 
@@ -50,13 +51,19 @@ static int init_sound(rpg_t *rpg)
 static int init_buttons(rpg_t *rpg)
 {
     size_t nbr_buttons = 6;
+    size_t nbr_buttons2 = 4;
 
     rpg->menu->main->buttons = malloc(sizeof(bt_list_t));
+    rpg->menu->option->buttons = malloc(sizeof(bt_list_t));
     if (!rpg->menu->main->buttons)
         return 84;
     rpg->menu->main->buttons->nbr_bt = nbr_buttons;
     rpg->menu->main->buttons->lst_bt = malloc(sizeof(button_t *) * nbr_buttons);
     if (!rpg->menu->main->buttons->lst_bt)
+        return 84;
+    rpg->menu->option->buttons->nbr_bt = nbr_buttons2;
+    rpg->menu->option->buttons->lst_bt = malloc(sizeof(button_t *) * nbr_buttons2);
+    if (!rpg->menu->option->buttons->lst_bt)
         return 84;
     init_all_buttons(rpg);
     return 0;

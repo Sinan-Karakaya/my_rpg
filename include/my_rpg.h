@@ -19,6 +19,7 @@
 #include "defines.h"
 
 #define BUTTONS rpg->menu->main->buttons
+#define BUTTONSO rpg->menu->option->buttons
 
 //INITIALIZATION
 int init_all(rpg_t *rpg);
@@ -79,12 +80,16 @@ int init_menu(rpg_t *rpg);
 int menuloop(rpg_t *rpg);
 
 //BUTTONS
-void buttons_controls(rpg_t *rpg, bt_list_t *bt_list, sfEvent event);
+void buttons_controls_menu(rpg_t *rpg, bt_list_t *bt_list, sfEvent event);
 button_t *create_button(char *str, sfVector2f pos, int ptr_f, char *img);
 int detect_click_on_bt(bt_list_t *bt_list, sfEvent event, size_t s, size_t e);
 void init_all_buttons(rpg_t *rpg);
 void display_buttons_main(rpg_t *rpg);
 void display_buttons_option(rpg_t *rpg);
+void display_buttons_option_ig(rpg_t *rpg);
+void print_option_ig(rpg_t *rpg);
+void buttons_controls_option_ig(rpg_t *rpg, bt_list_t *bt_list, sfEvent event);
+
 
 //OBJECT
 void draw_object(rpg_t *rpg);

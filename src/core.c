@@ -13,6 +13,13 @@ int event(rpg_t *rpg)
     if (rpg->event.type == sfEvtClosed)
         return 1;
     if (rpg->event.type == sfEvtKeyPressed) {
+        if (rpg->event.key.code == sfKeyEscape) {
+            rpg->menu->option->is_active = true;
+        }
+    }
+    if (rpg->event.type == sfEvtMouseButtonPressed)
+        buttons_controls_option_ig(rpg, BUTTONSO, rpg->event);
+    if (rpg->event.type == sfEvtKeyPressed) {
         if (rpg->event.key.code == sfKeyDown)
             rpg->cam.y -= 50 * rpg->dt;
         if (rpg->event.key.code == sfKeyUp)
@@ -29,21 +36,26 @@ static int gameloop(rpg_t *rpg, combat_t *combat)
 {
     int temp = 0;
 
-    while (sfRenderWindow_isOpen(rpg->window) && rpg->menu->is_closed != true) {
+    while (sfRenderWindow_isOpen(rpg->window) && rpg->menu->is_closed != true && rpg->menu->is_main != true) {
         rpg->dt = get_dt(rpg->game_clock);
         sfRenderWindow_clear(rpg->window, sfBlack);
         while (sfRenderWindow_pollEvent(rpg->window, &rpg->event)) {
             if (event(rpg) == 1)
                 return 1;
         }
-        draw_water(rpg);
-        draw_map(rpg);
-        draw_object(rpg);
-        combat_loop(rpg, combat);
-        temp += rpg->dt;
-        update_shaders(rpg->shader, rpg->dt);
-        print_debug(rpg);
-        //sfRenderWindow_drawSprite(rpg->window, rpg->shader->sh_sprite, rpg->shader->sh_state);
+        if (rpg->menu->option->is_active == true) {
+            print_option_ig(rpg);
+            display_buttons_option_ig(rpg);
+        } else {
+            draw_water(rpg);
+            draw_map(rpg);
+            //draw_object(rpg);
+            combat_loop(rpg, combat);
+            temp += rpg->dt;
+            update_shaders(rpg->shader, rpg->dt);
+            print_debug(rpg);
+            //sfRenderWindow_drawSprite(rpg->window, rpg->shader->sh_sprite, rpg->shader->sh_state);
+        }
         sfRenderWindow_display(rpg->window);
     }
     return 0;
@@ -53,9 +65,7 @@ static void do_loop(rpg_t *rpg)
 {
     while (sfRenderWindow_isOpen(rpg->window)) {
         menuloop(rpg);
-        if (gameloop(rpg, rpg->combat)) {
-            return;
-        }
+        gameloop(rpg, rpg->combat);
     }
 }
 

@@ -58,7 +58,7 @@ static int manage_controls(rpg_t *rpg)
             return 1;
         }
         if (event.type == sfEvtMouseButtonPressed) {
-            buttons_controls(rpg, BUTTONS, event);
+            buttons_controls_menu(rpg, BUTTONS, event);
         }
     }
 }

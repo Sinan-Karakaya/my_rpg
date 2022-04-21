@@ -30,7 +30,6 @@ SRC = src/core.c \
 	  src/map/init/init.c \
 	  src/menu/init/init.c \
 	  src/menu/draw/draw.c \
-	  src/object/draw/draw.c \
 	  src/sounds/musics.c	\
 	  src/menu/main_menu/main_menu.c \
 	  src/menu/main_menu/button_controls.c \
@@ -38,6 +37,8 @@ SRC = src/core.c \
 	  src/menu/buttons/init_button.c \
 	  src/menu/main_menu/create_buttons.c \
 	  src/menu/main_menu/display_buttons.c \
+	  src/menu/options/option_ig.c \
+	  src/menu/options/option_menu.c \
 
 OBJ = $(SRC:.c=.o)
 
