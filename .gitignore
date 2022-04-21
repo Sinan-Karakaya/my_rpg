@@ -3,6 +3,7 @@ my_rpg
 .vscode/
 .github/
 vgcore.*
+.save
 
 # Prerequisites
 *.d

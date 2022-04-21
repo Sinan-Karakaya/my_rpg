@@ -37,6 +37,7 @@ typedef struct gauge_bar {
 } gauge_bar_t;
 
 typedef struct stats {
+    int level;
     int attack;
     int defense;
 } stats_t;

@@ -53,6 +53,7 @@ static int gameloop(rpg_t *rpg, combat_t *combat)
             // update_shaders(rpg->shader, rpg->dt);
             print_debug(rpg);
         }
+        printf("%d\n", rpg->combat->player->life);
         sfRenderWindow_display(rpg->window);
     }
     return 0;

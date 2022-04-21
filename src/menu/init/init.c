@@ -94,6 +94,7 @@ int init_all(rpg_t *rpg)
     init_menu(rpg);
     init_buttons(rpg);
     init_player_overworld(rpg);
+    read_save(rpg);
     rpg->texture = init_struct_texture("assets/environement/pr.png", rpg);
     play_music(rpg);
     return 0;

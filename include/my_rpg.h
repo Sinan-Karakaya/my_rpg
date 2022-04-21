@@ -97,6 +97,8 @@ void display_buttons_option_ig(rpg_t *rpg);
 void print_option_ig(rpg_t *rpg);
 void buttons_controls_option_ig(rpg_t *rpg, bt_list_t *bt_list, sfEvent event);
 
+// SAVE
+bool read_save(rpg_t *rpg);
 
 //OBJECT
 void draw_object(rpg_t *rpg);
