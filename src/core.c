@@ -28,7 +28,7 @@ int event(rpg_t *rpg)
             rpg->cam.x += 200 * rpg->dt;
         if (rpg->event.key.code == sfKeyLeft)
             rpg->cam.x -= 200 * rpg->dt;
-    }
+    } get_dir(rpg);
     return 0;
 }
 

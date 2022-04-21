@@ -7,7 +7,7 @@
 
 #include "my_rpg.h"
 
-static void get_dir(rpg_t *rpg)
+void get_dir(rpg_t *rpg)
 {
     if (rpg->event.type == sfEvtKeyPressed) {
         if ((rpg->event.key.code == sfKeyDown ||
@@ -36,8 +36,6 @@ static void is_any_key_pressed(rpg_t *rpg)
 void overworld_loop(rpg_t *rpg)
 {
     is_any_key_pressed(rpg);
-    while (sfRenderWindow_pollEvent(rpg->window, &rpg->event))
-        get_dir(rpg);
     animate_player_overworld(rpg);
     sfRenderWindow_drawSprite(rpg->window, OW->spr, NULL);
 }
