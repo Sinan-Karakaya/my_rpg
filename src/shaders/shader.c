@@ -13,10 +13,11 @@ void init_shaders(rpg_t *rpg)
     if (sfShader_isAvailable()) {
         rpg->shader = malloc(sizeof(shader_t));
         rpg->shader->get = malloc(sizeof(sfShader*));
-        rpg->shader->get = sfShader_createFromFile(NULL, NULL, "shader/fragmentShader.fs");
+        rpg->shader->get = sfShader_createFromFile(NULL, NULL, SHADER_PATH);
         rpg->shader->sh_texture = sfTexture_create(1920, 1080);
         rpg->shader->sh_sprite = sfSprite_create();
-        sfSprite_setTexture(rpg->shader->sh_sprite, rpg->shader->sh_texture, sfFalse);
+        sfSprite_setTexture(rpg->shader->sh_sprite, rpg->shader->sh_texture,
+        sfFalse);
         sfSprite_setColor(rpg->shader->sh_sprite, sfTransparent);
         rpg->shader->sh_state = malloc(sizeof(sfRenderStates));
         rpg->shader->sh_state->shader = rpg->shader->get;
@@ -24,7 +25,8 @@ void init_shaders(rpg_t *rpg)
         rpg->shader->sh_state->transform = sfTransform_Identity;
         rpg->shader->sh_state->texture = NULL;
         sfSprite_setPosition(rpg->shader->sh_sprite, (sfVector2f){0, 0});
-        sfShader_setVec2Uniform(rpg->shader->get, "resolution", (sfVector2f){1920, 1080});
+        sfShader_setVec2Uniform(rpg->shader->get, "resolution",
+        (sfVector2f){1920, 1080});
         sfShader_setFloatUniform(rpg->shader->get, "time", rpg->dt);
     }
 }

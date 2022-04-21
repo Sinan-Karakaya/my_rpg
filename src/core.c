@@ -34,15 +34,13 @@ int event(rpg_t *rpg)
 
 static int gameloop(rpg_t *rpg, combat_t *combat)
 {
-    int temp = 0;
-
-    while (sfRenderWindow_isOpen(rpg->window) && rpg->menu->is_closed != true && rpg->menu->is_main != true) {
+    while (sfRenderWindow_isOpen(rpg->window) && rpg->menu->is_closed != true
+    && rpg->menu->is_main != true) {
         rpg->dt = get_dt(rpg->game_clock);
         sfRenderWindow_clear(rpg->window, sfBlack);
-        while (sfRenderWindow_pollEvent(rpg->window, &rpg->event)) {
+        while (sfRenderWindow_pollEvent(rpg->window, &rpg->event))
             if (event(rpg) == 1)
                 return 1;
-        }
         if (rpg->menu->option->is_active == true) {
             print_option_ig(rpg);
             display_buttons_option_ig(rpg);
@@ -52,8 +50,7 @@ static int gameloop(rpg_t *rpg, combat_t *combat)
             //draw_object(rpg);
             // combat_loop(rpg, combat);
             overworld_loop(rpg);
-            temp += rpg->dt;
-            update_shaders(rpg->shader, rpg->dt);
+            // update_shaders(rpg->shader, rpg->dt);
             print_debug(rpg);
         }
         sfRenderWindow_display(rpg->window);

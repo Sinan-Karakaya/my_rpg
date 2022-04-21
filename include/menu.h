@@ -60,4 +60,4 @@ typedef struct menu {
     menu_option_t *option;
 } menu_t;
 
-#endif /* !MENU_H_ */
+#endif

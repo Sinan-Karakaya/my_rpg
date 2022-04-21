@@ -17,14 +17,12 @@ char *csv_reader(void)
     int c;
 
     if (file == NULL)
-        return NULL; //could not open file
-
+        return NULL;
     code = malloc(sizeof(char) * (MAP_X * MAP_Y) * 4);
-
+    if (!code)
+        return NULL;
     while ((c = fgetc(file)) != EOF)
-    {
         code[n++] = (char) c;
-    }
     code[n] = '\0';
     return code;
 }
@@ -32,14 +30,14 @@ char *csv_reader(void)
 int **str_to_int_tab()
 {
     int **map = create_map(MAP_X, MAP_Y);
-    char *code = csv_reader();
-    if ((code = csv_reader()) == NULL)
-        return map;
+    char *code;
     int i = 0;
     int j = 0;
     int k = 0;
     int actual_number = 0;
 
+    if ((code = csv_reader()) == NULL)
+        return map;
     while (code[k] != '\0') {
         if (code[k] == '\n') {
             map[i][j] = actual_number;
@@ -47,14 +45,12 @@ int **str_to_int_tab()
             k++;
             i++;
             j = 0;
-        }
-        if (code[k] == ',') {
+        } if (code[k] == ',') {
             map[i][j] = actual_number;
             actual_number = 0;
             j++;
             k++;
-        }
-        actual_number *= 10;
+        } actual_number *= 10;
         actual_number += code[k] - '0';
         k++;
     }

@@ -32,7 +32,7 @@ char *convert_to_str(float fl)
     result[i] = '\0';
     return my_revstr(result);
 }
-
+/*
 static void print_hitboxes(rpg_t *rpg)
 {
     sfRectangleShape *rect = sfRectangleShape_create();
@@ -49,6 +49,7 @@ static void print_hitboxes(rpg_t *rpg)
 
     sfRenderWindow_drawRectangleShape(rpg->window, rect, NULL);
 }
+*/
 
 void print_debug(rpg_t *rpg)
 {
@@ -57,5 +58,4 @@ void print_debug(rpg_t *rpg)
     sfText_setString(rpg->debug->text, my_strcat("FPS: ",
     convert_to_str(rpg->dt * 1000)));
     sfRenderWindow_drawText(rpg->window, rpg->debug->text, NULL);
-    // print_hitboxes(rpg);
 }

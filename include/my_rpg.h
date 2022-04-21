@@ -67,6 +67,8 @@ sfRenderStates *init_struct_texture(char *path, rpg_t *rpg);
 float perlin(float x, float y, float res);
 void destroy_world(rpg_t *game);
 int **str_to_int_tab();
+void draw_triangle(sfVector2f *points, rpg_t *game, sfVector2i tex_pos, int i);
+sfVector2i get_texture_pos(int x, int y, rpg_t *rpg);
 
 // OVERWORLD
 void overworld_loop(rpg_t *rpg);

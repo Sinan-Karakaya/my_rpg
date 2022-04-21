@@ -13,6 +13,13 @@
 #define MAP_X 150
 #define MAP_Y 80
 
+// MENU
+#define MENU_BG "assets/menu/background.png"
+#define MENU_FAR "assets/menu/farground.png"
+#define MENU_MID "assets/menu/midground.png"
+
+#define SHADER_PATH "shader/fragmentShader.fs"
+
 // Thanks Epitech's norm
 #define OW rpg->overworld
 #define PLAYER_OW_HEIGHT 35

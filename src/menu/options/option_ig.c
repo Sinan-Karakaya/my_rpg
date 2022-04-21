@@ -59,7 +59,8 @@ void display_buttons_option_ig(rpg_t *rpg)
     parralax(rpg, actual_pos, 3);
 
     for (size_t i = 0; i < 4; i++) {
-        sfRenderWindow_drawSprite(rpg->window, BUTTONSO->lst_bt[i]->sprite, NULL);
+        sfRenderWindow_drawSprite(rpg->window, BUTTONSO->lst_bt[i]->sprite,
+        NULL);
         sfRenderWindow_drawText(rpg->window, BUTTONSO->lst_bt[i]->text, NULL);
     }
 }

@@ -47,7 +47,8 @@ void display_buttons_main(rpg_t *rpg)
     parralax(rpg, actual_pos, 2);
 
     for (size_t i = 0; i < 3; i++) {
-        sfRenderWindow_drawSprite(rpg->window, BUTTONS->lst_bt[i]->sprite, NULL);
+        sfRenderWindow_drawSprite(rpg->window, BUTTONS->lst_bt[i]->sprite,
+        NULL);
         sfRenderWindow_drawText(rpg->window, BUTTONS->lst_bt[i]->text, NULL);
     }
 }
@@ -67,7 +68,8 @@ void display_buttons_option(rpg_t *rpg)
     parralax(rpg, actual_pos, 5);
     change_texture(rpg, 3, 5);
     for (size_t i = 3; i < 6; i++) {
-        sfRenderWindow_drawSprite(rpg->window, BUTTONS->lst_bt[i]->sprite, NULL);
+        sfRenderWindow_drawSprite(rpg->window, BUTTONS->lst_bt[i]->sprite,
+        NULL);
         sfRenderWindow_drawText(rpg->window, BUTTONS->lst_bt[i]->text, NULL);
     }
 }
