@@ -6,6 +6,7 @@
 */
 
 #include "my_rpg.h"
+#include "my.h"
 
 static void parralax(rpg_t *rpg, sfVector2f actual_pos, int i)
 {
@@ -19,10 +20,10 @@ static void parralax(rpg_t *rpg, sfVector2f actual_pos, int i)
 static void do_button_option_ig(rpg_t *rpg, int i)
 {
     if (i == 0) {
-        printf("Ici ce sera la musique\n");
+        my_printf("Ici ce sera la musique\n");
     }
     if (i == 1) {
-        printf("Ici ce sera le KeyBindings\n");
+        my_printf("Ici ce sera le KeyBindings\n");
     }
     if (i == 2) {
         rpg->menu->is_main = true;

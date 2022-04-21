@@ -16,8 +16,7 @@ int event(rpg_t *rpg)
         if (rpg->event.key.code == sfKeyEscape) {
             rpg->menu->option->is_active = true;
         }
-    }
-    if (rpg->event.type == sfEvtMouseButtonPressed)
+    } if (rpg->event.type == sfEvtMouseButtonPressed)
         buttons_controls_option_ig(rpg, BUTTONSO, rpg->event);
     if (rpg->event.type == sfEvtKeyPressed) {
         if (rpg->event.key.code == sfKeyDown)
@@ -47,13 +46,12 @@ static int gameloop(rpg_t *rpg, combat_t *combat)
         } else {
             draw_water(rpg);
             draw_map(rpg);
-            //draw_object(rpg);
+            // draw_object(rpg);
             // combat_loop(rpg, combat);
             overworld_loop(rpg);
             // update_shaders(rpg->shader, rpg->dt);
             print_debug(rpg);
         }
-        printf("%d\n", rpg->combat->player->life);
         sfRenderWindow_display(rpg->window);
     }
     return 0;
