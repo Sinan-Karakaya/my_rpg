@@ -75,8 +75,8 @@ static int manage_controls(rpg_t *rpg)
 
 int menuloop(rpg_t *rpg)
 {
-    while ((rpg->menu->is_main == true  && sfRenderWindow_isOpen(rpg->window)
-    || (rpg->menu->is_option == true) && sfRenderWindow_isOpen(rpg->window))) {
+    while ((rpg->menu->is_main && sfRenderWindow_isOpen(rpg->window)) ||
+    (rpg->menu->is_option && sfRenderWindow_isOpen(rpg->window))) {
         if (manage_controls(rpg) == 1)
             return 1;
         if (rpg->menu->is_main == true && rpg->menu->is_option == false) {

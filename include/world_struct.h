@@ -24,6 +24,8 @@ typedef struct world {
     int **texture_map;
     sfClock *water_clock;
     int **object_map;
+    sfRenderStates *texture_o;
+    sfSprite **rendered_spr;
 } world_t;
 
 typedef struct perlin {

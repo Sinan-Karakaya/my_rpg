@@ -58,10 +58,10 @@ int init_player_overworld(rpg_t *rpg)
         return 1;
     OW->spr = sfSprite_create();
     sfSprite_setTexture(OW->spr, OW->texture, sfTrue);
-    sfSprite_setPosition(OW->spr, (sfVector2f){RES_X / 2, RES_Y / 2});
-    sfSprite_setScale(OW->spr, (sfVector2f){2, 2});
     sfSprite_setOrigin(OW->spr,
     (sfVector2f){PLAYER_OW_IDLE_W / 2, PLAYER_OW_HEIGHT / 2});
+    sfSprite_setPosition(OW->spr, (sfVector2f){RES_X / 2, RES_Y / 2});
+    sfSprite_setScale(OW->spr, (sfVector2f){2, 2});
     OW->clock = sfClock_create();
     OW->state = RPG_OW_IDLE;
     OW->was_looking_right = true;

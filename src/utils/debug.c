@@ -32,24 +32,28 @@ char *convert_to_str(float fl)
     result[i] = '\0';
     return my_revstr(result);
 }
-/*
+
 static void print_hitboxes(rpg_t *rpg)
 {
     sfRectangleShape *rect = sfRectangleShape_create();
-    sfVector2f player_scale = sfSprite_getScale(rpg->combat->player->sprite);
+    sfVector2f player_scale = sfSprite_getScale(OW->spr);
+    sfVector2f p_pos = sfSprite_getPosition(OW->spr);
 
     sfRectangleShape_setFillColor(rect, sfTransparent);
     sfRectangleShape_setOutlineColor(rect, sfRed);
     sfRectangleShape_setOutlineThickness(rect, 1);
 
-    sfRectangleShape_setPosition(rect, rpg->combat->player->pos);
     sfRectangleShape_setSize(rect, (sfVector2f){
-    rpg->combat->player->rect.width * player_scale.x,
-    rpg->combat->player->rect.height * player_scale.y});
+    sfSprite_getTextureRect(OW->spr).width * player_scale.x,
+    PLAYER_OW_HEIGHT * player_scale.y});
+
+    p_pos.x -= PLAYER_OW_IDLE_W * player_scale.x / 2;
+    p_pos.y -= PLAYER_OW_HEIGHT * player_scale.y / 2;
+    sfRectangleShape_setPosition(rect, p_pos);
 
     sfRenderWindow_drawRectangleShape(rpg->window, rect, NULL);
 }
-*/
+
 
 void print_debug(rpg_t *rpg)
 {
@@ -57,5 +61,6 @@ void print_debug(rpg_t *rpg)
         return;
     sfText_setString(rpg->debug->text, my_strcat("FPS: ",
     convert_to_str(rpg->dt * 1000)));
+    print_hitboxes(rpg);
     sfRenderWindow_drawText(rpg->window, rpg->debug->text, NULL);
 }

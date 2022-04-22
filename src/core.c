@@ -76,7 +76,7 @@ int main(int ac, char **av)
     if (!rpg || init_sfml(rpg, debug_mode))
         return 84;
     init_all(rpg);
-    rpg->world->object_map[2][2]= 1;
+    rpg->world->object_map[20][20]= 1;
     rpg->world->object_map[10][2]= 2;
     rpg->world->object_map[18][2]= 3;
     rpg->world->object_map[26][2]= 4;

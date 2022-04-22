@@ -35,6 +35,7 @@ int get_rand_small_range(void);
 void free_rpg(rpg_t *rpg);
 bool do_aabb_mouse(sfMouseButtonEvent mouse, sfSprite *sp);
 bool do_aabb_sprites(sfSprite *sp1, sfSprite *sp2);
+void y_sorter(rpg_t *rpg, float player_y);
 
 // USER INTERFACE
 int create_hud(combat_t *combat);
@@ -69,6 +70,7 @@ void destroy_world(rpg_t *game);
 int **str_to_int_tab();
 void draw_triangle(sfVector2f *points, rpg_t *game, sfVector2i tex_pos, int i);
 sfVector2i get_texture_pos(int x, int y, rpg_t *rpg);
+sfVector2i get_object_pos(int x, int y, rpg_t *rpg);
 
 // OVERWORLD
 void overworld_loop(rpg_t *rpg);

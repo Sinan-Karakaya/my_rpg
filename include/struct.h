@@ -45,7 +45,6 @@ typedef struct rpg {
     camera_t cam;
     float dt;
     sfRenderStates *texture;
-    sfRenderStates *texture_o;
     music_t *sounds;
     shader_t *shader;
     bool debug_toggle;

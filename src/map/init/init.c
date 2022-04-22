@@ -33,6 +33,9 @@ void init_world(rpg_t *game)
     game->world->object_map = create_map(MAP_X, MAP_Y);
     game->world->water_clock = sfClock_create();
     game->world->texture_map =  str_to_int_tab();
+
+    game->world->rendered_spr = malloc(sizeof(sfSprite*));
+    game->world->rendered_spr[0] = NULL;
 }
 
 void destroy_world(rpg_t *game)

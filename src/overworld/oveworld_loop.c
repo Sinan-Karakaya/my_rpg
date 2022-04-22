@@ -38,4 +38,5 @@ void overworld_loop(rpg_t *rpg)
     is_any_key_pressed(rpg);
     animate_player_overworld(rpg);
     sfRenderWindow_drawSprite(rpg->window, OW->spr, NULL);
+    y_sorter(rpg, sfSprite_getPosition(OW->spr).y + PLAYER_OW_HEIGHT / 2);
 }
