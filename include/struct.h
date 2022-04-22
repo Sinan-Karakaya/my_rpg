@@ -14,25 +14,7 @@
 #include "menu.h"
 #include "world_struct.h"
 #include "cmb_struct.h"
-
-typedef struct music_s {
-    sfMusic *music;
-    bool is_played;
-} music_t;
-
-typedef struct shader {
-    sfShader *get;
-    sfSprite *sh_sprite;
-    sfTexture *sh_texture;
-    sfRenderStates *sh_state;
-    sfRenderTexture *render_texture;
-} shader_t;
-
-typedef struct debug {
-    sfText *text;
-    sfFont *font;
-    sfVector2f pos;
-} debug_t;
+#include "misc_struct.h"
 
 typedef enum ow_state {
     RPG_OW_IDLE,
