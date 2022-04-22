@@ -47,7 +47,7 @@ static int gameloop(rpg_t *rpg, combat_t *combat)
         } else {
             draw_water(rpg);
             draw_map(rpg);
-            // draw_object(rpg);
+            draw_object(rpg);
             // combat_loop(rpg, combat);
             overworld_loop(rpg);
             // update_shaders(rpg->shader, rpg->dt);
@@ -76,6 +76,10 @@ int main(int ac, char **av)
     if (!rpg || init_sfml(rpg, debug_mode))
         return 84;
     init_all(rpg);
+    rpg->world->object_map[2][2]= 1;
+    rpg->world->object_map[10][2]= 2;
+    rpg->world->object_map[18][2]= 3;
+    rpg->world->object_map[26][2]= 4;
     do_loop(rpg);
     free_rpg(rpg);
     return 0;
