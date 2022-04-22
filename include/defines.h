@@ -47,7 +47,7 @@
 extern const int olberic_rect_left[26];
 extern const int olberic_rect_w[26];
 
-extern const int player_ow_rect_w_r[6];
-extern const int player_ow_rect_l_r[6];
 extern const int player_ow_rect_w_l[6];
 extern const int player_ow_rect_l_l[6];
+extern const int player_ow_rect_w_r[6];
+extern const int player_ow_rect_l_r[6];

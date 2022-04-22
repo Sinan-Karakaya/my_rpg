@@ -13,7 +13,7 @@
 
 static void player_ow_dir(rpg_t *rpg)
 {
-    if (OW->state == RPG_OW_WALK_R) {
+    if (OW->state == RPG_OW_WALK_L) {
         if (OW->rect_left_i >= 5) {
             OW->rect_left_i = 0;
             OW->rect_left_w = 0;
@@ -22,7 +22,7 @@ static void player_ow_dir(rpg_t *rpg)
         OW->rect_left_w++;
         OW->rect.left = player_ow_rect_l_l[OW->rect_left_i];
         OW->rect.width = player_ow_rect_w_l[OW->rect_left_w];
-    } else if (OW->state == RPG_OW_WALK_L) {
+    } else if (OW->state == RPG_OW_WALK_R) {
         if (OW->rect_left_i >= 5) {
             OW->rect_left_i = 0;
             OW->rect_left_w = 0;
