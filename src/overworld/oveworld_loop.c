@@ -14,7 +14,7 @@ void get_dir(rpg_t *rpg)
         rpg->event.key.code == sfKeyUp) && OW->was_looking_right)
             OW->state = RPG_OW_WALK_R;
         else if ((rpg->event.key.code == sfKeyDown ||
-        rpg->event.key.code == sfKeyUp) && OW->was_looking_right)
+        rpg->event.key.code == sfKeyUp) && !OW->was_looking_right)
             OW->state = RPG_OW_WALK_L;
         if (rpg->event.key.code == sfKeyRight) {
             OW->state = RPG_OW_WALK_R;
