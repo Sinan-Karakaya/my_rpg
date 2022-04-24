@@ -20,23 +20,37 @@ int event(rpg_t *rpg)
     } if (rpg->event.type == sfEvtMouseButtonPressed)
         buttons_controls_option_ig(rpg, BUTTONSO, rpg->event);
     if (rpg->event.type == sfEvtKeyPressed) {
-        if (rpg->event.key.code == sfKeyDown)
+        if (rpg->event.key.code == sfKeyDown && IN_OVERWORLD)
             rpg->cam.y -= 60 * rpg->dt;
-        if (rpg->event.key.code == sfKeyUp)
+        if (rpg->event.key.code == sfKeyUp && IN_OVERWORLD)
             rpg->cam.y += 60 * rpg->dt;
-        if (rpg->event.key.code == sfKeyRight)
+        if (rpg->event.key.code == sfKeyRight && IN_OVERWORLD)
             rpg->cam.x += 200 * rpg->dt;
-        if (rpg->event.key.code == sfKeyLeft)
+        if (rpg->event.key.code == sfKeyLeft && IN_OVERWORLD)
             rpg->cam.x -= 200 * rpg->dt;
+        // ------------------ DEBUG ------------------------
+        if (rpg->event.key.code == sfKeyC)
+            if (IN_OVERWORLD)
+                rpg->scene = COMBAT;
+            else if (rpg->scene == COMBAT)
+                rpg->scene = OVERWORLD;
+        // -------------------------------------------------
     } get_dir(rpg);
     return 0;
 }
 
-static int gameloop(rpg_t *rpg, combat_t *combat)
+static void chose_scene(rpg_t *rpg)
+{
+    if (rpg->scene == OVERWORLD)
+        overworld_loop(rpg);
+    else if (rpg->scene == COMBAT)
+        combat_loop(rpg, rpg->combat);
+}
+
+static int gameloop(rpg_t *rpg)
 {
     while (sfRenderWindow_isOpen(rpg->window) && rpg->menu->is_closed != true
     && rpg->menu->is_main != true) {
-        rpg->dt = get_dt(rpg->game_clock);
         sfRenderWindow_clear(rpg->window, sfBlack);
         while (sfRenderWindow_pollEvent(rpg->window, &rpg->event))
             if (event(rpg) == 1)
@@ -48,11 +62,10 @@ static int gameloop(rpg_t *rpg, combat_t *combat)
             draw_water(rpg);
             draw_map(rpg);
             draw_object(rpg);
-            // combat_loop(rpg, combat);
-            overworld_loop(rpg);
-            // update_shaders(rpg->shader, rpg->dt);
-            print_debug(rpg);
+            chose_scene(rpg);
         }
+        rpg->dt = get_dt(rpg->game_clock);
+        print_debug(rpg);
         sfRenderWindow_display(rpg->window);
     }
     return 0;
@@ -62,7 +75,7 @@ static void do_loop(rpg_t *rpg)
 {
     while (sfRenderWindow_isOpen(rpg->window)) {
         menuloop(rpg);
-        gameloop(rpg, rpg->combat);
+        gameloop(rpg);
     }
 }
 

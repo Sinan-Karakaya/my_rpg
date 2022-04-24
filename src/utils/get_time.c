@@ -19,5 +19,5 @@ float get_time_mil(sfClock *clock)
 
 float get_dt(sfClock *game_clock)
 {
-    return sfClock_restart(game_clock).microseconds / 1000000.0;
+    return sfClock_restart(game_clock).microseconds * 0.000001;
 }

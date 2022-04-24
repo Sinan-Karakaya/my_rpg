@@ -20,6 +20,8 @@
 
 #define SHADER_PATH "shader/fragment_shader.fs"
 
+#define IN_OVERWORLD (rpg->scene == OVERWORLD)
+
 // Thanks Epitech's norm
 #define OW rpg->overworld
 #define PLAYER_OW_HEIGHT 35

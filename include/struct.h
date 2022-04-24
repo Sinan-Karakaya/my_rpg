@@ -34,6 +34,12 @@ typedef struct overworld {
     int rect_left_w;
 } overworld_t;
 
+typedef enum rpg_scene {
+    MAIN_MENU,
+    OVERWORLD,
+    COMBAT
+} e_rpg_scene;
+
 typedef struct rpg {
     sfRenderWindow *window;
     sfVideoMode mode;
@@ -50,6 +56,5 @@ typedef struct rpg {
     bool debug_toggle;
     debug_t *debug;
     menu_t *menu;
+    e_rpg_scene scene;
 } rpg_t;
-
-
