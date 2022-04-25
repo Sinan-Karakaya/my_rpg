@@ -42,8 +42,8 @@ SRC = src/core.c \
 	  src/menu/options/option_menu.c \
 	  src/overworld/oveworld_loop.c \
 	  src/overworld/player_overworld.c \
+	  src/overworld/collision.c \
 	  src/save/read_save.c \
-	  src/overworld/overworld_collisions.c \
 	  src/utils/y_sorter.c \
 
 OBJ = $(SRC:.c=.o)
