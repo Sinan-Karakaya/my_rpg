@@ -8,60 +8,59 @@
 #include "my_rpg.h"
 #include "my.h"
 
-static void parralax(rpg_t *rpg, sfVector2f actual_pos, int i)
-{
-    sfVector2f pos = {actual_pos.x, actual_pos.y};
-    sfSprite_setPosition(BUTTONSO->lst_bt[i]->sprite, actual_pos);
-    pos.x += (83);
-    pos.y += 38;
-    sfText_setPosition(BUTTONSO->lst_bt[i]->text, pos);
-}
-
 static void do_button_option_ig(rpg_t *rpg, int i)
 {
     if (i == 0) {
-        my_printf("Ici ce sera la musique\n");
+        rpg->menu->option->music = true;
+        rpg->menu->option->is_main = false;
     }
-    if (i == 1) {
+    if (i == 1)
         my_printf("Ici ce sera le KeyBindings\n");
-    }
     if (i == 2) {
         rpg->menu->is_main = true;
         rpg->menu->option->is_active = false;
+        rpg->menu->option->is_main = false;
     }
-    if (i == 3)
+    if (i == 3) {
         rpg->menu->option->is_active = false;
+        rpg->menu->option->is_main = false;
+    }
+}
+
+static void do_button_music_ig(rpg_t *rpg, int i)
+{
+    if (i == 4) {
+        if (rpg->sounds->is_played == true) {
+            sfMusic_pause(rpg->sounds->music);
+            rpg->sounds->is_played = false;
+        } else {
+            sfMusic_play(rpg->sounds->music);
+            rpg->sounds->is_played = true;
+        }
+    }
+    if (i == 5)
+        my_printf("Music Bar\n");
+    if (i == 6) {
+        my_printf("Sound Button\n");
+    }
+    if (i == 7)
+        my_printf("Sound Effect bar\n");
+    if (i == 8) {
+        rpg->menu->option->is_main = true;
+        rpg->menu->option->music = false;
+    }
 }
 
 void buttons_controls_option_ig(rpg_t *rpg, bt_list_t *bt_list, sfEvent event)
 {
     int button;
 
-    if (rpg->menu->option->is_active == true) {
+    if (rpg->menu->option->is_active == true && rpg->menu->option->is_main == true) {
         button = detect_click_on_bt(bt_list, event, 0, 4);
         do_button_option_ig(rpg, button);
     }
-}
-
-void display_buttons_option_ig(rpg_t *rpg)
-{
-    sfVector2f mouse_pos;
-    sfVector2f actual_pos;
-
-    mouse_pos = (sfVector2f){sfMouse_getPositionRenderWindow(rpg->window).x/ 5
-    , sfMouse_getPositionRenderWindow(rpg->window).y / 5};
-    actual_pos = (sfVector2f){mouse_pos.x + 656, mouse_pos.y};
-    parralax(rpg, actual_pos, 0);
-    actual_pos.y = mouse_pos.y + 200;
-    parralax(rpg, actual_pos, 1);
-    actual_pos.y = mouse_pos.y + 400;
-    parralax(rpg, actual_pos, 2);
-    actual_pos.y = mouse_pos.y + 600;
-    parralax(rpg, actual_pos, 3);
-
-    for (size_t i = 0; i < 4; i++) {
-        sfRenderWindow_drawSprite(rpg->window, BUTTONSO->lst_bt[i]->sprite,
-        NULL);
-        sfRenderWindow_drawText(rpg->window, BUTTONSO->lst_bt[i]->text, NULL);
+    if (rpg->menu->option->music == true && rpg->menu->option->is_active == true) {
+        button = detect_click_on_bt(bt_list, event, 4, 9);
+        do_button_music_ig(rpg, button);
     }
 }
