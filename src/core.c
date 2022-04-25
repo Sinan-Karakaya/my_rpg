@@ -16,6 +16,7 @@ int event(rpg_t *rpg)
     } if (rpg->event.type == sfEvtKeyPressed) {
         if (rpg->event.key.code == sfKeyEscape) {
             rpg->menu->option->is_active = true;
+            rpg->menu->option->is_main = true;
         }
     } if (rpg->event.type == sfEvtMouseButtonPressed)
         buttons_controls_option_ig(rpg, BUTTONSO, rpg->event);
@@ -56,8 +57,7 @@ static int gameloop(rpg_t *rpg)
             if (event(rpg) == 1)
                 return 1;
         if (rpg->menu->option->is_active == true) {
-            print_option_ig(rpg);
-            display_buttons_option_ig(rpg);
+            display_options_ig(rpg);
         } else {
             draw_water(rpg);
             draw_map(rpg);

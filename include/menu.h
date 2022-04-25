@@ -50,6 +50,9 @@ typedef struct menu_option_s {
     sfTexture *far_g_texture;
     bt_list_t *buttons;
     bool is_active;
+    bool is_main;
+    bool music;
+    bool keybinds;
 } menu_option_t;
 
 typedef struct menu {

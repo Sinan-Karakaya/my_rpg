@@ -39,7 +39,7 @@ SRC = src/core.c \
 	  src/menu/main_menu/create_buttons.c \
 	  src/menu/main_menu/display_buttons.c \
 	  src/menu/options/option_ig.c \
-	  src/menu/options/option_menu.c \
+	  src/menu/options/display_options_ig.c \
 	  src/overworld/oveworld_loop.c \
 	  src/overworld/player_overworld.c \
 	  src/save/read_save.c \

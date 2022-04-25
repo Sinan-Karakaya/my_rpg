@@ -7,31 +7,7 @@
 
 #include "my_rpg.h"
 
-static void print_menu(rpg_t *rpg)
-{
-    sfVector2f mouse_pos;
-    mouse_pos = (sfVector2f){sfMouse_getPositionRenderWindow(rpg->window).x /
-    60 - 340
-    , sfMouse_getPositionRenderWindow(rpg->window).y / 60 - 200};
-    sfSprite_setPosition(rpg->menu->main->far_g_sprite, mouse_pos);
-    sfRenderWindow_clear(rpg->window, sfBlack);
-    sfRenderWindow_drawSprite(rpg->window, rpg->menu->main->far_g_sprite,
-    NULL);
-    mouse_pos = (sfVector2f){sfMouse_getPositionRenderWindow(rpg->window).x /
-    30 - 340
-    , sfMouse_getPositionRenderWindow(rpg->window).y / 30 - 400};
-    sfSprite_setPosition(rpg->menu->main->back_g_sprite, mouse_pos);
-    sfRenderWindow_drawSprite(rpg->window, rpg->menu->main->back_g_sprite,
-    NULL);
-    mouse_pos = (sfVector2f){sfMouse_getPositionRenderWindow(rpg->window).x /
-    12 - 600
-    , sfMouse_getPositionRenderWindow(rpg->window).y / 12 - 400};
-    sfSprite_setPosition(rpg->menu->main->mid_g_sprite, mouse_pos);
-    sfRenderWindow_drawSprite(rpg->window, rpg->menu->main->mid_g_sprite,
-    NULL);
-}
-
-static void print_option(rpg_t *rpg)
+void print_parralax(rpg_t *rpg)
 {
     sfVector2f mouse_pos;
     mouse_pos = (sfVector2f){sfMouse_getPositionRenderWindow(rpg->window).x /
@@ -80,12 +56,12 @@ int menuloop(rpg_t *rpg)
         if (manage_controls(rpg) == 1)
             return 1;
         if (rpg->menu->is_main == true && rpg->menu->is_option == false) {
-            print_menu(rpg);
+            print_parralax(rpg);
             display_buttons_main(rpg);
             sfRenderWindow_display(rpg->window);
         }
         if (rpg->menu->is_option == true && rpg->menu->is_main == false) {
-            print_option(rpg);
+            print_parralax(rpg);
             display_buttons_option(rpg);
             sfRenderWindow_display(rpg->window);
         }

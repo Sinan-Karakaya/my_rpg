@@ -26,6 +26,9 @@ static int init_menu_bis(rpg_t *rpg)
     rpg->menu->is_option = false;
     rpg->menu->is_closed = false;
     rpg->menu->option->is_active = false;
+    rpg->menu->option->music = false;
+    rpg->menu->option->keybinds = false;
+    rpg->menu->option->is_main = false;
     return 0;
 }
 
@@ -64,7 +67,7 @@ static int init_sound(rpg_t *rpg)
 static int init_buttons(rpg_t *rpg)
 {
     size_t nbr_buttons = 6;
-    size_t nbr_buttons2 = 4;
+    size_t nbr_buttons2 = 9;
 
     rpg->menu->main->buttons = malloc(sizeof(bt_list_t));
     rpg->menu->option->buttons = malloc(sizeof(bt_list_t));

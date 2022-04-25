@@ -26,7 +26,7 @@ static void do_button_main(rpg_t *rpg, int i)
 static void do_button_option(rpg_t *rpg, int i)
 {
     if (i == 3) {
-        if (rpg->sounds->is_played== true) {
+        if (rpg->sounds->is_played == true) {
             sfMusic_pause(rpg->sounds->music);
             rpg->sounds->is_played = false;
         } else {

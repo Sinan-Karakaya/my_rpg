@@ -96,9 +96,9 @@ int detect_click_on_bt(bt_list_t *bt_list, sfEvent event, size_t s, size_t e);
 void init_all_buttons(rpg_t *rpg);
 void display_buttons_main(rpg_t *rpg);
 void display_buttons_option(rpg_t *rpg);
-void display_buttons_option_ig(rpg_t *rpg);
-void print_option_ig(rpg_t *rpg);
+void print_parralax(rpg_t *rpg);
 void buttons_controls_option_ig(rpg_t *rpg, bt_list_t *bt_list, sfEvent event);
+void display_options_ig(rpg_t *rpg);
 
 // SAVE
 bool read_save(rpg_t *rpg);
