@@ -13,8 +13,8 @@
 static int is_in_screen(sfVector2f *point)
 {
     for (int i = 0; i < 2; i++) {
-        if (point[i].x < -400 || point[i].x > 2400 || point[i].y < -200 ||
-        point[i].y > 1580)
+        if (point[i].x < -1550 || point[i].x > 2850 || point[i].y < -200 ||
+        point[i].y > 1780)
             return 0;
     }
     return 1;

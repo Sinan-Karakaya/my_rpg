@@ -31,10 +31,14 @@ int event(rpg_t *rpg)
             rpg->cam.x -= 200 * rpg->dt;
         // ------------------ DEBUG ------------------------
         if (rpg->event.key.code == sfKeyC)
-            if (IN_OVERWORLD)
+            if (IN_OVERWORLD) {
                 rpg->scene = COMBAT;
-            else if (rpg->scene == COMBAT)
+                rpg->cam.r = 0;
+            }
+            else if (rpg->scene == COMBAT) {
                 rpg->scene = OVERWORLD;
+                rpg->cam.r = 2;
+            }
         // -------------------------------------------------
     } get_dir(rpg);
     return 0;
