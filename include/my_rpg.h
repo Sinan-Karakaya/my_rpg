@@ -77,6 +77,7 @@ void overworld_loop(rpg_t *rpg);
 int init_player_overworld(rpg_t *rpg);
 void animate_player_overworld(rpg_t *rpg);
 void get_dir(rpg_t *rpg);
+void ow_aabb(rpg_t *rpg);
 
 // SHADER
 void init_shaders(rpg_t *rpg);
