@@ -19,6 +19,7 @@ typedef struct button_s {
     bool toggle;
     bool hover;
     bool is_hover;
+    int name;
     int ptr_function;
 } button_t;
 
@@ -26,6 +27,11 @@ typedef struct bt_list_s {
     unsigned int nbr_bt;
     button_t **lst_bt;
 } bt_list_t;
+
+typedef struct keys_s {
+    int data;
+    char *name;
+} keys_t;
 
 typedef struct menu_main_s {
     sfSprite *fore_g_sprite;

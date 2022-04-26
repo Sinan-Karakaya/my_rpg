@@ -14,8 +14,10 @@ static void do_button_option_ig(rpg_t *rpg, int i)
         rpg->menu->option->music = true;
         rpg->menu->option->is_main = false;
     }
-    if (i == 1)
-        my_printf("Ici ce sera le KeyBindings\n");
+    if (i == 1) {
+        rpg->menu->option->keybinds = true;
+        rpg->menu->option->is_main = false;
+    }
     if (i == 2) {
         rpg->menu->is_main = true;
         rpg->menu->option->is_active = false;
@@ -24,6 +26,28 @@ static void do_button_option_ig(rpg_t *rpg, int i)
     if (i == 3) {
         rpg->menu->option->is_active = false;
         rpg->menu->option->is_main = false;
+    }
+}
+
+static void do_button_music_bis_ig(rpg_t *rpg, int i)
+{
+    if (i == 6) {
+        if (rpg->sounds->is_sound_effect == true) {
+            rpg->sounds->is_sound_effect = false;
+        } else {
+            sfMusic_play(rpg->sounds->music);
+            rpg->sounds->is_sound_effect = true;
+        }
+    }
+    if (i == 7) {
+        if (rpg->event.mouseButton.x > 930 && rpg->sounds->sound_effect < 100)
+            rpg->sounds->sound_effect += 5;
+        else if (rpg->event.mouseButton.x < 930 && rpg->sounds->sound_effect > 0)
+            rpg->sounds->sound_effect -= 5;
+    }
+    if (i == 8) {
+        rpg->menu->option->is_main = true;
+        rpg->menu->option->music = false;
     }
 }
 
@@ -38,16 +62,25 @@ static void do_button_music_ig(rpg_t *rpg, int i)
             rpg->sounds->is_played = true;
         }
     }
-    if (i == 5)
-        my_printf("Music Bar\n");
-    if (i == 6) {
-        my_printf("Sound Button\n");
+    if (i == 5) {
+        if (rpg->event.mouseButton.x > 930 && rpg->sounds->sound_music < 100)
+            rpg->sounds->sound_music += 5;
+        else if (rpg->event.mouseButton.x < 930 && rpg->sounds->sound_music > 0)
+            rpg->sounds->sound_music -= 5;
+        sfMusic_setVolume(rpg->sounds->music, rpg->sounds->sound_music);
     }
-    if (i == 7)
-        my_printf("Sound Effect bar\n");
-    if (i == 8) {
+    do_button_music_bis_ig(rpg, i);
+}
+
+static void do_button_keybinding_ig(rpg_t *rpg, int i)
+{
+    printf("%d\n", i);
+    if (i >= 9 && i < 17) {
+        replace_text(rpg, i);
+    }
+    if (i == 17) {
         rpg->menu->option->is_main = true;
-        rpg->menu->option->music = false;
+        rpg->menu->option->keybinds = false;
     }
 }
 
@@ -62,5 +95,9 @@ void buttons_controls_option_ig(rpg_t *rpg, bt_list_t *bt_list, sfEvent event)
     if (rpg->menu->option->music == true && rpg->menu->option->is_active == true) {
         button = detect_click_on_bt(bt_list, event, 4, 9);
         do_button_music_ig(rpg, button);
+    }
+    if (rpg->menu->option->keybinds == true && rpg->menu->option->is_active == true) {
+        button = detect_click_on_bt(bt_list, event, 9, 18);
+        do_button_keybinding_ig(rpg, button);
     }
 }

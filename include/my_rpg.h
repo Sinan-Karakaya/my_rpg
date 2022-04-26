@@ -99,6 +99,10 @@ void display_buttons_option(rpg_t *rpg);
 void print_parralax(rpg_t *rpg);
 void buttons_controls_option_ig(rpg_t *rpg, bt_list_t *bt_list, sfEvent event);
 void display_options_ig(rpg_t *rpg);
+button_t *create_button_2(char *str, sfVector2f pos, int ptr_f, char *img);
+void do_parralax_keybind(rpg_t *rpg);
+void replace_text(rpg_t *rpg, int button);
+void do_parralax_keyinput(rpg_t *rpg);
 
 // SAVE
 bool read_save(rpg_t *rpg);

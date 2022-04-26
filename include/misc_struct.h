@@ -10,6 +10,9 @@
 typedef struct music_s {
     sfMusic *music;
     bool is_played;
+    size_t sound_music;
+    bool is_sound_effect;
+    size_t sound_effect;
 } music_t;
 
 typedef struct shader {
