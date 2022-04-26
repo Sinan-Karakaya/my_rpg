@@ -11,6 +11,6 @@ int play_music(rpg_t *rpg)
 {
     sfMusic_play(rpg->sounds->music);
     sfMusic_setLoop(rpg->sounds->music, sfTrue);
-    sfMusic_setVolume(rpg->sounds->music, 15);
+    sfMusic_setVolume(rpg->sounds->music, rpg->sounds->sound_music);
     return 0;
 }

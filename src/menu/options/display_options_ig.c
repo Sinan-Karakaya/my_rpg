@@ -64,6 +64,16 @@ void display_buttons_music_ig(rpg_t *rpg)
     }
 }
 
+void display_buttons_keybinds_ig(rpg_t *rpg)
+{
+    do_parralax_keybind(rpg);
+    for (size_t i = 9; i < 18; i++) {
+        sfRenderWindow_drawSprite(rpg->window, BUTTONSO->lst_bt[i]->sprite,
+        NULL);
+        sfRenderWindow_drawText(rpg->window, BUTTONSO->lst_bt[i]->text, NULL);
+    }
+}
+
 void display_options_ig(rpg_t *rpg)
 {
     if (rpg->menu->option->is_main == true) {
@@ -73,5 +83,9 @@ void display_options_ig(rpg_t *rpg)
     if (rpg->menu->option->music == true) {
         print_parralax(rpg);
         display_buttons_music_ig(rpg);
+    }
+    if (rpg->menu->option->keybinds == true) {
+        print_parralax(rpg);
+        display_buttons_keybinds_ig(rpg);
     }
 }

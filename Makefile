@@ -37,7 +37,10 @@ SRC = src/core.c \
 	  src/menu/main_menu/button_controls.c \
 	  src/menu/buttons/click_button.c \
 	  src/menu/buttons/init_button.c \
-	  src/menu/main_menu/create_buttons.c \
+	  src/menu/buttons/init_button_bis.c \
+	  src/menu/buttons/create_buttons.c \
+	  src/menu/options/display_keybind.c \
+	  src/menu/options/keybindings.c \
 	  src/menu/main_menu/display_buttons.c \
 	  src/menu/options/option_ig.c \
 	  src/menu/options/display_options_ig.c \

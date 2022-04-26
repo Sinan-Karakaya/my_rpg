@@ -61,13 +61,16 @@ static int init_sound(rpg_t *rpg)
         return 84;
     rpg->sounds->music = sfMusic_createFromFile("assets/music/vista.ogg");
     rpg->sounds->is_played = true;
+    rpg->sounds->sound_music = 15;
+    rpg->sounds->sound_effect = 15;
+    rpg->sounds->is_sound_effect = true;
     return 0;
 }
 
 static int init_buttons(rpg_t *rpg)
 {
     size_t nbr_buttons = 6;
-    size_t nbr_buttons2 = 9;
+    size_t nbr_buttons2 = 19;
 
     rpg->menu->main->buttons = malloc(sizeof(bt_list_t));
     rpg->menu->option->buttons = malloc(sizeof(bt_list_t));
