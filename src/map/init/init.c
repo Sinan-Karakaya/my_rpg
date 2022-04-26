@@ -31,9 +31,16 @@ void init_world(rpg_t *game)
     game->world = malloc(sizeof(world_t));
     game->world->height_map = create_map(MAP_X, MAP_Y);
     game->world->object_map = create_map(MAP_X, MAP_Y);
-    game->world->water_clock = sfClock_create();
+    game->world->npc_list = malloc(sizeof(npc_t) * NB_NPC);
+    sfVector2i zero = {0, 0};
+    for (int i = 0; i < NB_NPC; i++)
+        game->world->npc_list[i] = (npc_t){"", zero ,0 ,0 , 0 , 0, 0};
+    game->world->world_clock = sfClock_create();
     game->world->texture_map =  str_to_int_tab();
-
+    game->world->texture_o = init_struct_texture("assets/environement/po.png",
+    game);
+    game->world->texture_n = init_struct_texture("assets/environement/pn.png",
+    game);
     game->world->rendered_spr = malloc(sizeof(sfSprite*));
     game->world->rendered_spr[0] = NULL;
 }
@@ -48,7 +55,7 @@ void destroy_world(rpg_t *game)
     free(game->world->height_map);
     free(game->world->object_map);
     free(game->world->texture_map);
-    free(game->world->water_clock);
+    free(game->world->world_clock);
 }
 
 void init_cam(rpg_t *game)

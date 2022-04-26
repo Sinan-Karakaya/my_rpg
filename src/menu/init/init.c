@@ -102,8 +102,6 @@ int init_all(rpg_t *rpg)
     init_player_overworld(rpg);
     read_save(rpg);
     rpg->texture = init_struct_texture("assets/environement/pr.png", rpg);
-    rpg->world->texture_o = init_struct_texture("assets/environement/po.png",
-    rpg);
     rpg->scene = OVERWORLD;
     play_music(rpg);
     return 0;
