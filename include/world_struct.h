@@ -19,12 +19,24 @@ typedef struct camera {
     render_t *render;
 } camera_t;
 
+typedef struct npc {
+    char *name;
+    sfVector2i pos;
+    int type;
+    int max_life;
+    int attack;
+    int defense;
+    int speed;
+} npc_t;
+
 typedef struct world {
     int **height_map;
     int **texture_map;
-    sfClock *water_clock;
+    sfClock *world_clock;
     int **object_map;
+    npc_t *npc_list;
     sfRenderStates *texture_o;
+    sfRenderStates *texture_n;
     sfSprite **rendered_spr;
 } world_t;
 

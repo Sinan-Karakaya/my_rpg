@@ -12,7 +12,7 @@
 
 #define MAP_X 150
 #define MAP_Y 80
-
+#define NB_NPC 50
 // MENU
 #define MENU_BG "assets/menu/background.png"
 #define MENU_FAR "assets/menu/farground.png"

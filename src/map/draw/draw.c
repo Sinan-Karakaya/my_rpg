@@ -79,7 +79,7 @@ static void draw_water_bis(rpg_t *rpg, int mt, int i, sfVector3f pnt_3d)
 
 void draw_water(rpg_t *rpg)
 {
-    sfTime time = sfClock_getElapsedTime(rpg->world->water_clock);
+    sfTime time = sfClock_getElapsedTime(rpg->world->world_clock);
     int milli_time = sfTime_asMilliseconds(time) / 70;
     sfVector3f pnt_3d = (sfVector3f){0, 0, 0};
     sfRenderWindow_drawSprite(rpg->window, rpg->menu->main->far_g_sprite,

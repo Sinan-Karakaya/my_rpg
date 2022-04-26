@@ -28,6 +28,7 @@ SRC = src/core.c \
 	  src/map/create/csv_reader.c \
 	  src/map/draw/draw.c \
 	  src/map/draw/draw_bis.c \
+	  src/map/draw/draw_npc.c \
 	  src/map/init/init.c \
 	  src/menu/init/init.c \
 	  src/menu/draw/draw.c \
