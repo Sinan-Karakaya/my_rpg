@@ -57,4 +57,5 @@ typedef struct rpg {
     debug_t *debug;
     menu_t *menu;
     e_rpg_scene scene;
+    keybind_t *keybinds;
 } rpg_t;

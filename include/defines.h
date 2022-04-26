@@ -46,6 +46,15 @@
 #define OLBERIC_HEIGHT 45
 #define OLBERIC_HEALTH 100
 
+#define KEYUP rpg->keybinds->key_up
+#define KEYDOWN rpg->keybinds->key_down
+#define KEYLEFT rpg->keybinds->key_left
+#define KEYRIGHT rpg->keybinds->key_right
+#define KEYINV rpg->keybinds->key_inventory
+#define KEYATK rpg->keybinds->key_attack
+#define KEYPROTECT rpg->keybinds->key_protect
+#define KEYRUN rpg->keybinds->key_run
+
 extern const int olberic_rect_left[26];
 extern const int olberic_rect_w[26];
 

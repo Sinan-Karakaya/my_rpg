@@ -74,7 +74,6 @@ static void do_button_music_ig(rpg_t *rpg, int i)
 
 static void do_button_keybinding_ig(rpg_t *rpg, int i)
 {
-    printf("%d\n", i);
     if (i >= 9 && i < 17) {
         replace_text(rpg, i);
     }

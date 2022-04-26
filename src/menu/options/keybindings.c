@@ -135,6 +135,50 @@ static char *replace_str(char *name, char *new)
     return my_return;
 }
 
+static int check_all_keys(rpg_t *rpg, int key)
+{
+    if (KEYUP == key)
+        return 84;
+    if (KEYDOWN == key)
+        return 84;
+    if (KEYLEFT == key)
+        return 84;
+    if (KEYRIGHT == key)
+        return 84;
+    if (KEYATK == key)
+        return 84;
+    if (KEYINV == key)
+        return 84;
+    if (KEYRUN == key)
+        return 84;
+    if (KEYPROTECT == key)
+        return 84;
+    return 0;
+}
+
+static int replace_keys(rpg_t *rpg, int button, int key)
+{
+    if (check_all_keys(rpg, key) == 84)
+        return 84;
+    if (button == 9)
+        rpg->keybinds->key_up = key;
+    if (button == 10)
+        rpg->keybinds->key_down = key;
+    if (button == 11)
+        rpg->keybinds->key_left = key;
+    if (button == 12)
+        rpg->keybinds->key_right = key;
+    if (button == 13)
+        rpg->keybinds->key_inventory = key;
+    if (button == 14)
+        rpg->keybinds->key_attack = key;
+    if (button == 15)
+        rpg->keybinds->key_protect = key;
+    if (button == 16)
+        rpg->keybinds->key_run = key;
+    return 0;
+}
+
 void replace_text(rpg_t *rpg, int button)
 {
     int value = 0;
@@ -158,8 +202,10 @@ void replace_text(rpg_t *rpg, int button)
         }
     }
     if (value != 0) {
+        if (replace_keys(rpg, button, value) == 84)
+            return;
         str = getkey(value);
-        name = sfText_getString(BUTTONSO->lst_bt[button]->text);
+        name = (char *)sfText_getString(BUTTONSO->lst_bt[button]->text);
         str = replace_str(name, str);
         sfText_setString(BUTTONSO->lst_bt[button]->text, str);
     }
