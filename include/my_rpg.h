@@ -23,6 +23,10 @@
 
 //INITIALIZATION
 int init_all(rpg_t *rpg);
+void init_keybind(rpg_t *rpg);
+int init_buttons(rpg_t *rpg);
+int init_sound(rpg_t *rpg);
+int init_menu(rpg_t *rpg);
 
 // UTILS
 int handle_args(int ac, char **av);

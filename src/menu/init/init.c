@@ -56,7 +56,7 @@ int init_menu(rpg_t *rpg)
     return 0;
 }
 
-static int init_sound(rpg_t *rpg)
+int init_sound(rpg_t *rpg)
 {
     rpg->sounds = malloc(sizeof(music_t));
     if (!rpg->sounds)
@@ -69,7 +69,7 @@ static int init_sound(rpg_t *rpg)
     return 0;
 }
 
-static int init_buttons(rpg_t *rpg)
+int init_buttons(rpg_t *rpg)
 {
     size_t nbr_buttons = 6;
     size_t nbr_buttons2 = 19;
@@ -92,7 +92,7 @@ static int init_buttons(rpg_t *rpg)
     return 0;
 }
 
-static void init_keybind(rpg_t *rpg)
+void init_keybind(rpg_t *rpg)
 {
     rpg->keybinds = malloc(sizeof(keybind_t));
     rpg->keybinds->key_up = sfKeyZ;
@@ -103,23 +103,4 @@ static void init_keybind(rpg_t *rpg)
     rpg->keybinds->key_attack = sfKeyA;
     rpg->keybinds->key_protect = sfKeyP;
     rpg->keybinds->key_run = sfKeyR;
-}
-
-int init_all(rpg_t *rpg)
-{
-    rpg->combat = init_combat();
-    init_cam(rpg);
-    init_world(rpg);
-    // init_shaders(rpg);
-    init_sound(rpg);
-    init_menu(rpg);
-    init_buttons(rpg);
-    init_player_overworld(rpg);
-    init_keybind(rpg);
-    init_inventory(rpg);
-    // read_save(rpg);          CRASH?
-    rpg->texture = init_struct_texture("assets/environement/pr.png", rpg);
-    rpg->scene = OVERWORLD;
-    play_music(rpg);
-    return 0;
 }
