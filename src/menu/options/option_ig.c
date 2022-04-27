@@ -63,9 +63,9 @@ static void do_button_music_ig(rpg_t *rpg, int i)
         }
     }
     if (i == 5) {
-        if (rpg->event.mouseButton.x > 930 && rpg->sounds->sound_music < 100)
+        if (rpg->event.mouseButton.x > 960 && rpg->sounds->sound_music < 100)
             rpg->sounds->sound_music += 5;
-        else if (rpg->event.mouseButton.x < 930 && rpg->sounds->sound_music > 0)
+        else if (rpg->event.mouseButton.x < 960 && rpg->sounds->sound_music > 0)
             rpg->sounds->sound_music -= 5;
         sfMusic_setVolume(rpg->sounds->music, rpg->sounds->sound_music);
     }
@@ -92,11 +92,21 @@ void buttons_controls_option_ig(rpg_t *rpg, bt_list_t *bt_list, sfEvent event)
         do_button_option_ig(rpg, button);
     }
     if (rpg->menu->option->music == true && rpg->menu->option->is_active == true) {
-        button = detect_click_on_bt(bt_list, event, 4, 9);
+        button = detect_click_on_bt(bt_list, event, 4, 5);
+        if (button == -1)
+            button = detect_click_on_bt_2(bt_list, event, 5, 6);
+        if (button == -1)
+            button = detect_click_on_bt(bt_list, event, 6, 7);
+        if (button == -1)
+            button = detect_click_on_bt_2(bt_list, event, 7, 8);
+        if (button == -1)
+            button = detect_click_on_bt(bt_list, event, 8, 9);
         do_button_music_ig(rpg, button);
     }
     if (rpg->menu->option->keybinds == true && rpg->menu->option->is_active == true) {
-        button = detect_click_on_bt(bt_list, event, 9, 18);
+        button = detect_click_on_bt_2(bt_list, event, 9, 17);
+        if (button == -1)
+            button = detect_click_on_bt(bt_list, event, 17, 18);
         do_button_keybinding_ig(rpg, button);
     }
 }

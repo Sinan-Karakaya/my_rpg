@@ -22,7 +22,9 @@ static int init_menu_bis(rpg_t *rpg)
     sfSprite_setTexture(rpg->menu->main->mid_g_sprite,
     rpg->menu->main->mid_g_texture, sfTrue);
     sfSprite_setScale(rpg->menu->main->mid_g_sprite, (sfVector2f){1.5, 1.5});
+    rpg->menu->inventory = malloc(sizeof(menu_inventory_t));
     rpg->menu->is_main = true;
+    rpg->menu->is_inventory = false;
     rpg->menu->is_option = false;
     rpg->menu->is_closed = false;
     rpg->menu->option->is_active = false;
@@ -114,6 +116,7 @@ int init_all(rpg_t *rpg)
     init_buttons(rpg);
     init_player_overworld(rpg);
     init_keybind(rpg);
+    init_inventory(rpg);
     read_save(rpg);
     rpg->texture = init_struct_texture("assets/environement/pr.png", rpg);
     rpg->scene = OVERWORLD;

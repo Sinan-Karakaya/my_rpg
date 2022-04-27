@@ -30,7 +30,8 @@ static void is_any_key_pressed(rpg_t *rpg)
 {
     if (rpg->event.type == sfEvtKeyPressed)
         return;
-    OW->state = RPG_OW_IDLE;
+    if (OW->state != RPG_OW_IDLE)
+        OW->state = RPG_OW_IDLE;
 }
 
 void overworld_loop(rpg_t *rpg)

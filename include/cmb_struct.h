@@ -35,6 +35,8 @@ typedef struct stats {
     int level;
     int attack;
     int defense;
+    int life;
+    int xp;
 } stats_t;
 
 typedef struct entity {

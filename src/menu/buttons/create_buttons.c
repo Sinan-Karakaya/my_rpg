@@ -19,11 +19,13 @@ static void init_button_option_ig(rpg_t *rpg)
     (sfVector2f){910, 650}, 100, "assets/menu/button.png");
     rpg->menu->option->buttons->lst_bt[4] = create_button("Music",
     (sfVector2f){910, 200}, 100, "assets/menu/button.png");
-    rpg->menu->option->buttons->lst_bt[5] = create_button("Bar Music",
+    rpg->menu->option->buttons->lst_bt[5] =
+    create_button_2("\t\t\t\t\t\t\t\t-\t\t\t\t\t\t\t\t+\t",
     (sfVector2f){910, 350}, 100, "assets/menu/button.png");
     rpg->menu->option->buttons->lst_bt[6] = create_button("Sound Effects",
     (sfVector2f){910, 500}, 100, "assets/menu/button.png");
-    rpg->menu->option->buttons->lst_bt[7] = create_button("Bar Sound effect",
+    rpg->menu->option->buttons->lst_bt[7] =
+    create_button_2("\t\t\t\t\t\t\t\t-\t\t\t\t\t\t\t\t+\t",
     (sfVector2f){910, 650}, 100, "assets/menu/button.png");
     rpg->menu->option->buttons->lst_bt[8] = create_button("<- Back",
     (sfVector2f){1550, 460}, 100, "assets/menu/button.png");

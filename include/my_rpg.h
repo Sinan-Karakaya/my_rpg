@@ -103,6 +103,11 @@ button_t *create_button_2(char *str, sfVector2f pos, int ptr_f, char *img);
 void do_parralax_keybind(rpg_t *rpg);
 void replace_text(rpg_t *rpg, int button);
 void do_parralax_keyinput(rpg_t *rpg);
+int detect_click_on_bt_2(bt_list_t *bt_list, sfEvent event, size_t s, size_t e);
+
+//INVENTORY
+void print_inventory(rpg_t *rpg);
+void init_inventory(rpg_t *rpg);
 
 // SAVE
 bool read_save(rpg_t *rpg);

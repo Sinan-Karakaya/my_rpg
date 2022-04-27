@@ -14,21 +14,25 @@ int event(rpg_t *rpg)
         sfRenderWindow_close(rpg->window);
         return 1;
     } if (rpg->event.type == sfEvtKeyPressed) {
-        if (rpg->event.key.code == sfKeyEscape) {
+        if (rpg->event.key.code == sfKeyEscape ) {
             rpg->menu->option->is_active = true;
             rpg->menu->option->is_main = true;
+        }
+        if (rpg->event.key.code == sfKeyI) {
+            rpg->menu->option->is_active = true;
+            rpg->menu->is_inventory = true;
         }
     } if (rpg->event.type == sfEvtMouseButtonPressed)
         buttons_controls_option_ig(rpg, BUTTONSO, rpg->event);
     if (rpg->event.type == sfEvtKeyPressed) {
-        if (rpg->event.key.code == sfKeyDown && IN_OVERWORLD)
+        if (rpg->event.key.code == KEYDOWN && IN_OVERWORLD)
             rpg->cam.y -= 60 * rpg->dt;
-        if (rpg->event.key.code == sfKeyUp && IN_OVERWORLD)
+        if (rpg->event.key.code == KEYUP && IN_OVERWORLD)
             rpg->cam.y += 60 * rpg->dt;
-        if (rpg->event.key.code == sfKeyRight && IN_OVERWORLD)
-            rpg->cam.x += 200 * rpg->dt;
-        if (rpg->event.key.code == sfKeyLeft && IN_OVERWORLD)
-            rpg->cam.x -= 200 * rpg->dt;
+        if (rpg->event.key.code == KEYRIGHT && IN_OVERWORLD)
+            rpg->cam.x += 2000 * rpg->dt;
+        if (rpg->event.key.code == KEYLEFT && IN_OVERWORLD)
+            rpg->cam.x -= 2000 * rpg->dt;
         // ------------------ DEBUG ------------------------
         if (rpg->event.key.code == sfKeyC)
             if (IN_OVERWORLD) {
