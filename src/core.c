@@ -19,7 +19,7 @@ int event(rpg_t *rpg)
             rpg->menu->option->is_active = true;
             rpg->menu->option->is_main = true;
         }
-        if (rpg->event.key.code == sfKeyI) {
+        if (rpg->event.key.code == KEYINV) {
             rpg->menu->option->is_active = true;
             rpg->menu->is_inventory = true;
         }
@@ -28,24 +28,24 @@ int event(rpg_t *rpg)
     if (rpg->event.type == sfEvtKeyPressed) {
         if (rpg->event.key.code == KEYDOWN && IN_OVERWORLD) {
             if (rpg->ow_can_move)
-                rpg->cam.y -= 60 * rpg->dt;
+                rpg->cam.y -= 600 * rpg->dt;
             else
-                rpg->cam.y += 60 * rpg->dt;
+                rpg->cam.y += 600 * rpg->dt;
         } if (rpg->event.key.code == KEYUP && IN_OVERWORLD) {
             if (rpg->ow_can_move)
-                rpg->cam.y += 60 * rpg->dt;
+                rpg->cam.y += 600 * rpg->dt;
             else
-                rpg->cam.y -= 60 * rpg->dt;
+                rpg->cam.y -= 600 * rpg->dt;
         } if (rpg->event.key.code == KEYRIGHT && IN_OVERWORLD) {
             if (rpg->ow_can_move)
-                rpg->cam.x += 200 * rpg->dt;
+                rpg->cam.x += 2000 * rpg->dt;
             else
-                rpg->cam.x -= 200 * rpg->dt;
+                rpg->cam.x -= 2000 * rpg->dt;
         } if (rpg->event.key.code == KEYLEFT && IN_OVERWORLD) {
             if (rpg->ow_can_move)
-                rpg->cam.x -= 200 * rpg->dt;
+                rpg->cam.x -= 2000 * rpg->dt;
             else
-                rpg->cam.x += 200 * rpg->dt;
+                rpg->cam.x += 2000 * rpg->dt;
         // ------------------ DEBUG ------------------------
         } if (rpg->event.key.code == sfKeyC) {
             if (IN_OVERWORLD) {

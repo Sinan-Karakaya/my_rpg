@@ -5,21 +5,23 @@
 ** overworld loop
 */
 
+#include <stdio.h>
+
 #include "my_rpg.h"
 
 void get_dir(rpg_t *rpg)
 {
     if (rpg->event.type == sfEvtKeyPressed) {
-        if ((rpg->event.key.code == sfKeyDown ||
-        rpg->event.key.code == sfKeyUp) && OW->was_looking_right)
+        if ((rpg->event.key.code == KEYDOWN ||
+        rpg->event.key.code == KEYUP) && OW->was_looking_right)
             OW->state = RPG_OW_WALK_R;
-        else if ((rpg->event.key.code == sfKeyDown ||
-        rpg->event.key.code == sfKeyUp) && !OW->was_looking_right)
+        else if ((rpg->event.key.code == KEYDOWN ||
+        rpg->event.key.code == KEYUP) && !OW->was_looking_right)
             OW->state = RPG_OW_WALK_L;
-        if (rpg->event.key.code == sfKeyRight) {
+        if (rpg->event.key.code == KEYRIGHT) {
             OW->state = RPG_OW_WALK_R;
             OW->was_looking_right = true;
-        } if (rpg->event.key.code == sfKeyLeft) {
+        } if (rpg->event.key.code == KEYLEFT) {
             OW->state = RPG_OW_WALK_L;
             OW->was_looking_right = false;
         }
@@ -28,8 +30,9 @@ void get_dir(rpg_t *rpg)
 
 static void is_any_key_pressed(rpg_t *rpg)
 {
-    if (rpg->event.type == sfEvtKeyPressed)
-        return;
+    for (size_t i = 0; i < sfKeyCount; i++)
+        if (sfKeyboard_isKeyPressed((sfKeyCode)i))
+            return;
     if (OW->state != RPG_OW_IDLE)
         OW->state = RPG_OW_IDLE;
 }

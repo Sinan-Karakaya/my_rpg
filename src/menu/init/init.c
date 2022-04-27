@@ -117,7 +117,7 @@ int init_all(rpg_t *rpg)
     init_player_overworld(rpg);
     init_keybind(rpg);
     init_inventory(rpg);
-    read_save(rpg);
+    // read_save(rpg);          CRASH?
     rpg->texture = init_struct_texture("assets/environement/pr.png", rpg);
     rpg->scene = OVERWORLD;
     play_music(rpg);
