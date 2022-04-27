@@ -33,14 +33,12 @@ static void do_button_option(rpg_t *rpg, int i)
             sfMusic_play(rpg->sounds->music);
             rpg->sounds->is_played = true;
         }
-    }
-    if (i == 4) {
-        if (rpg->debug_toggle == true)
+    } if (i == 4) {
+        if (rpg->debug_toggle)
             rpg->debug_toggle = false;
         else
             rpg->debug_toggle = true;
-    }
-    if (i == 5) {
+    } if (i == 5) {
         rpg->menu->is_main = true;
         rpg->menu->is_option = false;
     }

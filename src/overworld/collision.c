@@ -2,24 +2,22 @@
 ** EPITECH PROJECT, 2022
 ** myrpg
 ** File description:
-** y sorter
+** collision overworld
 */
 
 #include <stdlib.h>
 
 #include "my_rpg.h"
 
-static void check_aabb(rpg_t *rpg, sfSprite *sp, float p_y)
+static void check_aabb(rpg_t *rpg, sfSprite *sp)
 {
-    sfVector2f pos = sfSprite_getPosition(sp);
-    sfIntRect rect = sfSprite_getTextureRect(sp);
-
-    pos.y += rect.height * 0.8;
-    if (pos.y > 315)
-        sfRenderWindow_drawSprite(rpg->window, sp, NULL);
+    if (do_aabb_sprites(rpg->overworld->spr, sp))
+        rpg->ow_can_move = false;
+    else
+        rpg->ow_can_move = true;
 }
 
-static void y_sorter_bis(rpg_t *rpg, float p_y, sfSprite *sp, int i)
+static void ow_aabb_bis(rpg_t *rpg, sfSprite *sp, int i)
 {
     sfVector2i offset = {0, 0};
     sfVector3f point_3d;
@@ -38,18 +36,18 @@ static void y_sorter_bis(rpg_t *rpg, float p_y, sfSprite *sp, int i)
         sfSprite_setPosition(sp, point[0]);
         sfSprite_setScale(sp, (sfVector2f){(point[1].x - point[0].x) /
         150, -(point[1].x - point[0].x) / 150});
-        check_aabb(rpg, sp, p_y);
+        check_aabb(rpg, sp);
     }
 }
 
-void y_sorter(rpg_t *rpg, float player_y)
+void ow_aabb(rpg_t *rpg)
 {
     sfRectangleShape *bat = sfRectangleShape_create();
     sfSprite *sprite = sfSprite_create();
 
     sfSprite_setTexture(sprite, rpg->world->texture_o->texture, sfTrue);
     for (int i = 1; i < MAP_X - 1; i++) {
-        y_sorter_bis(rpg, player_y, sprite, i);
+        ow_aabb_bis(rpg, sprite, i);
     }
     sfRectangleShape_destroy(bat);
     sfSprite_destroy(sprite);
