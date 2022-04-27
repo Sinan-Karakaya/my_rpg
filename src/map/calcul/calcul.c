@@ -19,7 +19,9 @@ sfVector2f to2d(sfVector3f p, rpg_t *game)
     y_divide = ((y - (z -  game->cam.y) * game->cam.r) / (z - game->cam.y));
     point_2d.x = 300 * ((x - game->cam.x)/(z- game->cam.y))+960;
     point_2d.y = 300 * y_divide + 540;
-    if ((z - game->cam.y) < 0 && point_2d.y > 0)
+    if ((z - game->cam.y) < 0 && point_2d.y > 0) {
+        point_2d.x = 0;
         point_2d.y = 0;
+    }
     return point_2d;
 }

@@ -12,7 +12,7 @@
 
 #define MAP_X 150
 #define MAP_Y 80
-
+#define NB_NPC 50
 // MENU
 #define MENU_BG "assets/menu/background.png"
 #define MENU_FAR "assets/menu/farground.png"
@@ -45,6 +45,17 @@
 #define OLBERIC_WIDTH 23
 #define OLBERIC_HEIGHT 45
 #define OLBERIC_HEALTH 100
+
+#define KEYUP rpg->keybinds->key_up
+#define KEYDOWN rpg->keybinds->key_down
+#define KEYLEFT rpg->keybinds->key_left
+#define KEYRIGHT rpg->keybinds->key_right
+#define KEYINV rpg->keybinds->key_inventory
+#define KEYATK rpg->keybinds->key_attack
+#define KEYPROTECT rpg->keybinds->key_protect
+#define KEYRUN rpg->keybinds->key_run
+
+#define INVENTORY rpg->menu->inventory
 
 extern const int olberic_rect_left[26];
 extern const int olberic_rect_w[26];

@@ -15,29 +15,33 @@ int event(rpg_t *rpg)
         sfRenderWindow_close(rpg->window);
         return 1;
     } if (rpg->event.type == sfEvtKeyPressed) {
-        if (rpg->event.key.code == sfKeyEscape) {
+        if (rpg->event.key.code == sfKeyEscape ) {
             rpg->menu->option->is_active = true;
             rpg->menu->option->is_main = true;
+        }
+        if (rpg->event.key.code == sfKeyI) {
+            rpg->menu->option->is_active = true;
+            rpg->menu->is_inventory = true;
         }
     } if (rpg->event.type == sfEvtMouseButtonPressed)
         buttons_controls_option_ig(rpg, BUTTONSO, rpg->event);
     if (rpg->event.type == sfEvtKeyPressed) {
-        if (rpg->event.key.code == sfKeyDown && IN_OVERWORLD) {
+        if (rpg->event.key.code == KEYDOWN && IN_OVERWORLD) {
             if (rpg->ow_can_move)
                 rpg->cam.y -= 60 * rpg->dt;
             else
                 rpg->cam.y += 60 * rpg->dt;
-        } if (rpg->event.key.code == sfKeyUp && IN_OVERWORLD) {
+        } if (rpg->event.key.code == KEYUP && IN_OVERWORLD) {
             if (rpg->ow_can_move)
                 rpg->cam.y += 60 * rpg->dt;
             else
                 rpg->cam.y -= 60 * rpg->dt;
-        } if (rpg->event.key.code == sfKeyRight && IN_OVERWORLD) {
+        } if (rpg->event.key.code == KEYRIGHT && IN_OVERWORLD) {
             if (rpg->ow_can_move)
                 rpg->cam.x += 200 * rpg->dt;
             else
                 rpg->cam.x -= 200 * rpg->dt;
-        } if (rpg->event.key.code == sfKeyLeft && IN_OVERWORLD) {
+        } if (rpg->event.key.code == KEYLEFT && IN_OVERWORLD) {
             if (rpg->ow_can_move)
                 rpg->cam.x -= 200 * rpg->dt;
             else
@@ -82,6 +86,7 @@ static int gameloop(rpg_t *rpg)
             draw_map(rpg);
             draw_object(rpg);
             chose_scene(rpg);
+            draw_npc(rpg);
         }
         rpg->dt = get_dt(rpg->game_clock);
         print_debug(rpg);
@@ -108,10 +113,10 @@ int main(int ac, char **av)
     if (!rpg || init_sfml(rpg, debug_mode))
         return 84;
     init_all(rpg);
-    // rpg->world->object_map[30][30]= 1;
-    rpg->world->object_map[30][20]= 2;
-    // rpg->world->object_map[30][15]= 3;
-    // rpg->world->object_map[30][35]= 4;
+    rpg->world->object_map[20][20]= 1;
+    rpg->world->object_map[10][2]= 2;
+    rpg->world->object_map[18][2]= 3;
+    rpg->world->npc_list[0] = (npc_t){"npc1", (sfVector2i){18, 2},2 ,50 , 20 , 20 , 20};
     do_loop(rpg);
     free_rpg(rpg);
     return 0;

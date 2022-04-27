@@ -10,6 +10,9 @@
 typedef struct music_s {
     sfMusic *music;
     bool is_played;
+    size_t sound_music;
+    bool is_sound_effect;
+    size_t sound_effect;
 } music_t;
 
 typedef struct shader {
@@ -25,3 +28,14 @@ typedef struct debug {
     sfFont *font;
     sfVector2f pos;
 } debug_t;
+
+typedef struct keybind_s {
+    int key_left;
+    int key_right;
+    int key_up;
+    int key_down;
+    int key_inventory;
+    int key_attack;
+    int key_protect;
+    int key_run;
+} keybind_t;

@@ -58,4 +58,5 @@ typedef struct rpg {
     menu_t *menu;
     e_rpg_scene scene;
     bool ow_can_move;
+    keybind_t *keybinds;
 } rpg_t;

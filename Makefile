@@ -28,7 +28,9 @@ SRC = src/core.c \
 	  src/map/create/csv_reader.c \
 	  src/map/draw/draw.c \
 	  src/map/draw/draw_bis.c \
+	  src/map/draw/draw_npc.c \
 	  src/map/init/init.c \
+	  src/menu/init/init_bis.c \
 	  src/menu/init/init.c \
 	  src/menu/draw/draw.c \
 	  src/sounds/musics.c	\
@@ -36,10 +38,14 @@ SRC = src/core.c \
 	  src/menu/main_menu/button_controls.c \
 	  src/menu/buttons/click_button.c \
 	  src/menu/buttons/init_button.c \
-	  src/menu/main_menu/create_buttons.c \
+	  src/menu/buttons/init_button_bis.c \
+	  src/menu/buttons/create_buttons.c \
+	  src/menu/options/display_keybind.c \
+	  src/menu/options/keybindings.c \
 	  src/menu/main_menu/display_buttons.c \
 	  src/menu/options/option_ig.c \
 	  src/menu/options/display_options_ig.c \
+	  src/menu/inventory/print_inventory.c	\
 	  src/overworld/oveworld_loop.c \
 	  src/overworld/player_overworld.c \
 	  src/overworld/collision.c \

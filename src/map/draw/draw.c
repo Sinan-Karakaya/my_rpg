@@ -23,7 +23,7 @@ static int is_in_screen(sfVector2f *point)
 void draw_triangle(sfVector2f *points, rpg_t *game,
 sfVector2i tex_pos, int i)
 {
-    float coordx = tex_pos.y +abs(16 * (i - 1));
+    float coordx = tex_pos.y +abs(16 * (i - 2));
 
     if (is_in_screen(points) == 0)
         return;
@@ -34,7 +34,7 @@ sfVector2i tex_pos, int i)
     vertex[0].color = sfWhite;
     vertex[1].position = points[1];
     vertex[1].color = sfWhite;
-    vertex[1].texCoords = (sfVector2f){tex_pos.x + abs(16 * (i - 2)), coordx};
+    vertex[1].texCoords = (sfVector2f){tex_pos.x + abs(16 * (i - 1)), coordx};
     vertex[2].position = points[2];
     vertex[2].color = sfWhite;
     vertex[2].texCoords = (sfVector2f){tex_pos.x + 16, tex_pos.y + 16};
@@ -79,10 +79,11 @@ static void draw_water_bis(rpg_t *rpg, int mt, int i, sfVector3f pnt_3d)
 
 void draw_water(rpg_t *rpg)
 {
-    sfTime time = sfClock_getElapsedTime(rpg->world->water_clock);
+    sfTime time = sfClock_getElapsedTime(rpg->world->world_clock);
     int milli_time = sfTime_asMilliseconds(time) / 70;
     sfVector3f pnt_3d = (sfVector3f){0, 0, 0};
-
+    sfRenderWindow_drawSprite(rpg->window, rpg->menu->main->far_g_sprite,
+    NULL);
     for (int i = 0; i < MAP_X + 100; i++) {
         draw_water_bis(rpg, milli_time, i, pnt_3d);
     }

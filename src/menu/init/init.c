@@ -22,7 +22,9 @@ static int init_menu_bis(rpg_t *rpg)
     sfSprite_setTexture(rpg->menu->main->mid_g_sprite,
     rpg->menu->main->mid_g_texture, sfTrue);
     sfSprite_setScale(rpg->menu->main->mid_g_sprite, (sfVector2f){1.5, 1.5});
+    rpg->menu->inventory = malloc(sizeof(menu_inventory_t));
     rpg->menu->is_main = true;
+    rpg->menu->is_inventory = false;
     rpg->menu->is_option = false;
     rpg->menu->is_closed = false;
     rpg->menu->option->is_active = false;
@@ -61,13 +63,16 @@ static int init_sound(rpg_t *rpg)
         return 84;
     rpg->sounds->music = sfMusic_createFromFile("assets/music/vista.ogg");
     rpg->sounds->is_played = true;
+    rpg->sounds->sound_music = 15;
+    rpg->sounds->sound_effect = 15;
+    rpg->sounds->is_sound_effect = true;
     return 0;
 }
 
 static int init_buttons(rpg_t *rpg)
 {
     size_t nbr_buttons = 6;
-    size_t nbr_buttons2 = 9;
+    size_t nbr_buttons2 = 19;
 
     rpg->menu->main->buttons = malloc(sizeof(bt_list_t));
     rpg->menu->option->buttons = malloc(sizeof(bt_list_t));
@@ -87,6 +92,19 @@ static int init_buttons(rpg_t *rpg)
     return 0;
 }
 
+static void init_keybind(rpg_t *rpg)
+{
+    rpg->keybinds = malloc(sizeof(keybind_t));
+    rpg->keybinds->key_up = sfKeyZ;
+    rpg->keybinds->key_down = sfKeyS;
+    rpg->keybinds->key_left = sfKeyQ;
+    rpg->keybinds->key_right = sfKeyD;
+    rpg->keybinds->key_inventory = sfKeyI;
+    rpg->keybinds->key_attack = sfKeyA;
+    rpg->keybinds->key_protect = sfKeyP;
+    rpg->keybinds->key_run = sfKeyR;
+}
+
 int init_all(rpg_t *rpg)
 {
     rpg->combat = init_combat();
@@ -97,10 +115,10 @@ int init_all(rpg_t *rpg)
     init_menu(rpg);
     init_buttons(rpg);
     init_player_overworld(rpg);
-    // read_save(rpg);              CRASH ?
+    init_keybind(rpg);
+    init_inventory(rpg);
+    read_save(rpg);
     rpg->texture = init_struct_texture("assets/environement/pr.png", rpg);
-    rpg->world->texture_o = init_struct_texture("assets/environement/po.png",
-    rpg);
     rpg->scene = OVERWORLD;
     play_music(rpg);
     return 0;
