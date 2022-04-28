@@ -30,6 +30,7 @@ typedef struct npc {
 } npc_t;
 
 typedef struct world {
+    sfVector2i olberick_pos;
     int **height_map;
     int **texture_map;
     sfClock *world_clock;

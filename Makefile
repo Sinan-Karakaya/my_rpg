@@ -15,6 +15,7 @@ SRC = src/core.c \
 	  src/utils/init.c \
 	  src/utils/get_rand.c \
 	  src/utils/do_aabb.c \
+	  src/utils/get_ob_pos.c \
 	  src/combat/init_combat.c \
 	  src/combat/combat_loop.c \
 	  src/combat/hud/guide.c \

@@ -68,6 +68,7 @@ static int gameloop(rpg_t *rpg)
             draw_object(rpg);
             chose_scene(rpg);
             draw_npc(rpg);
+            rpg->world->texture_map[rpg->world->olberick_pos.x -  1][rpg->world->olberick_pos.y] = 1;
         }
         rpg->dt = get_dt(rpg->game_clock);
         print_debug(rpg);

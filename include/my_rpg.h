@@ -36,6 +36,7 @@ void free_rpg(rpg_t *rpg);
 bool do_aabb_mouse(sfMouseButtonEvent mouse, sfSprite *sp);
 bool do_aabb_sprites(sfSprite *sp1, sfSprite *sp2);
 void y_sorter(rpg_t *rpg, float player_y);
+void get_olb_pos(int i, int j, rpg_t *rpg);
 
 // USER INTERFACE
 int create_hud(combat_t *combat);

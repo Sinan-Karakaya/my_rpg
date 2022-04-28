@@ -36,13 +36,15 @@ void init_world(rpg_t *game)
     for (int i = 0; i < NB_NPC; i++)
         game->world->npc_list[i] = (npc_t){"", zero ,0 ,0 , 0 , 0, 0};
     game->world->world_clock = sfClock_create();
-    game->world->texture_map =  str_to_int_tab();
+    game->world->texture_map =  str_to_int_tab("texture.map");
+    game->world->height_map =  str_to_int_tab_bis("height.map");
     game->world->texture_o = init_struct_texture("assets/environement/po.png",
     game);
     game->world->texture_n = init_struct_texture("assets/environement/pn.png",
     game);
     game->world->rendered_spr = malloc(sizeof(sfSprite*));
     game->world->rendered_spr[0] = NULL;
+    game->world->olberick_pos = (sfVector2i){0, 0};
 }
 
 void destroy_world(rpg_t *game)

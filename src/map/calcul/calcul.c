@@ -10,8 +10,10 @@
 
 sfVector2f to2d(sfVector3f p, rpg_t *game)
 {
+    sfVector2i pos = game->world->olberick_pos;
     float x = p.x * 40;
     float y = (p.y - 4 * fabs(game->cam.r - 2)) * 30 + 300;
+    y = y - game->world->height_map[pos.x][pos.y] * 30;
     float z = p.z * 20;
     float y_divide;
     sfVector2f point_2d = {0,0};
