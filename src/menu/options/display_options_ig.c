@@ -48,12 +48,12 @@ void display_buttons_music_ig(rpg_t *rpg)
     , sfMouse_getPositionRenderWindow(rpg->window).y / 5};
     actual_pos = (sfVector2f){mouse_pos.x + 656, mouse_pos.y + 100};
     parralax(rpg, actual_pos, 4);
-    actual_pos.y = mouse_pos.y + 250;
+    actual_pos = (sfVector2f){mouse_pos.x + 656 - 88, mouse_pos.y + 250};
     parralax(rpg, actual_pos, 5);
-    actual_pos.y = mouse_pos.y + 400;
-    parralax(rpg, actual_pos, 6);
     actual_pos.y = mouse_pos.y + 550;
     parralax(rpg, actual_pos, 7);
+    actual_pos = (sfVector2f){mouse_pos.x + 656, mouse_pos.y + 400};
+    parralax(rpg, actual_pos, 6);
     actual_pos.y = mouse_pos.y + 700;
     parralax(rpg, actual_pos, 8);
 
@@ -87,5 +87,9 @@ void display_options_ig(rpg_t *rpg)
     if (rpg->menu->option->keybinds == true) {
         print_parralax(rpg);
         display_buttons_keybinds_ig(rpg);
+    }
+    if (rpg->menu->is_inventory == true) {
+        print_parralax(rpg);
+        print_inventory(rpg);
     }
 }

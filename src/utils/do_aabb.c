@@ -6,6 +6,7 @@
 */
 
 #include <stdlib.h>
+
 #include "my_rpg.h"
 
 bool do_aabb_mouse(sfMouseButtonEvent mouse, sfSprite *sp)
@@ -17,8 +18,18 @@ bool do_aabb_mouse(sfMouseButtonEvent mouse, sfSprite *sp)
 
 bool do_aabb_sprites(sfSprite *sp1, sfSprite *sp2)
 {
+    sfVector2f pos1 = sfSprite_getPosition(sp1);
+    sfVector2f pos2 = sfSprite_getPosition(sp2);
     sfIntRect r1 = sfSprite_getTextureRect(sp1);
     sfIntRect r2 = sfSprite_getTextureRect(sp2);
 
-    return (bool)sfIntRect_intersects(&r1, &r2, NULL);
+    if (r2.height < 0)
+        r2.height *= -1;
+
+    if(pos1.x < pos2.x + r2.width &&
+    pos1.x + r1.width > pos2.x &&
+    pos1.y < pos2.y + r2.height &&
+    pos1.y + r1.height > pos2.y)
+        return true;
+    return false;
 }

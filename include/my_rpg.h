@@ -23,6 +23,10 @@
 
 //INITIALIZATION
 int init_all(rpg_t *rpg);
+void init_keybind(rpg_t *rpg);
+int init_buttons(rpg_t *rpg);
+int init_sound(rpg_t *rpg);
+int init_menu(rpg_t *rpg);
 
 // UTILS
 int handle_args(int ac, char **av);
@@ -50,6 +54,7 @@ void do_slash(combat_t *combat, sfRenderWindow *window);
 // COMBAT
 combat_t *init_combat(void);
 void combat_loop(rpg_t *rpg, combat_t *combat);
+void do_transition(rpg_t *rpg, transt_t *e);
 // COMBAT -> OLBERIC
 void olberic_do_attack(entity_t *player, combat_t *combat, rpg_t *rpg);
 void olberic_do_idle(entity_t *player);
@@ -78,6 +83,7 @@ void overworld_loop(rpg_t *rpg);
 int init_player_overworld(rpg_t *rpg);
 void animate_player_overworld(rpg_t *rpg);
 void get_dir(rpg_t *rpg);
+void ow_aabb(rpg_t *rpg);
 
 // SHADER
 void init_shaders(rpg_t *rpg);
@@ -104,6 +110,11 @@ button_t *create_button_2(char *str, sfVector2f pos, int ptr_f, char *img);
 void do_parralax_keybind(rpg_t *rpg);
 void replace_text(rpg_t *rpg, int button);
 void do_parralax_keyinput(rpg_t *rpg);
+int detect_click_on_bt_2(bt_list_t *bt_list, sfEvent event, size_t s, size_t e);
+
+//INVENTORY
+void print_inventory(rpg_t *rpg);
+void init_inventory(rpg_t *rpg);
 
 // SAVE
 bool read_save(rpg_t *rpg);

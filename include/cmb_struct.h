@@ -35,6 +35,8 @@ typedef struct stats {
     int level;
     int attack;
     int defense;
+    int life;
+    int xp;
 } stats_t;
 
 typedef struct entity {
@@ -66,11 +68,18 @@ typedef struct hud {
     bool is_active;
 } hud_t;
 
+typedef struct transt {
+    sfRectangleShape *rect;
+    sfVector2f pos;
+    sfClock *clock;
+} transt_t;
+
 typedef struct combat {
     hud_t *hud;
     hud_t *slash;
     entity_t *ennemy;
     entity_t *player;
+    transt_t *transt;
     sfx_t *sfx;
     e_combat_state state;
 } combat_t;

@@ -67,6 +67,19 @@ static int create_player(combat_t *com)
     return 0;
 }
 
+static int create_transt(transt_t *e)
+{
+    e->rect = sfRectangleShape_create();
+    if (!e->rect)
+        return 1;
+    sfRectangleShape_setSize(e->rect, (sfVector2f){RES_X, RES_Y});
+    sfRectangleShape_setFillColor(e->rect, sfBlack);
+    e->pos = (sfVector2f){RES_X * -1, 0};
+    sfRectangleShape_setPosition(e->rect, e->pos);
+    e->clock = sfClock_create();
+    return 0;
+}
+
 combat_t *init_combat(void)
 {
     combat_t *combat = malloc(sizeof(combat_t));
@@ -75,9 +88,11 @@ combat_t *init_combat(void)
         return NULL;
     combat->ennemy = malloc(sizeof(entity_t));
     combat->player = malloc(sizeof(entity_t));
-    if (!combat->ennemy || !combat->player)
+    combat->transt = malloc(sizeof(transt_t));
+    if (!combat->ennemy || !combat->player || combat->transt)
         return NULL;
-    if (create_ennemy(combat) || create_player(combat) || create_hud(combat))
+    if (create_ennemy(combat) || create_player(combat) || create_hud(combat) ||
+        create_transt(combat->transt))
         return NULL;
     return combat;
 }

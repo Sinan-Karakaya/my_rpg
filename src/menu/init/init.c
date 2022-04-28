@@ -22,7 +22,9 @@ static int init_menu_bis(rpg_t *rpg)
     sfSprite_setTexture(rpg->menu->main->mid_g_sprite,
     rpg->menu->main->mid_g_texture, sfTrue);
     sfSprite_setScale(rpg->menu->main->mid_g_sprite, (sfVector2f){1.5, 1.5});
+    rpg->menu->inventory = malloc(sizeof(menu_inventory_t));
     rpg->menu->is_main = true;
+    rpg->menu->is_inventory = false;
     rpg->menu->is_option = false;
     rpg->menu->is_closed = false;
     rpg->menu->option->is_active = false;
@@ -54,7 +56,7 @@ int init_menu(rpg_t *rpg)
     return 0;
 }
 
-static int init_sound(rpg_t *rpg)
+int init_sound(rpg_t *rpg)
 {
     rpg->sounds = malloc(sizeof(music_t));
     if (!rpg->sounds)
@@ -67,7 +69,7 @@ static int init_sound(rpg_t *rpg)
     return 0;
 }
 
-static int init_buttons(rpg_t *rpg)
+int init_buttons(rpg_t *rpg)
 {
     size_t nbr_buttons = 6;
     size_t nbr_buttons2 = 19;
@@ -90,7 +92,7 @@ static int init_buttons(rpg_t *rpg)
     return 0;
 }
 
-static void init_keybind(rpg_t *rpg)
+void init_keybind(rpg_t *rpg)
 {
     rpg->keybinds = malloc(sizeof(keybind_t));
     rpg->keybinds->key_up = sfKeyZ;
@@ -101,22 +103,4 @@ static void init_keybind(rpg_t *rpg)
     rpg->keybinds->key_attack = sfKeyA;
     rpg->keybinds->key_protect = sfKeyP;
     rpg->keybinds->key_run = sfKeyR;
-}
-
-int init_all(rpg_t *rpg)
-{
-    rpg->combat = init_combat();
-    init_cam(rpg);
-    init_world(rpg);
-    // init_shaders(rpg);
-    init_sound(rpg);
-    init_menu(rpg);
-    init_buttons(rpg);
-    init_player_overworld(rpg);
-    init_keybind(rpg);
-    read_save(rpg);
-    rpg->texture = init_struct_texture("assets/environement/pr.png", rpg);
-    rpg->scene = OVERWORLD;
-    play_music(rpg);
-    return 0;
 }

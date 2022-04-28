@@ -7,6 +7,7 @@
 
 SRC = src/core.c \
 	  src/const.c \
+	  src/event.c	\
 	  src/args/handle_args.c \
 	  src/utils/debug.c \
 	  src/shaders/shader.c \
@@ -31,6 +32,7 @@ SRC = src/core.c \
 	  src/map/draw/draw_bis.c \
 	  src/map/draw/draw_npc.c \
 	  src/map/init/init.c \
+	  src/menu/init/init_bis.c \
 	  src/menu/init/init.c \
 	  src/menu/draw/draw.c \
 	  src/sounds/musics.c	\
@@ -45,11 +47,13 @@ SRC = src/core.c \
 	  src/menu/main_menu/display_buttons.c \
 	  src/menu/options/option_ig.c \
 	  src/menu/options/display_options_ig.c \
+	  src/menu/inventory/print_inventory.c	\
 	  src/overworld/oveworld_loop.c \
 	  src/overworld/player_overworld.c \
+	  src/overworld/collision.c \
 	  src/save/read_save.c \
-	  src/overworld/overworld_collisions.c \
 	  src/utils/y_sorter.c \
+	  src/combat/combat_transition.c \
 
 OBJ = $(SRC:.c=.o)
 

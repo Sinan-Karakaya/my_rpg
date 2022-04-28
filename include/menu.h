@@ -46,14 +46,6 @@ typedef struct menu_main_s {
 } menu_main_t;
 
 typedef struct menu_option_s {
-    sfSprite *fore_g_sprite;
-    sfTexture *fore_g_texture;
-    sfSprite *mid_g_sprite;
-    sfTexture *mid_g_texture;
-    sfSprite *back_g_sprite;
-    sfTexture *back_g_texture;
-    sfSprite *far_g_sprite;
-    sfTexture *far_g_texture;
     bt_list_t *buttons;
     bool is_active;
     bool is_main;
@@ -61,12 +53,31 @@ typedef struct menu_option_s {
     bool keybinds;
 } menu_option_t;
 
+typedef struct slots_s {
+    sfSprite *sprite;
+    sfSprite *item_sprite;
+    sfText *item_text;
+    size_t item_id;
+    int item_lvl;
+    int item_dmg;
+    int item_def;
+    int item_hp;
+    int item_xp;
+} slots_t;
+
+typedef struct menu_inventory_s {
+    sfSprite *sprite;
+    slots_t **slots;
+} menu_inventory_t;
+
 typedef struct menu {
     bool is_main;
     bool is_option;
+    bool is_inventory;
     bool is_closed;
     menu_main_t *main;
     menu_option_t *option;
+    menu_inventory_t *inventory;
 } menu_t;
 
 #endif
