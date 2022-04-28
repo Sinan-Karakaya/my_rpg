@@ -24,4 +24,15 @@ void init_inventory(rpg_t *rpg)
 {
     INVENTORY->sprite =
     init_sprite((sfVector2f){300, 100}, "assets/menu/inventory.png");
+    rpg->menu->inventory->slots = malloc(sizeof(slots_t *) * 5);
+    for (size_t i = 0; i < 5; i++) {
+        rpg->menu->inventory->slots[i] = malloc(sizeof(slots_t) * 6);
+    }
+    for (size_t i = 0; i < 5; i++) {
+        for (size_t j = 0; j < 6; j++) {
+            rpg->menu->inventory->slots[i][j].item_id = 0;
+            rpg->menu->inventory->slots[i][j].sprite = NULL;
+        }
+    }
+    rpg->menu->inventory->slots[0][0].item_id = 2;
 }

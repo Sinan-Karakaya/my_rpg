@@ -7,6 +7,7 @@
 
 SRC = src/core.c \
 	  src/const.c \
+	  src/event.c	\
 	  src/args/handle_args.c \
 	  src/utils/debug.c \
 	  src/shaders/shader.c \

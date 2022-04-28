@@ -53,9 +53,21 @@ typedef struct menu_option_s {
     bool keybinds;
 } menu_option_t;
 
+typedef struct slots_s {
+    sfSprite *sprite;
+    sfSprite *item_sprite;
+    sfText *item_text;
+    size_t item_id;
+    int item_lvl;
+    int item_dmg;
+    int item_def;
+    int item_hp;
+    int item_xp;
+} slots_t;
+
 typedef struct menu_inventory_s {
     sfSprite *sprite;
-    size_t **stockage;
+    slots_t **slots;
 } menu_inventory_t;
 
 typedef struct menu {
