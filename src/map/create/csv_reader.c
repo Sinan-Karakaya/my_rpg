@@ -30,13 +30,13 @@ char *csv_reader(char *string)
 int **str_to_int_tab(char *string)
 {
     int **map = create_map(MAP_X, MAP_Y);
-    char *code;
+    char *code = csv_reader(string);
     int i = 0;
     int j = 0;
     int k = 0;
     int actual_number = 0;
 
-    if ((code = csv_reader(string)) == NULL)
+    if (code == NULL)
         return map;
     while (code[k] != '\0') {
         if (code[k] == '\n') {
