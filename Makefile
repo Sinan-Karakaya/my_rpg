@@ -26,6 +26,7 @@ SRC = src/core.c \
 	  src/combat/animation/boss/boss.c \
 	  src/map/calcul/calcul.c \
 	  src/map/calcul/perlin.c \
+	  src/map/update/check_npc.c \
 	  src/map/create/create.c \
 	  src/map/create/csv_reader.c \
 	  src/map/draw/draw.c \
