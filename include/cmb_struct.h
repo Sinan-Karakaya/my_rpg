@@ -22,6 +22,12 @@ typedef enum combat_state {
     RPG_COMBAT_ENNEMY
 } e_combat_state;
 
+typedef enum class_type {
+    RPG_CLASS_WARRIOR,
+    RPG_CLASS_CLERIC,
+    RPG_CLASS_PEASANT
+} e_class_type;
+
 typedef struct gauge_bar {
     sfRectangleShape *rect;
     sfRectangleShape *rect_grey;
@@ -37,6 +43,7 @@ typedef struct stats {
     int defense;
     int life;
     int xp;
+    e_class_type class;
 } stats_t;
 
 typedef struct entity {
