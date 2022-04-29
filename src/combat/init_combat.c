@@ -47,7 +47,7 @@ static void create_player_bis(combat_t *com)
 
 static int create_player(combat_t *com)
 {
-    com->player->texture = sfTexture_createFromFile(OLBERIC_PATH, NULL);
+    com->player->texture = sfTexture_createFromFile(OLBERIC_CL_PATH, NULL);
     if (!com->player->texture)
         return 1;
     com->player->sprite = sfSprite_create();
