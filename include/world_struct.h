@@ -39,6 +39,7 @@ typedef struct world {
     sfRenderStates *texture_o;
     sfRenderStates *texture_n;
     sfSprite **rendered_spr;
+    sfShader *shader;
 } world_t;
 
 typedef struct perlin {

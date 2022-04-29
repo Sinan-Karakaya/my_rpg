@@ -31,6 +31,7 @@ SRC = src/core.c \
 	  src/map/draw/draw.c \
 	  src/map/draw/draw_bis.c \
 	  src/map/draw/draw_npc.c \
+	  src/map/draw/light.c \
 	  src/map/init/init.c \
 	  src/menu/init/init_bis.c \
 	  src/menu/init/init.c \
@@ -62,7 +63,7 @@ INCLUDE = -I ./include/
 CFLAGS = -Wall -Wextra -W $(INCLUDE)
 
 LDFLAGS = -Llib/my -lcsfml-window -lcsfml-system -lcsfml-graphics \
-		  -lcsfml-audio -lmy
+		  -lcsfml-audio -lmy -lm
 
 NAME = my_rpg
 

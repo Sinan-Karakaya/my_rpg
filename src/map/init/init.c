@@ -22,7 +22,7 @@ sfRenderStates *init_struct_texture(char *path, rpg_t *rpg)
     tex->blendMode = sfBlendAlpha;
     tex->transform = sfTransform_Identity;
     tex->texture = sfTexture_createFromFile(path, NULL);
-    tex->shader = NULL;
+    tex->shader = rpg->world->shader;
     return tex;
 }
 
@@ -45,6 +45,9 @@ void init_world(rpg_t *game)
     game->world->rendered_spr = malloc(sizeof(sfSprite*));
     game->world->rendered_spr[0] = NULL;
     game->world->olberick_pos = (sfVector2i){0, 0};
+     if (sfShader_isAvailable())
+        game->world->shader =
+        sfShader_createFromFile(NULL, NULL, "src/map/draw/light.frag");
 }
 
 void destroy_world(rpg_t *game)

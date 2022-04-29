@@ -18,7 +18,7 @@ char *csv_reader(char *string)
 
     if (file == NULL)
         return NULL;
-    code = malloc(sizeof(char) * (MAP_X * MAP_Y) * 4);
+    code = my_calloc(sizeof(char), (MAP_X * MAP_Y) * 4);
     if (!code)
         return NULL;
     while ((c = fgetc(file)) != EOF)
@@ -30,13 +30,13 @@ char *csv_reader(char *string)
 int **str_to_int_tab(char *string)
 {
     int **map = create_map(MAP_X, MAP_Y);
-    char *code = csv_reader(string);
+    char *code;
     int i = 0;
     int j = 0;
     int k = 0;
     int actual_number = 0;
 
-    if (code == NULL)
+    if ((code = csv_reader(string)) == NULL)
         return map;
     while (code[k] != '\0') {
         if (code[k] == '\n') {
