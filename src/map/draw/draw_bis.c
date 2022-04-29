@@ -23,11 +23,11 @@ void draw_map(rpg_t *rpg)
             point[1] = to2d(point_3d, rpg);
             point_3d = (sfVector3f){(i  + 1), height[i + 1][j + 1], j + 1};
             point[2] = to2d(point_3d, rpg);
-            light(rpg, i, j, 2);
+            light(rpg, i, j, 1);
             draw_triangle(point, rpg, quad_offset, 1);
             point_3d = (sfVector3f){(i), height[i][j + 1], j + 1};
             point[1] = to2d(point_3d, rpg);
-            light(rpg, i, j, 2);
+            light(rpg, i, j, 1);
             draw_triangle(point, rpg, quad_offset, 2);
             get_olb_pos(i, j, rpg);
         }

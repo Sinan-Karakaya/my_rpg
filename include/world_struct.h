@@ -29,6 +29,12 @@ typedef struct npc {
     int speed;
 } npc_t;
 
+typedef struct gui {
+    sfTexture *chatbox_texture;
+    sfSprite *chatbox_sprite;
+    sfText *text;
+} gui_t;
+
 typedef struct world {
     sfVector2i olberick_pos;
     int **height_map;
@@ -40,6 +46,7 @@ typedef struct world {
     sfRenderStates *texture_n;
     sfSprite **rendered_spr;
     sfShader *shader;
+    gui_t gui;
 } world_t;
 
 typedef struct perlin {

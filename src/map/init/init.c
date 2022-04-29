@@ -26,9 +26,46 @@ sfRenderStates *init_struct_texture(char *path, rpg_t *rpg)
     return tex;
 }
 
+static sfText *init_text(sfVector2f pos, const char *txt, sfVector2u size)
+{
+    sfFont *font = sfFont_createFromFile("assets/font/arial/arial.ttf");
+    sfText *text = sfText_create();
+    sfVector2f origin = {0};
+    sfFloatRect rect = {0};
+
+    sfText_setPosition(text, pos);
+    sfText_setString(text, txt);
+    sfText_setColor(text, sfWhite);
+    sfText_setFont(text, font);
+    sfText_setCharacterSize(text, 25);
+
+    rect = sfText_getGlobalBounds(text);
+    origin.x = rect.width / 2;
+    origin.y = rect.height / 2;
+    sfText_setOrigin(text, origin);
+    pos.x = size.x / 4 + pos.x;
+    pos.y = size.y / 5 + pos.y;
+    sfText_setPosition(text, pos);
+    return text;
+}
+
+
+void init_npc(rpg_t *rpg)
+{
+    rpg->world->gui.chatbox_sprite = sfSprite_create();
+    rpg->world->gui.chatbox_texture = sfTexture_createFromFile("assets/pnj/chatbox.png", NULL);
+    rpg->world->gui.text = sfText_create();
+    rpg->world->gui.text = init_text((sfVector2f){50,730}, "Hi", (sfVector2u){0,0});
+    sfSprite_setTexture(rpg->world->gui.chatbox_sprite,
+     rpg->world->gui.chatbox_texture, sfTrue);
+     sfSprite_setScale(rpg->world->gui.chatbox_sprite, (sfVector2f){6.1, 6.1});
+     sfSprite_setPosition(rpg->world->gui.chatbox_sprite, (sfVector2f){0, 700});
+}
+
 void init_world(rpg_t *game)
 {
     game->world = malloc(sizeof(world_t));
+    init_npc(game);
     game->world->height_map = create_map(MAP_X, MAP_Y);
     game->world->object_map = create_map(MAP_X, MAP_Y);
     game->world->npc_list = malloc(sizeof(npc_t) * NB_NPC);
@@ -46,8 +83,7 @@ void init_world(rpg_t *game)
     game->world->rendered_spr[0] = NULL;
     game->world->olberick_pos = (sfVector2i){0, 0};
      if (sfShader_isAvailable())
-        game->world->shader =
-        sfShader_createFromFile(NULL, NULL, "src/map/draw/light.frag");
+        game->world->shader = SHADE
 }
 
 void destroy_world(rpg_t *game)

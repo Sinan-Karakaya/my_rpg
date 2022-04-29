@@ -34,6 +34,7 @@ static int gameloop(rpg_t *rpg)
             draw_object(rpg);
             chose_scene(rpg);
             draw_npc(rpg);
+            check_quest(rpg);
         }
         rpg->dt = get_dt(rpg->game_clock);
         print_debug(rpg);
@@ -60,10 +61,11 @@ int main(int ac, char **av)
     if (!rpg || init_sfml(rpg, debug_mode))
         return 84;
     init_all(rpg);
-    rpg->world->object_map[20][20]= 1;
-    rpg->world->object_map[10][2]= 2;
-    rpg->world->object_map[18][2]= 3;
-    rpg->world->npc_list[0] = (npc_t){"npc1", (sfVector2i){18, 2},2 ,50 , 20 , 20 , 20};
+    /*rpg->world->object_map[20][20] = 1;
+    rpg->world->object_map[10][2] = 2;
+    rpg->world->object_map[18][2] = 3;*/
+    rpg->world->npc_list[0] = (npc_t){"npc1", (sfVector2i){18, 18},2 , 50 , 20 , 20 , 20};
+
     do_loop(rpg);
     free_rpg(rpg);
     return 0;
