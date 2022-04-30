@@ -9,9 +9,12 @@ SRC = $(wildcard *.c)
 
 OBJ = $(SRC:.c=.o)
 
-all:
-	gcc -c $(SRC)
-	ar rc libmy.a $(OBJ)
+NAME = libmy.a
+
+all: $(NAME)
+
+$(NAME): $(OBJ)
+	ar rc $(NAME) $(OBJ)
 	cp my.h ../../include/my.h
 
 clean:
