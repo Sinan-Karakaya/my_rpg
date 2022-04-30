@@ -63,6 +63,9 @@
 #define KEYRUN rpg->keybinds->key_run
 
 #define INVENTORY rpg->menu->inventory
+#define SCALE_PNJ_X (sfVector2f){(point[1].x - point[0].x) / 150
+#define SCALE_PNJ_Y -(point[1].x - point[0].x) / 150}
+#define HEIGHT rpg->world->height_map
 
 extern const int olberic_rect_left[26];
 extern const int olberic_rect_w[26];

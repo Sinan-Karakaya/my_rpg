@@ -9,19 +9,20 @@
 #include <stdlib.h>
 #include "my_rpg.h"
 
-sfVector3f GetNormal(sfVector3f p1, sfVector3f p2, sfVector3f p3) {
-	sfVector3f normal;
+sfVector3f GetNormal(sfVector3f p1, sfVector3f p2, sfVector3f p3)
+{
+    sfVector3f normal;
     normal.x = (p2.y - p1.y) * (p3.z - p1.z) - (p2.z - p1.z) * (p3.y - p1.y);
     normal.y = (p2.z - p1.z) * (p3.x - p1.x) - (p2.x - p1.x) * (p3.z - p1.z);
     normal.z = (p2.x - p1.x) * (p3.y - p1.y) - (p2.y - p1.y) * (p3.x - p1.x);
+    fabs(normal.y);
     return normal;
 }
 
-int light(rpg_t *rpg ,int i, int j, int n)
+int light(rpg_t *rpg , int i, int j, int n)
 {
     if (IS_SHADER == 0)
         return 0;
-    int **height = rpg->world->height_map;
     sfVector3f point_3d1;
     sfVector3f point_3d2;
     sfVector3f point_3d3;
@@ -30,15 +31,14 @@ int light(rpg_t *rpg ,int i, int j, int n)
     float milli_time = sfTime_asMilliseconds(time) / 50;
     float cos_a = cos((float){milli_time} / 100);
 
-    point_3d1 = (sfVector3f){i, height[i][j], j};
+    point_3d1 = (sfVector3f){i, HEIGHT[i][j], j};
     if (n == 1)
-        point_3d2 = (sfVector3f){i + 1, height[i + 1][j], j};
+        point_3d2 = (sfVector3f){i + 1, HEIGHT[i + 1][j], j};
     else
-        point_3d2 = (sfVector3f){i, height[i][j + 1], j + 1};
-    point_3d3 = (sfVector3f){i + 1, height[i + 1][j + 1], j + 1};
+        point_3d2 = (sfVector3f){i, HEIGHT[i][j + 1], j + 1};
+    point_3d3 = (sfVector3f){i + 1, HEIGHT[i + 1][j + 1], j + 1};
     normal = GetNormal(point_3d1, point_3d2, point_3d3);
-    normal.y = fabs(normal.y);
     sfShader_setVec3Uniform(rpg->texture->shader, "normal", normal);
-    sfShader_setVec3Uniform(rpg->texture->shader, "light_dir",
-     (sfVector3f){-1,1,cos_a});
+    sfShader_setVec3Uniform(rpg->texture->shader, "light_dir"
+    , (sfVector3f){-1, 1, cos_a});
 }

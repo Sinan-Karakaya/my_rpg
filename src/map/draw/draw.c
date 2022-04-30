@@ -23,7 +23,7 @@ static int is_in_screen(sfVector2f *point)
 void draw_triangle(sfVector2f *points, rpg_t *game,
 sfVector2i tex_pos, int i)
 {
-    float coordx = tex_pos.y +abs(16 * (i - 2));
+    float coordx = tex_pos.y + abs(16 * (i - 2));
 
     if (is_in_screen(points) == 0)
         return;
@@ -63,7 +63,7 @@ static void draw_water_bis(rpg_t *rpg, int mt, int i, sfVector3f pnt_3d)
     for (int j = MAP_Y - 1; j > 0; j--) {
         if (i > 55 && i < MAP_X + 40)
             continue;
-        pnt_3d = (sfVector3f){i - 50,perlin(i + mt, j, 10) * 2, j};
+        pnt_3d = (sfVector3f){i - 50, perlin(i + mt, j, 10) * 2, j};
         point[0] = to2d(pnt_3d, rpg);
         pnt_3d = (sfVector3f){(i - 49), perlin(i + 1 + mt, j, 10) * 2, j};
         point[1] = to2d(pnt_3d, rpg);
