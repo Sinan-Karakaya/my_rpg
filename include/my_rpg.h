@@ -29,6 +29,7 @@ int init_sound(rpg_t *rpg);
 int init_menu(rpg_t *rpg);
 
 // UTILS
+int event(rpg_t *rpg);
 int handle_args(int ac, char **av);
 int init_sfml(rpg_t *rpg, int debug_mode);
 void print_debug(rpg_t *rpg);
@@ -78,6 +79,10 @@ void draw_triangle(sfVector2f *points, rpg_t *game, sfVector2i tex_pos, int i);
 sfVector2i get_texture_pos(int x, int y, rpg_t *rpg);
 sfVector2i get_object_pos(int x, int y, rpg_t *rpg);
 
+// NPC
+void check_quest(rpg_t *rpg);
+void draw_npc(rpg_t *rpg);
+
 // OVERWORLD
 void overworld_loop(rpg_t *rpg);
 int init_player_overworld(rpg_t *rpg);
@@ -88,6 +93,7 @@ void ow_aabb(rpg_t *rpg);
 // SHADER
 void init_shaders(rpg_t *rpg);
 void update_shaders(shader_t *shader, float dt);
+int light(rpg_t *rpg , int i, int j, int n);
 
 // MUSIC
 int play_music(rpg_t *rpg);

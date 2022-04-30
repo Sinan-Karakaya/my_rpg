@@ -6,6 +6,7 @@
 */
 
 #include "my_rpg.h"
+#include <stdlib.h>
 
 static sfSprite *init_sprite(sfVector2f pos, char *filename)
 {

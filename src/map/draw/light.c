@@ -9,13 +9,13 @@
 #include <stdlib.h>
 #include "my_rpg.h"
 
-sfVector3f GetNormal(sfVector3f p1, sfVector3f p2, sfVector3f p3)
+static sfVector3f GetNormal(sfVector3f p1, sfVector3f p2, sfVector3f p3)
 {
     sfVector3f normal;
     normal.x = (p2.y - p1.y) * (p3.z - p1.z) - (p2.z - p1.z) * (p3.y - p1.y);
     normal.y = (p2.z - p1.z) * (p3.x - p1.x) - (p2.x - p1.x) * (p3.z - p1.z);
     normal.z = (p2.x - p1.x) * (p3.y - p1.y) - (p2.y - p1.y) * (p3.x - p1.x);
-    fabs(normal.y);
+    normal.y = fabs(normal.y);
     return normal;
 }
 

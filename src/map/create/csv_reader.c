@@ -8,6 +8,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "my_rpg.h"
+#include "my.h"
 
 char *csv_reader(char *string)
 {
@@ -38,7 +39,7 @@ int **str_to_int_tab(char *string, int n, int case_)
     while (code[k] != '\0') {
         if (code[k] == '\n') {
             map[i][j] = case_;
-            actual_number, j =0;
+            actual_number = 0, j = 0;
             k++, i++;
         } if (code[k] == ',') {
             map[i][j] = actual_number * n;

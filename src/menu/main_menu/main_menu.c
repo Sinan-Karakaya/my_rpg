@@ -47,6 +47,7 @@ static int manage_controls(rpg_t *rpg)
             buttons_controls_menu(rpg, BUTTONS, event);
         }
     }
+    return 0;
 }
 
 int menuloop(rpg_t *rpg)
