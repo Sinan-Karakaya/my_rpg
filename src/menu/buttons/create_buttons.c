@@ -13,9 +13,9 @@ static void init_button_option_ig(rpg_t *rpg)
     (sfVector2f){910, 200}, 100, "assets/menu/button.png");
     rpg->menu->option->buttons->lst_bt[1] = create_button("Key Bindings",
     (sfVector2f){910, 350}, 100, "assets/menu/button.png");
-    rpg->menu->option->buttons->lst_bt[2] = create_button("Return to menu",
+    rpg->menu->option->buttons->lst_bt[2] = create_button("Menu",
     (sfVector2f){910, 500}, 100, "assets/menu/button.png");
-    rpg->menu->option->buttons->lst_bt[3] = create_button("<- Back",
+    rpg->menu->option->buttons->lst_bt[3] = create_button("Resume",
     (sfVector2f){910, 650}, 100, "assets/menu/button.png");
     rpg->menu->option->buttons->lst_bt[4] = create_button("Music",
     (sfVector2f){910, 200}, 100, "assets/menu/button.png");
@@ -27,7 +27,7 @@ static void init_button_option_ig(rpg_t *rpg)
     rpg->menu->option->buttons->lst_bt[7] =
     create_button_2("\t\t\t\t\t\t\t\t-\t\t\t\t\t\t\t\t+\t",
     (sfVector2f){910, 650}, 100, "assets/menu/button.png");
-    rpg->menu->option->buttons->lst_bt[8] = create_button("<- Back",
+    rpg->menu->option->buttons->lst_bt[8] = create_button("Back",
     (sfVector2f){1550, 460}, 100, "assets/menu/button.png");
 }
 
@@ -51,7 +51,7 @@ static void init_button_keys_ig(rpg_t *rpg)
     (sfVector2f){480, 650}, 100, "assets/menu/button.png");
     rpg->menu->option->buttons->lst_bt[16] = create_button_2("\tRun : R",
     (sfVector2f){1440, 650}, 100, "assets/menu/button.png");
-    rpg->menu->option->buttons->lst_bt[17] = create_button("<- Back",
+    rpg->menu->option->buttons->lst_bt[17] = create_button("Back",
     (sfVector2f){960, 810}, 100, "assets/menu/button.png");
     rpg->menu->option->buttons->lst_bt[18] =
     create_button_2("\t\t\t\t\t\tWaiting for input",
@@ -60,7 +60,7 @@ static void init_button_keys_ig(rpg_t *rpg)
 
 void init_all_buttons(rpg_t *rpg)
 {
-    rpg->menu->main->buttons->lst_bt[0] = create_button("START",
+    rpg->menu->main->buttons->lst_bt[0] = create_button("Play",
     (sfVector2f){910, 400}, 100, "assets/menu/button.png");
     rpg->menu->main->buttons->lst_bt[1] = create_button("Option",
     (sfVector2f){910, 600}, 100, "assets/menu/button.png");
@@ -71,7 +71,7 @@ void init_all_buttons(rpg_t *rpg)
     rpg->menu->main->buttons->lst_bt[4] = create_button("Debug",
     (sfVector2f){910, 600}, 100, "assets/menu/button.png");
     rpg->menu->main->buttons->lst_bt[4]->toggle = true;
-    rpg->menu->main->buttons->lst_bt[5] = create_button("<- Back",
+    rpg->menu->main->buttons->lst_bt[5] = create_button("Back",
     (sfVector2f){910, 800}, 100, "assets/menu/button.png");
     init_button_option_ig(rpg);
     init_button_keys_ig(rpg);

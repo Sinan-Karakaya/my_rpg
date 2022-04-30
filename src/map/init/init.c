@@ -26,18 +26,19 @@ sfRenderStates *init_struct_texture(char *path, rpg_t *rpg)
     return tex;
 }
 
-static sfText *init_text(sfVector2f pos, const char *txt, sfVector2u size)
+static sfText *init_text(sfVector2f pos, sfVector2u size)
 {
-    sfFont *font = sfFont_createFromFile("assets/font/arial/arial.ttf");
+    sfFont *font = sfFont_createFromFile("assets/pnj/alagard.ttf");
     sfText *text = sfText_create();
     sfVector2f origin = {0};
     sfFloatRect rect = {0};
 
     sfText_setPosition(text, pos);
-    sfText_setString(text, txt);
     sfText_setColor(text, sfWhite);
+    sfText_setOutlineColor(text, sfBlack);
+    sfText_setOutlineThickness(text, 4.);
     sfText_setFont(text, font);
-    sfText_setCharacterSize(text, 25);
+    sfText_setCharacterSize(text, 40);
 
     rect = sfText_getGlobalBounds(text);
     origin.x = rect.width / 2;
@@ -55,7 +56,7 @@ void init_npc(rpg_t *rpg)
     rpg->world->gui.chatbox_sprite = sfSprite_create();
     rpg->world->gui.chatbox_texture = sfTexture_createFromFile("assets/pnj/chatbox.png", NULL);
     rpg->world->gui.text = sfText_create();
-    rpg->world->gui.text = init_text((sfVector2f){50,730}, "Hi", (sfVector2u){0,0});
+    rpg->world->gui.text = init_text((sfVector2f){55,738}, (sfVector2u){0,0});
     sfSprite_setTexture(rpg->world->gui.chatbox_sprite,
      rpg->world->gui.chatbox_texture, sfTrue);
      sfSprite_setScale(rpg->world->gui.chatbox_sprite, (sfVector2f){6.1, 6.1});
