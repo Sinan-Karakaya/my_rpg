@@ -22,7 +22,7 @@ static int gameloop(rpg_t *rpg)
     while (sfRenderWindow_isOpen(rpg->window) && rpg->menu->is_closed != true
     && rpg->menu->is_main != true) {
         sfRenderWindow_clear(rpg->window, sfBlack);
-        ow_aabb(rpg);
+        
         while (sfRenderWindow_pollEvent(rpg->window, &rpg->event))
             if (event(rpg) == 1)
                 return 1;
@@ -35,6 +35,7 @@ static int gameloop(rpg_t *rpg)
             chose_scene(rpg);
             draw_npc(rpg);
             check_quest(rpg);
+            ow_aabb(rpg);
         }
         rpg->dt = get_dt(rpg->game_clock);
         print_debug(rpg);
@@ -62,7 +63,7 @@ int main(int ac, char **av)
         return 84;
     init_all(rpg);
     rpg->world->object_map[20][20] = 1;
-    rpg->world->object_map[10][2] = 2;
+    rpg->world->object_map[25][20] = 1;
     rpg->world->object_map[18][2] = 3;
     rpg->world->npc_list[0] = (npc_t){"npc1", (sfVector2i){18, 18},2 , 50 , 20 , 20 , 20};
 

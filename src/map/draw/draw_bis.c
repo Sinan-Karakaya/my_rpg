@@ -51,7 +51,6 @@ static void draw_obj_bis(rpg_t *rpg, int **height, sfSprite *sp, int i)
     int milli_time = sfTime_asMilliseconds(time) / 500;
     int frame = milli_time %
      (sfTexture_getSize(rpg->world->texture_o->texture).y / 300) + 1;
-
     for (int j = MAP_Y - 1; j > 0; j--) {
         if (rpg->world->object_map[i][j] == 0)
             continue;
