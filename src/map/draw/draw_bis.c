@@ -17,16 +17,13 @@ void draw_map(rpg_t *rpg)
     for (int j = MAP_Y - 1; j > 0; j--) {
         for (int i = 1; i < MAP_X - 1; i++) {
             quad_offset = get_texture_pos(i, j, rpg);
-            point_3d = (sfVector3f){i, height[i][j], j};
-            point[0] = to2d(point_3d, rpg);
-            point_3d = (sfVector3f){(i + 1), height[i + 1][j], j};
-            point[1] = to2d(point_3d, rpg);
+            point[0] = to2d((sfVector3f){i, height[i][j], j}, rpg);
+            point[1] = to2d((sfVector3f){(i + 1), height[i + 1][j], j}, rpg);
             point_3d = (sfVector3f){(i  + 1), height[i + 1][j + 1], j + 1};
             point[2] = to2d(point_3d, rpg);
             light(rpg, i, j, 1);
             draw_triangle(point, rpg, quad_offset, 1);
-            point_3d = (sfVector3f){(i), height[i][j + 1], j + 1};
-            point[1] = to2d(point_3d, rpg);
+            point[1] = to2d((sfVector3f){(i), height[i][j + 1], j + 1}, rpg);
             light(rpg, i, j, 1);
             draw_triangle(point, rpg, quad_offset, 2);
             get_olb_pos(i, j, rpg);
@@ -65,7 +62,6 @@ static void draw_obj_bis(rpg_t *rpg, int **height, sfSprite *sp, int i)
         sfSprite_setScale(sp, (sfVector2f){(point[1].x - point[0].x) /
         150, -(point[1].x - point[0].x) / 150});
         sfRenderWindow_drawSprite(rpg->window, sp, NULL);
-        // push_to_list(rpg->world, sp);
     }
 }
 

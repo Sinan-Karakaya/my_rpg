@@ -27,61 +27,25 @@ char *csv_reader(char *string)
     return code;
 }
 
-int **str_to_int_tab(char *string)
+int **str_to_int_tab(char *string, int n, int case_)
 {
     int **map = create_map(MAP_X, MAP_Y);
     char *code;
-    int i = 0;
-    int j = 0;
-    int k = 0;
-    int actual_number = 0;
+    int i = 0, j = 0, k = 0, actual_number = 0;
 
     if ((code = csv_reader(string)) == NULL)
         return map;
     while (code[k] != '\0') {
         if (code[k] == '\n') {
-            map[i][j] = 17;
-            actual_number = 0;
-            k++;
-            i++;
-            j = 0;
+            map[i][j] = case_;
+            actual_number, j =0;
+            k++, i++;
         } if (code[k] == ',') {
-            map[i][j] = actual_number;
+            map[i][j] = actual_number * n;
             actual_number = 0;
-            j++;
-            k++;
-        } actual_number *= 10;
-        actual_number += code[k] - '0';
-        k++;
-    }
-    return map;
-}
-
-int **str_to_int_tab_bis(char *string)
-{
-    int **map = create_map(MAP_X, MAP_Y);
-    char *code;
-    int i = 0;
-    int j = 0;
-    int k = 0;
-    int actual_number = 0;
-
-    if ((code = csv_reader(string)) == NULL)
-        return map;
-    while (code[k] != '\0') {
-        if (code[k] == '\n') {
-            map[i][j] = 0;
-            actual_number = 0;
-            k++;
-            i++;
-            j = 0;
-        } if (code[k] == ',') {
-            map[i][j] = -actual_number;
-            actual_number = 0;
-            j++;
-            k++;
-        } actual_number *= 10;
-        actual_number += code[k] - '0';
+            j++, k++;
+        }
+        actual_number = actual_number * 10 + code[k] - '0';
         k++;
     }
     return map;

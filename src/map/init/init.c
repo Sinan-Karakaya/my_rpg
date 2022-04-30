@@ -73,8 +73,8 @@ void init_world(rpg_t *game)
     for (int i = 0; i < NB_NPC; i++)
         game->world->npc_list[i] = (npc_t){"", zero ,0 ,0 , 0 , 0, 0};
     game->world->world_clock = sfClock_create();
-    game->world->texture_map =  str_to_int_tab("texture.map");
-    game->world->height_map =  str_to_int_tab_bis("height.map");
+    game->world->texture_map =  str_to_int_tab("texture.map", 1, 17);
+    game->world->height_map =  str_to_int_tab("height.map", -1 , 0);
     game->world->texture_o = init_struct_texture("assets/environement/po.png",
     game);
     game->world->texture_n = init_struct_texture("assets/environement/pn.png",
