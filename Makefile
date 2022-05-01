@@ -34,6 +34,7 @@ SRC = src/core.c \
 	  src/map/draw/draw_npc.c \
 	  src/map/draw/light.c \
 	  src/map/init/init.c \
+	  src/map/init/init_bis.c \
 	  src/menu/init/init_bis.c \
 	  src/menu/init/init.c \
 	  src/menu/draw/draw.c \

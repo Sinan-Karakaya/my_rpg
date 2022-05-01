@@ -15,7 +15,7 @@ sfVector2f to2d(sfVector3f p, rpg_t *game)
     float y = (p.y - 4 * fabs(game->cam.r - 2)) * 30 + 300;
     float z = p.z * 20;
     float y_divide;
-    sfVector2f point_2d = {0,0};
+    sfVector2f point_2d = {0, 0};
 
     y = y - game->world->height_map[pos.x][pos.y] * 30;
     y_divide = ((y - (z -  game->cam.y) * game->cam.r) / (z - game->cam.y));

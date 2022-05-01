@@ -14,6 +14,7 @@
 * Ca nous permettrait de donner un effet de neige
 * ou de pluie au sol par exemple
 */
+
 sfRenderStates *init_struct_texture(char *path, rpg_t *rpg)
 {
     sfRenderStates *tex = malloc(sizeof(sfRenderStates));
@@ -50,17 +51,16 @@ static sfText *init_text(sfVector2f pos, sfVector2u size)
     return text;
 }
 
-
 void init_npc(rpg_t *rpg)
 {
     rpg->world->gui.chatbox_sprite = sfSprite_create();
-    rpg->world->gui.chatbox_texture = sfTexture_createFromFile("assets/pnj/chatbox.png", NULL);
+    rpg->world->gui.chatbox_texture = CREATE_CHAT;
     rpg->world->gui.text = sfText_create();
-    rpg->world->gui.text = init_text((sfVector2f){55,738}, (sfVector2u){0,0});
-    sfSprite_setTexture(rpg->world->gui.chatbox_sprite,
-     rpg->world->gui.chatbox_texture, sfTrue);
-     sfSprite_setScale(rpg->world->gui.chatbox_sprite, (sfVector2f){6.1, 6.1});
-     sfSprite_setPosition(rpg->world->gui.chatbox_sprite, (sfVector2f){0, 700});
+    rpg->world->gui.text = init_text((sfVector2f){55, 738}
+    , (sfVector2u){0, 0});
+    SET_TEX(rpg->world->gui.chatbox_sprite, TEX_CB sfTrue);
+    sfSprite_setScale(rpg->world->gui.chatbox_sprite, (sfVector2f){6.1, 6.1});
+    sfSprite_setPosition(rpg->world->gui.chatbox_sprite, (sfVector2f){0, 700});
 }
 
 void init_world(rpg_t *game)
@@ -72,7 +72,7 @@ void init_world(rpg_t *game)
     game->world->npc_list = malloc(sizeof(npc_t) * NB_NPC);
     sfVector2i zero = {0, 0};
     for (int i = 0; i < NB_NPC; i++)
-        game->world->npc_list[i] = (npc_t){"", zero ,0 ,0 , 0 , 0, 0};
+        game->world->npc_list[i] = (npc_t){"", zero, 0, 0, 0 , 0, 0};
     game->world->world_clock = sfClock_create();
     game->world->texture_map =  str_to_int_tab("texture.map", 1, 17);
     game->world->height_map =  str_to_int_tab("height.map", -1 , 0);
@@ -83,7 +83,7 @@ void init_world(rpg_t *game)
     game->world->rendered_spr = malloc(sizeof(sfSprite*));
     game->world->rendered_spr[0] = NULL;
     game->world->olberick_pos = (sfVector2i){0, 0};
-     if (sfShader_isAvailable())
+    if (sfShader_isAvailable())
         game->world->shader = SHADE
 }
 
@@ -98,15 +98,4 @@ void destroy_world(rpg_t *game)
     free(game->world->object_map);
     free(game->world->texture_map);
     free(game->world->world_clock);
-}
-
-void init_cam(rpg_t *game)
-{
-    game->cam.x = 1600;
-    game->cam.y = 400;
-    game->cam.r = 2;
-    game->cam.render = malloc(sizeof(render_t));
-    game->cam.render->point = malloc(sizeof(sfVector2f) * 3);
-    game->cam.render->triangle = sfVertexArray_create();
-    sfVertexArray_resize(game->cam.render->triangle, 3);
 }
