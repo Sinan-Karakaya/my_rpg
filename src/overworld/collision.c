@@ -41,7 +41,8 @@ static void ow_aabb_bis(rpg_t *rpg, int i)
         point[1] = to2d(point_3d, rpg);
         sfRectangleShape_setSize(collide, (sfVector2f){((point[1].x - point[0].x) / 150 * (offset_tab[rpg->world->object_map[i][j]].y - offset_tab[rpg->world->object_map[i][j]].x)), -(point[1].x - point[0].x) * 0.1});
         sfRectangleShape_setPosition(collide, (sfVector2f){point[0].x + ((point[1].x - point[0].x) / 150 * offset_tab[rpg->world->object_map[i][j]].x), point[0].y});
-        sfRenderWindow_drawRectangleShape(rpg->window, collide, NULL);
+        if (rpg->debug_toggle)
+            sfRenderWindow_drawRectangleShape(rpg->window, collide, NULL);
         check_aabb(rpg, collide);
     }
     sfRectangleShape_destroy(collide);

@@ -5,8 +5,9 @@
 ## make things
 ##
 
-SRC = src/core.c \
-	  src/const.c \
+SRC = src/core.c	\
+	  src/loop.c	\
+	  src/const.c	\
 	  src/event.c	\
 	  src/args/handle_args.c \
 	  src/utils/debug.c \

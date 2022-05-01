@@ -128,3 +128,6 @@ bool read_save(rpg_t *rpg);
 
 //OBJECT
 void draw_object(rpg_t *rpg);
+
+//MAIN
+void do_loop(rpg_t *rpg);
