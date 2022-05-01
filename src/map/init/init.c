@@ -97,5 +97,5 @@ void destroy_world(rpg_t *game)
     free(game->world->height_map);
     free(game->world->object_map);
     free(game->world->texture_map);
-    free(game->world->world_clock);
+    sfClock_destroy(game->world->world_clock);
 }
