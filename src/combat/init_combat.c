@@ -75,8 +75,8 @@ static int create_transt(transt_t *e)
     if (!e->rect)
         return 1;
     sfRectangleShape_setSize(e->rect, (sfVector2f){RES_X, RES_Y});
-    sfRectangleShape_setFillColor(e->rect, sfBlack);
-    e->pos = (sfVector2f){RES_X * -1, 0};
+    sfRectangleShape_setFillColor(e->rect, sfColor_fromRGBA(0, 0, 0, 0));
+    e->pos = (sfVector2f){0, 0};
     sfRectangleShape_setPosition(e->rect, e->pos);
     e->clock = sfClock_create();
     return 0;

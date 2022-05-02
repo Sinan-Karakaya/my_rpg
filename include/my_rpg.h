@@ -56,7 +56,8 @@ void do_slash(combat_t *combat, sfRenderWindow *window);
 // COMBAT
 void init_combat(rpg_t *rpg);
 void combat_loop(rpg_t *rpg, combat_t *combat);
-void do_transition(rpg_t *rpg, transt_t *e);
+void do_transition_ow(rpg_t *rpg, transt_t *e);
+void do_transition_cmb(rpg_t *rpg, transt_t *e);
 // COMBAT -> OLBERIC
 void olberic_do_attack(entity_t *player, combat_t *combat, rpg_t *rpg);
 void olberic_do_idle(entity_t *player);

@@ -13,10 +13,13 @@ static void chose_scene(rpg_t *rpg)
 {
     if (rpg->scene == OVERWORLD)
         overworld_loop(rpg);
-    else if (rpg->scene == COMBAT)
+    if (rpg->scene == COMBAT)
         combat_loop(rpg, rpg->combat);
+    if (rpg->combat->transition_ow)
+        do_transition_ow(rpg, rpg->combat->transt);
+    else if (rpg->combat->transition_cmb)
+        do_transition_cmb(rpg, rpg->combat->transt);
 }
-
 
 static int gameloop(rpg_t *rpg)
 {

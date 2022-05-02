@@ -47,6 +47,7 @@ int init_all(rpg_t *rpg)
     rpg->texture = init_struct_texture("assets/environement/pr.png", rpg);
     rpg->scene = OVERWORLD;
     play_music(rpg);
-    rpg->change = false;
+    rpg->combat->transition_ow = false;
+    rpg->combat->transition_cmb = false;
     return 0;
 }
