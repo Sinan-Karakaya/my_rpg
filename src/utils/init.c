@@ -34,18 +34,21 @@ int init_sfml(rpg_t *rpg, int debug_mode)
 int init_all(rpg_t *rpg)
 {
     rpg->combat = init_combat();
-    init_cam(rpg);
-    init_world(rpg);
+    load_loop(rpg, 1);
+    init_cam(rpg), load_loop(rpg, 2);
+    init_world(rpg), load_loop(rpg, 3);
     // init_shaders(rpg);
-    init_sound(rpg);
-    init_menu(rpg);
-    init_buttons(rpg);
-    init_player_overworld(rpg);
-    init_keybind(rpg);
-    init_inventory(rpg);
+    init_sound(rpg), load_loop(rpg, 4);
+    init_menu(rpg), load_loop(rpg, 5);
+    init_buttons(rpg), load_loop(rpg, 6);
+    init_player_overworld(rpg), load_loop(rpg, 7);
+    init_keybind(rpg), load_loop(rpg, 8);
+    init_inventory(rpg), load_loop(rpg, 9);
     // read_save(rpg);          CRASH?
     rpg->texture = init_struct_texture("assets/environement/pr.png", rpg);
+    init_inventory(rpg), load_loop(rpg, 10);
     rpg->scene = OVERWORLD;
     play_music(rpg);
+    init_inventory(rpg), load_loop(rpg, 11);
     return 0;
 }

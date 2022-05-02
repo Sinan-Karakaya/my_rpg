@@ -102,6 +102,7 @@ int play_music(rpg_t *rpg);
 //MENU
 int init_menu(rpg_t *rpg);
 int menuloop(rpg_t *rpg);
+int load_loop(rpg_t *rpg, int n);
 
 //BUTTONS
 void buttons_controls_menu(rpg_t *rpg, bt_list_t *bt_list, sfEvent event);

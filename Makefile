@@ -9,6 +9,7 @@ SRC = src/core.c	\
 	  src/loop.c	\
 	  src/const.c	\
 	  src/event.c	\
+	  src/loading/load.c	\
 	  src/args/handle_args.c \
 	  src/utils/debug.c \
 	  src/shaders/shader.c \
