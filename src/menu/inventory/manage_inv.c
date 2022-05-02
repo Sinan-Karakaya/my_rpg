@@ -27,7 +27,6 @@ int manage_inv(rpg_t *rpg, int button)
             sfRenderWindow_display(rpg->window);
         }
     }
-    printf("Final Key = %d, Button = %d\n", key, button);
     if (key == button)
         return (0);
     save = rpg->menu->inventory->slots[key]->item_id;

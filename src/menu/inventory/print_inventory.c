@@ -39,6 +39,11 @@ void check_inv(rpg_t *rpg)
     }
 }
 
+void display_character(rpg_t *rpg)
+{
+    sfRenderWindow_drawSprite(rpg->window, OW->spr, NULL);
+}
+
 void print_inventory(rpg_t *rpg)
 {
     check_inv(rpg);
@@ -59,4 +64,5 @@ void print_inventory(rpg_t *rpg)
         sfRenderWindow_drawText(rpg->window, rpg->combat->player->stat->text_life, NULL);
     if (rpg->combat->player->stat->text_level != NULL)
         sfRenderWindow_drawText(rpg->window, rpg->combat->player->stat->text_level, NULL);
+    display_character(rpg);
 }

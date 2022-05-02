@@ -36,9 +36,15 @@ void key_pressed(rpg_t *rpg)
         if (rpg->menu->is_inventory == false) {
             rpg->menu->option->is_active = true;
             rpg->menu->is_inventory = true;
+            sfSprite_setPosition(OW->spr, (sfVector2f){430, 330});
+            sfSprite_setScale(OW->spr, (sfVector2f){6, 6});
+            OW->rect.left = 0;
+            sfSprite_setTextureRect(OW->spr, OW->rect);
         } else {
             rpg->menu->option->is_active = true;
             rpg->menu->is_inventory = true;
+            sfSprite_setPosition(OW->spr, (sfVector2f){RES_X / 2, RES_Y / 2});
+            sfSprite_setScale(OW->spr, (sfVector2f){2, 2});
         }
     }
     player_movement(rpg);
@@ -62,7 +68,6 @@ int event(rpg_t *rpg)
         return 1;
     }
     if (rpg->event.type == sfEvtMouseButtonPressed) {
-        printf("x = %d y =%d\n", rpg->event.mouseButton.x, rpg->event.mouseButton.y);
         buttons_controls_option_ig(rpg, BUTTONSO, rpg->event);
         slots_controls(rpg, rpg->event);
     }
