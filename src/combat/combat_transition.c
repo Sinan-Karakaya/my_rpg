@@ -8,6 +8,23 @@
 #include "my_rpg.h"
 #include "my.h"
 
+void do_transition_death(rpg_t *rpg, transt_t *e)
+{
+    sfColor color = sfRectangleShape_getFillColor(e->rect);
+
+    if (get_time(e->clock) < 0.002f)
+        return;
+    if (rpg->scene == COMBAT && color.a < 255) {
+        color.a += 5;
+    } else if (rpg->scene == COMBAT && color.a == 255) {
+        rpg->scene = DEATH;
+        rpg->combat->transition_cmb = false;
+    }
+    sfRectangleShape_setFillColor(e->rect, color);
+    sfRenderWindow_drawRectangleShape(rpg->window, e->rect, NULL);
+    sfClock_restart(e->clock);
+}
+
 void do_transition_cmb(rpg_t *rpg, transt_t *e)
 {
     sfColor color = sfRectangleShape_getFillColor(e->rect);

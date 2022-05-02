@@ -38,7 +38,8 @@ typedef struct overworld {
 typedef enum rpg_scene {
     MAIN_MENU,
     OVERWORLD,
-    COMBAT
+    COMBAT,
+    DEATH
 } e_rpg_scene;
 
 typedef struct rpg {

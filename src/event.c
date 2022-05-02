@@ -52,9 +52,6 @@ void key_pressed(rpg_t *rpg)
     if (rpg->event.key.code == sfKeyC) {
         if (IN_OVERWORLD) {
             rpg->combat->transition_ow = true;
-            rpg->scene = COMBAT;
-            //do_transition(rpg, rpg->combat->transt);
-            rpg->cam.r = 0;
         } else if (rpg->scene == COMBAT) {
             rpg->combat->transition_cmb = true;
         }

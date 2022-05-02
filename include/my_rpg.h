@@ -58,6 +58,7 @@ void init_combat(rpg_t *rpg);
 void combat_loop(rpg_t *rpg, combat_t *combat);
 void do_transition_ow(rpg_t *rpg, transt_t *e);
 void do_transition_cmb(rpg_t *rpg, transt_t *e);
+void do_transition_death(rpg_t *rpg, transt_t *e);
 // COMBAT -> OLBERIC
 void olberic_do_attack(entity_t *player, combat_t *combat, rpg_t *rpg);
 void olberic_do_idle(entity_t *player);
@@ -104,6 +105,7 @@ int play_music(rpg_t *rpg);
 int init_menu(rpg_t *rpg);
 int menuloop(rpg_t *rpg);
 int load_loop(rpg_t *rpg, int n);
+void draw_game_over(rpg_t *rpg);
 
 //BUTTONS
 void buttons_controls_menu(rpg_t *rpg, bt_list_t *bt_list, sfEvent event);
