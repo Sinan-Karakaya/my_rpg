@@ -124,6 +124,17 @@ int detect_click_on_bt_2(bt_list_t *bt_list, sfEvent event, size_t s, size_t e);
 //INVENTORY
 void print_inventory(rpg_t *rpg);
 void init_inventory(rpg_t *rpg);
+int detect_click_on_inv(bt_list_t *bt_list, sfEvent event, size_t s, size_t e);
+button_t *create_slots(char *str, sfVector2f pos, int ptr_f, char *img);
+int manage_inv(rpg_t *rpg, int button);
+void check_inv(rpg_t *rpg);
+int slots_controls(rpg_t *rpg, sfEvent event);
+
+//INVENTORY UTILS
+void clearstrnbr(char *str, int len);
+void loop_int_to_str(int data[], int *big_num, int *pos, char *str);
+char *int_to_str(int nb);
+int init_my_text(stats_t *stat);
 
 // SAVE
 bool read_save(rpg_t *rpg);

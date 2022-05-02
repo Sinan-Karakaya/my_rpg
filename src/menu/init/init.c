@@ -84,7 +84,7 @@ int init_buttons(rpg_t *rpg)
     if (!rpg->menu->main->buttons->lst_bt)
         return 84;
     rpg->menu->option->buttons->nbr_bt = nbr_buttons2;
-    rpg->menu->option->buttons->lst_bt = malloc(sizeof(button_t *) *
+    rpg->menu->option->buttons->lst_bt = malloc(sizeof(bt_list_t *) *
     nbr_buttons2);
     if (!rpg->menu->option->buttons->lst_bt)
         return 84;

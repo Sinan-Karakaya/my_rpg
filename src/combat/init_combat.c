@@ -43,7 +43,13 @@ static void create_player_bis(combat_t *com)
         return;
     com->player->stat->attack = 10;
     com->player->stat->defense = 10;
+    com->player->stat->life = 100;
     com->player->stat->level = 1;
+    com->player->stat->xp = 0;
+    com->player->stat->text_attack = NULL;
+    com->player->stat->text_defense = NULL;
+    com->player->stat->text_life = NULL;
+    com->player->stat->text_level = NULL;
 }
 
 static int create_player(combat_t *com)
