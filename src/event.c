@@ -47,7 +47,6 @@ void key_pressed(rpg_t *rpg)
     if (rpg->event.key.code == sfKeyC) {
         if (IN_OVERWORLD) {
             rpg->scene = COMBAT;
-            // do_transition(rpg, rpg->combat->transt);
             rpg->cam.r = 0;
         } else if (rpg->scene == COMBAT) {
             rpg->scene = OVERWORLD;
@@ -66,6 +65,7 @@ int event(rpg_t *rpg)
         buttons_controls_option_ig(rpg, BUTTONSO, rpg->event);
     if (rpg->event.type == sfEvtKeyPressed)
         key_pressed(rpg);
-    get_dir(rpg);
+    if (IN_OVERWORLD)
+        get_dir(rpg);
     return 0;
 }

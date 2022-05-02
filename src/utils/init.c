@@ -33,7 +33,7 @@ int init_sfml(rpg_t *rpg, int debug_mode)
 
 int init_all(rpg_t *rpg)
 {
-    rpg->combat = init_combat();
+    init_combat(rpg);
     init_cam(rpg);
     init_world(rpg);
     // init_shaders(rpg);
@@ -47,5 +47,6 @@ int init_all(rpg_t *rpg)
     rpg->texture = init_struct_texture("assets/environement/pr.png", rpg);
     rpg->scene = OVERWORLD;
     play_music(rpg);
+    rpg->change = false;
     return 0;
 }

@@ -87,11 +87,11 @@ void buttons_controls_option_ig(rpg_t *rpg, bt_list_t *bt_list, sfEvent event)
 {
     int button;
 
-    if (rpg->menu->option->is_active == true && rpg->menu->option->is_main == true) {
+    if (rpg->menu->option->is_active == true && rpg->menu->option->is_main) {
         button = detect_click_on_bt(bt_list, event, 0, 4);
         do_button_option_ig(rpg, button);
     }
-    if (rpg->menu->option->music == true && rpg->menu->option->is_active == true) {
+    if (rpg->menu->option->music && rpg->menu->option->is_active) {
         button = detect_click_on_bt(bt_list, event, 4, 5);
         if (button == -1)
             button = detect_click_on_bt_2(bt_list, event, 5, 6);
@@ -103,7 +103,7 @@ void buttons_controls_option_ig(rpg_t *rpg, bt_list_t *bt_list, sfEvent event)
             button = detect_click_on_bt(bt_list, event, 8, 9);
         do_button_music_ig(rpg, button);
     }
-    if (rpg->menu->option->keybinds == true && rpg->menu->option->is_active == true) {
+    if (rpg->menu->option->keybinds && rpg->menu->option->is_active) {
         button = detect_click_on_bt_2(bt_list, event, 9, 17);
         if (button == -1)
             button = detect_click_on_bt(bt_list, event, 17, 18);

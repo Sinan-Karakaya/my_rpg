@@ -11,11 +11,12 @@
 
 static int create_ennemy(combat_t *com)
 {
+    com->ennemy->sprite = sfSprite_create();
     com->ennemy->texture = sfTexture_createFromFile(BOSS_PATH, NULL);
     if (!com->ennemy->texture)
-        return 1;
-    com->ennemy->sprite = sfSprite_create();
-    sfSprite_setTexture(com->ennemy->sprite, com->ennemy->texture, sfTrue);
+        sfSprite_setColor(com->ennemy->sprite, sfRed);
+    else
+        sfSprite_setTexture(com->ennemy->sprite, com->ennemy->texture, sfTrue);
     com->ennemy->pos = (sfVector2f){RES_X / 5, RES_Y / 3};
     sfSprite_setPosition(com->ennemy->sprite, com->ennemy->pos);
     com->ennemy->rect = (sfIntRect){0, 0, BOSS_WIDTH, BOSS_HEIGHT};
@@ -47,11 +48,12 @@ static void create_player_bis(combat_t *com)
 
 static int create_player(combat_t *com)
 {
+    com->player->sprite = sfSprite_create();
     com->player->texture = sfTexture_createFromFile(OLBERIC_CL_PATH, NULL);
     if (!com->player->texture)
-        return 1;
-    com->player->sprite = sfSprite_create();
-    sfSprite_setTexture(com->player->sprite, com->player->texture, sfTrue);
+        sfSprite_setColor(com->player->sprite, sfRed);
+    else
+        sfSprite_setTexture(com->player->sprite, com->player->texture, sfTrue);
     com->player->pos = (sfVector2f){RES_X / 1.5, RES_Y / 1.7};
     sfSprite_setPosition(com->player->sprite, com->player->pos);
     com->player->rect = (sfIntRect){687, 0, OLBERIC_WIDTH, OLBERIC_HEIGHT};
@@ -80,19 +82,19 @@ static int create_transt(transt_t *e)
     return 0;
 }
 
-combat_t *init_combat(void)
+void init_combat(rpg_t *rpg)
 {
-    combat_t *combat = malloc(sizeof(combat_t));
+    rpg->combat = malloc(sizeof(combat_t));
 
-    if (!combat)
-        return NULL;
-    combat->ennemy = malloc(sizeof(entity_t));
-    combat->player = malloc(sizeof(entity_t));
-    combat->transt = malloc(sizeof(transt_t));
-    if (!combat->ennemy || !combat->player || combat->transt)
-        return NULL;
-    if (create_ennemy(combat) || create_player(combat) || create_hud(combat) ||
-        create_transt(combat->transt))
-        return NULL;
-    return combat;
+    if (!rpg->combat)
+        return;
+    rpg->combat->ennemy = malloc(sizeof(entity_t));
+    rpg->combat->player = malloc(sizeof(entity_t));
+    rpg->combat->transt = malloc(sizeof(transt_t));
+    if (!rpg->combat->ennemy || !rpg->combat->player || !rpg->combat->transt)
+        return;
+    create_ennemy(rpg->combat);
+    create_player(rpg->combat);
+    create_hud(rpg->combat);
+    create_transt(rpg->combat->transt);
 }
