@@ -43,7 +43,7 @@
 #define BOSS_HEIGHT 170
 #define BOSS_HEALTH 1000
 
-#define OLBERIC_AP_PATH "assets/combat/player/olberic_cmb_apo.png"
+#define OLBERIC_WA_PATH "assets/combat/player/olberic_cmb_apo.png"
 #define OLBERIC_CL_PATH "assets/combat/player/olberic_cmb_cleric.png"
 #define OLBERIC_PE_PATH "assets/combat/player/olberic_cmb_pea.png"
 #define OLBERIC_OW_PATH "assets/overworld/player_overworld.png"

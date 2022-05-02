@@ -44,6 +44,7 @@ static void create_player_bis(combat_t *com)
     com->player->stat->attack = 10;
     com->player->stat->defense = 10;
     com->player->stat->level = 1;
+    com->player->stat->class = RPG_CLASS_WARRIOR;
 }
 
 static int create_player(combat_t *com)
