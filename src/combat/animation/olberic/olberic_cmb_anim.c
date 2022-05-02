@@ -25,10 +25,10 @@ void olberic_do_attack(entity_t *player, combat_t *combat, rpg_t *rpg)
         (combat->ennemy->stat->defense / 2) + get_rand_small_range();
         player->cmb_state = RPG_COMBAT_PLAYER_IDLE;
         combat->state = RPG_COMBAT_ENNEMY;
-    }
-    sfSprite_setTextureRect(player->sprite, player->rect);
+    } sfSprite_setTextureRect(player->sprite, player->rect);
     sfRenderWindow_drawSprite(rpg->window, player->sprite, NULL);
     sfClock_restart(player->clock);
+    sfSound_play(combat->sfx->sound);
 }
 
 void olberic_do_idle(entity_t *player)

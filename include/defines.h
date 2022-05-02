@@ -43,7 +43,7 @@
 #define BOSS_HEIGHT 170
 #define BOSS_HEALTH 1000
 
-#define OLBERIC_AP_PATH "assets/combat/player/olberic_cmb_apo.png"
+#define OLBERIC_WA_PATH "assets/combat/player/olberic_cmb_apo.png"
 #define OLBERIC_CL_PATH "assets/combat/player/olberic_cmb_cleric.png"
 #define OLBERIC_PE_PATH "assets/combat/player/olberic_cmb_pea.png"
 #define OLBERIC_OW_PATH "assets/overworld/player_overworld.png"
@@ -69,6 +69,16 @@
 #define CREATE_CHAT sfTexture_createFromFile("assets/pnj/chatbox.png", NULL)
 #define SET_TEX sfSprite_setTexture
 #define TEX_CB rpg->world->gui.chatbox_texture,
+
+#define CALCUL_1(x, y, i, j) (sfVector2f){((point[1].x - point[0].x) / 150 * \
+                             (offset_tab[rpg->world->object_map[i][j]].y - \
+                             offset_tab[rpg->world->object_map[i][j]].x)), \
+                             -(point[1].x - point[0].x) * 0.1})
+
+#define CALCUL_2(x, y, i, j) (sfVector2f){point[0].x + ((point[1].x - \
+                             point[0].x) / 150 * \
+                             offset_tab[rpg->world->object_map[i][j]].x),\
+                             point[0].y})
 
 extern const int olberic_rect_left[26];
 extern const int olberic_rect_w[26];

@@ -40,9 +40,9 @@ bool do_aabb_sprites_rectangle(sfSprite *sp1, sfRectangleShape *sp2)
     sfVector2f pos2 = sfRectangleShape_getPosition(sp2);
     sfIntRect r1 = sfSprite_getTextureRect(sp1);
     sfVector2f r2 = sfRectangleShape_getSize(sp2);
+
     if (r2.y < 0)
         r2.y *= -1;
-
     if(pos1.x < pos2.x + r2.x &&
     pos1.x + r1.width > pos2.x &&
     pos1.y < pos2.y + r2.y &&

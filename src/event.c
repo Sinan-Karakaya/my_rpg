@@ -9,26 +9,20 @@
 
 void player_movement(rpg_t *rpg)
 {
+    int multiplicator = 1;
+
+    if (!rpg->ow_can_move)
+        multiplicator = -1;
+    if (rpg->debug_toggle)
+        multiplicator *= 5;
     if (rpg->event.key.code == KEYDOWN && IN_OVERWORLD) {
-        if (rpg->ow_can_move)
-        rpg->cam.y -= 600 * rpg->dt;
-        else
-            rpg->cam.y += 600 * rpg->dt;
+        rpg->cam.y -= 60 * rpg->dt * multiplicator;
     } if (rpg->event.key.code == KEYUP && IN_OVERWORLD) {
-        if (rpg->ow_can_move)
-            rpg->cam.y += 600 * rpg->dt;
-        else
-            rpg->cam.y -= 600 * rpg->dt;
+        rpg->cam.y += 60 * rpg->dt * multiplicator;
     } if (rpg->event.key.code == KEYRIGHT && IN_OVERWORLD) {
-        if (rpg->ow_can_move)
-            rpg->cam.x += 2000 * rpg->dt;
-        else
-            rpg->cam.x -= 2000 * rpg->dt;
+        rpg->cam.x += 200 * rpg->dt * multiplicator;
     } if (rpg->event.key.code == KEYLEFT && IN_OVERWORLD) {
-        if (rpg->ow_can_move)
-            rpg->cam.x -= 2000 * rpg->dt;
-        else
-            rpg->cam.x += 2000 * rpg->dt;
+        rpg->cam.x -= 200 * rpg->dt * multiplicator;
     }
 }
 
