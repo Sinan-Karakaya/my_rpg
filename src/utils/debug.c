@@ -54,7 +54,6 @@ static void print_hitboxes(rpg_t *rpg)
     sfRenderWindow_drawRectangleShape(rpg->window, rect, NULL);
 }
 
-
 void print_debug(rpg_t *rpg)
 {
     if (!rpg->debug_toggle)

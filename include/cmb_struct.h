@@ -89,4 +89,6 @@ typedef struct combat {
     transt_t *transt;
     sfx_t *sfx;
     e_combat_state state;
+    bool transition_cmb;
+    bool transition_ow;
 } combat_t;

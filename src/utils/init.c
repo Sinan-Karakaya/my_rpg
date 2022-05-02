@@ -33,7 +33,7 @@ int init_sfml(rpg_t *rpg, int debug_mode)
 
 int init_all(rpg_t *rpg)
 {
-    rpg->combat = init_combat();
+    init_combat(rpg);
     load_loop(rpg, 1);
     init_cam(rpg), load_loop(rpg, 2);
     init_world(rpg), load_loop(rpg, 3);
@@ -50,5 +50,7 @@ int init_all(rpg_t *rpg)
     rpg->scene = OVERWORLD;
     play_music(rpg);
     init_inventory(rpg), load_loop(rpg, 11);
+    rpg->combat->transition_ow = false;
+    rpg->combat->transition_cmb = false;
     return 0;
 }
