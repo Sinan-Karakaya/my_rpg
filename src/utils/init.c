@@ -71,10 +71,8 @@ int init_all(rpg_t *rpg)
     init_keybind(rpg), load_loop(rpg, 8);
     init_inventory(rpg), load_loop(rpg, 9);
     rpg->texture = init_struct_texture("assets/environement/pr.png", rpg);
-    init_inventory(rpg), load_loop(rpg, 10);
     rpg->scene = OVERWORLD;
     play_music(rpg);
-    init_inventory(rpg), load_loop(rpg, 11);
     rpg->combat->transition_ow = false;
     rpg->combat->transition_cmb = false;
     return 0;

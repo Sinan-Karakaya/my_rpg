@@ -9,7 +9,7 @@
 
 #include <unistd.h>
 
-#define ERROR(str) write(2, "ERROR: Could not load:", 24); \
+#define ERROR(str) write(2, "ERROR: Could not load:", 23); \
                    write(2, str, my_strlen(str)); \
                    write(2, "\n", 1);
 

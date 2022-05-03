@@ -1,4 +1,9 @@
 lvl:1
 xp:0
+<<<<<<< HEAD
 health:0
 class:000
+=======
+health:96
+class:000s:0:0
+>>>>>>> 3dbf7809a784ef2c06258014890b20515eacdaea
