@@ -19,7 +19,6 @@ static void make_inventory(rpg_t *rpg, char *value)
 {
     int index = 0;
 
-    printf("%s\n", value);
     if (my_strlen(value) != 34)
         return;
     for (int i = 0; value[i] != '\n' || i < 34; i++) {
@@ -32,7 +31,6 @@ static void make_inventory(rpg_t *rpg, char *value)
 
 static void assign_stat(rpg_t *rpg, char *type, char *value)
 {
-    printf("%s\n", value);
     if (my_strcmp(type, "level") == 0)
         rpg->combat->player->stat->level = my_getnbr(value);
     if (my_strcmp(type, "health") == 0)

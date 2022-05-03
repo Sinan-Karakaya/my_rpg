@@ -58,12 +58,14 @@ void init_inventory(rpg_t *rpg)
         rpg->menu->inventory->slots[i]->sprite = NULL;
     }
     init_button_inventory(rpg);
+    rpg->combat->player->stat->stuff = malloc(sizeof(stuff_t));
+    rpg->combat->player->stat->stuff->life = 0;
+    rpg->combat->player->stat->stuff->defense = 0;
+    rpg->combat->player->stat->stuff->attack = 0;
     rpg->menu->inventory->slots[0]->item_id = 1;
     rpg->menu->inventory->slots[1]->item_id = 2;
-    rpg->menu->inventory->slots[2]->item_id = 3;
-    rpg->menu->inventory->slots[3]->item_id = 4;
     rpg->menu->inventory->slots[4]->item_id = 5;
     rpg->menu->inventory->slots[5]->item_id = 6;
     rpg->menu->inventory->slots[6]->item_id = 7;
-    rpg->menu->inventory->slots[33]->item_id = 6;
+    rpg->menu->inventory->slots[15]->item_id = 6;
 }
