@@ -21,6 +21,7 @@ static int change_slots(rpg_t *rpg, int button, int key)
     rpg->menu->inventory->slots[key]->item_id =
     rpg->menu->inventory->slots[button]->item_id;
     rpg->menu->inventory->slots[button]->item_id = save;
+    sfRenderWindow_display(rpg->window);
 }
 
 int manage_inv(rpg_t *rpg, int button)
@@ -30,8 +31,6 @@ int manage_inv(rpg_t *rpg, int button)
     if (button == -1)
         return (-1);
     while (key == -1) {
-        print_parralax(rpg);
-        print_inventory(rpg);
         while (sfRenderWindow_pollEvent(rpg->window, &rpg->event)) {
             print_parralax(rpg);
             print_inventory(rpg);
@@ -45,6 +44,5 @@ int manage_inv(rpg_t *rpg, int button)
             sfRenderWindow_display(rpg->window);
         }
     }
-    printf("Key and button%d, %d\n", key, button);
     return change_slots(rpg, button, key);
 }

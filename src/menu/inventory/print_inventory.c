@@ -32,13 +32,22 @@ void check_inv(rpg_t *rpg)
     for (size_t nbline = 0; nbline < 5; nbline++) {
         for (size_t nbcol = 0; nbcol < 6; nbcol++) {
             item_id = rpg->menu->inventory->slots[x]->item_id;
-            if (rpg->menu->inventory->slots[x]->item_id != 0 && rpg->menu->inventory->slots[x]->sprite == NULL
-            && rpg->menu->inventory->slots[x]->item_id < 8) {
+            if (item_id != 0 && rpg->menu->inventory->slots[x]->sprite == NULL
+            && item_id < 8) {
                 rpg->menu->inventory->slots[x]->sprite
                 = init_sprite((sfVector2f){750 + 120 * nbcol, 150 + 115 * nbline}, inv[item_id]);
             }
             x++;
         }
+    }
+    for (size_t i = 30, y = 0; i < 34; i++) {
+        item_id = rpg->menu->inventory->slots[i]->item_id;
+        if (rpg->menu->inventory->slots[i]->item_id != 0
+        && rpg->menu->inventory->slots[i]->sprite == NULL && item_id < 8) {
+            rpg->menu->inventory->slots[i]->sprite = init_sprite(
+            (sfVector2f){1490, 180 + 140 * y}, inv[item_id]);
+        }
+        y++;
     }
 }
 
@@ -51,7 +60,7 @@ void print_inventory(rpg_t *rpg)
 {
     check_inv(rpg);
     sfRenderWindow_drawSprite(rpg->window, rpg->menu->inventory->sprite, NULL);
-    for (size_t x = 0; x < 30; x++) {
+    for (size_t x = 0; x < 34; x++) {
         if (rpg->menu->inventory->slots[x]->sprite != NULL
         && rpg->menu->inventory->slots[x]->item_id != 0) {
             sfRenderWindow_drawSprite(rpg->window,

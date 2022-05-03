@@ -56,6 +56,7 @@ int errors_manager(void)
             write(2, "Error occured in the loading of the assets.\n", 44);
             return (84);
         }
+        close(fd);
     }
     return (0);
 }
