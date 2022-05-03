@@ -68,7 +68,6 @@ int init_all(rpg_t *rpg)
     init_sound(rpg), load_loop(rpg, 4);
     init_menu(rpg), load_loop(rpg, 5);
     init_buttons(rpg), load_loop(rpg, 6);
-    // init_player_overworld(rpg), load_loop(rpg, 7);
     init_keybind(rpg), load_loop(rpg, 8);
     init_inventory(rpg), load_loop(rpg, 9);
     rpg->texture = init_struct_texture("assets/environement/pr.png", rpg);

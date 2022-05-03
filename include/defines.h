@@ -7,6 +7,12 @@
 
 #pragma once
 
+#include <unistd.h>
+
+#define ERROR(str) write(2, "ERROR: Could not load:", 24); \
+                   write(2, str, my_strlen(str)); \
+                   write(2, "\n", 1);
+
 #define RES_X 1920
 #define RES_Y 1080
 
@@ -24,6 +30,8 @@
 #define SHADER_PATH "shader/fragment_shader.fs"
 
 #define IN_OVERWORLD (rpg->scene == OVERWORLD)
+#define OVERWORLD_MUSIC "assets/music/vista.ogg"
+#define BATTLE_MUSIC NULL
 
 // Thanks Epitech's norm
 #define OW rpg->overworld

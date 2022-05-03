@@ -39,7 +39,7 @@ void *my_memset(void *dest, int value, size_t len);
 void *my_memcpy(void *dest, const void *src, size_t len);
 char *my_strsep(char *str, const char *delim, char **saveptr);
 
-//printf
+//my_printf
 
 int my_printf(const char *format, ...);
 void print_char(va_list list);

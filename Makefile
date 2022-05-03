@@ -63,6 +63,7 @@ SRC = src/core.c	\
 	  src/overworld/player_overworld.c \
 	  src/overworld/collision.c \
 	  src/save/read_save.c \
+	  src/save/make_save.c \
 	  src/utils/y_sorter.c \
 	  src/combat/combat_transition.c \
 	  src/menu/game_over/game_over.c \
