@@ -23,14 +23,17 @@ static sfSprite *init_sprite(sfVector2f pos, char *filename)
 void check_inv(rpg_t *rpg)
 {
     static char *inv[] = {"NULL", "assets/items/armor.png",
-    "assets/items/godsbeard.png", "assets/items/sword.png"};
+    "assets/items/godsbeard.png", "assets/items/sword.png",
+    "assets/items/armor_rm.png", "assets/items/helmet_rm.png",
+    "assets/items/sword_rm.png", "assets/items/boots.png"};
     size_t item_id;
     size_t x = 0;
 
     for (size_t nbline = 0; nbline < 5; nbline++) {
         for (size_t nbcol = 0; nbcol < 6; nbcol++) {
             item_id = rpg->menu->inventory->slots[x]->item_id;
-            if (rpg->menu->inventory->slots[x]->item_id != 0 && rpg->menu->inventory->slots[x]->sprite == NULL) {
+            if (rpg->menu->inventory->slots[x]->item_id != 0 && rpg->menu->inventory->slots[x]->sprite == NULL
+            && rpg->menu->inventory->slots[x]->item_id < 8) {
                 rpg->menu->inventory->slots[x]->sprite
                 = init_sprite((sfVector2f){750 + 120 * nbcol, 150 + 115 * nbline}, inv[item_id]);
             }

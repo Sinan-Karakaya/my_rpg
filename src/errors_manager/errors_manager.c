@@ -9,6 +9,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
+#include <unistd.h>
 
 const static char *errors[] = {
     "assets/combat/player/olberic_cmb_apo.png",

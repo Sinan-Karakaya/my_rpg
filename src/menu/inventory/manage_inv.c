@@ -33,6 +33,8 @@ int manage_inv(rpg_t *rpg, int button)
         print_parralax(rpg);
         print_inventory(rpg);
         while (sfRenderWindow_pollEvent(rpg->window, &rpg->event)) {
+            print_parralax(rpg);
+            print_inventory(rpg);
             if (rpg->event.type == sfEvtClosed)
                 sfRenderWindow_close(rpg->window);
             if (rpg->event.type == sfEvtMouseButtonPressed)

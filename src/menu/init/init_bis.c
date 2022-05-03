@@ -53,10 +53,12 @@ void init_inventory(rpg_t *rpg)
         rpg->menu->inventory->slots[i]->sprite = NULL;
     }
     init_button_inventory(rpg);
-    rpg->menu->inventory->slots[0]->item_id = 3;
-    rpg->menu->inventory->slots[5]->item_id = 1;
-    rpg->menu->inventory->slots[9]->item_id = 2;
-    rpg->menu->inventory->slots[12]->item_id = 1;
-    rpg->menu->inventory->slots[20]->item_id = 3;
-    rpg->menu->inventory->slots[24]->item_id = 2;
+    rpg->menu->inventory->slots[0]->item_id = 1;
+    rpg->menu->inventory->slots[1]->item_id = 2;
+    rpg->menu->inventory->slots[2]->item_id = 3;
+    rpg->menu->inventory->slots[3]->item_id = 4;
+    rpg->menu->inventory->slots[4]->item_id = 5;
+    rpg->menu->inventory->slots[5]->item_id = 6;
+    rpg->menu->inventory->slots[6]->item_id = 7;
+    rpg->menu->inventory->slots[7]->item_id = 8;
 }
