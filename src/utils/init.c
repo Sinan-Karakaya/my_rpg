@@ -59,7 +59,6 @@ int init_all(rpg_t *rpg)
 {
     init_combat(rpg);
     init_player_overworld(rpg);
-    read_save(rpg);
     change_class_texture(rpg);
     load_loop(rpg, 1);
     init_cam(rpg), load_loop(rpg, 2);
@@ -70,6 +69,7 @@ int init_all(rpg_t *rpg)
     init_buttons(rpg), load_loop(rpg, 6);
     init_keybind(rpg), load_loop(rpg, 8);
     init_inventory(rpg), load_loop(rpg, 9);
+    read_save(rpg);
     rpg->texture = init_struct_texture("assets/environement/pr.png", rpg);
     rpg->scene = OVERWORLD;
     play_music(rpg);

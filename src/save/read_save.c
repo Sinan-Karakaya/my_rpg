@@ -22,17 +22,18 @@ static void make_inventory(rpg_t *rpg, char *value)
     printf("%s\n", value);
     if (my_strlen(value) != 34)
         return;
-    for (int i = 0; value[i] != '\n' || i < 34; i++) {
-        if (value[i] >= '1' && value <= '8') {
+    for (int i = 0; i < 34; i++) {
+        if (value[i] >= '1' && value[i] <= '8') {
             INVENTORY->slots[i]->item_id = value[i] - '0';
             index++;
+        } else {
+            break;
         }
     }
 }
 
-static void assign_stat(rpg_t *rpg, char *type, char *value)
+static int assign_stat(rpg_t *rpg, char *type, char *value)
 {
-    printf("%s\n", value);
     if (my_strcmp(type, "level") == 0)
         rpg->combat->player->stat->level = my_getnbr(value);
     if (my_strcmp(type, "health") == 0)
@@ -40,8 +41,11 @@ static void assign_stat(rpg_t *rpg, char *type, char *value)
     if (my_strcmp(type, "class") == 0 && my_getnbr(value) >= 0 &&
     my_getnbr(value) < 3)
         rpg->combat->player->stat->class = my_getnbr(value);
-    if (my_strcmp(type, "inventory" == 0))
+    if (my_strcmp(type, "inventory") == 0) {
         make_inventory(rpg, value);
+        return 1;
+    }
+    return 0;
 }
 
 static void parse_save(rpg_t *rpg, char *buffer)
@@ -53,7 +57,8 @@ static void parse_save(rpg_t *rpg, char *buffer)
         return;
     for (size_t i = 0; arr[i]; i++) {
         my_strsep(arr[i], ":", &saveptr);
-        assign_stat(rpg, arr[i], saveptr);
+        if (assign_stat(rpg, arr[i], saveptr))
+            break;
     }
 }
 
