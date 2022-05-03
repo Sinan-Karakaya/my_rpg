@@ -65,6 +65,13 @@ typedef struct slots_s {
     int item_xp;
 } slots_t;
 
+typedef struct menu_class_s {
+    sfTexture *texture;
+    sfSprite *sprite;
+    sfFont *font;
+    sfText *text;
+} menu_class_t;
+
 typedef struct menu_inventory_s {
     sfSprite *sprite;
     slots_t **slots;
@@ -78,9 +85,12 @@ typedef struct menu {
     bool is_option;
     bool is_inventory;
     bool is_closed;
+    bool is_class;
+    bool no_class;
     menu_main_t *main;
     menu_option_t *option;
     menu_inventory_t *inventory;
+    menu_class_t *class;
 } menu_t;
 
 #endif

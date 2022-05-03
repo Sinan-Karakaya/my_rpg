@@ -27,6 +27,8 @@
 #define MENU_FAR "assets/menu/farground.png"
 #define MENU_MID "assets/menu/midground.png"
 
+#define CLASS_MENU "assets/menu/class_selection.png"
+
 #define SHADER_PATH "shader/fragment_shader.fs"
 
 #define IN_OVERWORLD (rpg->scene == OVERWORLD)

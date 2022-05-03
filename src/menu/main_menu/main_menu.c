@@ -56,7 +56,8 @@ int menuloop(rpg_t *rpg)
     (rpg->menu->is_option && sfRenderWindow_isOpen(rpg->window))) {
         if (manage_controls(rpg) == 1)
             return 1;
-        if (rpg->menu->is_main == true && rpg->menu->is_option == false) {
+        if (rpg->menu->is_main == true && rpg->menu->is_option == false &&
+        rpg->menu->is_class == false) {
             print_parralax(rpg);
             display_buttons_main(rpg);
             sfRenderWindow_display(rpg->window);
@@ -64,6 +65,10 @@ int menuloop(rpg_t *rpg)
         if (rpg->menu->is_option == true && rpg->menu->is_main == false) {
             print_parralax(rpg);
             display_buttons_option(rpg);
+            sfRenderWindow_display(rpg->window);
+        } if (rpg->menu->is_class) {
+            print_parralax(rpg);
+            class_menu(rpg);
             sfRenderWindow_display(rpg->window);
         }
     }

@@ -39,6 +39,7 @@ float get_dt(sfClock *game_clock);
 int get_rand_small_range(void);
 void free_rpg(rpg_t *rpg);
 bool do_aabb_mouse(sfMouseButtonEvent mouse, sfSprite *sp);
+bool do_aabb_mouse_rect(sfMouseButtonEvent mouse, sfIntRect rect);
 bool do_aabb_sprites(sfSprite *sp1, sfSprite *sp2);
 bool do_aabb_sprites_rectangle(sfSprite *sp1, sfRectangleShape *sp2);
 void y_sorter(rpg_t *rpg, float player_y);
@@ -139,6 +140,11 @@ void clearstrnbr(char *str, int len);
 void loop_int_to_str(int data[], int *big_num, int *pos, char *str);
 char *int_to_str(int nb);
 int init_my_text(stats_t *stat);
+
+//CLASS MENU
+void init_class_menu(rpg_t *rpg);
+void class_menu(rpg_t *rpg);
+void class_menu_button(sfEvent event, rpg_t *rpg);
 
 // SAVE
 bool read_save(rpg_t *rpg);

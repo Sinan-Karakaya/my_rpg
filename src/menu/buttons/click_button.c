@@ -7,7 +7,7 @@
 
 #include "my_rpg.h"
 
-static int test_click_on_bt (sfVector2f coord_click, button_t *button, int len,
+static int test_click_on_bt(sfVector2f coord_click, button_t *button, int len,
 int height)
 {
     sfVector2f pos = sfSprite_getPosition(button->sprite);

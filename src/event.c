@@ -65,6 +65,8 @@ int event(rpg_t *rpg)
         return 1;
     }
     if (rpg->event.type == sfEvtMouseButtonPressed) {
+        if (rpg->menu->is_class)
+            class_menu_button(rpg->event, rpg);
         buttons_controls_option_ig(rpg, BUTTONSO, rpg->event);
         slots_controls(rpg, rpg->event);
     }
