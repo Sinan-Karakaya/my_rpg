@@ -6,6 +6,7 @@
 */
 
 #include <stdlib.h>
+#include <stdio.h>
 #include "my_rpg.h"
 
 int init_sfml(rpg_t *rpg, int debug_mode)
@@ -31,9 +32,35 @@ int init_sfml(rpg_t *rpg, int debug_mode)
     return 0;
 }
 
+static void change_texture(rpg_t *rpg, char *path, char *path_ow)
+{
+    rpg->combat->player->texture = sfTexture_createFromFile(path, NULL);
+    sfSprite_setTexture(rpg->combat->player->sprite,
+    rpg->combat->player->texture, sfFalse);
+    OW->texture = sfTexture_createFromFile(path_ow, NULL);
+    sfSprite_setTexture(OW->spr, OW->texture, sfFalse);
+}
+
+static void change_class_texture(rpg_t *rpg)
+{
+    if (rpg->combat->player->stat->class == RPG_CLASS_WARRIOR) {
+        change_texture(rpg, OLBERIC_WA_PATH, OLBERIC_OW_PATH);
+        return;
+    } if (rpg->combat->player->stat->class == RPG_CLASS_CLERIC) {
+        change_texture(rpg, OLBERIC_CL_PATH, OLBERIC_OW_CL_PATH);
+        return;
+    } if (rpg->combat->player->stat->class == RPG_CLASS_PEASANT) {
+        change_texture(rpg, OLBERIC_PE_PATH, OLBERIC_OW_PE_PATH);
+        return;
+    }
+}
+
 int init_all(rpg_t *rpg)
 {
     init_combat(rpg);
+    init_player_overworld(rpg);
+    read_save(rpg);
+    change_class_texture(rpg);
     load_loop(rpg, 1);
     init_cam(rpg), load_loop(rpg, 2);
     init_world(rpg), load_loop(rpg, 3);
@@ -41,10 +68,8 @@ int init_all(rpg_t *rpg)
     init_sound(rpg), load_loop(rpg, 4);
     init_menu(rpg), load_loop(rpg, 5);
     init_buttons(rpg), load_loop(rpg, 6);
-    init_player_overworld(rpg), load_loop(rpg, 7);
     init_keybind(rpg), load_loop(rpg, 8);
     init_inventory(rpg), load_loop(rpg, 9);
-    // read_save(rpg);          CRASH?
     rpg->texture = init_struct_texture("assets/environement/pr.png", rpg);
     init_inventory(rpg), load_loop(rpg, 10);
     rpg->scene = OVERWORLD;

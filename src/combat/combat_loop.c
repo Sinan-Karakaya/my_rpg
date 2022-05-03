@@ -33,6 +33,9 @@ static void get_input(entity_t *player, combat_t *combat, rpg_t *rpg)
     player->cmb_state == RPG_COMBAT_PLAYER_IDLE) {
         player->cmb_state = RPG_COMBAT_PLAYER_PROTECT;
         combat->state = RPG_COMBAT_ENNEMY;
+    } if (sfKeyboard_isKeyPressed(sfKeyR) &&
+    player->cmb_state == RPG_COMBAT_PLAYER_IDLE) {
+        combat->transition_cmb = true;
     }
     check_player_state(combat->player, combat, rpg);
 }

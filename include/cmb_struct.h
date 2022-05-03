@@ -43,6 +43,10 @@ typedef struct stats {
     int defense;
     int life;
     int xp;
+    sfText *text_attack;
+    sfText *text_defense;
+    sfText *text_life;
+    sfText *text_level;
     e_class_type class;
 } stats_t;
 

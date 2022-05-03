@@ -46,6 +46,8 @@ int main(int ac, char **av)
     int debug_mode = handle_args(ac, av);
     rpg_t *rpg = malloc(sizeof(rpg_t));
 
+    if (errors_manager() == 84)
+       return 84;
     if (debug_mode == -1)
         return 0;
     if (!rpg || init_sfml(rpg, debug_mode))
@@ -55,6 +57,7 @@ int main(int ac, char **av)
     rpg->world->npc_list[0] = (npc_t){"PNJ 1", (sfVector2i){18, 18},2 , 50 , 20 , 20 , 20};
     fill_map(rpg);
     do_loop(rpg);
+    save_game(rpg);
     free_rpg(rpg);
     return 0;
 }

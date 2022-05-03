@@ -61,7 +61,7 @@ int init_sound(rpg_t *rpg)
     rpg->sounds = malloc(sizeof(music_t));
     if (!rpg->sounds)
         return 84;
-    rpg->sounds->music = sfMusic_createFromFile("assets/music/vista.ogg");
+    rpg->sounds->music = sfMusic_createFromFile(OVERWORLD_MUSIC);
     rpg->sounds->is_played = true;
     rpg->sounds->sound_music = 15;
     rpg->sounds->sound_effect = 15;
@@ -84,7 +84,7 @@ int init_buttons(rpg_t *rpg)
     if (!rpg->menu->main->buttons->lst_bt)
         return 84;
     rpg->menu->option->buttons->nbr_bt = nbr_buttons2;
-    rpg->menu->option->buttons->lst_bt = malloc(sizeof(button_t *) *
+    rpg->menu->option->buttons->lst_bt = malloc(sizeof(bt_list_t *) *
     nbr_buttons2);
     if (!rpg->menu->option->buttons->lst_bt)
         return 84;

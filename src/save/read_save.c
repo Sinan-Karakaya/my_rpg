@@ -19,8 +19,11 @@ static void assign_stat(rpg_t *rpg, char *type, char *value)
 {
     if (my_strcmp(type, "level") == 0)
         rpg->combat->player->stat->level = my_getnbr(value);
-    else if (my_strcmp(type, "health") == 0)
+    if (my_strcmp(type, "health") == 0)
         rpg->combat->player->life = my_getnbr(value);
+    if (my_strcmp(type, "class") == 0 && my_getnbr(value) >= 0 &&
+    my_getnbr(value) < 3)
+        rpg->combat->player->stat->class = my_getnbr(value);
 }
 
 static void parse_save(rpg_t *rpg, char *buffer)

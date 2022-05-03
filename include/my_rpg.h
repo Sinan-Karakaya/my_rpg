@@ -58,6 +58,7 @@ void init_combat(rpg_t *rpg);
 void combat_loop(rpg_t *rpg, combat_t *combat);
 void do_transition_ow(rpg_t *rpg, transt_t *e);
 void do_transition_cmb(rpg_t *rpg, transt_t *e);
+void do_transition_death(rpg_t *rpg, transt_t *e);
 // COMBAT -> OLBERIC
 void olberic_do_attack(entity_t *player, combat_t *combat, rpg_t *rpg);
 void olberic_do_idle(entity_t *player);
@@ -104,6 +105,7 @@ int play_music(rpg_t *rpg);
 int init_menu(rpg_t *rpg);
 int menuloop(rpg_t *rpg);
 int load_loop(rpg_t *rpg, int n);
+void draw_game_over(rpg_t *rpg);
 
 //BUTTONS
 void buttons_controls_menu(rpg_t *rpg, bt_list_t *bt_list, sfEvent event);
@@ -124,12 +126,27 @@ int detect_click_on_bt_2(bt_list_t *bt_list, sfEvent event, size_t s, size_t e);
 //INVENTORY
 void print_inventory(rpg_t *rpg);
 void init_inventory(rpg_t *rpg);
+int detect_click_on_inv(bt_list_t *bt_list, sfEvent event, size_t s, size_t e);
+button_t *create_slots(char *str, sfVector2f pos, int ptr_f, char *img);
+int manage_inv(rpg_t *rpg, int button);
+void check_inv(rpg_t *rpg);
+int slots_controls(rpg_t *rpg, sfEvent event);
+
+//INVENTORY UTILS
+void clearstrnbr(char *str, int len);
+void loop_int_to_str(int data[], int *big_num, int *pos, char *str);
+char *int_to_str(int nb);
+int init_my_text(stats_t *stat);
 
 // SAVE
 bool read_save(rpg_t *rpg);
+void save_game(rpg_t *rpg);
 
 //OBJECT
 void draw_object(rpg_t *rpg);
+
+//ERROR_MANAGER
+int errors_manager(void);
 
 //MAIN
 void do_loop(rpg_t *rpg);
