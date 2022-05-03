@@ -41,8 +41,8 @@ void key_pressed(rpg_t *rpg)
             OW->rect.left = 0;
             sfSprite_setTextureRect(OW->spr, OW->rect);
         } else {
-            rpg->menu->option->is_active = true;
-            rpg->menu->is_inventory = true;
+            rpg->menu->option->is_active = false;
+            rpg->menu->is_inventory = false;
             sfSprite_setPosition(OW->spr, (sfVector2f){RES_X / 2, RES_Y / 2});
             sfSprite_setScale(OW->spr, (sfVector2f){2, 2});
         }
