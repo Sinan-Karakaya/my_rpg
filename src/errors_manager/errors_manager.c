@@ -17,7 +17,6 @@ const char *errors[] = {
     "assets/combat/player/olberic_cmb_pea.png",
     "assets/combat/boss_spritesheet.png",
     "assets/combat/slash.png",
-    "assets/environement/pn.png",
     "assets/environement/po.png",
     "assets/environement/pr.png",
     "assets/font/arial/arial.ttf",

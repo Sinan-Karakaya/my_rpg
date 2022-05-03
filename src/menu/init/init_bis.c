@@ -27,10 +27,10 @@ static void init_button_inventory(rpg_t *rpg)
     size_t y = 0;
 
     rpg->menu->inventory->buttons = malloc(sizeof(bt_list_t));
-    rpg->menu->inventory->buttons->nbr_bt = 30;
+    rpg->menu->inventory->buttons->nbr_bt = 34;
     rpg->menu->inventory->buttons->lst_bt = malloc(sizeof(button_t *) *
     (rpg->menu->inventory->buttons->nbr_bt));
-    for (size_t i = 0; i < rpg->menu->inventory->buttons->nbr_bt; i++) {
+    for (size_t i = 0; i < 30; i++) {
         rpg->menu->inventory->buttons->lst_bt[i] = create_slots(" ",
         (sfVector2f){750 + 120 * x, 150 + 115 * y}, 100, "assets/menu/slots.png");
         x++;
@@ -38,6 +38,11 @@ static void init_button_inventory(rpg_t *rpg)
             x = 0;
             y++;
         }
+    }
+    for (size_t i = 30; i < rpg->menu->inventory->buttons->nbr_bt; i++) {
+        rpg->menu->inventory->buttons->lst_bt[i] = create_slots(" ",
+        (sfVector2f){1490, 180 + 140 * y}, 100, "assets/menu/slots.png");
+        y++;
     }
 }
 

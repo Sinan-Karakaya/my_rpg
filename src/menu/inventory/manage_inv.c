@@ -39,11 +39,12 @@ int manage_inv(rpg_t *rpg, int button)
                 sfRenderWindow_close(rpg->window);
             if (rpg->event.type == sfEvtMouseButtonPressed)
                 key = detect_click_on_inv(rpg->menu->inventory->buttons,
-                rpg->event, 0, 30);
+                rpg->event, 0, 34);
             if (key != -1)
                 break;
             sfRenderWindow_display(rpg->window);
         }
     }
+    printf("Key and button%d, %d\n", key, button);
     return change_slots(rpg, button, key);
 }
