@@ -140,6 +140,7 @@ int init_my_text(stats_t *stat);
 
 // SAVE
 bool read_save(rpg_t *rpg);
+void save_game(rpg_t *rpg);
 
 //OBJECT
 void draw_object(rpg_t *rpg);

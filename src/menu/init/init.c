@@ -61,7 +61,7 @@ int init_sound(rpg_t *rpg)
     rpg->sounds = malloc(sizeof(music_t));
     if (!rpg->sounds)
         return 84;
-    rpg->sounds->music = sfMusic_createFromFile("assets/music/vista.ogg");
+    rpg->sounds->music = sfMusic_createFromFile(OVERWORLD_MUSIC);
     rpg->sounds->is_played = true;
     rpg->sounds->sound_music = 15;
     rpg->sounds->sound_effect = 15;

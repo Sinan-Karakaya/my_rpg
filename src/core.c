@@ -27,6 +27,7 @@ int main(int ac, char **av)
     rpg->world->object_map[18][2] = 3;
     rpg->world->npc_list[0] = (npc_t){"npc1", (sfVector2i){18, 18},2 , 50 , 20 , 20 , 20};
     do_loop(rpg);
+    save_game(rpg);
     free_rpg(rpg);
     return 0;
 }
