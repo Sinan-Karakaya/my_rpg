@@ -37,12 +37,19 @@ typedef struct gauge_bar {
     sfVector2f size;
 } gauge_bar_t;
 
+typedef struct stuff_s {
+    int attack;
+    int defense;
+    int life;
+} stuff_t;
+
 typedef struct stats {
     int level;
     int attack;
     int defense;
     int life;
     int xp;
+    stuff_t *stuff;
     sfText *text_attack;
     sfText *text_defense;
     sfText *text_life;
