@@ -54,6 +54,7 @@ static sfText *init_text(sfVector2f pos, sfVector2u size)
 
 void init_npc(rpg_t *rpg)
 {
+    rpg->world->gui.actual_quest = 0;
     rpg->world->gui.chatbox_sprite = sfSprite_create();
     rpg->world->gui.chatbox_texture = CREATE_CHAT;
     rpg->world->gui.text = sfText_create();
