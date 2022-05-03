@@ -69,12 +69,12 @@ void print_inventory(rpg_t *rpg)
     }
     init_my_text(rpg->combat->player->stat);
     if (rpg->combat->player->stat->text_attack != NULL)
-        sfRenderWindow_drawText(rpg->window, rpg->combat->player->stat->text_attack, NULL);
+        sfRenderWindow_drawText(rpg->window, PLAYER_STATS->text_attack, NULL);
     if (rpg->combat->player->stat->text_defense != NULL)
-        sfRenderWindow_drawText(rpg->window, rpg->combat->player->stat->text_defense, NULL);
+        sfRenderWindow_drawText(rpg->window, PLAYER_STATS->text_defense, NULL);
     if (rpg->combat->player->stat->text_life != NULL)
-        sfRenderWindow_drawText(rpg->window, rpg->combat->player->stat->text_life, NULL);
+        sfRenderWindow_drawText(rpg->window, PLAYER_STATS->text_life, NULL);
     if (rpg->combat->player->stat->text_level != NULL)
-        sfRenderWindow_drawText(rpg->window, rpg->combat->player->stat->text_level, NULL);
+        sfRenderWindow_drawText(rpg->window, PLAYER_STATS->text_level, NULL);
     display_character(rpg);
 }

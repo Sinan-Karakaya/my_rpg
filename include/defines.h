@@ -70,6 +70,8 @@
 #define KEYPROTECT rpg->keybinds->key_protect
 #define KEYRUN rpg->keybinds->key_run
 
+#define PLAYER_STATS rpg->combat->player->stat
+
 #define INVENTORY rpg->menu->inventory
 #define SCALE_PNJ_X (sfVector2f){(point[1].x - point[0].x) / 150
 #define SCALE_PNJ_Y -(point[1].x - point[0].x) / 150}
