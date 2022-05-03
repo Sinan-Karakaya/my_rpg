@@ -16,6 +16,11 @@ bool do_aabb_mouse(sfMouseButtonEvent mouse, sfSprite *sp)
     return (bool)sfIntRect_contains(&r, mouse.x, mouse.y);
 }
 
+bool do_aabb_mouse_rect(sfMouseButtonEvent mouse, sfIntRect rect)
+{
+    return (bool)sfIntRect_contains(&rect, mouse.x, mouse.y);
+}
+
 bool do_aabb_sprites(sfSprite *sp1, sfSprite *sp2)
 {
     sfVector2f pos1 = sfSprite_getPosition(sp1);
@@ -26,7 +31,7 @@ bool do_aabb_sprites(sfSprite *sp1, sfSprite *sp2)
     if (r2.height < 0)
         r2.height *= -1;
 
-    if(pos1.x < pos2.x + r2.width &&
+    if (pos1.x < pos2.x + r2.width &&
     pos1.x + r1.width > pos2.x &&
     pos1.y < pos2.y + r2.height &&
     pos1.y + r1.height > pos2.y)
@@ -43,7 +48,7 @@ bool do_aabb_sprites_rectangle(sfSprite *sp1, sfRectangleShape *sp2)
 
     if (r2.y < 0)
         r2.y *= -1;
-    if(pos1.x < pos2.x + r2.x &&
+    if (pos1.x < pos2.x + r2.x &&
     pos1.x + r1.width > pos2.x &&
     pos1.y < pos2.y + r2.y &&
     pos1.y + r1.height > pos2.y) {
