@@ -19,7 +19,6 @@ static void make_inventory(rpg_t *rpg, char *value)
 {
     int index = 0;
 
-    printf("%s\n", value);
     if (my_strlen(value) != 34)
         return;
     for (int i = 0; i < 34; i++) {
@@ -30,6 +29,15 @@ static void make_inventory(rpg_t *rpg, char *value)
             break;
         }
     }
+}
+
+static void set_pos(rpg_t *rpg, char *value)
+{
+    char *saveptr = NULL;
+
+    my_strsep(value, ",", &saveptr);
+    rpg->cam.x = my_getnbr(value);
+    rpg->cam.y = my_getnbr(saveptr);
 }
 
 static int assign_stat(rpg_t *rpg, char *type, char *value)
@@ -44,7 +52,8 @@ static int assign_stat(rpg_t *rpg, char *type, char *value)
     if (my_strcmp(type, "inventory") == 0) {
         make_inventory(rpg, value);
         return 1;
-    }
+    } if (my_strcmp(type, "pos") == 0)
+        set_pos(rpg, value);
     return 0;
 }
 
