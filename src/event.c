@@ -16,13 +16,13 @@ void player_movement(rpg_t *rpg)
     if (rpg->debug_toggle)
         multiplicator *= 5;
     if (rpg->event.key.code == KEYDOWN && IN_OVERWORLD) {
-        rpg->cam.y -= 60 * rpg->dt * multiplicator;
+        rpg->cam.y -= 600 * rpg->dt * multiplicator;
     } if (rpg->event.key.code == KEYUP && IN_OVERWORLD) {
-        rpg->cam.y += 60 * rpg->dt * multiplicator;
+        rpg->cam.y += 600 * rpg->dt * multiplicator;
     } if (rpg->event.key.code == KEYRIGHT && IN_OVERWORLD) {
-        rpg->cam.x += 200 * rpg->dt * multiplicator;
+        rpg->cam.x += 2000 * rpg->dt * multiplicator;
     } if (rpg->event.key.code == KEYLEFT && IN_OVERWORLD) {
-        rpg->cam.x -= 200 * rpg->dt * multiplicator;
+        rpg->cam.x -= 2000 * rpg->dt * multiplicator;
     }
 }
 

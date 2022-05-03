@@ -32,6 +32,7 @@ typedef struct npc {
 typedef struct gui {
     sfTexture *chatbox_texture;
     sfSprite *chatbox_sprite;
+    int actual_quest;
     sfText *text;
 } gui_t;
 

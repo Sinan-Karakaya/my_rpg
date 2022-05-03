@@ -85,6 +85,7 @@ sfVector2i get_object_pos(int x, int y, rpg_t *rpg);
 // NPC
 void check_quest(rpg_t *rpg);
 void draw_npc(rpg_t *rpg);
+void draw_quest_list(rpg_t *rpg);
 
 // OVERWORLD
 void overworld_loop(rpg_t *rpg);
@@ -106,6 +107,7 @@ int init_menu(rpg_t *rpg);
 int menuloop(rpg_t *rpg);
 int load_loop(rpg_t *rpg, int n);
 void draw_game_over(rpg_t *rpg);
+
 
 //BUTTONS
 void buttons_controls_menu(rpg_t *rpg, bt_list_t *bt_list, sfEvent event);

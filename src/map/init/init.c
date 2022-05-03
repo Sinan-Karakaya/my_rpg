@@ -53,6 +53,7 @@ static sfText *init_text(sfVector2f pos, sfVector2u size)
 
 void init_npc(rpg_t *rpg)
 {
+    rpg->world->gui.actual_quest = 0;
     rpg->world->gui.chatbox_sprite = sfSprite_create();
     rpg->world->gui.chatbox_texture = CREATE_CHAT;
     rpg->world->gui.text = sfText_create();
@@ -78,7 +79,7 @@ void init_world(rpg_t *game)
     game->world->height_map =  str_to_int_tab("height.map", -1 , 0);
     game->world->texture_o = init_struct_texture("assets/environement/po.png",
     game);
-    game->world->texture_n = init_struct_texture("assets/environement/pn.png",
+    game->world->texture_n = init_struct_texture("assets/environement/pr.png",
     game);
     game->world->rendered_spr = malloc(sizeof(sfSprite*));
     game->world->rendered_spr[0] = NULL;

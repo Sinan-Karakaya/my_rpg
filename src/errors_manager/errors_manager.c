@@ -17,7 +17,6 @@ const char *errors[] = {
     "assets/combat/player/olberic_cmb_pea.png",
     "assets/combat/boss_spritesheet.png",
     "assets/combat/slash.png",
-    "assets/environement/pn.png",
     "assets/environement/po.png",
     "assets/environement/pr.png",
     "assets/font/arial/arial.ttf",
@@ -52,6 +51,7 @@ int errors_manager(void)
     int fd = 0;
 
     for (size_t i = 0; errors[i] != NULL; i++) {
+        printf("%s\n", errors[i]);
         fd = open(errors[i], O_RDONLY);
         if (fd < 3) {
             write(2, "Error occured in the loading of the assets.\n", 44);
