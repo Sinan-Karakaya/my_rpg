@@ -66,6 +66,7 @@ SRC = src/core.c	\
 	  src/utils/y_sorter.c \
 	  src/combat/combat_transition.c \
 	  src/menu/game_over/game_over.c \
+	  src/errors_manager/errors_manager.c \
 
 OBJ = $(SRC:.c=.o)
 

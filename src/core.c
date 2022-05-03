@@ -14,6 +14,8 @@ int main(int ac, char **av)
     int debug_mode = handle_args(ac, av);
     rpg_t *rpg = malloc(sizeof(rpg_t));
 
+    if (errors_manager() == 84)
+        return 84;
     if (debug_mode == -1)
         return 0;
     if (!rpg || init_sfml(rpg, debug_mode))
