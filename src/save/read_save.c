@@ -15,8 +15,24 @@
 #include "my_rpg.h"
 #include "my.h"
 
+static void make_inventory(rpg_t *rpg, char *value)
+{
+    int index = 0;
+
+    printf("%s\n", value);
+    if (my_strlen(value) != 34)
+        return;
+    for (int i = 0; value[i] != '\n' || i < 34; i++) {
+        if (value[i] >= '1' && value <= '8') {
+            INVENTORY->slots[i]->item_id = value[i] - '0';
+            index++;
+        }
+    }
+}
+
 static void assign_stat(rpg_t *rpg, char *type, char *value)
 {
+    printf("%s\n", value);
     if (my_strcmp(type, "level") == 0)
         rpg->combat->player->stat->level = my_getnbr(value);
     if (my_strcmp(type, "health") == 0)
@@ -24,6 +40,8 @@ static void assign_stat(rpg_t *rpg, char *type, char *value)
     if (my_strcmp(type, "class") == 0 && my_getnbr(value) >= 0 &&
     my_getnbr(value) < 3)
         rpg->combat->player->stat->class = my_getnbr(value);
+    if (my_strcmp(type, "inventory" == 0))
+        make_inventory(rpg, value);
 }
 
 static void parse_save(rpg_t *rpg, char *buffer)

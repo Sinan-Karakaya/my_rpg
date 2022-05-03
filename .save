@@ -1,9 +1,5 @@
-lvl:1
+level:1
 xp:0
-health:96
-class:0th:0
-class:000
-=======
-health:96
-class:000s:0:0
->>>>>>> 3dbf7809a784ef2c06258014890b20515eacdaea
+health:100
+class:0
+inventory:0000000000000000000000000000000000
