@@ -11,7 +11,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 
-const static char *errors[] = {
+const char *errors[] = {
     "assets/combat/player/olberic_cmb_apo.png",
     "assets/combat/player/olberic_cmb_cleric.png",
     "assets/combat/player/olberic_cmb_pea.png",
@@ -39,14 +39,19 @@ const static char *errors[] = {
     "assets/overworld/olberic_ow_pea.png",
     "assets/overworld/player_overworld.png",
     "assets/pnj/alagard.ttf",
-    "assets/pnj/chatbox.png"
+    "assets/pnj/chatbox.png",
+    "assets/items/armor_rm.png",
+    "assets/items/helmet_rm.png",
+    "assets/items/sword_rm.png",
+    "assets/items/boots.png",
+    NULL
 };
 
 int errors_manager(void)
 {
     int fd = 0;
 
-    for (size_t i = 0; i < 28; i++) {
+    for (size_t i = 0; errors[i] != NULL; i++) {
         fd = open(errors[i], O_RDONLY);
         if (fd < 3) {
             write(2, "Error occured in the loading of the assets.\n", 44);
