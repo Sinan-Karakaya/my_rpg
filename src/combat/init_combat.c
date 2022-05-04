@@ -25,7 +25,7 @@ static int create_ennemy(combat_t *com)
     com->ennemy[0]->max_life = 1000;
     com->ennemy[0]->is_npc = true;
     com->ennemy[0]->stat = malloc(sizeof(stats_t));
-    com->ennemy[0]->stat->attack = 10;
+    com->ennemy[0]->stat->attack = 20;
     com->ennemy[0]->stat->defense = 10;
     com->ennemy[0]->name = "boss";
     if (init_gauge_bar(com->ennemy[0]))
@@ -63,10 +63,8 @@ static int create_player(combat_t *com)
     sfSprite_setTextureRect(com->player->sprite, com->player->rect);
     sfSprite_setScale(com->player->sprite, (sfVector2f){2.5, 2.5});
     com->player->clock = sfClock_create();
-    com->player->rect_left_i = 0;
-    com->player->rect_left_w = 0;
-    com->player->life = 100;
-    com->player->max_life = 100;
+    com->player->rect_left_i = 0, com->player->rect_left_w = 0;
+    com->player->life = 100, com->player->max_life = 100;
     create_player_bis(com);
     if (init_gauge_bar(com->player) || init_slash(com))
         return 1;
