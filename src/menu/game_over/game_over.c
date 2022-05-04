@@ -9,24 +9,24 @@
 
 #include "my_rpg.h"
 
-static void draw_text(rpg_t *rpg)
+void init_font(rpg_t *rpg)
 {
-    sfText *text = sfText_create();
-    sfFont *font =
+    rpg->combat->game_over = malloc(sizeof(game_over_t));
+    rpg->combat->game_over->text = sfText_create();
+    rpg->combat->game_over->font =
     sfFont_createFromFile("assets/font/itc-souvenir/Souvenir-Bold.otf");
 
-    if (!font)
+    if (!rpg->combat->game_over->font)
         return;
-    sfText_setFont(text, font);
-    sfText_setCharacterSize(text, 50);
-    sfText_setString(text, "GAME OVER");
-    sfText_setColor(text, sfWhite);
-    sfText_setPosition(text, (sfVector2f){800, 400});
-    sfRenderWindow_drawText(rpg->window, text, NULL);
+    sfText_setFont(rpg->combat->game_over->text, rpg->combat->game_over->font);
+    sfText_setCharacterSize(rpg->combat->game_over->text, 50);
+    sfText_setString(rpg->combat->game_over->text, "GAME OVER");
+    sfText_setColor(rpg->combat->game_over->text, sfWhite);
+    sfText_setPosition(rpg->combat->game_over->text, (sfVector2f){800, 400});
 }
 
 void draw_game_over(rpg_t *rpg)
 {
-    draw_text(rpg);
+    sfRenderWindow_drawText(rpg->window, rpg->combat->game_over->text, NULL);
     sfRenderWindow_drawSprite(rpg->window, rpg->combat->player->sprite, NULL);
 }

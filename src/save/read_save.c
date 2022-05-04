@@ -43,17 +43,23 @@ static void set_pos(rpg_t *rpg, char *value)
 static int assign_stat(rpg_t *rpg, char *type, char *value)
 {
     if (my_strcmp(type, "level") == 0)
-        rpg->combat->player->stat->level = my_getnbr(value);
+        STAT->level = my_getnbr(value);
     if (my_strcmp(type, "health") == 0)
         rpg->combat->player->life = my_getnbr(value);
     if (my_strcmp(type, "class") == 0 && my_getnbr(value) >= 0 &&
     my_getnbr(value) < 3)
-        rpg->combat->player->stat->class = my_getnbr(value);
+        STAT->class = my_getnbr(value);
     if (my_strcmp(type, "inventory") == 0) {
         make_inventory(rpg, value);
         return 1;
     } if (my_strcmp(type, "pos") == 0)
         set_pos(rpg, value);
+    if (my_strcmp(type, "max_health") == 0)
+        rpg->combat->player->max_life = my_getnbr(value);
+    if (my_strcmp(type, "attack") == 0)
+        STAT->attack = my_getnbr(value);
+    if (my_strcmp(type, "defense") == 0)
+        STAT->defense = my_getnbr(value);
     return 0;
 }
 

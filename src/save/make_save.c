@@ -27,9 +27,6 @@ static void save_inventory(const int fd, rpg_t *rpg)
 
 static void save_pos(const int fd, rpg_t *rpg)
 {
-    int pos_x = (int)rpg->cam.x;
-    int pos_y = (int)rpg->cam.y;
-
     write(fd, "pos:", 4);
     write(fd, int_to_str((int)rpg->cam.x), my_strlen(int_to_str((int)rpg->cam.x)));
     write(fd, ",", 1);
@@ -37,14 +34,27 @@ static void save_pos(const int fd, rpg_t *rpg)
     write(fd, "\n", 1);
 }
 
+static void save_max_health(const int fd, rpg_t *rpg)
+{
+    write(fd, "max_health:", 11);
+    write(fd, int_to_str(rpg->combat->player->max_life),
+    my_strlen(int_to_str(rpg->combat->player->max_life)));
+    write(fd, "\n", 1);
+    write(fd, "attack:", 7);
+    write(fd, int_to_str(STAT->attack), my_strlen(int_to_str(STAT->attack)));
+    write(fd, "\ndefense:", 9);
+    write(fd, int_to_str(STAT->defense), my_strlen(int_to_str(STAT->defense)));
+    write(fd, "\n", 1);
+}
+
 static void write_save(const int fd, rpg_t *rpg)
 {
-    char *level = int_to_str(rpg->combat->player->stat->level);
-    char *xp = int_to_str(rpg->combat->player->stat->xp);
+    char *level = int_to_str(STAT->level);
+    char *xp = int_to_str(STAT->xp);
     char *health = int_to_str(rpg->combat->player->life);
-    char *class = int_to_str(rpg->combat->player->stat->class);
+    char *class = int_to_str(STAT->class);
 
-    level = my_strcat("lvl:", level);
+    level = my_strcat("level:", level);
     xp = my_strcat("xp:", xp);
     health = my_strcat("health:", health);
     class = my_strcat("class:", class);
@@ -57,6 +67,7 @@ static void write_save(const int fd, rpg_t *rpg)
     write(fd, class, my_strlen(class));
     write(fd, "\n", 1);
     save_pos(fd, rpg);
+    save_max_health(fd, rpg);
     save_inventory(fd, rpg);
 }
 
