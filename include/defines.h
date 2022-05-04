@@ -16,8 +16,9 @@
 #define RES_X 1920
 #define RES_Y 1080
 
-#define IS_SHADER 1
-#define SHADE sfShader_createFromFile(NULL, NULL, "src/map/draw/light.frag");
+#define IS_SHADER 0
+#define SHADE NULL
+//sfShader_createFromFile(NULL, NULL, "src/map/draw/light.frag");
 
 #define MAP_X 150
 #define MAP_Y 80
@@ -42,6 +43,8 @@
 
 #define FONT_PATH "assets/font/itc-souvenir/Souvenir-Bold.otf"
 #define HUD_PATH "assets/hud/hud_guide.png"
+
+#define STAT rpg->combat->player->stat
 
 #define SLASH_PATH "assets/combat/slash.png"
 #define SLASH_SFX "assets/music/slash.ogg"

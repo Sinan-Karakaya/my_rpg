@@ -27,6 +27,8 @@ void init_keybind(rpg_t *rpg);
 int init_buttons(rpg_t *rpg);
 int init_sound(rpg_t *rpg);
 int init_menu(rpg_t *rpg);
+void assign_class(rpg_t *rpg);
+void init_font(rpg_t *rpg);
 
 // UTILS
 int event(rpg_t *rpg);

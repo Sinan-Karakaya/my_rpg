@@ -15,7 +15,6 @@
 * Ca nous permettrait de donner un effet de neige
 * ou de pluie au sol par exemple
 */
-
 sfRenderStates *init_struct_texture(char *path, rpg_t *rpg)
 {
     sfRenderStates *tex = malloc(sizeof(sfRenderStates));
@@ -86,7 +85,7 @@ void init_world(rpg_t *game)
     game->world->rendered_spr[0] = NULL;
     game->world->olberick_pos = (sfVector2i){0, 0};
     if (sfShader_isAvailable())
-        game->world->shader = SHADE
+        game->world->shader = SHADE;
 }
 
 void destroy_world(rpg_t *game)

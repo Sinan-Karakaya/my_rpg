@@ -72,6 +72,8 @@ int init_all(rpg_t *rpg)
     init_inventory(rpg), load_loop(rpg, 9);
     if (!read_save(rpg))
         rpg->menu->no_class = true;
+    else
+        assign_class(rpg);
     rpg->texture = init_struct_texture("assets/environement/pr.png", rpg);
     rpg->scene = OVERWORLD;
     play_music(rpg);
