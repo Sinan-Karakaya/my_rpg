@@ -20,18 +20,11 @@ void olberic_do_attack(entity_t *player, combat_t *combat, rpg_t *rpg)
         player->rect.left = olberic_rect_left[player->rect_left_i];
         player->rect.width = olberic_rect_w[player->rect_left_w];
     } else {
-<<<<<<< HEAD
-        player->rect_left_i = 19;
-        player->rect_left_w = 19;
-        combat->curr_ennemy->life -= player->stat->attack -
-        (combat->curr_ennemy->stat->defense / 2) + get_rand_small_range();
-=======
         player->rect_left_i = 19, player->rect_left_w = 19;
         dmg = (player->stat->attack + player->stat->stuff->attack)
-        - (combat->ennemy->stat->defense) + get_rand_small_range();
+        - (combat->curr_ennemy->stat->defense) + get_rand_small_range();
         if (dmg > 0)
-            combat->ennemy->life -= dmg;
->>>>>>> 6a24fd0b396c6b68e8797c86a839a718dd8c363a
+            combat->curr_ennemy->life -= dmg;
         player->cmb_state = RPG_COMBAT_PLAYER_IDLE;
         combat->state = RPG_COMBAT_ENNEMY;
     } sfSprite_setTextureRect(player->sprite, player->rect);
