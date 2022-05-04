@@ -62,6 +62,9 @@ void draw_quest_list(rpg_t *rpg)
     sfText_setString(side_text, quest_line[rpg->world->gui.actual_quest]);
     sfRenderWindow_drawText(rpg->window, text, NULL);
     sfRenderWindow_drawText(rpg->window, side_text, NULL);
+    sfFont_destroy(sfText_getFont(text));
+    sfFont_destroy(sfText_getFont(side_text));
+    sfText_destroy(side_text);
     sfText_destroy(text);
 
 }
