@@ -72,6 +72,7 @@ SRC = src/core.c	\
 	  src/menu/class_menu/class_menu.c \
 
 OBJ = $(SRC:.c=.o)
+TMP = $(SRC:.c=.c.tmp)
 
 INCLUDE = -I ./include/
 
@@ -90,6 +91,7 @@ $(NAME): $(OBJ)
 
 clean:
 	rm -f $(OBJ)
+	rm -f $(TMP)
 	make clean -C lib/my/
 
 fclean: clean
