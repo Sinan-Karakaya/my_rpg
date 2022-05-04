@@ -43,6 +43,7 @@ typedef struct stuff_s {
     int attack;
     int defense;
     int life;
+    int xp;
 } stuff_t;
 
 typedef struct stats {

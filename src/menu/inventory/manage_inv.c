@@ -7,11 +7,6 @@
 
 #include "my_rpg.h"
 
-static int add_item_stats(rpg_t *rpg)
-{
-    
-}
-
 static int change_slots(rpg_t *rpg, int button, int key)
 {
     int save = 0;
@@ -27,6 +22,7 @@ static int change_slots(rpg_t *rpg, int button, int key)
     rpg->menu->inventory->slots[button]->item_id;
     rpg->menu->inventory->slots[button]->item_id = save;
     sfRenderWindow_display(rpg->window);
+    init_stats(rpg);
 }
 
 int manage_inv(rpg_t *rpg, int button)

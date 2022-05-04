@@ -60,6 +60,7 @@ SRC = src/core.c	\
 	  src/menu/inventory/utils.c	\
 	  src/menu/inventory/utils_bis.c	\
 	  src/menu/inventory/init_text.c	\
+	  src/menu/inventory/init_stats.c	\
 	  src/overworld/oveworld_loop.c \
 	  src/overworld/player_overworld.c \
 	  src/overworld/collision.c \

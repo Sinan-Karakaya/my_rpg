@@ -11,9 +11,33 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
-static sfText *create_my_text(sfVector2f pos, int value)
+static sfText *create_my_text(sfVector2f pos, int value, int stuff_value)
 {
     sfText *my_text = sfText_create();
+    char *stat_player = int_to_str(value);
+    char *stat_stuff = int_to_str(stuff_value);
+    char *stat_total = malloc(sizeof(char) * (my_strlen(stat_player)
+    + my_strlen(stat_stuff) + 2));
+    size_t i = 0, j = 0;
+
+    for (i = 0; stat_player[i] != '\0'; i++)
+        stat_total[i] = stat_player[i];
+    stat_total[i] = '+';
+    for (j = i + 1, i = 0; stat_stuff[i] != '\0'; j++, i++)
+        stat_total[j] = stat_stuff[i];
+    stat_total[j] = '\0';
+    sfText_setPosition(my_text, pos);
+    sfText_setFont(my_text, sfFont_createFromFile("assets/font/arial/arial.ttf"));
+    sfText_setString(my_text, stat_total);
+    sfText_setColor(my_text, sfBlack);
+    sfText_setCharacterSize(my_text, 40);
+    return my_text;
+}
+
+static sfText *create_my_text_lvl(sfVector2f pos, int value)
+{
+    sfText *my_text = sfText_create();
+
     sfText_setPosition(my_text, pos);
     sfText_setFont(my_text, sfFont_createFromFile("assets/font/arial/arial.ttf"));
     sfText_setString(my_text, int_to_str(value));
@@ -41,9 +65,9 @@ int init_my_text(stats_t *stat)
     if (fd < 3)
         return (84);
     close(fd);
-    stat->text_attack = create_my_text((sfVector2f){485, 558}, stat->attack);
-    stat->text_defense = create_my_text((sfVector2f){515, 508}, stat->defense);
-    stat->text_life = create_my_text((sfVector2f){450, 608}, stat->life);
-    stat->text_level = create_my_text((sfVector2f){470, 460}, stat->level);
+    stat->text_attack = create_my_text((sfVector2f){485, 558}, stat->attack, stat->stuff->attack);
+    stat->text_defense = create_my_text((sfVector2f){515, 508}, stat->defense, stat->stuff->defense);
+    stat->text_life = create_my_text((sfVector2f){450, 608}, stat->life, stat->stuff->life);
+    stat->text_level = create_my_text_lvl((sfVector2f){470, 460}, stat->level);
     return 0;
 }

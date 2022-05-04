@@ -136,6 +136,7 @@ button_t *create_slots(char *str, sfVector2f pos, int ptr_f, char *img);
 int manage_inv(rpg_t *rpg, int button);
 void check_inv(rpg_t *rpg);
 int slots_controls(rpg_t *rpg, sfEvent event);
+int init_stats(rpg_t *rpg);
 
 //INVENTORY UTILS
 void clearstrnbr(char *str, int len);
