@@ -15,18 +15,21 @@ void class_menu_button(sfEvent event, rpg_t *rpg)
         rpg->menu->no_class = false;
         rpg->menu->is_class = false;
         rpg->menu->is_main = false;
+        assign_class(rpg);
     } if (do_aabb_mouse_rect(event.mouseButton,
     (sfIntRect){788, 150, 360, 430})) {
         rpg->combat->player->stat->class = RPG_CLASS_CLERIC;
         rpg->menu->no_class = false;
         rpg->menu->is_class = false;
         rpg->menu->is_main = false;
+        assign_class(rpg);
     } if (do_aabb_mouse_rect(event.mouseButton,
     (sfIntRect){1400, 150, 360, 430})) {
         rpg->combat->player->stat->class = RPG_CLASS_PEASANT;
         rpg->menu->no_class = false;
         rpg->menu->is_class = false;
         rpg->menu->is_main = false;
+        assign_class(rpg);
     }
 }
 

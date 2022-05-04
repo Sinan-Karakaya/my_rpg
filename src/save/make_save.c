@@ -73,7 +73,7 @@ static void write_save(const int fd, rpg_t *rpg)
 
 void save_game(rpg_t *rpg)
 {
-    int fd = open(".save", O_CREAT | O_WRONLY);
+    int fd = open(".save", O_CREAT | O_WRONLY, 0666);
 
     if (fd == -1) {
         ERROR(".save");
