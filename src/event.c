@@ -62,6 +62,14 @@ void key_pressed(rpg_t *rpg)
             rpg->combat->transition_cmb = true;
         }
     }
+    if (rpg->event.key.code == sfKeyV) {
+        if (IN_OVERWORLD) {
+            rpg->combat->transition_ow = true;
+            rpg->combat->curr_ennemy = rpg->combat->ennemy[0];
+        } else if (rpg->scene == COMBAT) {
+            rpg->combat->transition_cmb = true;
+        }
+    }
 }
 
 int event(rpg_t *rpg)

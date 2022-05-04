@@ -23,12 +23,12 @@ int create_bear(combat_t *com)
     sfSprite_setTextureRect(com->ennemy[1]->sprite, com->ennemy[1]->rect);
     sfSprite_setScale(com->ennemy[1]->sprite, (sfVector2f){2, 2});
     com->ennemy[1]->clock = sfClock_create();
-    com->ennemy[1]->life = 10;
-    com->ennemy[1]->max_life = 100;
+    com->ennemy[1]->life = 230;
+    com->ennemy[1]->max_life = 230;
     com->ennemy[1]->is_npc = true;
     com->ennemy[1]->stat = malloc(sizeof(stats_t));
     com->ennemy[1]->stat->attack = 12;
-    com->ennemy[1]->stat->defense = 10;
+    com->ennemy[1]->stat->defense = 8;
     com->ennemy[1]->name = my_calloc(sizeof(char), 5);
     com->ennemy[1]->name = "bear";
     init_gauge_bar(com->ennemy[1]);
@@ -42,14 +42,14 @@ int create_wolf(combat_t *com)
     com->ennemy[2]->texture = sfTexture_createFromFile(WOLF_PATH, NULL);
     sfSprite_setTexture(com->ennemy[2]->sprite, com->ennemy[2]->texture,
     sfTrue);
-    com->ennemy[2]->pos = (sfVector2f){RES_X / 5, RES_Y / 2 + 80};
+    com->ennemy[2]->pos = (sfVector2f){RES_X / 5 + 20, RES_Y / 2 + 100};
     sfSprite_setPosition(com->ennemy[2]->sprite, com->ennemy[2]->pos);
     com->ennemy[2]->rect = (sfIntRect){0, 0, WOLF_WIDTH, WOLF_HEIGHT};
     sfSprite_setTextureRect(com->ennemy[2]->sprite, com->ennemy[2]->rect);
     sfSprite_setScale(com->ennemy[2]->sprite, (sfVector2f){2, 2});
     com->ennemy[2]->clock = sfClock_create();
-    com->ennemy[2]->life = 10;
-    com->ennemy[2]->max_life = 100;
+    com->ennemy[2]->life = 160;
+    com->ennemy[2]->max_life = 160;
     com->ennemy[2]->is_npc = true;
     com->ennemy[2]->stat = malloc(sizeof(stats_t));
     com->ennemy[2]->stat->attack = 8;
