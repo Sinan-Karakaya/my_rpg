@@ -13,6 +13,8 @@ int **create_map(int heigth, int width)
 {
     int **map = malloc(sizeof(int *) * (heigth + 1));
 
+    if (map == NULL)
+        return NULL;
     for (int i = 0; i < heigth; i++) {
         map[i] = malloc(sizeof(int) * (width + 1));
         for (int j = 0; j < width; j++)

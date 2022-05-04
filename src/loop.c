@@ -40,7 +40,6 @@ static int gameloop(rpg_t *rpg)
             draw_map(rpg);
             draw_object(rpg);
             draw_npc(rpg);
-            draw_quest_list(rpg);
             chose_scene(rpg);
             check_quest(rpg);
             ow_aabb(rpg);
