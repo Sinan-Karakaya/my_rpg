@@ -10,7 +10,7 @@
 #include "my_rpg.h"
 
 const char *quest_line[] = {""
-, "Trouver la village."
+, "Trouver le village."
 , "Trouver la foret"
 , "Test4"
 , "Test5"};
@@ -19,6 +19,9 @@ static sfText *init_npc_quest(rpg_t *rpg)
 {
     sfFont *font = sfFont_createFromFile("assets/pnj/alagard.ttf");
     sfText *text = sfText_create();
+
+    if (!text || !font)
+        return;
     sfVector2f origin = {0};
     sfFloatRect rect = {0};
     sfVector2f pos = {1700, 10};
@@ -37,6 +40,9 @@ static sfText *init_npc_side_quest(rpg_t *rpg)
 {
     sfFont *font = sfFont_createFromFile("assets/pnj/alagard.ttf");
     sfText *text = sfText_create();
+
+    if (!text || !font)
+        return;
     sfVector2f origin = {0};
     sfFloatRect rect = {0};
     sfVector2f pos = {1650, 80};
@@ -55,9 +61,12 @@ static sfText *init_npc_side_quest(rpg_t *rpg)
 void draw_quest_list(rpg_t *rpg)
 {
     sfText *text = sfText_create();
+    sfText *side_text = sfText_create();
+
+    if (!text || !side_text)
+        return;
     text = init_npc_quest(rpg);
     sfText_setString(text, "Quest");
-    sfText *side_text = sfText_create();
     side_text = init_npc_side_quest(rpg);
     sfText_setString(side_text, quest_line[rpg->world->gui.actual_quest]);
     sfRenderWindow_drawText(rpg->window, text, NULL);
