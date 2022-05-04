@@ -6,3 +6,6 @@
 */
 
 #include "my_rpg.h"
+
+int init_stats(rpg_t *rpg)
+{

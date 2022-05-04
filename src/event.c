@@ -31,7 +31,8 @@ void key_pressed(rpg_t *rpg)
     if (rpg->event.key.code == sfKeyEscape) {
         rpg->menu->option->is_active = true;
         rpg->menu->option->is_main = true;
-    } if (rpg->event.key.code == KEYINV) {
+    }
+    if (rpg->event.key.code == KEYINV) {
         if (rpg->menu->is_inventory == false) {
             rpg->menu->option->is_active = true;
             rpg->menu->is_inventory = true;

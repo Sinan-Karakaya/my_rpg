@@ -50,7 +50,6 @@ static void create_player_bis(combat_t *com)
     com->player->stat->text_defense = NULL;
     com->player->stat->text_life = NULL;
     com->player->stat->text_level = NULL;
-    com->player->stat->stuff = malloc(sizeof(stuff_t));
     com->player->stat->class = RPG_CLASS_WARRIOR;
 }
 

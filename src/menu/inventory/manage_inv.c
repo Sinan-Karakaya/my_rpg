@@ -7,6 +7,11 @@
 
 #include "my_rpg.h"
 
+static int add_item_stats(rpg_t *rpg)
+{
+    
+}
+
 static int change_slots(rpg_t *rpg, int button, int key)
 {
     int save = 0;

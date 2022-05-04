@@ -76,7 +76,6 @@ typedef struct menu_inventory_s {
     sfSprite *sprite;
     slots_t **slots;
     sfSprite *player;
-    slots_t *stuff;
     bt_list_t *buttons;
 } menu_inventory_t;
 
