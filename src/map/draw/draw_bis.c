@@ -50,17 +50,15 @@ static void draw_obj_bis(rpg_t *rpg, int **height, sfSprite *sp, int i)
     sfTime time = sfClock_getElapsedTime(rpg->world->world_clock);
     int milli_time = sfTime_asMilliseconds(time) / 500;
     int frame = milli_time %
-     (sfTexture_getSize(rpg->world->texture_o->texture).y / 300) + 1;
+    (sfTexture_getSize(rpg->world->texture_o->texture).y / 300) + 1;
+
     for (int j = MAP_Y - 1; j > 0; j--) {
         if (rpg->world->object_map[i][j] == 0)
             continue;
         offset = get_object_pos(i, j, rpg);
-        point_3d = (sfVector3f){i, height[i][j], j};
-        point[0] = to2d(point_3d, rpg);
-        point_3d = (sfVector3f){(i + 4), height[i][j], j};
-        point[1] = to2d(point_3d, rpg);
-        sfSprite_setTextureRect(sp, (sfIntRect){offset.x - 300, offset.y +
-        300 * frame, 300, -300});
+        point[0] = to2d((sfVector3f){i, height[i][j], j}, rpg);
+        point[1] = to2d((sfVector3f){(i + 4), height[i][j], j}, rpg);
+        sfSprite_setTextureRect(DRAW_BIS_TEX DRAW_BIS_REC);
         sfSprite_setPosition(sp, point[0]);
         sfSprite_setScale(sp, (sfVector2f){(point[1].x - point[0].x) /
         150, -(point[1].x - point[0].x) / 150});

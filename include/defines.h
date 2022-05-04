@@ -17,12 +17,15 @@
 #define RES_Y 1080
 
 #define IS_SHADER 0
-#define SHADE NULL
-//sfShader_createFromFile(NULL, NULL, "src/map/draw/light.frag");
+#define SHADE NULL;//sfShader_createFromFile(NULL, NULL, "src/map/draw/light.frag");
 
 #define MAP_X 150
 #define MAP_Y 80
 #define NB_NPC 50
+
+#define DRAW_BIS_REC offset.y + 300 * frame, 300, -300}
+#define DRAW_BIS_TEX sp, (sfIntRect){offset.x - 300,
+
 // MENU
 #define MENU_BG "assets/menu/background.png"
 #define MENU_FAR "assets/menu/farground.png"

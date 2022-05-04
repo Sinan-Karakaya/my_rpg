@@ -75,7 +75,8 @@ int menuloop(rpg_t *rpg)
             print_parralax(rpg);
             display_buttons_option(rpg);
             sfRenderWindow_display(rpg->window);
-        } if (rpg->menu->is_class && rpg->menu->is_main) {
+        }
+        if (rpg->menu->is_class && rpg->menu->is_main) {
             print_parralax(rpg);
             class_menu(rpg);
             sfRenderWindow_display(rpg->window);
