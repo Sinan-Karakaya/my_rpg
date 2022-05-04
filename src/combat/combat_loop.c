@@ -55,6 +55,7 @@ static void end_combat(rpg_t *rpg, combat_t *combat)
 {
     combat->transition_cmb = true;
     combat->player->stat->xp += 8 + get_rand_small_range();
+    check_stat(rpg);
     add_to_inventory(rpg);
 }
 

@@ -52,6 +52,7 @@ typedef struct stats {
     int defense;
     int life;
     int xp;
+    int xp_needed;
     stuff_t *stuff;
     sfText *text_attack;
     sfText *text_defense;

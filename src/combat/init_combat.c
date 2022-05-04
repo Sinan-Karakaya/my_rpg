@@ -49,6 +49,7 @@ static void create_player_bis(combat_t *com)
     com->player->stat->text_level = NULL;
     com->player->stat->class = -1;
     com->player->name = "player";
+    com->player->stat->xp_needed = 20;
 }
 
 static int create_player(combat_t *com)

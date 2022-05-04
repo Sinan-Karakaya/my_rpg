@@ -42,9 +42,10 @@ static void set_pos(rpg_t *rpg, char *value)
 
 static int assign_stat(rpg_t *rpg, char *type, char *value)
 {
-    if (my_strcmp(type, "level") == 0)
+    if (my_strcmp(type, "level") == 0) {
         STAT->level = my_getnbr(value);
-    if (my_strcmp(type, "health") == 0)
+        STAT->xp_needed = (STAT->level * 1.25) * 20;
+    } if (my_strcmp(type, "health") == 0)
         rpg->combat->player->life = my_getnbr(value);
     if (my_strcmp(type, "class") == 0 && my_getnbr(value) >= 0 &&
     my_getnbr(value) < 3)
