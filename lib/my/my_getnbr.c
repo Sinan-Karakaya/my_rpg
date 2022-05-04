@@ -26,7 +26,7 @@ int my_getnbr(char const *str)
         } else if (str[i] == '-')
             dash_nb++;
     }
-    if (dash_nb % 2 != 0)
+    if (dash_nb > 0)
         return result * (-1);
     else
         return result;

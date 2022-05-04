@@ -5,6 +5,9 @@
 ** event
 */
 
+#include <stdio.h>
+#include <stdlib.h>
+
 #include "my_rpg.h"
 
 void player_movement(rpg_t *rpg)
@@ -15,19 +18,24 @@ void player_movement(rpg_t *rpg)
         multiplicator = -1;
     if (rpg->debug_toggle)
         multiplicator *= 5;
-    if (rpg->event.key.code == KEYDOWN && IN_OVERWORLD) {
-        rpg->cam.y -= 600 * rpg->dt * multiplicator;
+    if (rpg->event.key.code == KEYDOWN && IN_OVERWORLD &&
+    cam_is_in_bounds(rpg->cam.x, rpg->cam.y - 40)) {
+        rpg->cam.y -= 200 * rpg->dt * multiplicator;
         spawn_ennemy(rpg);
-    } if (rpg->event.key.code == KEYUP && IN_OVERWORLD) {
-        rpg->cam.y += 600 * rpg->dt * multiplicator;
+    } if (rpg->event.key.code == KEYUP && IN_OVERWORLD &&
+    cam_is_in_bounds(rpg->cam.x, rpg->cam.y + 40)) {
+        rpg->cam.y += 200 * rpg->dt * multiplicator;
         spawn_ennemy(rpg);
-    } if (rpg->event.key.code == KEYRIGHT && IN_OVERWORLD) {
-        rpg->cam.x += 2000 * rpg->dt * multiplicator;
+    } if (rpg->event.key.code == KEYRIGHT && IN_OVERWORLD &&
+    cam_is_in_bounds(rpg->cam.x + 40, rpg->cam.y)) {
+        rpg->cam.x += 800 * rpg->dt * multiplicator;
         spawn_ennemy(rpg);
-    } if (rpg->event.key.code == KEYLEFT && IN_OVERWORLD) {
-        rpg->cam.x -= 2000 * rpg->dt * multiplicator;
+    } if (rpg->event.key.code == KEYLEFT && IN_OVERWORLD &&
+    cam_is_in_bounds(rpg->cam.x - 40, rpg->cam.y)) {
+        rpg->cam.x -= 800 * rpg->dt * multiplicator;
         spawn_ennemy(rpg);
     }
+
 }
 
 void key_pressed(rpg_t *rpg)

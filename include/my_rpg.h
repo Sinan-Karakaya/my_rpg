@@ -29,6 +29,7 @@ int init_sound(rpg_t *rpg);
 int init_menu(rpg_t *rpg);
 void assign_class(rpg_t *rpg);
 void init_font(rpg_t *rpg);
+bool cam_is_in_bounds(float x, float y);
 
 // UTILS
 int event(rpg_t *rpg);
