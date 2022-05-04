@@ -35,7 +35,6 @@ void player_movement(rpg_t *rpg)
         rpg->cam.x -= 800 * rpg->dt * multiplicator;
         spawn_ennemy(rpg);
     }
-
 }
 
 void key_pressed(rpg_t *rpg)

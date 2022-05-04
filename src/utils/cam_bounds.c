@@ -13,3 +13,10 @@ bool cam_is_in_bounds(float x, float y)
         return true;
     return false;
 }
+
+bool cmb_is_in_bounds(camera_t cam)
+{
+    if (cam.x < 5920 && cam.x > 4115 && cam.y > 1224 && cam.y < 1450)
+        return false;
+    return true;
+}
