@@ -31,6 +31,8 @@ perlin_t *init_struct_perlin(void)
 {
     perlin_t *perlin = malloc(sizeof(perlin_t));
 
+    if (!perlin)
+        return (NULL);
     perlin->Cx = 0;
     perlin->Cy = 0;
     perlin->gi0 = 0;
@@ -69,6 +71,8 @@ static void condit(float x, float y, perlin_t *perlin)
 float perlin(float x, float y, float res)
 {
     perlin_t *perlin = init_struct_perlin();
+    if (!perlin)
+        return (0);
     float to_return = 0;
 
     x /= res;

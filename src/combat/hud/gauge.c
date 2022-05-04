@@ -20,10 +20,10 @@ static void init_second_gauge(entity_t *entity)
     entity->bar->pos.y});
     if (!entity->is_npc) {
         sfRectangleShape_setSize(entity->bar->rect_grey,
-        (sfVector2f){OLBERIC_HEALTH - entity->life, 10});
+        (sfVector2f){entity->max_life - entity->life, 10});
     } else {
         sfRectangleShape_setSize(entity->bar->rect_grey,
-        (sfVector2f){(BOSS_HEALTH - entity->life) / 5, 10});
+        (sfVector2f){(entity->max_life - entity->life) / 5, 10});
     }
 }
 
@@ -36,12 +36,12 @@ int init_gauge_bar(entity_t *entity)
     entity->bar->pos = (sfVector2f){entity->pos.x + (entity->rect.width / 2)
     - 10, entity->pos.y + entity->rect.height + 90};
     if (!entity->is_npc) {
-        entity->bar->size = (sfVector2f){entity->life, 10};
+        entity->bar->size = (sfVector2f){entity->max_life, 10};
         entity->bar->pos.x -= 22;
     } else {
         entity->bar->pos.y += 150;
         entity->bar->pos.x -= 60;
-        entity->bar->size = (sfVector2f){entity->life / 5, 10};
+        entity->bar->size = (sfVector2f){entity->max_life / 5, 10};
     } sfRectangleShape_setFillColor(entity->bar->rect, entity->bar->color);
     sfRectangleShape_setPosition(entity->bar->rect, entity->bar->pos);
     sfRectangleShape_setSize(entity->bar->rect, entity->bar->size);
@@ -55,10 +55,10 @@ static void display_update_gauge(entity_t *player, entity_t *ennemy)
     ennemy->bar->size = (sfVector2f){ennemy->life / 5, 10};
     sfRectangleShape_setSize(player->bar->rect, player->bar->size);
     sfRectangleShape_setSize(player->bar->rect_grey,
-    (sfVector2f){OLBERIC_HEALTH - player->life, 10});
+    (sfVector2f){player->max_life - player->life, 10});
     sfRectangleShape_setSize(ennemy->bar->rect, ennemy->bar->size);
     sfRectangleShape_setSize(ennemy->bar->rect_grey,
-    (sfVector2f){(BOSS_HEALTH - ennemy->life) / 5, 10});
+    (sfVector2f){(ennemy->max_life - ennemy->life) / 5, 10});
     sfRectangleShape_setPosition(player->bar->rect_grey,
     (sfVector2f){player->bar->pos.x + player->bar->size.x,
     player->bar->pos.y});
@@ -69,14 +69,14 @@ static void display_update_gauge(entity_t *player, entity_t *ennemy)
 
 static void update_gauge(entity_t *player, entity_t *ennemy, combat_t *combat)
 {
-    if (player->life > 100)
-        player->life = 100;
+    if (player->life > player->max_life)
+        player->life = player->max_life;
     if (player->life < 0) {
         player->life = 0;
         player->cmb_state = RPG_COMBAT_PLAYER_DEATH;
     } if (ennemy->life < 0) {
         ennemy->life = 0;
-        player->cmb_state = RPG_COMBAT_PLAYER_DEATH;
+        player->cmb_state = RPG_COMBAT_PLAYER_WIN;
     } display_update_gauge(player, ennemy);
 }
 

@@ -47,6 +47,8 @@
 #define FONT_PATH "assets/font/itc-souvenir/Souvenir-Bold.otf"
 #define HUD_PATH "assets/hud/hud_guide.png"
 
+#define STAT rpg->combat->player->stat
+
 #define SLASH_PATH "assets/combat/slash.png"
 #define SLASH_SFX "assets/music/slash.ogg"
 #define SLASH_WIDTH 126

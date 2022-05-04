@@ -24,6 +24,7 @@ static int create_ennemy(combat_t *com)
     sfSprite_setScale(com->ennemy->sprite, (sfVector2f){2, 2});
     com->ennemy->clock = sfClock_create();
     com->ennemy->life = 1000;
+    com->ennemy->max_life = 1000;
     com->ennemy->is_npc = true;
     com->ennemy->stat = malloc(sizeof(stats_t));
     com->ennemy->stat->attack = 10;
@@ -41,14 +42,10 @@ static void create_player_bis(combat_t *com)
     com->player->stat = malloc(sizeof(stats_t));
     if (!com->player->stat)
         return;
-    com->player->stat->attack = 10;
-    com->player->stat->defense = 10;
-    com->player->stat->life = 100;
-    com->player->stat->level = 1;
-    com->player->stat->xp = 0;
-    com->player->stat->text_attack = NULL;
-    com->player->stat->text_defense = NULL;
-    com->player->stat->text_life = NULL;
+    com->player->stat->attack = 10, com->player->stat->defense = 10;
+    com->player->stat->life = 100, com->player->stat->level = 1;
+    com->player->stat->xp = 0, com->player->stat->text_attack = NULL;
+    com->player->stat->text_defense = NULL, com->player->stat->text_life = NULL;
     com->player->stat->text_level = NULL;
     com->player->stat->class = RPG_CLASS_WARRIOR;
 }
@@ -70,6 +67,7 @@ static int create_player(combat_t *com)
     com->player->rect_left_i = 0;
     com->player->rect_left_w = 0;
     com->player->life = 100;
+    com->player->max_life = 100;
     create_player_bis(com);
     if (init_gauge_bar(com->player) || init_slash(com))
         return 1;
@@ -104,4 +102,5 @@ void init_combat(rpg_t *rpg)
     create_player(rpg->combat);
     create_hud(rpg->combat);
     create_transt(rpg->combat->transt);
+    init_font(rpg);
 }

@@ -45,7 +45,6 @@ sfVector2i get_object_pos(int x, int y, rpg_t *rpg)
 static void draw_obj_bis(rpg_t *rpg, int **height, sfSprite *sp, int i)
 {
     sfVector2i offset = {0, 0};
-    sfVector3f point_3d;
     sfVector2f *point = rpg->cam.render->point;
     sfTime time = sfClock_getElapsedTime(rpg->world->world_clock);
     int milli_time = sfTime_asMilliseconds(time) / 500;

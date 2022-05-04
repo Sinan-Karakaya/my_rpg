@@ -12,14 +12,16 @@ typedef enum combat_player_state {
     RPG_COMBAT_PLAYER_ATTACK,
     RPG_COMBAT_PLAYER_ATTACKED,
     RPG_COMBAT_PLAYER_PROTECT,
-    RPG_COMBAT_PLAYER_DEATH
+    RPG_COMBAT_PLAYER_DEATH,
+    RPG_COMBAT_PLAYER_WIN
 } e_combat_player_state;
 
 typedef enum combat_state {
     RPG_COMBAT_PENDING,
     RPG_COMBAT_ATTACKING,
     RPG_COMBAT_DEATH,
-    RPG_COMBAT_ENNEMY
+    RPG_COMBAT_ENNEMY,
+    RPG_COMBAT_WIN
 } e_combat_state;
 
 typedef enum class_type {
@@ -67,6 +69,7 @@ typedef struct entity {
     bool is_npc;
     int rect_left_i;
     int rect_left_w;
+    int max_life;
     int life;
     stats_t *stat;
     e_combat_player_state cmb_state;
@@ -92,6 +95,11 @@ typedef struct transt {
     sfClock *clock;
 } transt_t;
 
+typedef struct game_over {
+    sfFont *font;
+    sfText *text;
+} game_over_t;
+
 typedef struct combat {
     hud_t *hud;
     hud_t *slash;
@@ -99,6 +107,7 @@ typedef struct combat {
     entity_t *player;
     transt_t *transt;
     sfx_t *sfx;
+    game_over_t *game_over;
     e_combat_state state;
     bool transition_cmb;
     bool transition_ow;

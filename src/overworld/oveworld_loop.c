@@ -43,4 +43,5 @@ void overworld_loop(rpg_t *rpg)
     animate_player_overworld(rpg);
     sfRenderWindow_drawSprite(rpg->window, OW->spr, NULL);
     y_sorter(rpg, sfSprite_getPosition(OW->spr).y + PLAYER_OW_HEIGHT / 2);
+    draw_quest_list(rpg);
 }
