@@ -44,9 +44,10 @@ static void create_player_bis(combat_t *com)
     com->player->stat->attack = 10, com->player->stat->defense = 10;
     com->player->stat->life = 100, com->player->stat->level = 1;
     com->player->stat->xp = 0, com->player->stat->text_attack = NULL;
-    com->player->stat->text_defense = NULL, com->player->stat->text_life = NULL;
+    com->player->stat->text_defense = NULL;
+    com->player->stat->text_life = NULL;
     com->player->stat->text_level = NULL;
-    com->player->stat->class = RPG_CLASS_WARRIOR;
+    com->player->stat->class = -1;
     com->player->name = "player";
 }
 
