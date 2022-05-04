@@ -73,6 +73,7 @@ typedef struct entity {
     int life;
     stats_t *stat;
     e_combat_player_state cmb_state;
+    char *name;
 } entity_t;
 
 typedef struct sfx {
@@ -103,7 +104,8 @@ typedef struct game_over {
 typedef struct combat {
     hud_t *hud;
     hud_t *slash;
-    entity_t *ennemy;
+    entity_t **ennemy;
+    entity_t *curr_ennemy;
     entity_t *player;
     transt_t *transt;
     sfx_t *sfx;

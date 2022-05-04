@@ -17,12 +17,16 @@ void player_movement(rpg_t *rpg)
         multiplicator *= 5;
     if (rpg->event.key.code == KEYDOWN && IN_OVERWORLD) {
         rpg->cam.y -= 600 * rpg->dt * multiplicator;
+        spawn_ennemy(rpg);
     } if (rpg->event.key.code == KEYUP && IN_OVERWORLD) {
         rpg->cam.y += 600 * rpg->dt * multiplicator;
+        spawn_ennemy(rpg);
     } if (rpg->event.key.code == KEYRIGHT && IN_OVERWORLD) {
         rpg->cam.x += 2000 * rpg->dt * multiplicator;
+        spawn_ennemy(rpg);
     } if (rpg->event.key.code == KEYLEFT && IN_OVERWORLD) {
         rpg->cam.x -= 2000 * rpg->dt * multiplicator;
+        spawn_ennemy(rpg);
     }
 }
 
@@ -47,7 +51,8 @@ void key_pressed(rpg_t *rpg)
             sfSprite_setScale(OW->spr, (sfVector2f){2, 2});
         }
     }
-    player_movement(rpg);
+    if (!rpg->combat->transition_ow)
+        player_movement(rpg);
     // ------------------ DEBUG ------------------------
     if (rpg->event.key.code == sfKeyC) {
         if (IN_OVERWORLD) {

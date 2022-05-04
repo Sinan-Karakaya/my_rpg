@@ -44,7 +44,7 @@ void do_transition_cmb(rpg_t *rpg, transt_t *e)
 {
     sfColor color = sfRectangleShape_getFillColor(e->rect);
 
-    if (get_time(e->clock) < 0.002f)
+    if (get_time(e->clock) < 0.0002f)
         return;
     if (rpg->scene == COMBAT && color.a < 255) {
         color.a += 5;
@@ -54,8 +54,11 @@ void do_transition_cmb(rpg_t *rpg, transt_t *e)
         // change_music(rpg->sounds->music, OVERWORLD_MUSIC);
     } if (rpg->scene == OVERWORLD && color.a > 0) {
         color.a -= 5;
-    } else if (rpg->scene == OVERWORLD && color.a == 0)
+    } else if (rpg->scene == OVERWORLD && color.a == 0) {
         rpg->combat->transition_cmb = false;
+        rpg->combat->curr_ennemy->life = rpg->combat->curr_ennemy->max_life;
+    }
+    rpg->combat->state = RPG_COMBAT_PENDING;
     sfRectangleShape_setFillColor(e->rect, color);
     sfRenderWindow_drawRectangleShape(rpg->window, e->rect, NULL);
     sfClock_restart(e->clock);
@@ -65,7 +68,7 @@ void do_transition_ow(rpg_t *rpg, transt_t *e)
 {
     sfColor color = sfRectangleShape_getFillColor(e->rect);
 
-    if (get_time(e->clock) < 0.002f)
+    if (get_time(e->clock) < 0.0002f)
         return;
     if (rpg->scene == OVERWORLD && color.a < 255) {
         color.a += 5;

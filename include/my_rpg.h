@@ -39,6 +39,7 @@ float get_time(sfClock *clock);
 float get_time_mil(sfClock *clock);
 float get_dt(sfClock *game_clock);
 int get_rand_small_range(void);
+int toss_coin(void);
 void free_rpg(rpg_t *rpg);
 bool do_aabb_mouse(sfMouseButtonEvent mouse, sfSprite *sp);
 bool do_aabb_mouse_rect(sfMouseButtonEvent mouse, sfIntRect rect);
@@ -58,10 +59,13 @@ void do_slash(combat_t *combat, sfRenderWindow *window);
 
 // COMBAT
 void init_combat(rpg_t *rpg);
+int create_wolf(combat_t *com);
+int create_bear(combat_t *com);
 void combat_loop(rpg_t *rpg, combat_t *combat);
 void do_transition_ow(rpg_t *rpg, transt_t *e);
 void do_transition_cmb(rpg_t *rpg, transt_t *e);
 void do_transition_death(rpg_t *rpg, transt_t *e);
+void add_to_inventory(rpg_t *rpg);
 // COMBAT -> OLBERIC
 void olberic_do_attack(entity_t *player, combat_t *combat, rpg_t *rpg);
 void olberic_do_idle(entity_t *player);
@@ -69,6 +73,9 @@ void olberic_protect(entity_t *player, combat_t *combat);
 void olberic_death(entity_t *player);
 // COMBAT -> BOSS
 void animate_boss(entity_t *boss, combat_t *combat);
+// COMBAT -> ENNEMIES
+void animate_bear(entity_t *bear, combat_t *combat);
+void animate_wolf(entity_t *wolf, combat_t *combat);
 
 // MAP
 sfVector2f to2d(sfVector3f p, rpg_t *game);

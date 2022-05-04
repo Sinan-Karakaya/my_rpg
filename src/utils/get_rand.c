@@ -18,3 +18,10 @@ int get_rand_small_range(void)
         return rand_num * -1;
     return 0;
 }
+
+int toss_coin(void)
+{
+    int rand_num = rand() % 2;
+
+    return rand_num;
+}

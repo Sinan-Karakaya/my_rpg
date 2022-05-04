@@ -69,6 +69,16 @@
 #define OLBERIC_HEIGHT 45
 #define OLBERIC_HEALTH 100
 
+#define BEAR_PATH "assets/combat/bear.png"
+#define BEAR_HEIGHT 98
+#define BEAR_WIDTH 87
+#define BEAR_FRAMES 6
+
+#define WOLF_PATH "assets/combat/wolf.png"
+#define WOLF_HEIGHT 57
+#define WOLF_WIDTH 95
+#define WOLF_FRAMES 8
+
 #define KEYUP rpg->keybinds->key_up
 #define KEYDOWN rpg->keybinds->key_down
 #define KEYLEFT rpg->keybinds->key_left

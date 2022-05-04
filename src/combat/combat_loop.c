@@ -6,6 +6,7 @@
 */
 
 #include "my_rpg.h"
+#include "my.h"
 
 static void check_player_state(entity_t *player, combat_t *combat, rpg_t *rpg)
 {
@@ -40,20 +41,44 @@ static void get_input(entity_t *player, combat_t *combat, rpg_t *rpg)
     check_player_state(combat->player, combat, rpg);
 }
 
+static void animate(rpg_t *rpg, entity_t *ennemy)
+{
+    if (my_strcmp(ennemy->name, "boss") == 0)
+        animate_boss(rpg->combat->curr_ennemy, rpg->combat);
+    if (my_strcmp(ennemy->name, "bear") == 0)
+        animate_bear(rpg->combat->curr_ennemy, rpg->combat);
+    if (my_strcmp(ennemy->name, "wolf") == 0)
+        animate_wolf(rpg->combat->curr_ennemy, rpg->combat);
+}
+
+static void end_combat(rpg_t *rpg, combat_t *combat)
+{
+    combat->transition_cmb = true;
+    combat->player->stat->xp += 8 + get_rand_small_range();
+    add_to_inventory(rpg);
+}
+
 void combat_loop(rpg_t *rpg, combat_t *combat)
 {
-    draw_hud(rpg, combat->player, combat->ennemy);
+    if (combat->state == RPG_COMBAT_WIN &&
+    my_strcmp(combat->curr_ennemy->name, "boss") != 0) {
+        end_combat(rpg, combat);
+        sfRenderWindow_drawSprite(rpg->window, combat->curr_ennemy->sprite, NULL);
+        sfRenderWindow_drawSprite(rpg->window, combat->player->sprite, NULL);
+        return;
+    }
+    draw_hud(rpg, combat->player, combat->curr_ennemy);
     if (combat->slash->is_active)
         do_slash(combat, rpg->window);
     if (combat->player->cmb_state == RPG_COMBAT_PLAYER_IDLE)
         move_hud_in(combat->hud);
     else
         move_hud_out(combat->hud);
-    if (get_time(combat->ennemy->clock) > 0.15f)
-        animate_boss(combat->ennemy, combat);
+    if (get_time(combat->curr_ennemy->clock) > 0.15f)
+        animate(rpg, combat->curr_ennemy);
     if (get_time(combat->player->clock) > 0.12f &&
     combat->state != RPG_COMBAT_ENNEMY)
         get_input(combat->player, combat, rpg);
-    sfRenderWindow_drawSprite(rpg->window, combat->ennemy->sprite, NULL);
+    sfRenderWindow_drawSprite(rpg->window, combat->curr_ennemy->sprite, NULL);
     sfRenderWindow_drawSprite(rpg->window, combat->player->sprite, NULL);
 }

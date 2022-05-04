@@ -18,10 +18,10 @@ static void init_second_gauge(entity_t *entity)
     sfRectangleShape_setPosition(entity->bar->rect_grey,
     (sfVector2f){entity->bar->pos.x + entity->bar->size.x,
     entity->bar->pos.y});
-    if (!entity->is_npc) {
+    if (!entity->is_npc || my_strcmp(entity->name, "boss") != 0) {
         sfRectangleShape_setSize(entity->bar->rect_grey,
         (sfVector2f){entity->max_life - entity->life, 10});
-    } else {
+    } else{
         sfRectangleShape_setSize(entity->bar->rect_grey,
         (sfVector2f){(entity->max_life - entity->life) / 5, 10});
     }
@@ -38,10 +38,13 @@ int init_gauge_bar(entity_t *entity)
     if (!entity->is_npc) {
         entity->bar->size = (sfVector2f){entity->max_life, 10};
         entity->bar->pos.x -= 22;
-    } else {
+    } else if (my_strcmp(entity->name, "boss") == 0) {
         entity->bar->pos.y += 150;
         entity->bar->pos.x -= 60;
         entity->bar->size = (sfVector2f){entity->max_life / 5, 10};
+    } else {
+        entity->bar->pos.y += 50;
+        entity->bar->size = (sfVector2f){entity->max_life, 10};
     } sfRectangleShape_setFillColor(entity->bar->rect, entity->bar->color);
     sfRectangleShape_setPosition(entity->bar->rect, entity->bar->pos);
     sfRectangleShape_setSize(entity->bar->rect, entity->bar->size);
@@ -52,14 +55,21 @@ int init_gauge_bar(entity_t *entity)
 static void display_update_gauge(entity_t *player, entity_t *ennemy)
 {
     player->bar->size = (sfVector2f){player->life, 10};
-    ennemy->bar->size = (sfVector2f){ennemy->life / 5, 10};
+    if (my_strcmp(ennemy->name, "boss") == 0)
+        ennemy->bar->size = (sfVector2f){ennemy->life / 5, 10};
+    else
+        ennemy->bar->size = (sfVector2f){ennemy->life, 10};
     sfRectangleShape_setSize(player->bar->rect, player->bar->size);
     sfRectangleShape_setSize(player->bar->rect_grey,
     (sfVector2f){player->max_life - player->life, 10});
     sfRectangleShape_setSize(ennemy->bar->rect, ennemy->bar->size);
-    sfRectangleShape_setSize(ennemy->bar->rect_grey,
-    (sfVector2f){(ennemy->max_life - ennemy->life) / 5, 10});
-    sfRectangleShape_setPosition(player->bar->rect_grey,
+    if (my_strcmp(ennemy->name, "boss") == 0) {
+        sfRectangleShape_setSize(ennemy->bar->rect_grey,
+        (sfVector2f){(ennemy->max_life - ennemy->life) / 5, 10});
+    } else {
+        sfRectangleShape_setSize(ennemy->bar->rect_grey,
+        (sfVector2f){(ennemy->max_life - ennemy->life), 10});
+    } sfRectangleShape_setPosition(player->bar->rect_grey,
     (sfVector2f){player->bar->pos.x + player->bar->size.x,
     player->bar->pos.y});
     sfRectangleShape_setPosition(ennemy->bar->rect_grey,
@@ -76,7 +86,7 @@ static void update_gauge(entity_t *player, entity_t *ennemy, combat_t *combat)
         player->cmb_state = RPG_COMBAT_PLAYER_DEATH;
     } if (ennemy->life < 0) {
         ennemy->life = 0;
-        player->cmb_state = RPG_COMBAT_PLAYER_WIN;
+        combat->state = RPG_COMBAT_WIN;
     } display_update_gauge(player, ennemy);
 }
 
