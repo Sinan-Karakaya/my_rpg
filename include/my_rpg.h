@@ -76,6 +76,7 @@ void animate_boss(entity_t *boss, combat_t *combat);
 // COMBAT -> ENNEMIES
 void animate_bear(entity_t *bear, combat_t *combat);
 void animate_wolf(entity_t *wolf, combat_t *combat);
+void spawn_ennemy(rpg_t *rpg);
 
 // MAP
 sfVector2f to2d(sfVector3f p, rpg_t *game);

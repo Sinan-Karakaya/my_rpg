@@ -60,13 +60,6 @@ static void end_combat(rpg_t *rpg, combat_t *combat)
 
 void combat_loop(rpg_t *rpg, combat_t *combat)
 {
-    if (combat->state == RPG_COMBAT_WIN &&
-    my_strcmp(combat->curr_ennemy->name, "boss") != 0) {
-        end_combat(rpg, combat);
-        sfRenderWindow_drawSprite(rpg->window, combat->curr_ennemy->sprite, NULL);
-        sfRenderWindow_drawSprite(rpg->window, combat->player->sprite, NULL);
-        return;
-    }
     draw_hud(rpg, combat->player, combat->curr_ennemy);
     if (combat->slash->is_active)
         do_slash(combat, rpg->window);
@@ -79,6 +72,13 @@ void combat_loop(rpg_t *rpg, combat_t *combat)
     if (get_time(combat->player->clock) > 0.12f &&
     combat->state != RPG_COMBAT_ENNEMY)
         get_input(combat->player, combat, rpg);
+    if (combat->state == RPG_COMBAT_WIN &&
+    my_strcmp(combat->curr_ennemy->name, "boss") != 0) {
+        end_combat(rpg, combat);
+        sfRenderWindow_drawSprite(rpg->window, combat->curr_ennemy->sprite, NULL);
+        sfRenderWindow_drawSprite(rpg->window, combat->player->sprite, NULL);
+        return;
+    }
     sfRenderWindow_drawSprite(rpg->window, combat->curr_ennemy->sprite, NULL);
     sfRenderWindow_drawSprite(rpg->window, combat->player->sprite, NULL);
 }

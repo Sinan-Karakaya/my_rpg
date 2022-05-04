@@ -8,6 +8,7 @@
 #include <stdlib.h>
 
 #include "my_rpg.h"
+#include "my.h"
 
 int create_bear(combat_t *com)
 {
@@ -28,6 +29,7 @@ int create_bear(combat_t *com)
     com->ennemy[1]->stat = malloc(sizeof(stats_t));
     com->ennemy[1]->stat->attack = 12;
     com->ennemy[1]->stat->defense = 10;
+    com->ennemy[1]->name = my_calloc(sizeof(char), 5);
     com->ennemy[1]->name = "bear";
     init_gauge_bar(com->ennemy[1]);
     return 0;
@@ -52,6 +54,7 @@ int create_wolf(combat_t *com)
     com->ennemy[2]->stat = malloc(sizeof(stats_t));
     com->ennemy[2]->stat->attack = 8;
     com->ennemy[2]->stat->defense = 6;
+    com->ennemy[2]->name = my_calloc(sizeof(char), 5);
     com->ennemy[2]->name = "wolf";
     init_gauge_bar(com->ennemy[2]);
     return 0;
