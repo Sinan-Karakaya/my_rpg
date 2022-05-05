@@ -74,5 +74,6 @@ int init_cinematic(rpg_t *rpg)
         return 84;
     if (init_bis(rpg))
         return 84;
+    rpg->cine->transition = false;
     return 0;
 }

@@ -40,7 +40,7 @@ void animate_car(rpg_t *rpg)
         if (sfSprite_getPosition(rpg->cine->car->sprite).x >=
         sfSprite_getPosition(CINE_PLAYER->sprite).x) {
             sfSound_play(rpg->cine->sfx->sound);
-            rpg->scene = OVERWORLD;
+            rpg->cine->transition = true;
         }
     }
     sfRenderWindow_drawSprite(rpg->window, rpg->cine->car->sprite, NULL);

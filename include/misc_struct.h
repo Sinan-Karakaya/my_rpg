@@ -47,4 +47,5 @@ typedef struct cine {
     sfTexture *background;
     sfSprite *sprite;
     sfx_t *sfx;
+    bool transition;
 } cine_t;

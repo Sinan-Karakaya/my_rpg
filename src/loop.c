@@ -35,8 +35,11 @@ static int gameloop(rpg_t *rpg)
                 return 1;
         if (rpg->menu->option->is_active == true) {
             display_options_ig(rpg);
-        } else if (rpg->scene == CINEMATIC) {
+        } else if (rpg->scene == CINEMATIC || rpg->cine->transition) {
             cinematic(rpg);
+            chose_scene(rpg);
+            if (rpg->cine->transition)
+                do_transition_cine(rpg, rpg->combat->transt);
         } else {
             draw_water(rpg);
             draw_map(rpg);
@@ -48,6 +51,8 @@ static int gameloop(rpg_t *rpg)
         }
         rpg->dt = get_dt(rpg->game_clock);
         print_debug(rpg);
+        sfRenderWindow_drawRectangleShape(rpg->window,
+        rpg->combat->transt->rect, NULL);
         sfRenderWindow_display(rpg->window);
     }
     return 0;

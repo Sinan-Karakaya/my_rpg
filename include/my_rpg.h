@@ -68,6 +68,7 @@ void combat_loop(rpg_t *rpg, combat_t *combat);
 void do_transition_ow(rpg_t *rpg, transt_t *e);
 void do_transition_cmb(rpg_t *rpg, transt_t *e);
 void do_transition_death(rpg_t *rpg, transt_t *e);
+void do_transition_cine(rpg_t *rpg, transt_t *e);
 void add_to_inventory(rpg_t *rpg);
 void check_stat(rpg_t *rpg);
 // COMBAT -> OLBERIC
