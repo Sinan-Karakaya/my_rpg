@@ -44,7 +44,6 @@ int init_gauge_bar(entity_t *entity)
         entity->bar->pos.x -= 60;
         entity->bar->size = (sfVector2f){entity->max_life / 5, 10};
     } else {
-        // entity->bar->pos.y += 30;
         entity->bar->pos.x -= 20;
         entity->bar->size = (sfVector2f){entity->max_life, 10};
     } if (my_strcmp(entity->name, "bear") == 0) {

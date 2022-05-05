@@ -62,8 +62,6 @@ void do_slash(combat_t *combat, sfRenderWindow *window);
 
 // COMBAT
 void init_combat(rpg_t *rpg);
-int create_wolf(combat_t *com);
-int create_bear(combat_t *com);
 void combat_loop(rpg_t *rpg, combat_t *combat);
 void do_transition_ow(rpg_t *rpg, transt_t *e);
 void do_transition_cmb(rpg_t *rpg, transt_t *e);
