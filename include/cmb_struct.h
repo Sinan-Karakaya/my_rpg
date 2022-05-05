@@ -12,6 +12,7 @@ typedef enum combat_player_state {
     RPG_COMBAT_PLAYER_ATTACK,
     RPG_COMBAT_PLAYER_ATTACKED,
     RPG_COMBAT_PLAYER_PROTECT,
+    RPG_COMBAT_PLAYER_HEAL,
     RPG_COMBAT_PLAYER_DEATH,
     RPG_COMBAT_PLAYER_WIN
 } e_combat_player_state;

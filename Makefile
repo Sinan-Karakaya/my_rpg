@@ -80,6 +80,7 @@ SRC = src/core.c	\
 	  src/cinematic/cinematic.c \
 	  src/cinematic/init_cine.c \
 	  src/errors_messages.c	\
+	  src\combat\heal.c \
 
 OBJ = $(SRC:.c=.o)
 TMP = $(SRC:.c=.c.tmp)

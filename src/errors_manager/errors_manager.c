@@ -43,6 +43,11 @@ const char *errors[] = {
     "assets/items/helmet_rm.png",
     "assets/items/sword_rm.png",
     "assets/items/boots.png",
+    "assets/cinematic/car_crash.ogg",
+    "assets/cinematic/tehla.png",
+    "assets/cinematic/road.png",
+    "assets/combat/bear.png",
+    "assets/combat/wolf.png",
     NULL
 };
 
