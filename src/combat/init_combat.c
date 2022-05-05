@@ -18,17 +18,18 @@ static int assign_ennemy_stat(entity_t *e, char *name, int id)
     if (id == 0) {
         e->life = 1000, e->max_life = 1000;
         e->is_npc = true, e->stat->attack = 20;
-        e->stat->defense = 10, e->name = "boss";
+        e->stat->defense = 10, e->name = name;
     } if (id == 1) {
         e->life = 230, e->max_life = 230;
         e->is_npc = true, e->stat->attack = 12;
-        e->stat->defense = 8, e->name = "bear";
+        e->stat->defense = 8, e->name = name;
     } if (id == 2) {
         e->life = 160, e->max_life = 160;
         e->is_npc = true, e->stat->attack = 8;
-        e->stat->defense = 6, e->name = "wolf";
+        e->stat->defense = 6, e->name = name;
     }
     init_gauge_bar(e);
+    return 0;
 }
 
 static int create_ennemy(entity_t *e, char *name, char *path, int id)
@@ -94,7 +95,7 @@ static int create_player(combat_t *com)
     com->player->life = 100, com->player->max_life = 100;
     if (create_player_bis(com) || init_gauge_bar(com->player) ||
     init_slash(com))
-        return 1;
+        return 84;
     return 0;
 }
 

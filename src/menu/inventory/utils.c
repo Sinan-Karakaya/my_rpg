@@ -6,6 +6,7 @@
 */
 
 #include "my_rpg.h"
+#include "my.h"
 #include <stdlib.h>
 
 static int remove_neg(int nb)
@@ -50,11 +51,10 @@ char *int_to_str(int nb)
 
     check_bignum(&nb, &big_num, &n);
     nb_count = count_nbr(nb)-1;
-    str = malloc(sizeof(char) * nb_count + 2);
+    str = my_calloc(sizeof(char), nb_count + 3);
     clearstrnbr(str, nb_count + 2);
     data[0] = nb_count;
     data[1] = nb;
     loop_int_to_str(data, &big_num, &pos, str);
-    str[pos] = '\0';
     return str;
 }

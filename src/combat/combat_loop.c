@@ -61,6 +61,9 @@ static void end_combat(rpg_t *rpg, combat_t *combat)
 
 void combat_loop(rpg_t *rpg, combat_t *combat)
 {
+    if (get_time(combat->player->clock) > 0.12f &&
+    combat->state != RPG_COMBAT_ENNEMY && rpg->combat->transition_ow == false)
+        get_input(combat->player, combat, rpg);
     draw_hud(rpg, combat->player, combat->curr_ennemy);
     if (combat->slash->is_active)
         do_slash(combat, rpg->window);
@@ -70,9 +73,6 @@ void combat_loop(rpg_t *rpg, combat_t *combat)
         move_hud_out(combat->hud);
     if (get_time(combat->curr_ennemy->clock) > 0.15f)
         animate(rpg, combat->curr_ennemy);
-    if (get_time(combat->player->clock) > 0.12f &&
-    combat->state != RPG_COMBAT_ENNEMY)
-        get_input(combat->player, combat, rpg);
     if (combat->state == RPG_COMBAT_WIN &&
     my_strcmp(combat->curr_ennemy->name, "boss") != 0) {
         end_combat(rpg, combat);
