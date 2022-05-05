@@ -89,6 +89,7 @@
 #define KEYRUN rpg->keybinds->key_run
 
 #define PLAYER_STATS rpg->combat->player->stat
+#define STUFF rpg->combat->player->stat->stuff
 
 #define INVENTORY rpg->menu->inventory
 #define SCALE_PNJ_X (sfVector2f){(point[1].x - point[0].x) / 150

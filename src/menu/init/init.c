@@ -62,6 +62,8 @@ int init_sound(rpg_t *rpg)
     if (!rpg->sounds)
         return 84;
     rpg->sounds->music = sfMusic_createFromFile(OVERWORLD_MUSIC);
+    if (!rpg->sounds->music)
+        return 84;
     rpg->sounds->is_played = true;
     rpg->sounds->sound_music = 15;
     rpg->sounds->sound_effect = 15;
@@ -76,7 +78,7 @@ int init_buttons(rpg_t *rpg)
 
     rpg->menu->main->buttons = malloc(sizeof(bt_list_t));
     rpg->menu->option->buttons = malloc(sizeof(bt_list_t));
-    if (!rpg->menu->main->buttons)
+    if (!rpg->menu->main->buttons || !rpg->menu->option->buttons)
         return 84;
     rpg->menu->main->buttons->nbr_bt = nbr_buttons;
     rpg->menu->main->buttons->lst_bt = malloc(sizeof(button_t *) *
@@ -86,15 +88,17 @@ int init_buttons(rpg_t *rpg)
     rpg->menu->option->buttons->nbr_bt = nbr_buttons2;
     rpg->menu->option->buttons->lst_bt = malloc(sizeof(bt_list_t *) *
     nbr_buttons2);
-    if (!rpg->menu->option->buttons->lst_bt)
+    if (!rpg->menu->option->buttons->lst_bt || init_all_buttons(rpg))
         return 84;
-    init_all_buttons(rpg);
     return 0;
 }
 
-void init_keybind(rpg_t *rpg)
+int init_keybind(rpg_t *rpg)
 {
     rpg->keybinds = malloc(sizeof(keybind_t));
+
+    if (!rpg->keybinds)
+        return 84;
     rpg->keybinds->key_up = sfKeyZ;
     rpg->keybinds->key_down = sfKeyS;
     rpg->keybinds->key_left = sfKeyQ;
@@ -103,4 +107,5 @@ void init_keybind(rpg_t *rpg)
     rpg->keybinds->key_attack = sfKeyA;
     rpg->keybinds->key_protect = sfKeyP;
     rpg->keybinds->key_run = sfKeyR;
+    return 0;
 }

@@ -21,18 +21,24 @@ static sfSprite *init_sprite(sfVector2f pos, char *filename)
     return sprite;
 }
 
-static void init_button_inventory(rpg_t *rpg)
+static int init_button_inventory(rpg_t *rpg)
 {
     size_t x = 0;
     size_t y = 0;
 
     rpg->menu->inventory->buttons = malloc(sizeof(bt_list_t));
+    if (!rpg->menu->inventory->buttons)
+        return 84;
     rpg->menu->inventory->buttons->nbr_bt = 34;
     rpg->menu->inventory->buttons->lst_bt = malloc(sizeof(button_t *) *
     (rpg->menu->inventory->buttons->nbr_bt));
+    if (!rpg->menu->inventory->buttons->lst_bt)
+        return 84;
     for (size_t i = 0; i < 30; i++) {
         rpg->menu->inventory->buttons->lst_bt[i] = create_slots(" ",
         (sfVector2f){750 + 120 * x, 150 + 115 * y}, 100, "assets/menu/slots.png");
+        if (!rpg->menu->inventory->buttons->lst_bt[i])
+            return 84;
         x++;
         if (x > 5) {
             x = 0;
@@ -42,38 +48,53 @@ static void init_button_inventory(rpg_t *rpg)
     for (size_t i = 30, y = 0; i < rpg->menu->inventory->buttons->nbr_bt; i++) {
         rpg->menu->inventory->buttons->lst_bt[i] = create_slots(" ",
         (sfVector2f){1490, 180 + 140 * y}, 100, "assets/menu/slots.png");
+        if (!rpg->menu->inventory->buttons->lst_bt[i])
+            return 84;
         y++;
     }
+    return 0;
 }
 
-void init_inventory(rpg_t *rpg)
+int init_inventory(rpg_t *rpg)
 {
     INVENTORY->sprite =
     init_sprite((sfVector2f){300, 100}, "assets/menu/inventory.png");
     rpg->menu->inventory->slots = malloc(sizeof(slots_t *) * 34);
+    if (!rpg->menu->inventory->slots)
+        return 84;
     for (size_t i = 0; i < 34; i++)
         rpg->menu->inventory->slots[i] = malloc(sizeof(slots_t));
     for (size_t i = 0; i < 34; i++) {
+        if (!rpg->menu->inventory->slots[i])
+            return 84;
         rpg->menu->inventory->slots[i]->item_id = 0;
         rpg->menu->inventory->slots[i]->sprite = NULL;
     }
-    init_button_inventory(rpg);
+    if (init_button_inventory(rpg) == 84)
+        return 84;
     rpg->combat->player->stat->stuff = malloc(sizeof(stuff_t));
-    rpg->combat->player->stat->stuff->life = 0;
-    rpg->combat->player->stat->stuff->defense = 0;
-    rpg->combat->player->stat->stuff->attack = 0;
+    if (!rpg->combat->player->stat->stuff)
+        return 84;
+    STUFF->life = 0, STUFF->defense = 0, STUFF->attack = 0;
+    return 0;
 }
 
-void init_class_menu(rpg_t *rpg)
+int init_class_menu(rpg_t *rpg)
 {
     rpg->menu->class = malloc(sizeof(menu_class_t));
+    if  (!rpg->menu->class)
+        return 84;
     rpg->menu->class->texture = sfTexture_createFromFile(CLASS_MENU, NULL);
     rpg->menu->class->sprite = sfSprite_create();
+    if (!rpg->menu->class->texture || !rpg->menu->class->sprite)
+        return 84;
     sfSprite_setTexture(rpg->menu->class->sprite, rpg->menu->class->texture,
     sfFalse);
     sfSprite_setPosition(rpg->menu->class->sprite, (sfVector2f){0, 0});
     rpg->menu->class->font = sfFont_createFromFile(FONT_PATH);
     rpg->menu->class->text = sfText_create();
+    if (!rpg->menu->class->font || !rpg->menu->class->text)
+        return 84;
     sfText_setFont(rpg->menu->class->text, rpg->menu->class->font);
     sfText_setCharacterSize(rpg->menu->class->text, 30);
     sfText_setPosition(rpg->menu->class->text, (sfVector2f){750, 800});
@@ -81,6 +102,6 @@ void init_class_menu(rpg_t *rpg)
     sfText_setFillColor(rpg->menu->class->text, sfWhite);
     sfText_setOutlineColor(rpg->menu->class->text, sfBlack);
     sfText_setOutlineThickness(rpg->menu->class->text, 1);
-    rpg->menu->is_class = false;
-    rpg->menu->no_class = false;
+    rpg->menu->is_class = false, rpg->menu->no_class = false;
+    return 0;
 }

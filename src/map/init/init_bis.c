@@ -8,7 +8,7 @@
 #include <stdlib.h>
 #include "my_rpg.h"
 
-void init_cam(rpg_t *game)
+int init_cam(rpg_t *game)
 {
     game->cam.x = 1600;
     game->cam.y = 400;
@@ -16,5 +16,8 @@ void init_cam(rpg_t *game)
     game->cam.render = malloc(sizeof(render_t));
     game->cam.render->point = malloc(sizeof(sfVector2f) * 3);
     game->cam.render->triangle = sfVertexArray_create();
+    if (!game->cam.render->point || !game->cam.render->triangle)
+        return 84;
     sfVertexArray_resize(game->cam.render->triangle, 3);
+    return 0;
 }
