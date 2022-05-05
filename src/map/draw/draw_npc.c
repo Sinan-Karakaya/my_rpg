@@ -21,7 +21,7 @@ sfVector2i get_npc_offset(int i, rpg_t *rpg)
 void draw_npc(rpg_t *rpg)
 {
     sfSprite *sp = sfSprite_create();
-    sfSprite_setTexture(sp, rpg->texture->texture, sfTrue);
+    sfSprite_setTexture(sp, rpg->world->texture_p->texture, sfTrue);
     sfVector2i offset = {0, 0};
     sfVector2i p;
     sfVector2f *point = rpg->cam.render->point;

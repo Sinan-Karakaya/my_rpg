@@ -10,10 +10,10 @@
 #include "my_rpg.h"
 
 const sfVector2i offset_tab[] =
-    {(sfVector2i){130, 170}, (sfVector2i){130, 170}, (sfVector2i){130, 170}
-    , (sfVector2i){20, 280}, (sfVector2i){20, 280}, (sfVector2i){20, 280},
-     (sfVector2i){20, 280}, (sfVector2i){20, 280}, (sfVector2i){20, 280}
-    , (sfVector2i){20, 280}, (sfVector2i){20, 280}, (sfVector2i){20, 280},};
+    {(sfVector2i){130, 170}, (sfVector2i){0, 0}, (sfVector2i){0, 300},
+    (sfVector2i){20, 250}, (sfVector2i){0, 300}, (sfVector2i){59, 87},
+    (sfVector2i){0, 0}, (sfVector2i){30, 270}, (sfVector2i){0, 300},
+    (sfVector2i){20, 280}, (sfVector2i){20, 280}, (sfVector2i){20, 280}};
 
 
 static bool check_aabb(rpg_t *rpg, sfRectangleShape *sp)

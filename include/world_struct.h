@@ -45,6 +45,7 @@ typedef struct world {
     npc_t *npc_list;
     sfRenderStates *texture_o;
     sfRenderStates *texture_n;
+    sfRenderStates *texture_p;
     sfSprite **rendered_spr;
     sfShader *shader;
     gui_t gui;

@@ -30,7 +30,6 @@ void fill_spawn(rpg_t *rpg)
     rpg->world->object_map[47][15] = 8;
     rpg->world->object_map[31][28] = 8;
     rpg->world->object_map[36][28] = 8;
-
 }
 
 void fill_map(rpg_t *rpg)
