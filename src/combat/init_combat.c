@@ -138,5 +138,7 @@ int init_combat(rpg_t *rpg)
     if (create_hud(rpg->combat) || create_transt(rpg->combat->transt)
     || init_font(rpg))
         return 84;
+    rpg->combat->transition_ow = false;
+    rpg->combat->transition_cmb = false;
     return 0;
 }

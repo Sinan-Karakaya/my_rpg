@@ -61,7 +61,10 @@ static int change_class_texture(rpg_t *rpg)
 
 static int init_all_bis(rpg_t *rpg)
 {
-    // init_shaders(rpg);
+    if (change_class_texture(rpg) || load_loop(rpg, 1))
+        return error_message("Problem in the initialization of the class\n");
+    if (init_cam(rpg) || load_loop(rpg, 2))
+        return error_message("Problem in the initialization of the camera\n");
     if (init_world(rpg) || load_loop(rpg, 3))
         return error_message("Problem in the initialization of the world\n");
     if (init_sound(rpg) || load_loop(rpg, 4))
@@ -85,10 +88,6 @@ int init_all(rpg_t *rpg)
         return error_message("Problem in the initialization of the combat\n");
     if (init_player_overworld(rpg))
         return error_message("Problem in the initialization of the player\n");
-    if (change_class_texture(rpg) || load_loop(rpg, 1))
-        return error_message("Problem in the initialization of the class\n");
-    if (init_cam(rpg) || load_loop(rpg, 2))
-        return error_message("Problem in the initialization of the camera\n");
     if (init_all_bis(rpg) == 84)
         return 84;
     if (!read_save(rpg)) {
@@ -98,9 +97,8 @@ int init_all(rpg_t *rpg)
     rpg->texture = init_struct_texture("assets/environement/pr.png", rpg);
     if (!rpg->texture)
         return 84;
+    if (play_music(rpg) == 84)
+        return error_message("Problem in the initialization of the music\n");
     rpg->scene = OVERWORLD;
-    play_music(rpg);
-    rpg->combat->transition_ow = false;
-    rpg->combat->transition_cmb = false;
     return 0;
 }

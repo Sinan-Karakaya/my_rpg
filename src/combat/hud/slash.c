@@ -8,15 +8,6 @@
 #include <stdlib.h>
 #include "my_rpg.h"
 
-static void init_sfx_slash(combat_t *combat)
-{
-    combat->sfx = malloc(sizeof(sfx_t));
-    combat->sfx->sound = sfSound_create();
-    combat->sfx->buffer = sfSoundBuffer_createFromFile(SLASH_SFX);
-    sfSound_setBuffer(combat->sfx->sound, combat->sfx->buffer);
-    sfSound_setVolume(combat->sfx->sound, 15);
-}
-
 int init_slash(combat_t *combat)
 {
     combat->slash = malloc(sizeof(hud_t));
@@ -34,7 +25,6 @@ int init_slash(combat_t *combat)
     sfSprite_setTextureRect(combat->slash->sprite, combat->slash->rect);
     combat->slash->clock = sfClock_create();
     combat->slash->is_active = false;
-    init_sfx_slash(combat);
     return 0;
 }
 
