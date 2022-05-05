@@ -30,7 +30,10 @@ void class_menu_button(sfEvent event, rpg_t *rpg)
         rpg->menu->is_class = false;
         rpg->menu->is_main = false;
         assign_class(rpg);
-    }
+    } rpg->scene = CINEMATIC;
+    rpg->cine->player->texture = sfSprite_getTexture(rpg->overworld->spr);
+    sfSprite_setTexture(rpg->cine->player->sprite, rpg->cine->player->texture,
+    sfFalse);
 }
 
 void class_menu(rpg_t *rpg)
