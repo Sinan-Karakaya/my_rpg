@@ -23,7 +23,7 @@
 
 //INITIALIZATION
 int init_all(rpg_t *rpg);
-void init_keybind(rpg_t *rpg);
+int init_keybind(rpg_t *rpg);
 int init_buttons(rpg_t *rpg);
 int init_sound(rpg_t *rpg);
 int init_menu(rpg_t *rpg);
@@ -87,8 +87,8 @@ sfVector2f to2d(sfVector3f p, rpg_t *game);
 void draw_map(rpg_t *rpg);
 void draw_water(rpg_t *rpg);
 int **create_map(int heigth, int width);
-void init_world(rpg_t *rpg);
-void init_cam(rpg_t *game);
+int init_world(rpg_t *game);
+int init_cam(rpg_t *game);
 sfRenderStates *init_struct_texture(char *path, rpg_t *rpg);
 float perlin(float x, float y, float res);
 void destroy_world(rpg_t *game);
@@ -128,7 +128,7 @@ void draw_game_over(rpg_t *rpg);
 void buttons_controls_menu(rpg_t *rpg, bt_list_t *bt_list, sfEvent event);
 button_t *create_button(char *str, sfVector2f pos, int ptr_f, char *img);
 int detect_click_on_bt(bt_list_t *bt_list, sfEvent event, size_t s, size_t e);
-void init_all_buttons(rpg_t *rpg);
+int init_all_buttons(rpg_t *rpg);
 void display_buttons_main(rpg_t *rpg);
 void display_buttons_option(rpg_t *rpg);
 void print_parralax(rpg_t *rpg);
@@ -142,7 +142,7 @@ int detect_click_on_bt_2(bt_list_t *bt_list, sfEvent event, size_t s, size_t e);
 
 //INVENTORY
 void print_inventory(rpg_t *rpg);
-void init_inventory(rpg_t *rpg);
+int init_inventory(rpg_t *rpg);
 int detect_click_on_inv(bt_list_t *bt_list, sfEvent event, size_t s, size_t e);
 button_t *create_slots(char *str, sfVector2f pos, int ptr_f, char *img);
 int manage_inv(rpg_t *rpg, int button);
@@ -157,7 +157,7 @@ char *int_to_str(int nb);
 int init_my_text(stats_t *stat);
 
 //CLASS MENU
-void init_class_menu(rpg_t *rpg);
+int init_class_menu(rpg_t *rpg);
 void class_menu(rpg_t *rpg);
 void class_menu_button(sfEvent event, rpg_t *rpg);
 
@@ -170,6 +170,7 @@ void draw_object(rpg_t *rpg);
 
 //ERROR_MANAGER
 int errors_manager(void);
+int error_message(char *str);
 
 //MAIN
 void do_loop(rpg_t *rpg);

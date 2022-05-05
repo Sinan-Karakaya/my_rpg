@@ -79,6 +79,7 @@ SRC = src/core.c	\
 	  src/combat/check_stats.c \
 	  src/cinematic/cinematic.c \
 	  src/cinematic/init_cine.c \
+	  src/errors_messages.c	\
 
 OBJ = $(SRC:.c=.o)
 TMP = $(SRC:.c=.c.tmp)
