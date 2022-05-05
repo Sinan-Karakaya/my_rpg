@@ -18,8 +18,13 @@ int init_sfx(combat_t *combat)
         return 84;
     combat->sfx->sound = sfSound_create();
     combat->sfx->buffer = sfSoundBuffer_createFromFile(SLASH_SFX);
-    if (!combat->sfx->buffer || !combat->sfx->sound)
+    if (!combat->sfx->buffer || !combat->sfx->sound) {
+        if (combat->sfx->sound)
+            sfSound_destroy(combat->sfx->sound);
+        if (combat->sfx->buffer)
+            sfSoundBuffer_destroy(combat->sfx->buffer);
         return 84;
+    }
     sfSound_setBuffer(combat->sfx->sound, combat->sfx->buffer);
     sfSound_setVolume(combat->sfx->sound, 15);
     return 0;

@@ -73,14 +73,12 @@ static int init_all_bis(rpg_t *rpg)
         return error_message("Problem in the initialization of the menu\n");
     if (init_buttons(rpg) || load_loop(rpg, 6))
         return error_message("Problem in the initialization of the buttons\n");
-    if (init_class_menu(rpg), load_loop(rpg, 7))
+    if (init_class_menu(rpg) || load_loop(rpg, 7))
         return error_message("Problem in the initialization of the class\n");
-    if (init_keybind(rpg), load_loop(rpg, 8))
+    if (init_keybind(rpg) || load_loop(rpg, 8))
         return error_message("Problem in the initialization of the keybind\n");
-    if (init_inventory(rpg), load_loop(rpg, 9))
+    if (init_inventory(rpg) || load_loop(rpg, 9))
         return error_message("Problem in the initialization of the INV\n");
-    if (init_cinematic(rpg))
-        return error_message("Problem in the initialization of the intro\n");
     return 0;
 }
 
@@ -92,6 +90,7 @@ int init_all(rpg_t *rpg)
         return error_message("Problem in the initialization of the player\n");
     if (init_all_bis(rpg) == 84)
         return 84;
+    init_cinematic(rpg);
     if (!read_save(rpg)) {
         rpg->menu->no_class = true;
     } else {
