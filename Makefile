@@ -77,6 +77,8 @@ SRC = src/core.c	\
 	  src/combat/utils_inventory.c \
 	  src/utils/cam_bounds.c \
 	  src/combat/check_stats.c \
+	  src/cinematic/cinematic.c \
+	  src/cinematic/init_cine.c \
 
 OBJ = $(SRC:.c=.o)
 TMP = $(SRC:.c=.c.tmp)

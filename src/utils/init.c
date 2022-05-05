@@ -71,6 +71,7 @@ int init_all(rpg_t *rpg)
     init_class_menu(rpg), load_loop(rpg, 7);
     init_keybind(rpg), load_loop(rpg, 8);
     init_inventory(rpg), load_loop(rpg, 9);
+    init_cinematic(rpg);
     if (!read_save(rpg)) {
         rpg->menu->no_class = true;
     } else

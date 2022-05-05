@@ -39,3 +39,12 @@ typedef struct keybind_s {
     int key_protect;
     int key_run;
 } keybind_t;
+
+typedef struct cine {
+    entity_t *player;
+    entity_t *car;
+    sfClock *clock;
+    sfTexture *background;
+    sfSprite *sprite;
+    sfx_t *sfx;
+} cine_t;
