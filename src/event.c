@@ -19,20 +19,20 @@ void player_movement(rpg_t *rpg)
     if (rpg->debug_toggle)
         multiplicator *= 5;
     if (rpg->event.key.code == KEYDOWN && IN_OVERWORLD &&
-    cam_is_in_bounds(rpg->cam.x, rpg->cam.y - 40)) {
-        rpg->cam.y -= 200 * rpg->dt * multiplicator;
+    cam_is_in_bounds(rpg->cam.x, rpg->cam.y - 40) && ow_aabb(rpg, (sfVector2f){0,-40}) == 0) {
+        rpg->cam.y -= 200 * rpg->dt;
         spawn_ennemy(rpg);
     } if (rpg->event.key.code == KEYUP && IN_OVERWORLD &&
-    cam_is_in_bounds(rpg->cam.x, rpg->cam.y + 40)) {
-        rpg->cam.y += 200 * rpg->dt * multiplicator;
+    cam_is_in_bounds(rpg->cam.x, rpg->cam.y + 40) && ow_aabb(rpg, (sfVector2f){0, -20}) == 0) {
+        rpg->cam.y += 200 * rpg->dt;
         spawn_ennemy(rpg);
     } if (rpg->event.key.code == KEYRIGHT && IN_OVERWORLD &&
-    cam_is_in_bounds(rpg->cam.x + 40, rpg->cam.y)) {
-        rpg->cam.x += 800 * rpg->dt * multiplicator;
+    cam_is_in_bounds(rpg->cam.x + 40, rpg->cam.y) && ow_aabb(rpg, (sfVector2f){-5, -30}) == 0) {
+        rpg->cam.x += 800 * rpg->dt;
         spawn_ennemy(rpg);
     } if (rpg->event.key.code == KEYLEFT && IN_OVERWORLD &&
-    cam_is_in_bounds(rpg->cam.x - 40, rpg->cam.y)) {
-        rpg->cam.x -= 800 * rpg->dt * multiplicator;
+    cam_is_in_bounds(rpg->cam.x - 40, rpg->cam.y) && ow_aabb(rpg, (sfVector2f){5, -30}) == 0) {
+        rpg->cam.x -= 800 * rpg->dt;
         spawn_ennemy(rpg);
     }
 }

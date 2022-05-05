@@ -64,7 +64,7 @@ void spawn_ennemy(rpg_t *rpg)
 {
     if (!cmb_is_in_bounds(rpg->cam))
         return;
-    if (IN_OVERWORLD && (rand() % 100) < 3) {
+    if (IN_OVERWORLD && (rand() % 1000000) < 3) {
         rpg->combat->transition_ow = true;
         rpg->combat->curr_ennemy = rpg->combat->ennemy[rand() % 2 + 1];
     } else if (rpg->scene == COMBAT) {
