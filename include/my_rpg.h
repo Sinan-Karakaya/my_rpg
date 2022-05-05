@@ -29,7 +29,7 @@ int init_sound(rpg_t *rpg);
 int init_menu(rpg_t *rpg);
 void assign_class(rpg_t *rpg);
 void assign_class_valid_save(rpg_t *rpg);
-void init_font(rpg_t *rpg);
+int init_font(rpg_t *rpg);
 bool cam_is_in_bounds(float x, float y);
 bool cmb_is_in_bounds(camera_t cam);
 
@@ -62,8 +62,6 @@ void do_slash(combat_t *combat, sfRenderWindow *window);
 
 // COMBAT
 int init_combat(rpg_t *rpg);
-int create_wolf(combat_t *com);
-int create_bear(combat_t *com);
 void combat_loop(rpg_t *rpg, combat_t *combat);
 void do_transition_ow(rpg_t *rpg, transt_t *e);
 void do_transition_cmb(rpg_t *rpg, transt_t *e);

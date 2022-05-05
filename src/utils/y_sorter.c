@@ -15,7 +15,7 @@ static void check_aabb(rpg_t *rpg, sfSprite *sp, float p_y)
     sfIntRect rect = sfSprite_getTextureRect(sp);
 
     pos.y += rect.height * 0.8;
-    if (pos.y > 315)
+    if (pos.y > 320)
         sfRenderWindow_drawSprite(rpg->window, sp, NULL);
 }
 
