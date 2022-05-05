@@ -26,6 +26,10 @@
 #define DRAW_BIS_REC offset.y + 300 * frame, 300, -300}
 #define DRAW_BIS_TEX sp, (sfIntRect){offset.x - 300,
 
+#define CINE_PLAYER rpg->cine->player
+#define CAR_PATH "assets/cinematic/tehla.png"
+#define CAR_SFX "assets/cinematic/car_crash.ogg"
+
 // MENU
 #define MENU_BG "assets/menu/background.png"
 #define MENU_FAR "assets/menu/farground.png"

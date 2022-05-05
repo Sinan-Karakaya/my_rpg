@@ -39,7 +39,8 @@ typedef enum rpg_scene {
     MAIN_MENU,
     OVERWORLD,
     COMBAT,
-    DEATH
+    DEATH,
+    CINEMATIC
 } e_rpg_scene;
 
 typedef struct rpg {
@@ -61,4 +62,5 @@ typedef struct rpg {
     e_rpg_scene scene;
     bool ow_can_move;
     keybind_t *keybinds;
+    cine_t *cine;
 } rpg_t;

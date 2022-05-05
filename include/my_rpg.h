@@ -32,6 +32,8 @@ void assign_class_valid_save(rpg_t *rpg);
 int init_font(rpg_t *rpg);
 bool cam_is_in_bounds(float x, float y);
 bool cmb_is_in_bounds(camera_t cam);
+int init_cinematic(rpg_t *rpg);
+void cinematic(rpg_t *rpg);
 
 // UTILS
 int event(rpg_t *rpg);

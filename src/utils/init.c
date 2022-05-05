@@ -90,6 +90,19 @@ int init_all(rpg_t *rpg)
         return error_message("Problem in the initialization of the player\n");
     if (init_all_bis(rpg) == 84)
         return 84;
+    init_player_overworld(rpg);
+    change_class_texture(rpg);
+    load_loop(rpg, 1);
+    init_cam(rpg), load_loop(rpg, 2);
+    init_world(rpg), load_loop(rpg, 3);
+    // init_shaders(rpg);
+    init_sound(rpg), load_loop(rpg, 4);
+    init_menu(rpg), load_loop(rpg, 5);
+    init_buttons(rpg), load_loop(rpg, 6);
+    init_class_menu(rpg), load_loop(rpg, 7);
+    init_keybind(rpg), load_loop(rpg, 8);
+    init_inventory(rpg), load_loop(rpg, 9);
+    init_cinematic(rpg);
     if (!read_save(rpg)) {
         rpg->menu->no_class = true;
     } else

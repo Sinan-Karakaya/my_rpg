@@ -5,6 +5,8 @@
 ** musics
 */
 
+#include <stdlib.h>
+
 #include "my_rpg.h"
 #include "defines.h"
 

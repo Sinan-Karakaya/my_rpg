@@ -117,7 +117,7 @@ int init_combat(rpg_t *rpg)
     rpg->combat = malloc(sizeof(combat_t));
     if (!rpg->combat)
         return 84;
-    rpg->combat->ennemy = malloc(sizeof(entity_t *));
+    rpg->combat->ennemy = malloc(sizeof(entity_t *) * 3);
     if (!rpg->combat->ennemy)
         return 84;
     rpg->combat->ennemy[0] = malloc(sizeof(entity_t));

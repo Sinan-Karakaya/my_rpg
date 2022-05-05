@@ -35,6 +35,8 @@ static int gameloop(rpg_t *rpg)
                 return 1;
         if (rpg->menu->option->is_active == true) {
             display_options_ig(rpg);
+        } else if (rpg->scene == CINEMATIC) {
+            cinematic(rpg);
         } else {
             draw_water(rpg);
             draw_map(rpg);

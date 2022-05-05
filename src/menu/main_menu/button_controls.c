@@ -10,11 +10,11 @@
 static void do_button_main(rpg_t *rpg, int i)
 {
     if (i == 0 && rpg->menu->no_class) {
-        // rpg->menu->is_main = false;
         rpg->menu->is_class = true;
-    } else if (i == 0 && !rpg->menu->no_class)
+    } else if (i == 0 && !rpg->menu->no_class) {
         rpg->menu->is_main = false;
-    if (i == 1) {
+        rpg->scene = CINEMATIC;
+    } if (i == 1) {
         rpg->menu->is_option = true;
         rpg->menu->is_main = false;
     }
