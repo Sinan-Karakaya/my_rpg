@@ -31,7 +31,7 @@ static void init_second_gauge(entity_t *entity)
 int init_gauge_bar(entity_t *entity)
 {
     if (!(entity->bar = malloc(sizeof(gauge_bar_t))))
-        return 1;
+        return 84;
     entity->bar->rect = sfRectangleShape_create();
     entity->bar->color = sfColor_fromRGB(0, 255, 0);
     entity->bar->pos = (sfVector2f){entity->pos.x + (entity->rect.width / 2)

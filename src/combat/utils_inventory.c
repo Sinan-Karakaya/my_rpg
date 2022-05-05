@@ -14,7 +14,7 @@ static int random_item(void)
     int rand_num = rand() % 100;
 
     if (rand_num < 30)
-        return rand() % 8 + 1;
+        return rand() % 7 + 1;
     return 0;
 }
 

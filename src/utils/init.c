@@ -57,7 +57,8 @@ static void change_class_texture(rpg_t *rpg)
 
 int init_all(rpg_t *rpg)
 {
-    init_combat(rpg);
+    if (init_combat(rpg) == 84)
+        return 84;
     init_player_overworld(rpg);
     change_class_texture(rpg);
     load_loop(rpg, 1);

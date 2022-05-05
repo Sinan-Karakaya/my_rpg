@@ -70,7 +70,7 @@ static int create_player(combat_t *com)
     com->player->life = 100, com->player->max_life = 100;
     create_player_bis(com);
     if (init_gauge_bar(com->player) || init_slash(com))
-        return 1;
+        return 84;
     return 0;
 }
 
@@ -87,18 +87,18 @@ static int create_transt(transt_t *e)
     return 0;
 }
 
-void init_combat(rpg_t *rpg)
+int init_combat(rpg_t *rpg)
 {
     rpg->combat = malloc(sizeof(combat_t));
-
     if (!rpg->combat)
-        return;
+        return 84;
     rpg->combat->ennemy = malloc(sizeof(entity_t *));
     rpg->combat->player = malloc(sizeof(entity_t));
     rpg->combat->transt = malloc(sizeof(transt_t));
     rpg->combat->curr_ennemy = malloc(sizeof(entity_t));
-    if (!rpg->combat->ennemy || !rpg->combat->player || !rpg->combat->transt)
-        return;
+    if (!rpg->combat->ennemy || !rpg->combat->player || !rpg->combat->transt
+    || !rpg->combat->curr_ennemy)
+        return 84;
     create_ennemy(rpg->combat);
     create_player(rpg->combat);
     create_bear(rpg->combat);

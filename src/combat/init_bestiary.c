@@ -13,22 +13,23 @@
 int create_bear(combat_t *com)
 {
     com->ennemy[1] = malloc(sizeof(entity_t));
+    if (!com->ennemy[1])
+        return 84;
     com->ennemy[1]->sprite = sfSprite_create();
     com->ennemy[1]->texture = sfTexture_createFromFile(BEAR_PATH, NULL);
     sfSprite_setTexture(com->ennemy[1]->sprite, com->ennemy[1]->texture,
-    sfTrue);
-    com->ennemy[1]->pos = (sfVector2f){RES_X / 5, RES_Y / 2 + 20};
+    sfTrue), com->ennemy[1]->pos = (sfVector2f){RES_X / 5, RES_Y / 2 + 20};
     sfSprite_setPosition(com->ennemy[1]->sprite, com->ennemy[1]->pos);
     com->ennemy[1]->rect = (sfIntRect){0, 0, BEAR_WIDTH, BEAR_HEIGHT};
     sfSprite_setTextureRect(com->ennemy[1]->sprite, com->ennemy[1]->rect);
     sfSprite_setScale(com->ennemy[1]->sprite, (sfVector2f){2, 2});
     com->ennemy[1]->clock = sfClock_create();
-    com->ennemy[1]->life = 230;
-    com->ennemy[1]->max_life = 230;
+    com->ennemy[1]->life = 230, com->ennemy[1]->max_life = 230;
     com->ennemy[1]->is_npc = true;
     com->ennemy[1]->stat = malloc(sizeof(stats_t));
-    com->ennemy[1]->stat->attack = 12;
-    com->ennemy[1]->stat->defense = 8;
+    if (!com->ennemy[1]->stat)
+        return 84;
+    com->ennemy[1]->stat->attack = 12, com->ennemy[1]->stat->defense = 8;
     com->ennemy[1]->name = my_calloc(sizeof(char), 5);
     com->ennemy[1]->name = "bear";
     init_gauge_bar(com->ennemy[1]);

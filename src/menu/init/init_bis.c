@@ -62,12 +62,6 @@ void init_inventory(rpg_t *rpg)
     rpg->combat->player->stat->stuff->life = 0;
     rpg->combat->player->stat->stuff->defense = 0;
     rpg->combat->player->stat->stuff->attack = 0;
-    rpg->menu->inventory->slots[0]->item_id = 1;
-    rpg->menu->inventory->slots[1]->item_id = 2;
-    rpg->menu->inventory->slots[4]->item_id = 5;
-    rpg->menu->inventory->slots[5]->item_id = 6;
-    rpg->menu->inventory->slots[6]->item_id = 7;
-    rpg->menu->inventory->slots[15]->item_id = 6;
 }
 
 void init_class_menu(rpg_t *rpg)
