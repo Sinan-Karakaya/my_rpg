@@ -55,19 +55,19 @@ int init_player_overworld(rpg_t *rpg)
 {
     if (!(OW = malloc(sizeof(overworld_t))) ||
     !(OW->texture = sfTexture_createFromFile(OLBERIC_OW_PATH, NULL)))
-        return 1;
+        return 84;
     OW->spr = sfSprite_create();
+    if (!OW->spr)
+        return 84;
     sfSprite_setTexture(OW->spr, OW->texture, sfTrue);
     sfSprite_setOrigin(OW->spr,
     (sfVector2f){PLAYER_OW_IDLE_W / 2, PLAYER_OW_HEIGHT / 2});
     sfSprite_setPosition(OW->spr, (sfVector2f){RES_X / 2, RES_Y / 2});
     sfSprite_setScale(OW->spr, (sfVector2f){2, 2});
     OW->clock = sfClock_create();
-    OW->state = RPG_OW_IDLE;
-    OW->was_looking_right = true;
-    OW->rect_left_i = 0;
-    OW->rect_left_w = 0;
-    OW->rect.height = 35;
-    OW->rect.top = 0;
+    if (!OW->clock)
+        return 84;
+    OW->state = RPG_OW_IDLE, OW->was_looking_right = true, OW->rect_left_i = 0;
+    OW->rect_left_w = 0, OW->rect.height = 35, OW->rect.top = 0;
     return 0;
 }

@@ -21,15 +21,14 @@ int init_slash(combat_t *combat)
 {
     combat->slash = malloc(sizeof(hud_t));
     if (!combat->slash)
-        return 1;
+        return 84;
     combat->slash->texture = sfTexture_createFromFile(SLASH_PATH, NULL);
     if (!combat->slash->texture)
-        return 1;
+        return 84;
     combat->slash->sprite = sfSprite_create();
     sfSprite_setTexture(combat->slash->sprite, combat->slash->texture, sfTrue);
     combat->slash->pos = combat->player->pos;
-    combat->slash->pos.x -= 20;
-    combat->slash->pos.y -= 20;
+    combat->slash->pos.x -= 20, combat->slash->pos.y -= 20;
     sfSprite_setPosition(combat->slash->sprite, combat->slash->pos);
     combat->slash->rect = (sfIntRect){0, 0, SLASH_WIDTH, SLASH_HEIGHT};
     sfSprite_setTextureRect(combat->slash->sprite, combat->slash->rect);
