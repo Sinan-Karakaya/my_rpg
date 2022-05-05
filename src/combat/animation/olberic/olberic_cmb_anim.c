@@ -11,16 +11,19 @@ void olberic_do_attack(entity_t *player, combat_t *combat, rpg_t *rpg)
 {
     int dmg = 0;
 
-    if (get_time(player->clock) > 0.5f)
-        olberic_do_attack(player, combat, rpg);
-    else
-        sfClock_restart(player->clock);
+    if (get_time(player->clock) < 0.5f)
+        return;
+        // olberic_do_attack(player, combat, rpg);
+    // else
+        // sfClock_restart(player->clock);
     if (player->rect_left_i < 10) {
         player->rect_left_i++, player->rect_left_w++;
         player->rect.left = olberic_rect_left[player->rect_left_i];
         player->rect.width = olberic_rect_w[player->rect_left_w];
     } else {
         player->rect_left_i = 19, player->rect_left_w = 19;
+        player->rect.left = olberic_rect_left[player->rect_left_i];
+        player->rect.width = olberic_rect_w[player->rect_left_w];
         dmg = (player->stat->attack + player->stat->stuff->attack)
         - (combat->curr_ennemy->stat->defense) + get_rand_small_range();
         if (dmg > 0)

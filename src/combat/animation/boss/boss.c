@@ -25,6 +25,7 @@ static void boss_attack(entity_t *boss, entity_t *player, combat_t *combat)
     player->cmb_state = RPG_COMBAT_PLAYER_IDLE;
     combat->slash->is_active = true;
     combat->state = RPG_COMBAT_PENDING;
+    sfClock_restart(combat->delay_clock);
 }
 
 void animate_boss(entity_t *boss, combat_t *combat)
@@ -35,6 +36,6 @@ void animate_boss(entity_t *boss, combat_t *combat)
         boss->rect.left = 0;
     sfSprite_setTextureRect(boss->sprite, boss->rect);
     sfClock_restart(boss->clock);
-    if (combat->state == RPG_COMBAT_ENNEMY)
+    if (combat->state == RPG_COMBAT_ENNEMY && get_time(combat->delay_clock) > 1.0f)
         boss_attack(boss, combat->player, combat);
 }

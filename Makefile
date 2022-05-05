@@ -71,7 +71,7 @@ SRC = src/core.c	\
 	  src/menu/game_over/game_over.c \
 	  src/errors_manager/errors_manager.c \
 	  src/menu/class_menu/class_menu.c \
-	  src/combat/init_bis.c \
+	  src/combat/init_bis_bis.c \
 	  src/combat/animation/ennemies/ennemies.c \
 	  src/combat/init_bestiary.c \
 	  src/combat/utils_inventory.c \
@@ -80,7 +80,8 @@ SRC = src/core.c	\
 	  src/cinematic/cinematic.c \
 	  src/cinematic/init_cine.c \
 	  src/errors_messages.c	\
-	  src\combat\heal.c \
+	  src/combat/heal.c \
+	  src/combat/init_combat_bis.c \
 
 OBJ = $(SRC:.c=.o)
 TMP = $(SRC:.c=.c.tmp)

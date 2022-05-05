@@ -72,6 +72,8 @@ void do_transition_cine(rpg_t *rpg, transt_t *e);
 void add_to_inventory(rpg_t *rpg);
 void check_stat(rpg_t *rpg);
 bool heal_player(rpg_t *rpg);
+int create_player(combat_t *com);
+int create_ennemy(entity_t *e, char *name, char *path, int id);
 // COMBAT -> OLBERIC
 void olberic_do_attack(entity_t *player, combat_t *combat, rpg_t *rpg);
 void olberic_do_idle(entity_t *player);

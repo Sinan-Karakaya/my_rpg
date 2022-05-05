@@ -22,6 +22,7 @@ static void check_player_state(entity_t *player, combat_t *combat, rpg_t *rpg)
         olberic_protect(player, combat);
     if (player->cmb_state == RPG_COMBAT_PLAYER_HEAL)
         heal_player(rpg);
+    sfClock_restart(rpg->combat->delay_clock);
 }
 
 static void get_input(entity_t *player, combat_t *combat, rpg_t *rpg)
@@ -69,7 +70,7 @@ void combat_loop(rpg_t *rpg, combat_t *combat)
     draw_hud(rpg, combat->player, combat->curr_ennemy);
     if (combat->slash->is_active)
         do_slash(combat, rpg->window);
-    if (combat->player->cmb_state == RPG_COMBAT_PLAYER_IDLE)
+    if (combat->state == RPG_COMBAT_PENDING)
         move_hud_in(combat->hud);
     else
         move_hud_out(combat->hud);

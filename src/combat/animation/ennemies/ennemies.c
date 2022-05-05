@@ -19,6 +19,7 @@ static void ennemy_attack(entity_t *boss, entity_t *player, combat_t *combat)
     player->cmb_state = RPG_COMBAT_PLAYER_IDLE;
     combat->slash->is_active = true;
     combat->state = RPG_COMBAT_PENDING;
+    sfClock_restart(combat->delay_clock);
 }
 
 void animate_bear(entity_t *bear, combat_t *combat)
@@ -35,7 +36,8 @@ void animate_bear(entity_t *bear, combat_t *combat)
         bear->rect.width = 86;
     sfSprite_setTextureRect(bear->sprite, bear->rect);
     sfClock_restart(bear->clock);
-    if (combat->state == RPG_COMBAT_ENNEMY)
+    if (combat->state == RPG_COMBAT_ENNEMY && get_time(combat->delay_clock) >
+    1.0f)
         ennemy_attack(bear, combat->player, combat);
 }
 
@@ -53,6 +55,7 @@ void animate_wolf(entity_t *wolf, combat_t *combat)
         wolf->rect.width = 96;
     sfSprite_setTextureRect(wolf->sprite, wolf->rect);
     sfClock_restart(wolf->clock);
-    if (combat->state == RPG_COMBAT_ENNEMY)
+    if (combat->state == RPG_COMBAT_ENNEMY && get_time(combat->delay_clock) >
+    1.0f)
         ennemy_attack(wolf, combat->player, combat);
 }
