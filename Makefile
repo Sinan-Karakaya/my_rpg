@@ -82,6 +82,7 @@ SRC = src/core.c	\
 	  src/errors_messages.c	\
 	  src/combat/heal.c \
 	  src/combat/init_combat_bis.c \
+	  src/menu/main_menu/key_bindings_menu.c \
 
 OBJ = $(SRC:.c=.o)
 TMP = $(SRC:.c=.c.tmp)

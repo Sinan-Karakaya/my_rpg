@@ -56,7 +56,6 @@ void display_buttons_music_ig(rpg_t *rpg)
     parralax(rpg, actual_pos, 6);
     actual_pos.y = mouse_pos.y + 700;
     parralax(rpg, actual_pos, 8);
-
     for (size_t i = 4; i < 9; i++) {
         sfRenderWindow_drawSprite(rpg->window, BUTTONSO->lst_bt[i]->sprite,
         NULL);

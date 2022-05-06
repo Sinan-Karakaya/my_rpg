@@ -23,14 +23,11 @@ static int init_menu_bis(rpg_t *rpg)
     rpg->menu->main->mid_g_texture, sfTrue);
     sfSprite_setScale(rpg->menu->main->mid_g_sprite, (sfVector2f){1.5, 1.5});
     rpg->menu->inventory = malloc(sizeof(menu_inventory_t));
-    rpg->menu->is_main = true;
-    rpg->menu->is_inventory = false;
-    rpg->menu->is_option = false;
-    rpg->menu->is_closed = false;
-    rpg->menu->option->is_active = false;
-    rpg->menu->option->music = false;
-    rpg->menu->option->keybinds = false;
-    rpg->menu->option->is_main = false;
+    rpg->menu->is_main = true, rpg->menu->is_inventory = false;
+    rpg->menu->is_option = false, rpg->menu->is_closed = false;
+    rpg->menu->option->is_active = false, rpg->menu->option->music = false;
+    rpg->menu->option->keybinds = false, rpg->menu->option->is_main = false;
+    rpg->menu->is_keybind = false, rpg->menu->is_music = false;
     return 0;
 }
 
@@ -73,7 +70,7 @@ int init_sound(rpg_t *rpg)
 
 int init_buttons(rpg_t *rpg)
 {
-    size_t nbr_buttons = 6;
+    size_t nbr_buttons = 7;
     size_t nbr_buttons2 = 19;
 
     rpg->menu->main->buttons = malloc(sizeof(bt_list_t));

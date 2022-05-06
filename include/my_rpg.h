@@ -126,6 +126,10 @@ int init_menu(rpg_t *rpg);
 int menuloop(rpg_t *rpg);
 int load_loop(rpg_t *rpg, int n);
 void draw_game_over(rpg_t *rpg);
+void display_buttons_keybinds_menu(rpg_t *rpg);
+void display_buttons_music_menu(rpg_t *rpg);
+void do_button_music_menu_interact(rpg_t *rpg, int i);
+void change_texture(bt_list_t *buttons, size_t start, size_t end);
 
 
 //BUTTONS

@@ -83,6 +83,8 @@ typedef struct menu {
     bool is_main;
     bool is_option;
     bool is_inventory;
+    bool is_keybind;
+    bool is_music;
     bool is_closed;
     bool is_class;
     bool no_class;
