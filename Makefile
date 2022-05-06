@@ -85,6 +85,8 @@ SRC = src/core.c	\
 	  src/combat/heal.c \
 	  src/combat/init_combat_bis.c \
 	  src/end_game.c \
+	  src/menu/destroy.c \
+	  src/combat/destroy.c \
 
 OBJ = $(SRC:.c=.o)
 TMP = $(SRC:.c=.c.tmp)

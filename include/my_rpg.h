@@ -182,3 +182,8 @@ int error_message(char *str);
 
 //MAIN
 void do_loop(rpg_t *rpg);
+
+//DESTROY
+void destroy_menu(menu_t *m);
+void combat_destroy(rpg_t *rpg);
+void free_entity(entity_t *e);

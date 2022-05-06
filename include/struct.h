@@ -32,7 +32,6 @@ typedef struct overworld {
     bool was_looking_right;
     int rect_left_i;
     int rect_left_w;
-    sfx_t *ow_sfx;
 } overworld_t;
 
 typedef enum rpg_scene {
