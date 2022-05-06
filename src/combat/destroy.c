@@ -12,6 +12,8 @@
 
 void free_entity(entity_t *e)
 {
+    if (my_strcmp(e->name, "cine") == 0)
+        return;
     sfTexture_destroy(e->texture);
     sfSprite_destroy(e->sprite);
     sfClock_destroy(e->clock);
