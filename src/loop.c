@@ -26,6 +26,27 @@ static void chose_scene(rpg_t *rpg)
         do_transition_death(rpg, rpg->combat->transt);
 }
 
+static void gameloop_bis(rpg_t *rpg)
+{
+    if (rpg->menu->option->is_active == true) {
+        display_options_ig(rpg);
+    } else if (rpg->scene == CINEMATIC || rpg->cine->transition) {
+        cinematic(rpg);
+        chose_scene(rpg);
+        if (rpg->cine->transition)
+            do_transition_cine(rpg, rpg->combat->transt);
+    } else {
+        draw_all(rpg);
+    }
+    rpg->dt = get_dt(rpg->game_clock);
+    print_debug(rpg);
+    sfRenderWindow_drawRectangleShape(rpg->window,
+    rpg->combat->transt->rect, NULL);
+    sfRenderWindow_drawText(rpg->window, rpg->end->text, NULL);
+    if (rpg->scene == DEATH)
+        draw_game_over(rpg);
+}
+
 static int gameloop(rpg_t *rpg)
 {
     while (sfRenderWindow_isOpen(rpg->window) && rpg->menu->is_closed != true
@@ -34,23 +55,7 @@ static int gameloop(rpg_t *rpg)
         while (sfRenderWindow_pollEvent(rpg->window, &rpg->event))
             if (event(rpg) == 1)
                 return 1;
-        if (rpg->menu->option->is_active == true) {
-            display_options_ig(rpg);
-        } else if (rpg->scene == CINEMATIC || rpg->cine->transition) {
-            cinematic(rpg);
-            chose_scene(rpg);
-            if (rpg->cine->transition)
-                do_transition_cine(rpg, rpg->combat->transt);
-        } else {
-            draw_all(rpg);
-        }
-        rpg->dt = get_dt(rpg->game_clock);
-        print_debug(rpg);
-        sfRenderWindow_drawRectangleShape(rpg->window,
-        rpg->combat->transt->rect, NULL);
-        sfRenderWindow_drawText(rpg->window, rpg->end->text, NULL);
-        if (rpg->scene == DEATH)
-            draw_game_over(rpg);
+        gameloop_bis(rpg);
         sfRenderWindow_display(rpg->window);
     }
     return 0;

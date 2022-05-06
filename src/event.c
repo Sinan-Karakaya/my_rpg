@@ -10,7 +10,7 @@
 
 #include "my_rpg.h"
 
-static void player_movement_bis(rpg_t *rpg, int multiplicator)
+static void player_movement_bis(rpg_t *rpg)
 {
     if (rpg->event.key.code == KEYRIGHT && IN_OVERWORLD &&
     cam_is_in_bounds(rpg->cam.x + 40, rpg->cam.y) && ow_aabb(rpg,
@@ -27,12 +27,6 @@ static void player_movement_bis(rpg_t *rpg, int multiplicator)
 
 static void player_movement(rpg_t *rpg)
 {
-    int multiplicator = 1;
-
-    if (!rpg->ow_can_move)
-        multiplicator = -1;
-    if (rpg->debug_toggle)
-        multiplicator *= 5;
     if (rpg->event.key.code == KEYDOWN && IN_OVERWORLD &&
     cam_is_in_bounds(rpg->cam.x, rpg->cam.y - 40) && ow_aabb(rpg,
     (sfVector2f){0,-40}) == 0) {
@@ -43,7 +37,7 @@ static void player_movement(rpg_t *rpg)
     (sfVector2f){0, -20}) == 0) {
         rpg->cam.y += 200 * rpg->dt;
         spawn_ennemy(rpg);
-    } player_movement_bis(rpg, multiplicator);
+    } player_movement_bis(rpg);
 }
 
 static void debug_key_pressed(rpg_t *rpg)

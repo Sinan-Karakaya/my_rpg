@@ -12,7 +12,7 @@ const char *inv[] = {"NULL", "assets/items/armor.png",
 "assets/items/armor_rm.png", "assets/items/helmet_rm.png",
 "assets/items/sword_rm.png", "assets/items/boots.png"};
 
-static sfSprite *init_sprite(sfVector2f pos, char *filename)
+static sfSprite *init_sprite(sfVector2f pos, const char *filename)
 {
     sfTexture *texture = sfTexture_createFromFile(
     filename, NULL);

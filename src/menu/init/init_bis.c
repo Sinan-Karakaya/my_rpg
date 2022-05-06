@@ -51,7 +51,7 @@ static int init_button_inventory(rpg_t *rpg)
     (rpg->menu->inventory->buttons->nbr_bt));
     if (!rpg->menu->inventory->buttons->lst_bt)
         return 84;
-    if ((y = for_loop(rpg, x, y)) == -1)
+    if ((int)(y = for_loop(rpg, x, y)) == -1)
         return 84;
     for (size_t i = 30, y = 0; i < INVENTORY_BUTTONS->nbr_bt; i++) {
         rpg->menu->inventory->buttons->lst_bt[i] = create_slots(" ",

@@ -75,7 +75,7 @@ SRC = src/core.c	\
 	  src/menu/class_menu/class_menu.c \
 	  src/combat/init_bis_bis.c \
 	  src/combat/animation/ennemies/ennemies.c \
-	  src/combat/init_bestiary.c \
+	  src/combat/spawn_ennemy.c \
 	  src/combat/utils_inventory.c \
 	  src/utils/cam_bounds.c \
 	  src/combat/check_stats.c \

@@ -19,7 +19,7 @@ const sfVector3f my_stats[] = {
     (sfVector3f){0, 10, 20}
 };
 
-int init_stats(rpg_t *rpg)
+void init_stats(rpg_t *rpg)
 {
     size_t item_id = 0;
     sfVector3f stats = {0, 0, 0};

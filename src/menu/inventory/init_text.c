@@ -51,6 +51,7 @@ static sfText *create_my_text_lvl(sfVector2f pos, int value)
 static void destroy_my_text(sfText *my_text)
 {
     sfFont *font;
+
     if (my_text != NULL) {
         font = sfText_getFont(my_text);
         sfFont_destroy(font);

@@ -54,6 +54,7 @@ bool do_aabb_sprites(sfSprite *sp1, sfSprite *sp2);
 bool do_aabb_sprites_rectangle(sfSprite *sp1, sfRectangleShape *sp2);
 void y_sorter(rpg_t *rpg);
 void get_olb_pos(int i, int j, rpg_t *rpg);
+bool boss_in_bounds(camera_t cam);
 
 // USER INTERFACE
 int create_hud(combat_t *combat);
@@ -161,7 +162,7 @@ button_t *create_slots(char *str, sfVector2f pos, int ptr_f, char *img);
 int manage_inv(rpg_t *rpg, int button);
 void check_inv(rpg_t *rpg);
 int slots_controls(rpg_t *rpg, sfEvent event);
-int init_stats(rpg_t *rpg);
+void init_stats(rpg_t *rpg);
 int replace_keys(rpg_t *rpg, int button, int key);
 int check_all_keys(rpg_t *rpg, int key);
 

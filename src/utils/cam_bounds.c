@@ -20,3 +20,10 @@ bool cmb_is_in_bounds(camera_t cam)
         return false;
     return true;
 }
+
+bool boss_in_bounds(camera_t cam)
+{
+    if (cam.x < 5248 && cam.x > 4103 && cam.y > 162 && cam.y < 804)
+        return true;
+    return false;
+}
