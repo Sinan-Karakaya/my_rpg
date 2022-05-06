@@ -11,6 +11,7 @@ static void do_button_main(rpg_t *rpg, int i)
 {
     if (i == 0 && rpg->menu->no_class) {
         rpg->menu->is_class = true;
+        rpg->menu->is_main = false;
     } else if (i == 0 && !rpg->menu->no_class) {
         rpg->menu->is_main = false;
     } if (i == 1) {

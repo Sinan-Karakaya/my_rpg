@@ -31,15 +31,6 @@ void print_parralax(rpg_t *rpg)
     NULL);
 }
 
-static void check_class_state(rpg_t *rpg, sfEvent event)
-{
-    if (rpg->menu->is_class)
-        class_menu_button(event, rpg);
-    else
-        buttons_controls_menu(rpg, BUTTONS, event);
-
-}
-
 static int manage_controls(rpg_t *rpg)
 {
     sfEvent event = {0};
@@ -53,7 +44,26 @@ static int manage_controls(rpg_t *rpg)
             return 1;
         }
         if (event.type == sfEvtMouseButtonPressed) {
-            check_class_state(rpg, event);
+            buttons_controls_menu(rpg, BUTTONS, event);
+        }
+    }
+    return 0;
+}
+
+static int manage_controls_class(rpg_t *rpg)
+{
+    sfEvent event = {0};
+
+    while (sfRenderWindow_pollEvent(rpg->window, &event)) {
+        if (event.type == sfEvtClosed) {
+            rpg->menu->is_closed = true;
+            rpg->menu->is_main = false;
+            rpg->menu->is_option = false;
+            sfRenderWindow_close(rpg->window);
+            return 1;
+        }
+        if (event.type == sfEvtMouseButtonPressed) {
+            class_menu_button(event, rpg);
         }
     }
     return 0;
@@ -86,6 +96,11 @@ int menuloop(rpg_t *rpg)
             return 1;
         print_parralax(rpg);
         print_my_menus(rpg);
+    }
+    while (rpg->menu->is_class && sfRenderWindow_isOpen(rpg->window)) {
+        if (manage_controls_class(rpg) == 1)
+            return 1;
+        class_menu(rpg);
     }
     return 0;
 }

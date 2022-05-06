@@ -46,4 +46,5 @@ void class_menu(rpg_t *rpg)
 {
     sfRenderWindow_drawSprite(rpg->window, rpg->menu->class->sprite, NULL);
     sfRenderWindow_drawText(rpg->window, rpg->menu->class->text, NULL);
+    sfRenderWindow_display(rpg->window);
 }
