@@ -67,6 +67,7 @@ static void combat_loop_bis(rpg_t *rpg, combat_t *combat)
         combat->player->stat->xp += 8 + get_rand_small_range();
         check_stat(rpg);
         add_to_inventory(rpg);
+        combat->ennemy_killed++;
         sfRenderWindow_drawSprite(rpg->window, combat->curr_ennemy->sprite,
         NULL);
         sfRenderWindow_drawSprite(rpg->window, combat->player->sprite, NULL);

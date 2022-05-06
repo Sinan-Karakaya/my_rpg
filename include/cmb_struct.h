@@ -117,4 +117,5 @@ typedef struct combat {
     bool transition_cmb;
     bool transition_ow;
     sfClock *delay_clock;
+    size_t ennemy_killed;
 } combat_t;
