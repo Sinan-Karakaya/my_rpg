@@ -17,7 +17,7 @@ static void check_player_state(entity_t *player, combat_t *combat, rpg_t *rpg)
     } if (player->cmb_state == RPG_COMBAT_PLAYER_IDLE)
         olberic_do_idle(player);
     if (player->cmb_state == RPG_COMBAT_PLAYER_ATTACK)
-        olberic_do_attack(player, combat, rpg);
+        olberic_do_attack(player, combat);
     if (player->cmb_state == RPG_COMBAT_PLAYER_PROTECT)
         olberic_protect(player, combat);
     if (player->cmb_state == RPG_COMBAT_PLAYER_HEAL)

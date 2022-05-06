@@ -23,6 +23,7 @@ static int change_slots(rpg_t *rpg, int button, int key)
     rpg->menu->inventory->slots[button]->item_id = save;
     sfRenderWindow_display(rpg->window);
     init_stats(rpg);
+    return 0;
 }
 
 int manage_inv(rpg_t *rpg, int button)

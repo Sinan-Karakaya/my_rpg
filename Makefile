@@ -32,6 +32,7 @@ SRC = src/core.c	\
 	  src/map/update/check_npc.c \
 	  src/map/create/create.c \
 	  src/map/create/csv_reader.c \
+	  src/map/fill/map_filler.c \
 	  src/map/draw/draw.c \
 	  src/map/draw/draw_all.c \
 	  src/map/draw/draw_bis.c \

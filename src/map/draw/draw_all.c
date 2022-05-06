@@ -32,4 +32,5 @@ int draw_all(rpg_t *rpg)
     draw_npc(rpg);
     chose_scene(rpg);
     check_quest(rpg);
+    return 0;
 }
