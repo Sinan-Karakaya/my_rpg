@@ -16,18 +16,20 @@ static void parralax(rpg_t *rpg, sfVector2f actual_pos, int i)
     sfText_setPosition(BUTTONS->lst_bt[i]->text, pos);
 }
 
-static void change_texture(rpg_t *rpg, size_t start, size_t end)
+void change_texture(bt_list_t *buttons, size_t start, size_t end)
 {
     sfTexture *texture = sfTexture_createFromFile(
     "assets/menu/button.png", (const sfIntRect *)NULL);
     sfTexture *texture_to = sfTexture_createFromFile(
     "assets/menu/button_toggle.png", (const sfIntRect *)NULL);
 
+    if (!texture || !texture_to)
+        return;
     for (size_t i = start; i < end; i++) {
-        if (BUTTONS->lst_bt[i]->toggle == true) {
-            sfSprite_setTexture(BUTTONS->lst_bt[i]->sprite, texture_to, true);
+        if (buttons->lst_bt[i]->toggle == true) {
+            sfSprite_setTexture(buttons->lst_bt[i]->sprite, texture_to, true);
         } else {
-            sfSprite_setTexture(BUTTONS->lst_bt[i]->sprite, texture, true);
+            sfSprite_setTexture(buttons->lst_bt[i]->sprite, texture, true);
         }
     }
 }
@@ -66,8 +68,10 @@ void display_buttons_option(rpg_t *rpg)
     parralax(rpg, actual_pos, 4);
     actual_pos.y = mouse_pos.y + 600;
     parralax(rpg, actual_pos, 5);
-    change_texture(rpg, 3, 5);
-    for (size_t i = 3; i < 6; i++) {
+    change_texture(BUTTONS, 4, 5);
+    actual_pos = (sfVector2f){mouse_pos.x + 920, mouse_pos.y + 450};
+    parralax(rpg, actual_pos, 6);
+    for (size_t i = 3; i < 7; i++) {
         sfRenderWindow_drawSprite(rpg->window, BUTTONS->lst_bt[i]->sprite,
         NULL);
         sfRenderWindow_drawText(rpg->window, BUTTONS->lst_bt[i]->text, NULL);

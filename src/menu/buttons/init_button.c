@@ -35,7 +35,6 @@ static sfText *init_text(sfVector2f pos, const char *txt, sfVector2u size)
     sfText_setColor(text, sfBlack);
     sfText_setFont(text, font);
     sfText_setCharacterSize(text, 25);
-
     rect = sfText_getGlobalBounds(text);
     origin.x = rect.width / 2;
     origin.y = rect.height / 2;

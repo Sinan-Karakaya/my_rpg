@@ -105,7 +105,9 @@ int init_all_buttons(rpg_t *rpg)
     (sfVector2f){910, 600}, 100, "assets/menu/button.png");
     rpg->menu->main->buttons->lst_bt[5] = create_button("Back",
     (sfVector2f){910, 800}, 100, "assets/menu/button.png");
-    for (size_t i = 0; i < 6; i++) {
+    rpg->menu->main->buttons->lst_bt[6] = create_button("Keybinds",
+    (sfVector2f){1440, 540}, 100, "assets/menu/button.png");
+    for (size_t i = 0; i < 7; i++) {
         if (rpg->menu->main->buttons->lst_bt[i] == NULL)
             return 84;
     }

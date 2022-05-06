@@ -59,28 +59,32 @@ static int manage_controls(rpg_t *rpg)
     return 0;
 }
 
+int print_my_menus(rpg_t *rpg)
+{
+    if (rpg->menu->is_main == true && rpg->menu->is_option == false &&
+    rpg->menu->is_class == false && rpg->menu->is_keybind == false)
+        display_buttons_main(rpg), sfRenderWindow_display(rpg->window);
+    if (rpg->menu->is_option == true && rpg->menu->is_main == false)
+        display_buttons_option(rpg), sfRenderWindow_display(rpg->window);
+    if (rpg->menu->is_class && rpg->menu->is_main == false)
+        class_menu(rpg), sfRenderWindow_display(rpg->window);
+    if (rpg->menu->is_keybind == true && rpg->menu->is_main == false)
+        display_buttons_keybinds_menu(rpg), sfRenderWindow_display(rpg->window);
+    if (rpg->menu->is_music == true && rpg->menu->is_main == false)
+        display_buttons_music_menu(rpg), sfRenderWindow_display(rpg->window);
+    return 0;
+}
+
 int menuloop(rpg_t *rpg)
 {
-    while ((rpg->menu->is_main && sfRenderWindow_isOpen(rpg->window)) ||
-    (rpg->menu->is_option && sfRenderWindow_isOpen(rpg->window))) {
+    while ((rpg->menu->is_main && sfRenderWindow_isOpen(rpg->window))
+    || (rpg->menu->is_option && sfRenderWindow_isOpen(rpg->window))
+    || (rpg->menu->is_keybind && sfRenderWindow_isOpen(rpg->window))
+    || (rpg->menu->is_music && sfRenderWindow_isOpen(rpg->window))) {
         if (manage_controls(rpg) == 1)
             return 1;
-        if (rpg->menu->is_main == true && rpg->menu->is_option == false &&
-        rpg->menu->is_class == false) {
-            print_parralax(rpg);
-            display_buttons_main(rpg);
-            sfRenderWindow_display(rpg->window);
-        }
-        if (rpg->menu->is_option == true && rpg->menu->is_main == false) {
-            print_parralax(rpg);
-            display_buttons_option(rpg);
-            sfRenderWindow_display(rpg->window);
-        }
-        if (rpg->menu->is_class && rpg->menu->is_main) {
-            print_parralax(rpg);
-            class_menu(rpg);
-            sfRenderWindow_display(rpg->window);
-        }
+        print_parralax(rpg);
+        print_my_menus(rpg);
     }
     return 0;
 }

@@ -84,6 +84,7 @@ SRC = src/core.c	\
 	  src/errors_messages.c	\
 	  src/combat/heal.c \
 	  src/combat/init_combat_bis.c \
+	  src/menu/main_menu/key_bindings_menu.c \
 	  src/end_game.c \
 	  src/menu/destroy.c \
 	  src/combat/destroy.c \

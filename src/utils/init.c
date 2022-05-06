@@ -32,7 +32,7 @@ int init_sfml(rpg_t *rpg, int debug_mode)
     return 0;
 }
 
-static int change_texture(rpg_t *rpg, char *path, char *path_ow)
+static int change_texture_class(rpg_t *rpg, char *path, char *path_ow)
 {
     rpg->combat->player->texture = sfTexture_createFromFile(path, NULL);
     if (!rpg->combat->player->texture)
@@ -47,13 +47,13 @@ static int change_texture(rpg_t *rpg, char *path, char *path_ow)
 static int change_class_texture(rpg_t *rpg)
 {
     if (rpg->combat->player->stat->class == RPG_CLASS_WARRIOR) {
-        if (change_texture(rpg, OLBERIC_WA_PATH, OLBERIC_OW_PATH))
+        if (change_texture_class(rpg, OLBERIC_WA_PATH, OLBERIC_OW_PATH))
             return 84;
     } if (rpg->combat->player->stat->class == RPG_CLASS_CLERIC) {
-        if (change_texture(rpg, OLBERIC_CL_PATH, OLBERIC_OW_CL_PATH))
+        if (change_texture_class(rpg, OLBERIC_CL_PATH, OLBERIC_OW_CL_PATH))
             return 84;
     } if (rpg->combat->player->stat->class == RPG_CLASS_PEASANT) {
-        if (change_texture(rpg, OLBERIC_PE_PATH, OLBERIC_OW_PE_PATH))
+        if (change_texture_class(rpg, OLBERIC_PE_PATH, OLBERIC_OW_PE_PATH))
             return 84;
     }
     return 0;
