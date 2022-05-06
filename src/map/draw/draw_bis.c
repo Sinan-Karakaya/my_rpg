@@ -31,8 +31,7 @@ void draw_map(rpg_t *rpg)
     }
 }
 
-sfVector2i 
-get_object_pos(int x, int y, rpg_t *rpg)
+sfVector2i get_object_pos(int x, int y, rpg_t *rpg)
 {
     int nbr = rpg->world->object_map[x][y];
     int size = sfTexture_getSize(rpg->world->texture_o->texture).x;

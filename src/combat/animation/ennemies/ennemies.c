@@ -9,12 +9,18 @@
 
 static void ennemy_attack(entity_t *boss, entity_t *player, combat_t *combat)
 {
+    int dmg = 0;
+
     if (player->cmb_state == RPG_COMBAT_PLAYER_PROTECT) {
-        player->life -= (boss->stat->attack - (player->stat->defense / 2) +
-        get_rand_small_range()) / 2;
+        dmg = (boss->stat->attack - ((player->stat->defense +
+        player->stat->stuff->defense)) + get_rand_small_range()) / 2;
+        if (dmg > 0)
+            player->life -= dmg;
     } else {
-        player->life -= boss->stat->attack - (player->stat->defense / 2) +
-        get_rand_small_range();
+        dmg = boss->stat->attack - ((player->stat->defense +
+        player->stat->stuff->defense) / 2) + get_rand_small_range();
+        if (dmg > 0)
+            player->life -= dmg;
     }
     player->cmb_state = RPG_COMBAT_PLAYER_IDLE;
     combat->slash->is_active = true;
