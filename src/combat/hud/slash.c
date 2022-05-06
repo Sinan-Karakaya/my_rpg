@@ -35,7 +35,8 @@ void do_slash(combat_t *combat, sfRenderWindow *window)
     if (combat->slash->rect.left == 0) {
         type = rand() % 5;
         combat->slash->rect.top = type * SLASH_HEIGHT;
-        sfSound_play(combat->sfx->sound);
+        if (sfSound_getStatus(combat->sfx->sound) != sfPlaying)
+            sfSound_play(combat->sfx->sound);
     }
     if (get_time(combat->slash->clock) > 0.04) {
         combat->slash->rect.left += SLASH_WIDTH;
