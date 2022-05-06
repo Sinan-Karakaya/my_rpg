@@ -28,9 +28,13 @@ from Octopath Traveler, a game made by Square Enix that has a stunning artistic 
 ## :sparkles: Features ##
 
 :heavy_check_mark: RPG game
+<br>
 :heavy_check_mark: Turn by turn
+<br>
 :heavy_check_mark: 3D environnement
+<br>
 :heavy_check_mark: Progression of the character
+<br>
 :heavy_check_mark: It works
 
 ## :rocket: Technologies ##
@@ -68,10 +72,13 @@ $ ./my_rpg
 ## :memo: License ##
 
 Idk lol
+<br>
 
 
 Made with :heart: by <a href="https://github.com/Sinan-Karakaya" target="_blank">Sinan Karakaya</a>
+<br>
 Made with :heart: by <a href="https://github.com/RoheeAxel" target="_blank">Axel Rohee</a>
+<br>
 Made with :heart: by <a href="https://github.com/thomasjuin1" target="_blank">Thomas Juin</a>
 
 &#xa0;
