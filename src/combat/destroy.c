@@ -8,19 +8,18 @@
 #include <stdlib.h>
 
 #include "my_rpg.h"
+#include "my.h"
 
 void free_entity(entity_t *e)
 {
     sfTexture_destroy(e->texture);
     sfSprite_destroy(e->sprite);
     sfClock_destroy(e->clock);
-    if (e->name)
-        free(e->name);
-    if (e->stat)
-        free(e->stat);
-    sfRectangleShape_destroy(e->bar->rect);
-    sfRectangleShape_destroy(e->bar->rect_grey);
-    free(e->bar);
+    if (my_strcmp(e->name, "cine") != 0 && my_strcmp(e->name, "car") != 0) {
+        sfRectangleShape_destroy(e->bar->rect);
+        sfRectangleShape_destroy(e->bar->rect_grey);
+    }
+    free(e);
 }
 
 void combat_destroy(rpg_t *rpg)

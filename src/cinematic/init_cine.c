@@ -23,6 +23,11 @@ static int init_player_cine(rpg_t *rpg)
     sfSprite_setScale(rpg->cine->player->sprite, (sfVector2f){3, 3});
     rpg->cine->player->rect_left_i = 0;
     rpg->cine->player->rect_left_w = 0;
+    rpg->cine->player->name = "cine";
+    rpg->cine->player->stat = malloc(sizeof(stats_t));
+    if (!rpg->cine->player->stat)
+        return 84;
+    rpg->cine->player->clock = sfClock_create();
     return 0;
 }
 
@@ -38,6 +43,11 @@ static int init_car(rpg_t *rpg)
     rpg->cine->car->pos = (sfVector2f){-220, 800};
     sfSprite_setPosition(rpg->cine->car->sprite, rpg->cine->car->pos);
     sfSprite_setScale(rpg->cine->car->sprite, (sfVector2f){3, 3});
+    rpg->cine->car->name = "car";
+    rpg->cine->car->stat = malloc(sizeof(stats_t));
+    if (!rpg->cine->car->stat)
+        return 84;
+    rpg->cine->car->clock = sfClock_create();
     return 0;
 }
 

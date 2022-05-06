@@ -19,8 +19,6 @@ static void destroy_button(button_t *button)
 
 static void destroy_menu_main(menu_main_t *menu)
 {
-    sfSprite_destroy(menu->fore_g_sprite);
-    sfTexture_destroy(menu->fore_g_texture);
     sfSprite_destroy(menu->mid_g_sprite);
     sfTexture_destroy(menu->mid_g_texture);
     sfSprite_destroy(menu->back_g_sprite);
@@ -37,12 +35,13 @@ static void destroy_menu_main(menu_main_t *menu)
 static void destroy_inventory(menu_inventory_t *i)
 {
     sfSprite_destroy(i->sprite);
-    sfSprite_destroy(i->player);
     for (size_t j = 0; j < i->buttons->nbr_bt; j++)
         destroy_button(i->buttons->lst_bt[j]);
     free(i->buttons->lst_bt);
     free(i->buttons);
     for (size_t j = 0; j < 34; j++) {
+        if (i->slots[j]->item_id == 0)
+            continue;
         sfSprite_destroy(i->slots[j]->sprite);
         sfSprite_destroy(i->slots[j]->item_sprite);
         sfText_destroy(i->slots[j]->item_text);
