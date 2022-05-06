@@ -85,7 +85,9 @@ void combat_loop(rpg_t *rpg, combat_t *combat)
         sfRenderWindow_drawSprite(rpg->window, combat->curr_ennemy->sprite, NULL);
         sfRenderWindow_drawSprite(rpg->window, combat->player->sprite, NULL);
         return;
-    }
+    } if (combat->state == RPG_COMBAT_WIN &&
+    my_strcmp(combat->curr_ennemy->name, "boss") == 0)
+        rpg->end_toggle = true;
     sfRenderWindow_drawSprite(rpg->window, combat->curr_ennemy->sprite, NULL);
     sfRenderWindow_drawSprite(rpg->window, combat->player->sprite, NULL);
 }

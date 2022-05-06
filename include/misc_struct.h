@@ -49,3 +49,8 @@ typedef struct cine {
     sfx_t *sfx;
     bool transition;
 } cine_t;
+
+typedef struct end {
+    sfText *text;
+    sfFont *font;
+} end_t;
