@@ -39,14 +39,7 @@ static void destroy_inventory(menu_inventory_t *i)
         destroy_button(i->buttons->lst_bt[j]);
     free(i->buttons->lst_bt);
     free(i->buttons);
-    for (size_t j = 0; j < 34; j++) {
-        if (i->slots[j]->item_id == 0)
-            continue;
-        sfSprite_destroy(i->slots[j]->sprite);
-        sfSprite_destroy(i->slots[j]->item_sprite);
-        sfText_destroy(i->slots[j]->item_text);
-        free(i->slots[j]);
-    } free(i->slots);
+    free(i->slots);
     free(i);
 }
 

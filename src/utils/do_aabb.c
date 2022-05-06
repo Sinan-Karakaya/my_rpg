@@ -18,7 +18,6 @@ bool do_aabb_mouse(sfMouseButtonEvent mouse, sfSprite *sp)
 
 bool do_aabb_mouse_rect(sfMouseButtonEvent mouse, sfIntRect rect)
 {
-    // printf("MOUSE: %d, %d\nRECT: %d %d %d %d\n", mouse.x, mouse.y, rect.top, rect.left, rect.width, rect.height);
     return (bool)sfIntRect_contains(&rect, mouse.x, mouse.y);
 }
 

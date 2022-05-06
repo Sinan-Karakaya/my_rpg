@@ -1,4 +1,3 @@
-
 /*
 ** EPITECH PROJECT, 2022
 ** my_rpg
@@ -9,12 +8,6 @@
 #include <stdlib.h>
 #include "my_rpg.h"
 
-/*
-* Possible de donner un shader très sympa au world avec cette ligne notamment:
-* tex->shader = rpg->shader->get
-* Ca nous permettrait de donner un effet de neige
-* ou de pluie au sol par exemple
-*/
 sfRenderStates *init_struct_texture(char *path, rpg_t *rpg)
 {
     sfRenderStates *tex = malloc(sizeof(sfRenderStates));

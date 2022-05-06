@@ -87,6 +87,7 @@ SRC = src/core.c	\
 	  src/end_game.c \
 	  src/menu/destroy.c \
 	  src/combat/destroy.c \
+	  src/menu/options/keybindings_bis.c \
 
 OBJ = $(SRC:.c=.o)
 TMP = $(SRC:.c=.c.tmp)

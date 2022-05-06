@@ -67,5 +67,4 @@ void draw_quest_list(rpg_t *rpg)
     sfFont_destroy(font);
     sfText_destroy(side_text);
     sfText_destroy(text);
-
 }

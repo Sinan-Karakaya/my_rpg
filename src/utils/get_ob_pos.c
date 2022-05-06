@@ -24,7 +24,7 @@ static int is_in_screen(sfVector2f *point)
 }
 
 static bool point_triangl (sfVector2f pt, sfVector2f v1, sfVector2f v2,
- sfVector2f v3)
+sfVector2f v3)
 {
     float d1, d2, d3;
     bool has_neg, has_pos;

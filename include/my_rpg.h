@@ -132,7 +132,6 @@ int menuloop(rpg_t *rpg);
 int load_loop(rpg_t *rpg, int n);
 void draw_game_over(rpg_t *rpg);
 
-
 //BUTTONS
 void buttons_controls_menu(rpg_t *rpg, bt_list_t *bt_list, sfEvent event);
 button_t *create_button(char *str, sfVector2f pos, int ptr_f, char *img);
@@ -147,7 +146,8 @@ button_t *create_button_2(char *str, sfVector2f pos, int ptr_f, char *img);
 void do_parralax_keybind(rpg_t *rpg);
 void replace_text(rpg_t *rpg, int button);
 void do_parralax_keyinput(rpg_t *rpg);
-int detect_click_on_bt_2(bt_list_t *bt_list, sfEvent event, size_t s, size_t e);
+int detect_click_on_bt_2(bt_list_t *bt_list, sfEvent event, size_t s,
+size_t e);
 
 //INVENTORY
 void print_inventory(rpg_t *rpg);
@@ -158,6 +158,8 @@ int manage_inv(rpg_t *rpg, int button);
 void check_inv(rpg_t *rpg);
 int slots_controls(rpg_t *rpg, sfEvent event);
 int init_stats(rpg_t *rpg);
+int replace_keys(rpg_t *rpg, int button, int key);
+int check_all_keys(rpg_t *rpg, int key);
 
 //INVENTORY UTILS
 void clearstrnbr(char *str, int len);

@@ -47,7 +47,8 @@ void animate_wolf(entity_t *wolf, combat_t *combat)
         wolf->rect.left += wolf->rect.width;
     else
         wolf->rect.left = 0;
-    if (wolf->rect.left == 193 || wolf->rect.left == 385 || wolf->rect.left == 577)
+    if (wolf->rect.left == 193 || wolf->rect.left == 385 || wolf->rect.left ==
+    577)
         wolf->rect.width = 95;
     else if (wolf->rect.left == 288 || wolf->rect.left == 480)
         wolf->rect.width = 97;

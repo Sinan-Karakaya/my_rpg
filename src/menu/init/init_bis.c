@@ -21,6 +21,23 @@ static sfSprite *init_sprite(sfVector2f pos, char *filename)
     return sprite;
 }
 
+static int for_loop(rpg_t *rpg, size_t x, size_t y)
+{
+    for (size_t i = 0; i < 30; i++) {
+        rpg->menu->inventory->buttons->lst_bt[i] = create_slots(" ",
+        (sfVector2f){750 + 120 * x, 150 + 115 * y}, 100,
+        "assets/menu/slots.png");
+        if (!rpg->menu->inventory->buttons->lst_bt[i])
+            return -1;
+        x++;
+        if (x > 5) {
+            x = 0;
+            y++;
+        }
+    }
+    return y;
+}
+
 static int init_button_inventory(rpg_t *rpg)
 {
     size_t x = 0;
@@ -34,18 +51,9 @@ static int init_button_inventory(rpg_t *rpg)
     (rpg->menu->inventory->buttons->nbr_bt));
     if (!rpg->menu->inventory->buttons->lst_bt)
         return 84;
-    for (size_t i = 0; i < 30; i++) {
-        rpg->menu->inventory->buttons->lst_bt[i] = create_slots(" ",
-        (sfVector2f){750 + 120 * x, 150 + 115 * y}, 100, "assets/menu/slots.png");
-        if (!rpg->menu->inventory->buttons->lst_bt[i])
-            return 84;
-        x++;
-        if (x > 5) {
-            x = 0;
-            y++;
-        }
-    }
-    for (size_t i = 30, y = 0; i < rpg->menu->inventory->buttons->nbr_bt; i++) {
+    if ((y = for_loop(rpg, x, y)) == -1)
+        return 84;
+    for (size_t i = 30, y = 0; i < INVENTORY_BUTTONS->nbr_bt; i++) {
         rpg->menu->inventory->buttons->lst_bt[i] = create_slots(" ",
         (sfVector2f){1490, 180 + 140 * y}, 100, "assets/menu/slots.png");
         if (!rpg->menu->inventory->buttons->lst_bt[i])

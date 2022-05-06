@@ -57,12 +57,25 @@ static void animate(rpg_t *rpg, entity_t *ennemy)
         animate_wolf(rpg->combat->curr_ennemy, rpg->combat);
 }
 
-static void end_combat(rpg_t *rpg, combat_t *combat)
+static void combat_loop_bis(rpg_t *rpg, combat_t *combat)
 {
-    combat->transition_cmb = true;
-    combat->player->stat->xp += 8 + get_rand_small_range();
-    check_stat(rpg);
-    add_to_inventory(rpg);
+    if (get_time(combat->curr_ennemy->clock) > 0.15f)
+        animate(rpg, combat->curr_ennemy);
+    if (combat->state == RPG_COMBAT_WIN &&
+    my_strcmp(combat->curr_ennemy->name, "boss") != 0) {
+        combat->transition_cmb = true;
+        combat->player->stat->xp += 8 + get_rand_small_range();
+        check_stat(rpg);
+        add_to_inventory(rpg);
+        sfRenderWindow_drawSprite(rpg->window, combat->curr_ennemy->sprite,
+        NULL);
+        sfRenderWindow_drawSprite(rpg->window, combat->player->sprite, NULL);
+        return;
+    } if (combat->state == RPG_COMBAT_WIN &&
+    my_strcmp(combat->curr_ennemy->name, "boss") == 0)
+        rpg->end_toggle = true;
+    sfRenderWindow_drawSprite(rpg->window, combat->curr_ennemy->sprite, NULL);
+    sfRenderWindow_drawSprite(rpg->window, combat->player->sprite, NULL);
 }
 
 void combat_loop(rpg_t *rpg, combat_t *combat)
@@ -77,17 +90,5 @@ void combat_loop(rpg_t *rpg, combat_t *combat)
     if (get_time(combat->player->clock) > 0.12f &&
     combat->state != RPG_COMBAT_ENNEMY && rpg->combat->transition_ow == false)
         get_input(combat->player, combat, rpg);
-    if (get_time(combat->curr_ennemy->clock) > 0.15f)
-        animate(rpg, combat->curr_ennemy);
-    if (combat->state == RPG_COMBAT_WIN &&
-    my_strcmp(combat->curr_ennemy->name, "boss") != 0) {
-        end_combat(rpg, combat);
-        sfRenderWindow_drawSprite(rpg->window, combat->curr_ennemy->sprite, NULL);
-        sfRenderWindow_drawSprite(rpg->window, combat->player->sprite, NULL);
-        return;
-    } if (combat->state == RPG_COMBAT_WIN &&
-    my_strcmp(combat->curr_ennemy->name, "boss") == 0)
-        rpg->end_toggle = true;
-    sfRenderWindow_drawSprite(rpg->window, combat->curr_ennemy->sprite, NULL);
-    sfRenderWindow_drawSprite(rpg->window, combat->player->sprite, NULL);
+    combat_loop_bis(rpg, combat);
 }

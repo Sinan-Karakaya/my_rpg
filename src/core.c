@@ -15,7 +15,7 @@ int main(int ac, char **av)
     rpg_t *rpg = malloc(sizeof(rpg_t));
 
     if (!rpg || errors_manager() == 84)
-       return 84;
+        return 84;
     if (debug_mode == -1)
         return 0;
     if (init_sfml(rpg, debug_mode))
@@ -23,8 +23,10 @@ int main(int ac, char **av)
     if (sfRenderWindow_isOpen(rpg->window))
         if (init_all(rpg) == 84)
             return 84;
-    rpg->world->npc_list[0] = (npc_t){"", (sfVector2i){18, 18},1 , 50 , 20 , 20 , 20};
-    rpg->world->npc_list[1] = (npc_t){"", (sfVector2i){110, 75},2 , 78 , 78 , 20 , 20};
+    rpg->world->npc_list[0] =
+    (npc_t){"", (sfVector2i){18, 18},1 , 50 , 20 , 20 , 20};
+    rpg->world->npc_list[1] =
+    (npc_t){"", (sfVector2i){110, 75},2 , 78 , 78 , 20 , 20};
     fill_map(rpg);
     do_loop(rpg);
     save_game(rpg);

@@ -19,11 +19,11 @@ int load_loop(rpg_t *rpg, int actual_load)
     }
     sfRectangleShape_setFillColor(rect, sfWhite);
     sfRectangleShape_setPosition(rect, (sfVector2f){0, 520});
-    sfRectangleShape_setSize(rect, (sfVector2f){ 0.09 * actual_load * 1920, 40});
-
-        sfRenderWindow_clear(rpg->window, sfBlack);
-        sfRenderWindow_drawRectangleShape(rpg->window, rect, NULL);
-        sfRenderWindow_display(rpg->window);
+    sfRectangleShape_setSize(rect, (sfVector2f){ 0.09 * actual_load * 1920,
+    40});
+    sfRenderWindow_clear(rpg->window, sfBlack);
+    sfRenderWindow_drawRectangleShape(rpg->window, rect, NULL);
+    sfRenderWindow_display(rpg->window);
     sfRectangleShape_destroy(rect);
     return 0;
 }

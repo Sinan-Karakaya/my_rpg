@@ -65,4 +65,3 @@ void do_parralax_keyinput(rpg_t *rpg)
     actual_pos = (sfVector2f){mouse_pos.x + 656, mouse_pos.y + 340};
     parralax(rpg, actual_pos, 18);
 }
-// 9 -> 18

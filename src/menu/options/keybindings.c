@@ -135,7 +135,7 @@ static char *replace_str(char *name, char *new)
     return my_return;
 }
 
-static int check_all_keys(rpg_t *rpg, int key)
+int check_all_keys(rpg_t *rpg, int key)
 {
     if (KEYUP == key)
         return 84;
@@ -156,27 +156,22 @@ static int check_all_keys(rpg_t *rpg, int key)
     return 0;
 }
 
-static int replace_keys(rpg_t *rpg, int button, int key)
+static void while_loop(rpg_t *rpg, int value, char *str)
 {
-    if (check_all_keys(rpg, key) == 84)
-        return 84;
-    if (button == 9)
-        rpg->keybinds->key_up = key;
-    if (button == 10)
-        rpg->keybinds->key_down = key;
-    if (button == 11)
-        rpg->keybinds->key_left = key;
-    if (button == 12)
-        rpg->keybinds->key_right = key;
-    if (button == 13)
-        rpg->keybinds->key_inventory = key;
-    if (button == 14)
-        rpg->keybinds->key_attack = key;
-    if (button == 15)
-        rpg->keybinds->key_protect = key;
-    if (button == 16)
-        rpg->keybinds->key_run = key;
-    return 0;
+    print_parralax(rpg);
+    do_parralax_keyinput(rpg);
+    sfRenderWindow_drawSprite(rpg->window, BUTTONSO->lst_bt[18]->
+    sprite,
+    NULL);
+    sfRenderWindow_drawText(rpg->window, BUTTONSO->lst_bt[18]->text,
+    NULL);
+    if (rpg->event.type == sfEvtClosed)
+        sfRenderWindow_close(rpg->window);
+    if (rpg->event.type == sfEvtKeyPressed) {
+        value = rpg->event.key.code;
+        str = getkey(value);
+    }
+    sfRenderWindow_display(rpg->window);
 }
 
 void replace_text(rpg_t *rpg, int button)
@@ -187,21 +182,9 @@ void replace_text(rpg_t *rpg, int button)
 
     while (str == NULL) {
         while (sfRenderWindow_pollEvent(rpg->window, &rpg->event)) {
-            print_parralax(rpg);
-            do_parralax_keyinput(rpg);
-            sfRenderWindow_drawSprite(rpg->window, BUTTONSO->lst_bt[18]->sprite,
-            NULL);
-            sfRenderWindow_drawText(rpg->window, BUTTONSO->lst_bt[18]->text, NULL);
-            if (rpg->event.type == sfEvtClosed)
-                sfRenderWindow_close(rpg->window);
-            if (rpg->event.type == sfEvtKeyPressed) {
-                value = rpg->event.key.code;
-                str = getkey(value);
-            }
-            sfRenderWindow_display(rpg->window);
+            while_loop(rpg, value, str);
         }
-    }
-    if (value != 0) {
+    } if (value != 0) {
         if (replace_keys(rpg, button, value) == 84)
             return;
         str = getkey(value);

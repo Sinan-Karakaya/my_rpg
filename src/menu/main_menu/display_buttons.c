@@ -73,4 +73,3 @@ void display_buttons_option(rpg_t *rpg)
         sfRenderWindow_drawText(rpg->window, BUTTONS->lst_bt[i]->text, NULL);
     }
 }
-

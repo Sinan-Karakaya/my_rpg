@@ -16,7 +16,6 @@ const sfVector2i offset_tab[] =
     (sfVector2i){0, 300}, (sfVector2i){30, 270}, (sfVector2i){0, 300},
     (sfVector2i){20, 280}, (sfVector2i){20, 280}, (sfVector2i){20, 280}};
 
-
 static bool check_aabb(rpg_t *rpg, sfRectangleShape *sp)
 {
     if (do_aabb_sprites_rectangle(rpg->overworld->spr, sp)) {
@@ -50,7 +49,6 @@ sfVector2f to_2d(sfVector3f p, rpg_t *game, sfVector2f off)
     point_2d.y += off.y;
     return point_2d;
 }
-
 
 static int ow_aabb_bis(rpg_t *rpg, int i, sfVector2f set)
 {

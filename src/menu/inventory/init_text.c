@@ -27,7 +27,8 @@ static sfText *create_my_text(sfVector2f pos, int value, int stuff_value)
         stat_total[j] = stat_stuff[i];
     stat_total[j] = '\0';
     sfText_setPosition(my_text, pos);
-    sfText_setFont(my_text, sfFont_createFromFile("assets/font/arial/arial.ttf"));
+    sfText_setFont(my_text, sfFont_createFromFile("assets/font/arial/arial.ttf"
+    ));
     sfText_setString(my_text, stat_total);
     sfText_setColor(my_text, sfBlack);
     sfText_setCharacterSize(my_text, 40);
@@ -39,7 +40,8 @@ static sfText *create_my_text_lvl(sfVector2f pos, int value)
     sfText *my_text = sfText_create();
 
     sfText_setPosition(my_text, pos);
-    sfText_setFont(my_text, sfFont_createFromFile("assets/font/arial/arial.ttf"));
+    sfText_setFont(my_text, sfFont_createFromFile("assets/font/arial/arial.ttf"
+    ));
     sfText_setString(my_text, int_to_str(value));
     sfText_setColor(my_text, sfBlack);
     sfText_setCharacterSize(my_text, 40);
@@ -67,9 +69,12 @@ int init_my_text(stats_t *stat)
     if (fd < 3)
         return (84);
     close(fd);
-    stat->text_attack = create_my_text((sfVector2f){485, 558}, stat->attack, stat->stuff->attack);
-    stat->text_defense = create_my_text((sfVector2f){515, 508}, stat->defense, stat->stuff->defense);
-    stat->text_life = create_my_text((sfVector2f){450, 608}, stat->life, stat->stuff->life);
+    stat->text_attack = create_my_text((sfVector2f){485, 558},
+    stat->attack, stat->stuff->attack);
+    stat->text_defense = create_my_text((sfVector2f){515, 508},
+    stat->defense, stat->stuff->defense);
+    stat->text_life = create_my_text((sfVector2f){450, 608},
+    stat->life, stat->stuff->life);
     stat->text_level = create_my_text_lvl((sfVector2f){470, 460}, stat->level);
     return 0;
 }

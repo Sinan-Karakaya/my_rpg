@@ -10,8 +10,8 @@
 #include <unistd.h>
 
 #define ERROR(str) write(2, "ERROR: Could not load:", 23); \
-                   write(2, str, my_strlen(str)); \
-                   write(2, "\n", 1);
+write(2, str, my_strlen(str)); \
+write(2, "\n", 1);
 
 #define RES_X 1920
 #define RES_Y 1080
@@ -96,6 +96,7 @@
 #define STUFF rpg->combat->player->stat->stuff
 
 #define INVENTORY rpg->menu->inventory
+#define INVENTORY_BUTTONS rpg->menu->inventory->buttons
 #define SCALE_PNJ_X (sfVector2f){(point[1].x - point[0].x) / 150
 #define SCALE_PNJ_Y -(point[1].x - point[0].x) / 150}
 #define HEIGHT rpg->world->height_map
@@ -104,14 +105,14 @@
 #define TEX_CB rpg->world->gui.chatbox_texture,
 
 #define CALCUL_1(x, y, i, j) (sfVector2f){((point[1].x - point[0].x) / 150 * \
-                             (offset_tab[rpg->world->object_map[i][j]].y - \
-                             offset_tab[rpg->world->object_map[i][j]].x)), \
-                             -(point[1].x - point[0].x) * 0.1})
+(offset_tab[rpg->world->object_map[i][j]].y - \
+offset_tab[rpg->world->object_map[i][j]].x)), \
+-(point[1].x - point[0].x) * 0.1})
 
 #define CALCUL_2(x, y, i, j) (sfVector2f){point[0].x + ((point[1].x - \
-                             point[0].x) / 150 * \
-                             offset_tab[rpg->world->object_map[i][j]].x),\
-                             point[0].y})
+point[0].x) / 150 * \
+offset_tab[rpg->world->object_map[i][j]].x),\
+point[0].y})
 
 extern const int olberic_rect_left[26];
 extern const int olberic_rect_w[26];

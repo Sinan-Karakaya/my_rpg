@@ -63,5 +63,5 @@ int errors_manager(void)
         }
         close(fd);
     }
-    return (0);
+    return 0;
 }

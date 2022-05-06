@@ -79,7 +79,8 @@ int init_cinematic(rpg_t *rpg)
     if (rpg->cine->player == NULL || rpg->cine->car == NULL)
         return 84;
     rpg->cine->sprite = sfSprite_create();
-    rpg->cine->background = sfTexture_createFromFile("assets/cinematic/road.png", NULL);
+    rpg->cine->background = sfTexture_createFromFile(
+    "assets/cinematic/road.png", NULL);
     if (rpg->cine->background == NULL || rpg->cine->sprite == NULL)
         return 84;
     if (init_bis(rpg))

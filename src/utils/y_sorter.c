@@ -17,7 +17,7 @@ static void y_sorter_bis(rpg_t *rpg, sfSprite *sp, int i)
     sfTime time = sfClock_getElapsedTime(rpg->world->world_clock);
     int milli_time = sfTime_asMilliseconds(time) / 500;
     int frame = milli_time %
-     (sfTexture_getSize(rpg->world->texture_o->texture).y / 300) + 1;
+    (sfTexture_getSize(rpg->world->texture_o->texture).y / 300) + 1;
     for (int j = MAP_Y - 1; j > 0; j--) {
         if (rpg->world->object_map[i][j] == 0)
             continue;

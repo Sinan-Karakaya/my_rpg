@@ -20,7 +20,7 @@ int init_end(rpg_t *rpg)
         return 84;
     sfText_setFont(rpg->end->text, rpg->end->font);
     sfText_setCharacterSize(rpg->end->text, 40);
-    sfText_setString(rpg->end->text, "\tCongratulation!\nYou finished the game!");
+    sfText_setString(rpg->end->text, "\tCongratulation!\nYou beat the game!");
     sfText_setPosition(rpg->end->text, (sfVector2f){RES_X / 2 - 240,
     RES_Y / 2 - 90});
     sfText_setFillColor(rpg->end->text, sfColor_fromRGBA(255, 255, 255, 0));
