@@ -42,7 +42,7 @@ sfVector2i get_object_pos(int x, int y, rpg_t *rpg)
     return quad_offset;
 }
 
-static void draw_obj_bis(rpg_t *rpg, int **height, sfSprite *sp, int i)
+static void draw_obj_bis(rpg_t *rpg, int **height, sfSprite *sp, int j)
 {
     sfVector2i offset = {0, 0};
     sfVector2f *point = rpg->cam.render->point;
@@ -51,7 +51,7 @@ static void draw_obj_bis(rpg_t *rpg, int **height, sfSprite *sp, int i)
     int frame = milli_time %
     (sfTexture_getSize(rpg->world->texture_o->texture).y / 300) + 1;
 
-    for (int j = MAP_Y - 1; j > 0; j--) {
+    for (int i = 0; i < MAP_X - 1; i++) {
         if (rpg->world->object_map[i][j] == 0)
             continue;
         offset = get_object_pos(i, j, rpg);
@@ -72,8 +72,8 @@ void draw_object(rpg_t *rpg)
     int **height = rpg->world->height_map;
 
     sfSprite_setTexture(sprite, rpg->world->texture_o->texture, sfTrue);
-    for (int i = 1; i < MAP_X - 1; i++) {
-        draw_obj_bis(rpg, height, sprite, i);
+    for (int j = MAP_Y - 1; j > 0; j--) {
+        draw_obj_bis(rpg, height, sprite, j);
     }
     sfRectangleShape_destroy(bat);
 }
