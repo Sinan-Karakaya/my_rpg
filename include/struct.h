@@ -63,4 +63,6 @@ typedef struct rpg {
     bool ow_can_move;
     keybind_t *keybinds;
     cine_t *cine;
+    end_t *end;
+    bool end_toggle;
 } rpg_t;

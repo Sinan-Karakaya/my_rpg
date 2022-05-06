@@ -34,6 +34,7 @@ bool cam_is_in_bounds(float x, float y);
 bool cmb_is_in_bounds(camera_t cam);
 int init_cinematic(rpg_t *rpg);
 void cinematic(rpg_t *rpg);
+int init_end(rpg_t *rpg);
 
 // UTILS
 int event(rpg_t *rpg);
@@ -74,6 +75,7 @@ void check_stat(rpg_t *rpg);
 bool heal_player(rpg_t *rpg);
 int create_player(combat_t *com);
 int create_ennemy(entity_t *e, char *name, char *path, int id);
+void end_game(rpg_t *rpg);
 // COMBAT -> OLBERIC
 void olberic_do_attack(entity_t *player, combat_t *combat, rpg_t *rpg);
 void olberic_do_idle(entity_t *player);

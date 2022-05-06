@@ -11,7 +11,10 @@
 
 static void chose_scene(rpg_t *rpg)
 {
-    if (rpg->scene == OVERWORLD)
+    if (rpg->end_toggle) {
+        end_game(rpg);
+        return;
+    } if (rpg->scene == OVERWORLD)
         overworld_loop(rpg);
     if (rpg->scene == COMBAT)
         combat_loop(rpg, rpg->combat);
@@ -21,8 +24,7 @@ static void chose_scene(rpg_t *rpg)
         do_transition_cmb(rpg, rpg->combat->transt);
     if (rpg->combat->player->cmb_state == RPG_COMBAT_PLAYER_DEATH)
         do_transition_death(rpg, rpg->combat->transt);
-    if (rpg->scene == DEATH)
-        draw_game_over(rpg);
+    
 }
 
 static int gameloop(rpg_t *rpg)
@@ -53,6 +55,9 @@ static int gameloop(rpg_t *rpg)
         print_debug(rpg);
         sfRenderWindow_drawRectangleShape(rpg->window,
         rpg->combat->transt->rect, NULL);
+        sfRenderWindow_drawText(rpg->window, rpg->end->text, NULL);
+        if (rpg->scene == DEATH)
+            draw_game_over(rpg);
         sfRenderWindow_display(rpg->window);
     }
     return 0;

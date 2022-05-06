@@ -26,11 +26,9 @@ void olberic_do_attack(entity_t *player, combat_t *combat, rpg_t *rpg)
         if (dmg > 0)
             combat->curr_ennemy->life -= dmg;
         player->cmb_state = RPG_COMBAT_PLAYER_IDLE;
-        combat->state = RPG_COMBAT_ENNEMY;
-        sfSound_play(combat->sfx->sound);
+        combat->state = RPG_COMBAT_ENNEMY, sfSound_play(combat->sfx->sound);
     } sfSprite_setTextureRect(player->sprite, player->rect);
-    // sfRenderWindow_drawSprite(rpg->window, player->sprite, NULL);
-    sfClock_restart(player->clock), sfSound_play(combat->sfx->sound);
+    sfClock_restart(player->clock);
 }
 
 void olberic_do_idle(entity_t *player)
