@@ -53,7 +53,7 @@ void cinematic(rpg_t *rpg)
 
     if (car_pos.x < player_pos.x) {
         sfRenderWindow_drawSprite(rpg->window, rpg->cine->sprite, NULL);
-        animate_car(rpg);
         animate_cine(rpg);
+        animate_car(rpg);
     }
 }

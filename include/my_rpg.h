@@ -89,6 +89,7 @@ void animate_wolf(entity_t *wolf, combat_t *combat);
 void spawn_ennemy(rpg_t *rpg);
 
 // MAP
+int draw_all(rpg_t *rpg);
 sfVector2f to2d(sfVector3f p, rpg_t *game);
 void draw_map(rpg_t *rpg);
 void draw_water(rpg_t *rpg);

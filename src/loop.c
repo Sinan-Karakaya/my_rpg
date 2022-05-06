@@ -43,13 +43,7 @@ static int gameloop(rpg_t *rpg)
             if (rpg->cine->transition)
                 do_transition_cine(rpg, rpg->combat->transt);
         } else {
-            draw_water(rpg);
-            draw_map(rpg);
-            draw_object(rpg);
-            chose_scene(rpg);
-            draw_npc(rpg);
-            chose_scene(rpg);
-            check_quest(rpg);
+            draw_all(rpg);
         }
         rpg->dt = get_dt(rpg->game_clock);
         print_debug(rpg);
