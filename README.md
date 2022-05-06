@@ -1,2 +1,79 @@
-# my_rpg
-Epitech Project : my_rpg
+<div align="center" id="top">
+  <img src="./assets/demo.gif" alt="My_rpg" />
+
+  &#xa0;
+
+</div>
+
+<h1 align="center">My_rpg</h1>
+
+<p align="center">
+  <a href="#dart-about">About</a> &#xa0; | &#xa0;
+  <a href="#sparkles-features">Features</a> &#xa0; | &#xa0;
+  <a href="#rocket-technologies">Technologies</a> &#xa0; | &#xa0;
+  <a href="#white_check_mark-requirements">Requirements</a> &#xa0; | &#xa0;
+  <a href="#checkered_flag-starting">Starting</a> &#xa0; | &#xa0;
+  <a href="#memo-license">License</a> &#xa0; | &#xa0;
+</p>
+
+<br>
+
+## :dart: About ##
+
+my_rpg is EPITECH's end of the year project for every first year student at EPITECH.
+It must use the CSFML library and needs some technical requirements. Other than
+that, we were free to make it however we wanted, so we decided to take inspiration
+from Octopath Traveler, a game made by Square Enix that has a stunning artistic direction.
+
+## :sparkles: Features ##
+
+:heavy_check_mark: RPG game
+:heavy_check_mark: Turn by turn
+:heavy_check_mark: 3D environnement
+:heavy_check_mark: Progression of the character
+:heavy_check_mark: It works
+
+## :rocket: Technologies ##
+
+The following tools were used in this project:
+
+- [GCC](https://gcc.gnu.org/)
+- [CSFML](https://www.sfml-dev.org/download/csfml/index-fr.php)
+- [Visual Studio Code](https://code.visualstudio.com/)
+- [Valgrind](https://valgrind.org/)
+
+## :white_check_mark: Requirements ##
+
+Before starting :checkered_flag:, you need to have:
+[Git](https://git-scm.com)
+[GCC](https://gcc.gnu.org/)
+and [CSFML](https://www.sfml-dev.org/download/csfml/index-fr.php) installed.
+
+## :checkered_flag: Starting ##
+
+```bash
+# Clone this project
+$ git clone https://github.com/Sinan-Karakaya/my_rpg
+
+# Access
+$ cd my_rpg
+
+# Build
+$ make
+
+# Run the project
+$ ./my_rpg
+```
+
+## :memo: License ##
+
+Idk lol
+
+
+Made with :heart: by <a href="https://github.com/Sinan-Karakaya" target="_blank">Sinan Karakaya</a>
+Made with :heart: by <a href="https://github.com/RoheeAxel" target="_blank">Axel Rohee</a>
+Made with :heart: by <a href="https://github.com/thomasjuin1" target="_blank">Thomas Juin</a>
+
+&#xa0;
+
+<a href="#top">Back to top</a>
