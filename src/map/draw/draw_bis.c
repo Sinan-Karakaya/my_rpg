@@ -31,7 +31,8 @@ void draw_map(rpg_t *rpg)
     }
 }
 
-sfVector2i get_object_pos(int x, int y, rpg_t *rpg)
+sfVector2i 
+get_object_pos(int x, int y, rpg_t *rpg)
 {
     int nbr = rpg->world->object_map[x][y];
     int size = sfTexture_getSize(rpg->world->texture_o->texture).x;
@@ -67,7 +68,6 @@ static void draw_obj_bis(rpg_t *rpg, int **height, sfSprite *sp, int j)
 
 void draw_object(rpg_t *rpg)
 {
-    sfRectangleShape *bat = sfRectangleShape_create();
     sfSprite *sprite = sfSprite_create();
     int **height = rpg->world->height_map;
 
@@ -75,5 +75,5 @@ void draw_object(rpg_t *rpg)
     for (int j = MAP_Y - 1; j > 0; j--) {
         draw_obj_bis(rpg, height, sprite, j);
     }
-    sfRectangleShape_destroy(bat);
+    sfSprite_destroy(sprite);
 }
