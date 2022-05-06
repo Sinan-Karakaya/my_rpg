@@ -37,4 +37,7 @@ void fill_map(rpg_t *rpg)
     rpg->world->object_map[112][74] = 3;
     rpg->world->object_map[123][76] = 4;
     rpg->world->object_map[134][75] = 2;
+    rpg->world->object_map[65][26] = 6;
+    rpg->world->object_map[70][35] = 6;
+    rpg->world->object_map[73][55] = 6;
 }
