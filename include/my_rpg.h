@@ -178,6 +178,7 @@ void class_menu_button(sfEvent event, rpg_t *rpg);
 
 // SAVE
 bool read_save(rpg_t *rpg);
+void make_inventory(rpg_t *rpg, char *value);
 void save_game(rpg_t *rpg);
 
 //OBJECT

@@ -47,6 +47,10 @@ static void save_max_health(const int fd, rpg_t *rpg)
     write(fd, "\ndefense:", 9);
     write(fd, int_to_str(STAT->defense), my_strlen(int_to_str(STAT->defense)));
     write(fd, "\n", 1);
+    write(fd, "quest:", 6);
+    write(fd, int_to_str(rpg->world->gui.actual_quest),
+    my_strlen(int_to_str(rpg->world->gui.actual_quest)));
+    write(fd, "\n", 1);
 }
 
 static void write_save(const int fd, rpg_t *rpg)

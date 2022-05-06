@@ -15,22 +15,6 @@
 #include "my_rpg.h"
 #include "my.h"
 
-static void make_inventory(rpg_t *rpg, char *value)
-{
-    int index = 0;
-
-    if (my_strlen(value) != 34)
-        return;
-    for (int i = 0; i < 34; i++) {
-        if (value[i] >= '0' && value[i] <= '8') {
-            INVENTORY->slots[i]->item_id = value[i] - '0';
-            index++;
-        } else {
-            break;
-        }
-    }
-}
-
 static void set_pos(rpg_t *rpg, char *value)
 {
     char *saveptr = NULL;
@@ -40,6 +24,21 @@ static void set_pos(rpg_t *rpg, char *value)
         rpg->cam.x = my_getnbr(value);
         rpg->cam.y = my_getnbr(saveptr);
     }
+}
+
+static void assign_stat_bis(rpg_t *rpg, char *type, char *value)
+{
+    if (my_strcmp(type, "pos") == 0)
+        set_pos(rpg, value);
+    if (my_strcmp(type, "max_health") == 0)
+        rpg->combat->player->max_life = my_getnbr(value);
+    if (my_strcmp(type, "attack") == 0)
+        STAT->attack = my_getnbr(value);
+    if (my_strcmp(type, "defense") == 0)
+        STAT->defense = my_getnbr(value);
+    if (my_strcmp(type, "quest") == 0 && my_getnbr(value) >= 0 &&
+    my_getnbr(value) < 3)
+        rpg->world->gui.actual_quest = my_getnbr(value);
 }
 
 static int assign_stat(rpg_t *rpg, char *type, char *value)
@@ -55,14 +54,7 @@ static int assign_stat(rpg_t *rpg, char *type, char *value)
     if (my_strcmp(type, "inventory") == 0) {
         make_inventory(rpg, value);
         return 1;
-    } if (my_strcmp(type, "pos") == 0)
-        set_pos(rpg, value);
-    if (my_strcmp(type, "max_health") == 0)
-        rpg->combat->player->max_life = my_getnbr(value);
-    if (my_strcmp(type, "attack") == 0)
-        STAT->attack = my_getnbr(value);
-    if (my_strcmp(type, "defense") == 0)
-        STAT->defense = my_getnbr(value);
+    } assign_stat_bis(rpg, type, value);
     return 0;
 }
 
