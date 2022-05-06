@@ -4,7 +4,6 @@ my_rpg
 .github/
 vgcore.*
 .save
-src/map/create/csv_reader.c
 
 # Prerequisites
 *.d
@@ -57,3 +56,4 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+src/map/create/csv_reader.c

@@ -10,7 +10,7 @@
 
 int init_cam(rpg_t *game)
 {
-    game->cam.x = 900;
+    game->cam.x = 370;
     game->cam.y = 200;
     game->cam.r = 2;
     game->cam.render = malloc(sizeof(render_t));

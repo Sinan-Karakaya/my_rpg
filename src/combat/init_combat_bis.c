@@ -66,7 +66,7 @@ static int create_player_bis(combat_t *com)
     com->player->stat = malloc(sizeof(stats_t));
     if (!com->player->stat)
         return 84;
-    com->player->stat->attack = 10, com->player->stat->defense = 10;
+    com->player->stat->attack = 40, com->player->stat->defense = 20;
     com->player->stat->life = 100, com->player->stat->level = 1;
     com->player->stat->xp = 0, com->player->stat->text_attack = NULL;
     com->player->stat->text_defense = NULL;
