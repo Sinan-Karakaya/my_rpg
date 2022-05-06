@@ -7,7 +7,7 @@
 
 #include "my_rpg.h"
 
-void olberic_do_attack(entity_t *player, combat_t *combat, rpg_t *rpg)
+void olberic_do_attack(entity_t *player, combat_t *combat)
 {
     int dmg = 0;
 

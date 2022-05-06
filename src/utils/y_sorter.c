@@ -36,7 +36,7 @@ static void y_sorter_bis(rpg_t *rpg, sfSprite *sp, int i)
     }
 }
 
-void y_sorter(rpg_t *rpg, float player_y)
+void y_sorter(rpg_t *rpg)
 {
     sfRectangleShape *bat = sfRectangleShape_create();
     sfSprite *sprite = sfSprite_create();
