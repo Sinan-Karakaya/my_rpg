@@ -69,7 +69,8 @@ int print_my_menus(rpg_t *rpg)
     if (rpg->menu->is_class && rpg->menu->is_main == false)
         class_menu(rpg), sfRenderWindow_display(rpg->window);
     if (rpg->menu->is_keybind == true && rpg->menu->is_main == false)
-        display_buttons_keybinds_menu(rpg), sfRenderWindow_display(rpg->window);
+        display_buttons_keybinds_menu(rpg), sfRenderWindow_display
+        (rpg->window);
     if (rpg->menu->is_music == true && rpg->menu->is_main == false)
         display_buttons_music_menu(rpg), sfRenderWindow_display(rpg->window);
     return 0;

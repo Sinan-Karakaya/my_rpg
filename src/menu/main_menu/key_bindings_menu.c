@@ -64,7 +64,8 @@ static void do_button_music_bis_menu(rpg_t *rpg, int i)
     if (i == 7) {
         if (rpg->event.mouseButton.x > 930 && rpg->sounds->sound_effect < 100)
             rpg->sounds->sound_effect += 5;
-        else if (rpg->event.mouseButton.x < 930 && rpg->sounds->sound_effect > 0)
+        else if (rpg->event.mouseButton.x < 930 && rpg->sounds->sound_effect >
+        0)
             rpg->sounds->sound_effect -= 5;
     }
     if (i == 8) {
@@ -88,7 +89,8 @@ void do_button_music_menu_interact(rpg_t *rpg, int i)
     if (i == 5) {
         if (rpg->event.mouseButton.x > 960 && rpg->sounds->sound_music < 100)
             rpg->sounds->sound_music += 5;
-        else if (rpg->event.mouseButton.x < 960 && rpg->sounds->sound_music > 0)
+        else if (rpg->event.mouseButton.x < 960 && rpg->sounds->sound_music >
+        0)
             rpg->sounds->sound_music -= 5;
         sfMusic_setVolume(rpg->sounds->music, rpg->sounds->sound_music);
     }

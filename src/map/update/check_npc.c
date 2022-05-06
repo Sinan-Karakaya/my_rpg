@@ -14,8 +14,8 @@ de ton aide.\nLe village a ete attaque par une valkyrie.\n\
 On aurait besoin de toi pour mettre fin a son regne de \
 terreur.\nPasse au VILLAGE pour voir les degats !"
 , "Bonjour, HERO comme tu peux le voir, notre village est en bien piteux etat.\
-\nDes monstres nous empeche d avoir le bois necessaire pour reconstruire le\
- village.\nPourrais tu t'en occuper ?\n"
+\nDes monstres nous empeche d avoir le bois necessaire pour reconstruire le \
+village.\nPourrais tu t'en occuper ?\n"
 , "Test4"
 , "Test5"};
 

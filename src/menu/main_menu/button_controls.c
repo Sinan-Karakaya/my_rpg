@@ -72,7 +72,8 @@ void buttons_controls_menu(rpg_t *rpg, bt_list_t *bt_list, sfEvent event)
 {
     int button = -1;
 
-    if (rpg->menu->is_main == true && !rpg->menu->is_option && !rpg->menu->is_keybind) {
+    if (rpg->menu->is_main == true && !rpg->menu->is_option &&
+    !rpg->menu->is_keybind) {
         button = detect_click_on_bt(bt_list, event, 0, 3);
         do_button_main(rpg, button);
     }
