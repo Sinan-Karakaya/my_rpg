@@ -156,7 +156,7 @@ int check_all_keys(rpg_t *rpg, int key)
     return 0;
 }
 
-static void while_loop(rpg_t *rpg, int value, char *str)
+static char *while_loop(rpg_t *rpg, int *value, char *str)
 {
     print_parralax(rpg);
     do_parralax_keyinput(rpg);
@@ -168,10 +168,11 @@ static void while_loop(rpg_t *rpg, int value, char *str)
     if (rpg->event.type == sfEvtClosed)
         sfRenderWindow_close(rpg->window);
     if (rpg->event.type == sfEvtKeyPressed) {
-        value = rpg->event.key.code;
+        *value = rpg->event.key.code;
         str = getkey(value);
     }
     sfRenderWindow_display(rpg->window);
+    return str;
 }
 
 void replace_text(rpg_t *rpg, int button)
@@ -182,9 +183,9 @@ void replace_text(rpg_t *rpg, int button)
 
     while (str == NULL) {
         while (sfRenderWindow_pollEvent(rpg->window, &rpg->event)) {
-            while_loop(rpg, value, str);
+            str = while_loop(rpg, &value, str);
         }
-    } if (value != 0) {
+    } if (str != NULL) {
         if (replace_keys(rpg, button, value) == 84)
             return;
         str = getkey(value);
