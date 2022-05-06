@@ -32,7 +32,9 @@ SRC = src/core.c	\
 	  src/map/update/check_npc.c \
 	  src/map/create/create.c \
 	  src/map/create/csv_reader.c \
+	  src/map/fill/map_filler.c \
 	  src/map/draw/draw.c \
+	  src/map/draw/draw_all.c \
 	  src/map/draw/draw_bis.c \
 	  src/map/draw/draw_npc.c \
 	  src/map/draw/light.c \
@@ -83,6 +85,9 @@ SRC = src/core.c	\
 	  src/combat/heal.c \
 	  src/combat/init_combat_bis.c \
 	  src/menu/main_menu/key_bindings_menu.c \
+	  src/end_game.c \
+	  src/menu/destroy.c \
+	  src/combat/destroy.c \
 
 OBJ = $(SRC:.c=.o)
 TMP = $(SRC:.c=.c.tmp)

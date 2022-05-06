@@ -7,6 +7,7 @@
 
 #pragma once
 
+#include <stdio.h>
 #include <stdbool.h>
 
 #include <SFML/System.h>
@@ -34,6 +35,7 @@ bool cam_is_in_bounds(float x, float y);
 bool cmb_is_in_bounds(camera_t cam);
 int init_cinematic(rpg_t *rpg);
 void cinematic(rpg_t *rpg);
+int init_end(rpg_t *rpg);
 
 // UTILS
 int event(rpg_t *rpg);
@@ -50,7 +52,7 @@ bool do_aabb_mouse(sfMouseButtonEvent mouse, sfSprite *sp);
 bool do_aabb_mouse_rect(sfMouseButtonEvent mouse, sfIntRect rect);
 bool do_aabb_sprites(sfSprite *sp1, sfSprite *sp2);
 bool do_aabb_sprites_rectangle(sfSprite *sp1, sfRectangleShape *sp2);
-void y_sorter(rpg_t *rpg, float player_y);
+void y_sorter(rpg_t *rpg);
 void get_olb_pos(int i, int j, rpg_t *rpg);
 
 // USER INTERFACE
@@ -74,8 +76,9 @@ void check_stat(rpg_t *rpg);
 bool heal_player(rpg_t *rpg);
 int create_player(combat_t *com);
 int create_ennemy(entity_t *e, char *name, char *path, int id);
+void end_game(rpg_t *rpg);
 // COMBAT -> OLBERIC
-void olberic_do_attack(entity_t *player, combat_t *combat, rpg_t *rpg);
+void olberic_do_attack(entity_t *player, combat_t *combat);
 void olberic_do_idle(entity_t *player);
 void olberic_protect(entity_t *player, combat_t *combat);
 void olberic_death(entity_t *player);
@@ -87,6 +90,8 @@ void animate_wolf(entity_t *wolf, combat_t *combat);
 void spawn_ennemy(rpg_t *rpg);
 
 // MAP
+void fill_map(rpg_t *rpg);
+int draw_all(rpg_t *rpg);
 sfVector2f to2d(sfVector3f p, rpg_t *game);
 void draw_map(rpg_t *rpg);
 void draw_water(rpg_t *rpg);
@@ -182,3 +187,8 @@ int error_message(char *str);
 
 //MAIN
 void do_loop(rpg_t *rpg);
+
+//DESTROY
+void destroy_menu(menu_t *m);
+void combat_destroy(rpg_t *rpg);
+void free_entity(entity_t *e);

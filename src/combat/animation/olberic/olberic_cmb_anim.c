@@ -7,15 +7,12 @@
 
 #include "my_rpg.h"
 
-void olberic_do_attack(entity_t *player, combat_t *combat, rpg_t *rpg)
+void olberic_do_attack(entity_t *player, combat_t *combat)
 {
     int dmg = 0;
 
-    if (get_time(player->clock) < 0.5f)
+    if (get_time(player->clock) < 0.01f)
         return;
-        // olberic_do_attack(player, combat, rpg);
-    // else
-        // sfClock_restart(player->clock);
     if (player->rect_left_i < 10) {
         player->rect_left_i++, player->rect_left_w++;
         player->rect.left = olberic_rect_left[player->rect_left_i];
@@ -29,10 +26,9 @@ void olberic_do_attack(entity_t *player, combat_t *combat, rpg_t *rpg)
         if (dmg > 0)
             combat->curr_ennemy->life -= dmg;
         player->cmb_state = RPG_COMBAT_PLAYER_IDLE;
-        combat->state = RPG_COMBAT_ENNEMY;
+        combat->state = RPG_COMBAT_ENNEMY, sfSound_play(combat->sfx->sound);
     } sfSprite_setTextureRect(player->sprite, player->rect);
-    sfRenderWindow_drawSprite(rpg->window, player->sprite, NULL);
-    sfClock_restart(player->clock), sfSound_play(combat->sfx->sound);
+    sfClock_restart(player->clock);
 }
 
 void olberic_do_idle(entity_t *player)

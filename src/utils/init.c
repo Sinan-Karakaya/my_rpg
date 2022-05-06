@@ -79,6 +79,8 @@ static int init_all_bis(rpg_t *rpg)
         return error_message("Problem in the initialization of the keybind\n");
     if (init_inventory(rpg) || load_loop(rpg, 9))
         return error_message("Problem in the initialization of the INV\n");
+    if (init_end(rpg))
+        return error_message("Problem in the initialization of the end\n");
     return 0;
 }
 
@@ -101,5 +103,6 @@ int init_all(rpg_t *rpg)
         return 84;
     if (play_music(rpg) == 84)
         return error_message("Problem in the initialization of the music\n");
+    rpg->end_toggle = false;
     return 0;
 }

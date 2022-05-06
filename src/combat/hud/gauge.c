@@ -28,6 +28,7 @@ static int init_second_gauge(entity_t *entity)
         sfRectangleShape_setSize(entity->bar->rect_grey,
         (sfVector2f){(entity->max_life - entity->life) / 5, 10});
     }
+    return 0;
 }
 
 int init_gauge_bar(entity_t *entity)

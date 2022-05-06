@@ -36,8 +36,10 @@ static void set_pos(rpg_t *rpg, char *value)
     char *saveptr = NULL;
 
     my_strsep(value, ",", &saveptr);
-    rpg->cam.x = my_getnbr(value);
-    rpg->cam.y = my_getnbr(saveptr);
+    if (cam_is_in_bounds((float)my_getnbr(value), (float)my_getnbr(saveptr))) {
+        rpg->cam.x = my_getnbr(value);
+        rpg->cam.y = my_getnbr(saveptr);
+    }
 }
 
 static int assign_stat(rpg_t *rpg, char *type, char *value)

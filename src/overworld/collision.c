@@ -8,11 +8,12 @@
 #include <stdlib.h>
 
 #include "my_rpg.h"
+#include <math.h>
 
 const sfVector2i offset_tab[] =
     {(sfVector2i){130, 170}, (sfVector2i){0, 0}, (sfVector2i){0, 300},
     (sfVector2i){20, 250}, (sfVector2i){0, 300}, (sfVector2i){59, 87},
-    (sfVector2i){0, 0}, (sfVector2i){30, 270}, (sfVector2i){0, 300},
+    (sfVector2i){0, 300}, (sfVector2i){30, 270}, (sfVector2i){0, 300},
     (sfVector2i){20, 280}, (sfVector2i){20, 280}, (sfVector2i){20, 280}};
 
 
@@ -53,7 +54,6 @@ sfVector2f to_2d(sfVector3f p, rpg_t *game, sfVector2f off)
 
 static int ow_aabb_bis(rpg_t *rpg, int i, sfVector2f set)
 {
-    sfVector2i offset = {0, 0};
     sfVector3f point_3d;
     sfVector2f *point = rpg->cam.render->point;
     sfRectangleShape *collide = sfRectangleShape_create();
@@ -63,7 +63,6 @@ static int ow_aabb_bis(rpg_t *rpg, int i, sfVector2f set)
     for (int j = MAP_Y - 1; j > 0; j--) {
         if (rpg->world->object_map[i][j] == 0)
             continue;
-        offset = get_object_pos(i, j, rpg);
         point_3d = (sfVector3f){i, height[i][j], j};
         point[0] = to_2d(point_3d, rpg, set);
         point_3d = (sfVector3f){(i + 4), height[i][j], j};

@@ -25,20 +25,19 @@ int get_file_size(char const *filepath)
 
 static char *csv_reader(char const *filepath)
 {
-    FILE *file = fopen(filepath, "r");
-    char *code;
-    size_t n = 0;
-    int c;
+    int fd = open(filepath, O_RDONLY);
+    int sizebuffer = get_file_size(filepath);
+    int re = 0;
+    char *buffer;
 
-    if (file == NULL)
+    if (fd == -1 || sizebuffer == -1)
         return NULL;
-    code = my_calloc(sizeof(char), (MAP_X * MAP_Y) * 4);
-    if (!code)
-        return NULL;
-    while ((c = fgetc(file)) != EOF)
-        code[n++] = (char) c;
-    code[n] = '\0';
-    return code;
+    buffer = malloc(sizeof(char) + (sizebuffer + 1));
+    re = read(fd, buffer, sizebuffer);
+    if (re == 0)
+        return (NULL);
+    buffer[sizebuffer] = '\0';
+    return buffer;
 }
 
 int **str_to_int_tab(char *string, int n, int case_)

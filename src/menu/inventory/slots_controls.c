@@ -16,4 +16,5 @@ int slots_controls(rpg_t *rpg, sfEvent event)
         event, 0, 34);
         manage_inv(rpg, button);
     }
+    return 0;
 }

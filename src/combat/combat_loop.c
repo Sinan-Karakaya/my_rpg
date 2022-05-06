@@ -17,7 +17,7 @@ static void check_player_state(entity_t *player, combat_t *combat, rpg_t *rpg)
     } if (player->cmb_state == RPG_COMBAT_PLAYER_IDLE)
         olberic_do_idle(player);
     if (player->cmb_state == RPG_COMBAT_PLAYER_ATTACK)
-        olberic_do_attack(player, combat, rpg);
+        olberic_do_attack(player, combat);
     if (player->cmb_state == RPG_COMBAT_PLAYER_PROTECT)
         olberic_protect(player, combat);
     if (player->cmb_state == RPG_COMBAT_PLAYER_HEAL)
@@ -85,7 +85,9 @@ void combat_loop(rpg_t *rpg, combat_t *combat)
         sfRenderWindow_drawSprite(rpg->window, combat->curr_ennemy->sprite, NULL);
         sfRenderWindow_drawSprite(rpg->window, combat->player->sprite, NULL);
         return;
-    }
+    } if (combat->state == RPG_COMBAT_WIN &&
+    my_strcmp(combat->curr_ennemy->name, "boss") == 0)
+        rpg->end_toggle = true;
     sfRenderWindow_drawSprite(rpg->window, combat->curr_ennemy->sprite, NULL);
     sfRenderWindow_drawSprite(rpg->window, combat->player->sprite, NULL);
 }

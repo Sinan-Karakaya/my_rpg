@@ -87,7 +87,8 @@ int event(rpg_t *rpg)
         buttons_controls_option_ig(rpg, BUTTONSO, rpg->event);
         slots_controls(rpg, rpg->event);
     }
-    if (rpg->event.type == sfEvtKeyPressed)
+    if (rpg->event.type == sfEvtKeyPressed && rpg->scene != CINEMATIC &&
+    !rpg->cine->transition)
         key_pressed(rpg);
     if (IN_OVERWORLD)
         get_dir(rpg);
