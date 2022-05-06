@@ -44,7 +44,7 @@ void do_transition_cmb(rpg_t *rpg, transt_t *e)
 {
     sfColor color = sfRectangleShape_getFillColor(e->rect);
 
-    if (get_time(e->clock) < 0.0002f)
+    if (get_time(e->clock) < 0.00002f)
         return;
     if (rpg->scene == COMBAT && color.a < 255) {
         color.a += 5;
@@ -86,7 +86,7 @@ void do_transition_ow(rpg_t *rpg, transt_t *e)
 {
     sfColor color = sfRectangleShape_getFillColor(e->rect);
 
-    if (get_time(e->clock) < 0.0002f)
+    if (get_time(e->clock) < 0.00002f)
         return;
     if (rpg->scene == OVERWORLD && color.a < 255) {
         color.a += 5;

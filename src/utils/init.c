@@ -83,7 +83,7 @@ static int init_all_bis(rpg_t *rpg)
         return error_message("Problem in the initialization of the end\n");
     return 0;
 }
-
+#include <time.h>
 int init_all(rpg_t *rpg)
 {
     if (init_combat(rpg) == 84)
@@ -104,5 +104,6 @@ int init_all(rpg_t *rpg)
     if (play_music(rpg) == 84)
         return error_message("Problem in the initialization of the music\n");
     rpg->end_toggle = false;
+    srand(time(NULL));
     return 0;
 }
