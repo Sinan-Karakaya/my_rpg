@@ -58,5 +58,6 @@ int init_combat(rpg_t *rpg)
         return 84;
     if (call_func(rpg))
         return 84;
+    rpg->combat->ennemy_killed = 0;
     return 0;
 }
