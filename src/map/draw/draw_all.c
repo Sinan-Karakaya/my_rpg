@@ -31,6 +31,7 @@ int draw_all(rpg_t *rpg)
     chose_scene(rpg);
     draw_npc(rpg);
     chose_scene(rpg);
-    check_quest(rpg);
+    if (rpg->scene == OVERWORLD)
+        check_quest(rpg);
     return 0;
 }
