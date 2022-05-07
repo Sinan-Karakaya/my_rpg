@@ -55,9 +55,11 @@ static int ow_aabb_bis(rpg_t *rpg, int i, sfVector2f set)
     sfVector3f point_3d;
     sfVector2f *point = rpg->cam.render->point;
     sfRectangleShape *collide = sfRectangleShape_create();
-    sfRectangleShape_setFillColor(collide, sfRed);
     int **height = rpg->world->height_map;
 
+    if (!collide)
+        return -1;
+    sfRectangleShape_setFillColor(collide, sfRed);
     for (int j = MAP_Y - 1; j > 0; j--) {
         if (rpg->world->object_map[i][j] == 0)
             continue;

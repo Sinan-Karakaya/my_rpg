@@ -7,54 +7,65 @@
 
 #include "my_rpg.h"
 
-static void assign_bis(rpg_t *rpg)
+static int assign_bis(rpg_t *rpg)
 {
     if (rpg->combat->player->stat->class == RPG_CLASS_PEASANT) {
         rpg->combat->player->texture = sfTexture_createFromFile(
         OLBERIC_PE_PATH, NULL);
+        OW->texture = sfTexture_createFromFile(OLBERIC_OW_PE_PATH, NULL);
+        if (!rpg->combat->player->texture || !OW->texture)
+            return (84);
         sfSprite_setTexture(rpg->combat->player->sprite,
         rpg->combat->player->texture, sfFalse);
-        OW->texture = sfTexture_createFromFile(OLBERIC_OW_PE_PATH, NULL);
         sfSprite_setTexture(OW->spr, OW->texture, sfFalse);
     }
+    return 0;
 }
 
-void assign_class(rpg_t *rpg)
+int assign_class(rpg_t *rpg)
 {
     if (rpg->combat->player->stat->class == RPG_CLASS_WARRIOR) {
         rpg->combat->player->texture = sfTexture_createFromFile(
         OLBERIC_WA_PATH, NULL);
+        OW->texture = sfTexture_createFromFile(OLBERIC_OW_PATH, NULL);
+        if (!rpg->combat->player->texture || !OW->texture)
+            return (84);
+        sfSprite_setTexture(OW->spr, OW->texture, sfFalse);
         sfSprite_setTexture(rpg->combat->player->sprite,
         rpg->combat->player->texture, sfFalse);
-        OW->texture = sfTexture_createFromFile(OLBERIC_OW_PATH, NULL);
-        sfSprite_setTexture(OW->spr, OW->texture, sfFalse);
         rpg->combat->player->stat->attack += 5;
     } if (rpg->combat->player->stat->class == RPG_CLASS_CLERIC) {
-        rpg->combat->player->max_life += 10;
         rpg->combat->player->texture = sfTexture_createFromFile(
         OLBERIC_CL_PATH, NULL);
+        OW->texture = sfTexture_createFromFile(OLBERIC_OW_CL_PATH, NULL);
+        if (!rpg->combat->player->texture || !OW->texture)
+            return (84);
         sfSprite_setTexture(rpg->combat->player->sprite,
         rpg->combat->player->texture, sfFalse);
-        OW->texture = sfTexture_createFromFile(OLBERIC_OW_CL_PATH, NULL);
         sfSprite_setTexture(OW->spr, OW->texture, sfFalse);
-    } assign_bis(rpg);
+        rpg->combat->player->max_life += 10;
+    } return assign_bis(rpg);
 }
 
-void assign_class_valid_save(rpg_t *rpg)
+int assign_class_valid_save(rpg_t *rpg)
 {
     if (rpg->combat->player->stat->class == RPG_CLASS_WARRIOR) {
         rpg->combat->player->texture = sfTexture_createFromFile(
         OLBERIC_WA_PATH, NULL);
+        OW->texture = sfTexture_createFromFile(OLBERIC_OW_PATH, NULL);
+        if (!rpg->combat->player->texture || !OW->texture)
+            return (84);
         sfSprite_setTexture(rpg->combat->player->sprite,
         rpg->combat->player->texture, sfFalse);
-        OW->texture = sfTexture_createFromFile(OLBERIC_OW_PATH, NULL);
         sfSprite_setTexture(OW->spr, OW->texture, sfFalse);
     } if (rpg->combat->player->stat->class == RPG_CLASS_CLERIC) {
         rpg->combat->player->texture = sfTexture_createFromFile(
         OLBERIC_CL_PATH, NULL);
+        OW->texture = sfTexture_createFromFile(OLBERIC_OW_CL_PATH, NULL);
+        if (!rpg->combat->player->texture || !OW->texture)
+            return (84);
         sfSprite_setTexture(rpg->combat->player->sprite,
         rpg->combat->player->texture, sfFalse);
-        OW->texture = sfTexture_createFromFile(OLBERIC_OW_CL_PATH, NULL);
         sfSprite_setTexture(OW->spr, OW->texture, sfFalse);
-    } assign_bis(rpg);
+    } return assign_bis(rpg);
 }

@@ -20,6 +20,8 @@ static sfText *create_my_text(sfVector2f pos, int value, int stuff_value)
     + my_strlen(stat_stuff) + 2));
     size_t i = 0, j = 0;
 
+    if (!stat_total || !my_text || !stat_player || !stat_stuff)
+        return NULL;
     for (i = 0; stat_player[i] != '\0'; i++)
         stat_total[i] = stat_player[i];
     stat_total[i] = '+';
@@ -39,6 +41,8 @@ static sfText *create_my_text_lvl(sfVector2f pos, int value)
 {
     sfText *my_text = sfText_create();
 
+    if (!my_text)
+        return NULL;
     sfText_setPosition(my_text, pos);
     sfText_setFont(my_text, sfFont_createFromFile("assets/font/arial/arial.ttf"
     ));

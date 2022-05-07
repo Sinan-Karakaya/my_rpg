@@ -19,11 +19,11 @@ char *convert_to_str(float fl)
     int count = 1;
     int i = 0;
 
-    while (origin > 9) {
-        count++;
-        origin /= 10;
-    }
+    while (origin > 9)
+        count++, origin /= 10;
     result = malloc(sizeof(int) * count);
+    if (result == NULL)
+        return NULL;
     for (; i != count; i++) {
         temp = num % 10;
         num /= 10;
@@ -39,18 +39,17 @@ static void print_hitboxes(rpg_t *rpg)
     sfVector2f player_scale = sfSprite_getScale(OW->spr);
     sfVector2f p_pos = sfSprite_getPosition(OW->spr);
 
+    if (rect == NULL)
+        return;
     sfRectangleShape_setFillColor(rect, sfTransparent);
     sfRectangleShape_setOutlineColor(rect, sfRed);
     sfRectangleShape_setOutlineThickness(rect, 1);
-
     sfRectangleShape_setSize(rect, (sfVector2f){
     sfSprite_getTextureRect(OW->spr).width * player_scale.x,
     PLAYER_OW_HEIGHT * player_scale.y});
-
     p_pos.x -= PLAYER_OW_IDLE_W * player_scale.x / 2;
     p_pos.y -= PLAYER_OW_HEIGHT * player_scale.y / 2;
     sfRectangleShape_setPosition(rect, p_pos);
-
     sfRenderWindow_drawRectangleShape(rpg->window, rect, NULL);
 }
 

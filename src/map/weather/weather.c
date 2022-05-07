@@ -10,6 +10,9 @@
 void create_weather(rpg_t *rpg)
 {
     rpg->world->drop = malloc(sizeof(sfRectangleShape) * NB_DROP + 1);
+
+    if (rpg->world->drop == NULL)
+        return;
     for (int i = 0; i < NB_DROP; i++) {
         rpg->world->drop[i] = sfRectangleShape_create()
         rpg->world->drop[i].size.x = DROP_SIZE;

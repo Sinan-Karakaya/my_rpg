@@ -13,7 +13,6 @@
   <a href="#rocket-technologies">Technologies</a> &#xa0; | &#xa0;
   <a href="#white_check_mark-requirements">Requirements</a> &#xa0; | &#xa0;
   <a href="#checkered_flag-starting">Starting</a> &#xa0; | &#xa0;
-  <a href="#memo-license">License</a> &#xa0; | &#xa0;
 </p>
 
 <br>
@@ -24,6 +23,10 @@ my_rpg is EPITECH's end of the year project for every first year student at EPIT
 It must use the CSFML library and needs some technical requirements. Other than
 that, we were free to make it however we wanted, so we decided to take inspiration
 from Octopath Traveler, a game made by Square Enix that has a stunning artistic direction.
+
+<br>
+
+:warning: This project only works under Linux and Mac for the moment! (Windows version is in progress)
 
 ## :sparkles: Features ##
 
@@ -48,9 +51,9 @@ The following tools were used in this project:
 
 ## :white_check_mark: Requirements ##
 
-Before starting :checkered_flag:, you need to have:
-[Git](https://git-scm.com)
-[GCC](https://gcc.gnu.org/)
+Before starting :checkered_flag:, you need to have: <br>
+[Git](https://git-scm.com) <br>
+[GCC](https://gcc.gnu.org/) <br>
 and [CSFML](https://www.sfml-dev.org/download/csfml/index-fr.php) installed.
 
 ## :checkered_flag: Starting ##
@@ -68,12 +71,6 @@ $ make
 # Run the project
 $ ./my_rpg
 ```
-
-## :memo: License ##
-
-Idk lol
-<br>
-
 
 Made with :heart: by <a href="https://github.com/Sinan-Karakaya" target="_blank">Sinan Karakaya</a>
 <br>

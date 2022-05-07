@@ -29,8 +29,8 @@ int init_keybind(rpg_t *rpg);
 int init_buttons(rpg_t *rpg);
 int init_sound(rpg_t *rpg);
 int init_menu(rpg_t *rpg);
-void assign_class(rpg_t *rpg);
-void assign_class_valid_save(rpg_t *rpg);
+int assign_class(rpg_t *rpg);
+int assign_class_valid_save(rpg_t *rpg);
 int init_font(rpg_t *rpg);
 bool cam_is_in_bounds(float x, float y);
 bool cmb_is_in_bounds(camera_t cam);
@@ -176,7 +176,7 @@ int init_my_text(stats_t *stat);
 //CLASS MENU
 int init_class_menu(rpg_t *rpg);
 void class_menu(rpg_t *rpg);
-void class_menu_button(sfEvent event, rpg_t *rpg);
+int class_menu_button(sfEvent event, rpg_t *rpg);
 
 // SAVE
 bool read_save(rpg_t *rpg);

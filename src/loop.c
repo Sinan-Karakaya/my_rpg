@@ -12,6 +12,7 @@
 static void chose_scene(rpg_t *rpg)
 {
     if (rpg->end_toggle) {
+        printf("oui\n");
         end_game(rpg);
         return;
     } if (rpg->scene == OVERWORLD)
@@ -32,10 +33,10 @@ static void gameloop_bis(rpg_t *rpg)
         display_options_ig(rpg);
     } else if (rpg->scene == CINEMATIC || rpg->cine->transition) {
         cinematic(rpg);
-        chose_scene(rpg);
         if (rpg->cine->transition)
             do_transition_cine(rpg, rpg->combat->transt);
     } else {
+        chose_scene(rpg);
         draw_all(rpg);
     }
     rpg->dt = get_dt(rpg->game_clock);
