@@ -172,7 +172,7 @@ static char *while_loop(rpg_t *rpg, int *value, char *str)
         sfRenderWindow_close(rpg->window);
     if (rpg->event.type == sfEvtKeyPressed) {
         *value = rpg->event.key.code;
-        str = getkey(value);
+        str = getkey(*value);
     }
     sfRenderWindow_display(rpg->window);
     return str;
