@@ -12,7 +12,6 @@
 static void chose_scene(rpg_t *rpg)
 {
     if (rpg->end_toggle) {
-        printf("oui\n");
         end_game(rpg);
         return;
     } if (rpg->scene == OVERWORLD)
