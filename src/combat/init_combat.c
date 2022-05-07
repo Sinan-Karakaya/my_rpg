@@ -40,8 +40,7 @@ static int call_func(rpg_t *rpg)
 
 int init_combat(rpg_t *rpg)
 {
-    rpg->combat = malloc(sizeof(combat_t));
-    if (!rpg->combat)
+    if (!(rpg->combat = malloc(sizeof(combat_t))))
         return 84;
     rpg->combat->ennemy = malloc(sizeof(entity_t *) * 3);
     if (!rpg->combat->ennemy)

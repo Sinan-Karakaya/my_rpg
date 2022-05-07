@@ -59,7 +59,7 @@ int errors_manager(void)
         fd = open(errors[i], O_RDONLY);
         if (fd < 3) {
             write(2, "Error occured in the loading of the assets.\n", 44);
-            return (84);
+            return 84;
         }
         close(fd);
     }

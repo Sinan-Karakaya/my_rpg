@@ -17,7 +17,8 @@ write(2, "\n", 1);
 #define RES_Y 1080
 
 #define IS_SHADER 0
-#define SHADE NULL;//sfShader_createFromFile(NULL, NULL, "src/map/draw/light.frag");
+#define SHADE NULL;
+//sfShader_createFromFile(NULL, NULL, "src/map/draw/light.frag");
 
 #define MAP_X 150
 #define MAP_Y 80

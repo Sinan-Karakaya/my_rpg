@@ -32,18 +32,9 @@ static int assign_ennemy_stat(entity_t *e, char *name, int id)
     return 0;
 }
 
-int create_ennemy(entity_t *e, char *name, char *path, int id)
+static void create_ennemy_bis(entity_t *e, char *name, int id)
 {
-    e->sprite = sfSprite_create();
-    e->texture = sfTexture_createFromFile(path, NULL);
-    if (!e->sprite || !e->texture)
-        return 84;
-    sfSprite_setTexture(e->sprite, e->texture, 1);
-    if (id == 0) {
-        e->pos = (sfVector2f){RES_X / 5, RES_Y / 3};
-        e->rect = (sfIntRect){0, 0, BOSS_WIDTH, BOSS_HEIGHT};
-        sfSprite_setTextureRect(e->sprite, e->rect);
-    } if (id == 1) {
+    if (id == 1) {
         e->pos = (sfVector2f){RES_X / 5, RES_Y / 2 + 20};
         e->rect = (sfIntRect){0, 0, BEAR_WIDTH, BEAR_HEIGHT};
         sfSprite_setTextureRect(e->sprite, e->rect);
@@ -51,7 +42,21 @@ int create_ennemy(entity_t *e, char *name, char *path, int id)
         e->pos = (sfVector2f){RES_X / 5 + 20, RES_Y / 2 + 100};
         e->rect = (sfIntRect){0, 0, WOLF_WIDTH, WOLF_HEIGHT};
         sfSprite_setTextureRect(e->sprite, e->rect);
-    } sfSprite_setPosition(e->sprite, e->pos);
+    }
+}
+
+int create_ennemy(entity_t *e, char *name, char *path, int id)
+{
+    e->texture = sfTexture_createFromFile(path, NULL);
+    if (!(e->sprite = sfSprite_create()) || !e->texture)
+        return 84;
+    sfSprite_setTexture(e->sprite, e->texture, 1);
+    if (id == 0) {
+        e->pos = (sfVector2f){RES_X / 5, RES_Y / 3};
+        e->rect = (sfIntRect){0, 0, BOSS_WIDTH, BOSS_HEIGHT};
+        sfSprite_setTextureRect(e->sprite, e->rect);
+    } create_ennemy_bis(e, name, id);
+    sfSprite_setPosition(e->sprite, e->pos);
     sfSprite_setScale(e->sprite, (sfVector2f){2, 2});
     if (assign_ennemy_stat(e, name, id))
         return 84;
