@@ -9,33 +9,6 @@
 #include <stdio.h>
 #include "my_rpg.h"
 
-int init_sfml(rpg_t *rpg, int debug_mode)
-{
-    rpg->mode = (sfVideoMode){RES_X, RES_Y, 32};
-    rpg->window = sfRenderWindow_create(rpg->mode, "my_rpg", sfClose, NULL);
-    if (!rpg->window)
-        return 1;
-    sfRenderWindow_setPosition(rpg->window, (sfVector2i){0, 0});
-    sfRenderWindow_setFramerateLimit(rpg->window, 60);
-    rpg->game_clock = sfClock_create();
-    (debug_mode) ? (rpg->debug_toggle = true) : (rpg->debug_toggle = false);
-    rpg->debug = malloc(sizeof(debug_t));
-    if (!rpg->debug)
-        return 1;
-    rpg->debug->text = sfText_create();
-    if (!rpg->debug->text)
-        return 1;
-    sfText_setPosition(rpg->debug->text, (sfVector2f){10, 10});
-    rpg->debug->font = sfFont_createFromFile(FONT_PATH);
-    if (!rpg->debug->font)
-        return 1;
-    sfText_setFont(rpg->debug->text, rpg->debug->font);
-    sfText_setOutlineColor(rpg->debug->text, sfBlack);
-    sfText_setOutlineThickness(rpg->debug->text, 1);
-    rpg->ow_can_move = true;
-    return 0;
-}
-
 static int change_texture_class(rpg_t *rpg, char *path, char *path_ow)
 {
     rpg->combat->player->texture = sfTexture_createFromFile(path, NULL);
@@ -65,16 +38,8 @@ static int change_class_texture(rpg_t *rpg)
     return 0;
 }
 
-static int init_all_bis(rpg_t *rpg)
+static int init_all_secondary(rpg_t *rpg)
 {
-    if (change_class_texture(rpg) || load_loop(rpg, 1))
-        return error_message("Problem in the initialization of the class\n");
-    if (init_cam(rpg) || load_loop(rpg, 2))
-        return error_message("Problem in the initialization of the camera\n");
-    if (init_world(rpg) || load_loop(rpg, 3))
-        return error_message("Problem in the initialization of the world\n");
-    if (init_sound(rpg) || load_loop(rpg, 4))
-        return error_message("Problem in the initialization of the sound\n");
     if (init_menu(rpg) || load_loop(rpg, 5))
         return error_message("Problem in the initialization of the menu\n");
     if (init_buttons(rpg) || load_loop(rpg, 6))
@@ -89,7 +54,22 @@ static int init_all_bis(rpg_t *rpg)
         return error_message("Problem in the initialization of the end\n");
     return 0;
 }
-#include <time.h>
+
+static int init_all_bis(rpg_t *rpg)
+{
+    if (change_class_texture(rpg) || load_loop(rpg, 1))
+        return error_message("Problem in the initialization of the class\n");
+    if (init_cam(rpg) || load_loop(rpg, 2))
+        return error_message("Problem in the initialization of the camera\n");
+    if (init_world(rpg) || load_loop(rpg, 3))
+        return error_message("Problem in the initialization of the world\n");
+    if (init_sound(rpg) || load_loop(rpg, 4))
+        return error_message("Problem in the initialization of the sound\n");
+    if (init_all_secondary(rpg))
+        return 84;
+    return 0;
+}
+
 int init_all(rpg_t *rpg)
 {
     if (init_combat(rpg) == 84)
@@ -110,6 +90,5 @@ int init_all(rpg_t *rpg)
     if (play_music(rpg) == 84)
         return error_message("Problem in the initialization of the music\n");
     rpg->end_toggle = false;
-    srand(time(NULL));
     return 0;
 }

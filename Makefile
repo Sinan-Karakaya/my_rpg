@@ -90,6 +90,7 @@ SRC = src/core.c	\
 	  src/combat/destroy.c \
 	  src/menu/options/keybindings_bis.c \
 	  src/save/read_save_bis.c \
+	  src/init_sfml.c
 
 OBJ = $(SRC:.c=.o)
 TMP = $(SRC:.c=.c.tmp)

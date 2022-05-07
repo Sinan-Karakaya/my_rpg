@@ -17,12 +17,12 @@
 
 static void set_pos(rpg_t *rpg, char *value)
 {
-    char *saveptr = NULL;
+    char *svptr = NULL;
 
-    my_strsep(value, ",", &saveptr);
-    if (cam_is_in_bounds((float)my_getnbr(value), (float)my_getnbr(saveptr))) {
+    my_strsep(value, ",", &svptr);
+    if (cam_is_in_bounds((float)my_getnbr(value), (float)my_getnbr(svptr))) {
         rpg->cam.x = my_getnbr(value);
-        rpg->cam.y = my_getnbr(saveptr);
+        rpg->cam.y = my_getnbr(svptr);
     }
 }
 
