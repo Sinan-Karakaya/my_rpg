@@ -78,12 +78,14 @@ bool read_save(rpg_t *rpg)
     char *buffer = NULL;
 
     if (fd == -1)
-        return (false);
+        return false;
     buffer = my_calloc(1024, sizeof(char));
     if ((read(fd, buffer, 1024)) == -1)
-        return (false);
+        return false;
     close(fd);
 
+    if (my_strlen(buffer) < 130)
+        return false;
     parse_save(rpg, buffer);
     return true;
 }

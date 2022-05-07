@@ -6,6 +6,11 @@
 */
 
 #include <stdlib.h>
+#include <stdio.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
 
 #include "my_rpg.h"
 
@@ -27,6 +32,17 @@ int init_end(rpg_t *rpg)
     return 0;
 }
 
+static void erase_save(void)
+{
+    int fd = open(".save", O_WRONLY | O_TRUNC);
+
+    if (fd == -1)
+        return;
+    write(fd, "null", 4);
+    close(fd);
+    return;
+}
+
 void end_game(rpg_t *rpg)
 {
     sfColor color = sfRectangleShape_getFillColor(rpg->combat->transt->rect);
@@ -36,6 +52,8 @@ void end_game(rpg_t *rpg)
         color.a += 5;
         color_bis.a += 5;
     }
+    if (color.a == 255)
+        erase_save();
     sfRectangleShape_setFillColor(rpg->combat->transt->rect, color);
     sfText_setFillColor(rpg->end->text, color_bis);
 }

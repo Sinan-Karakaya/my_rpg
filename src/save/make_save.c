@@ -79,13 +79,14 @@ static void write_save(const int fd, rpg_t *rpg)
 
 void save_game(rpg_t *rpg)
 {
-    int fd = open(".save", O_CREAT | O_WRONLY, 0666);
+    int fd = open(".save", O_CREAT | O_RDWR, 0666);
 
     if (fd == -1) {
-        ERROR(".save");
+        ERROR(" .save");
         return;
     }
-    write_save(fd, rpg);
+    if (!rpg->end_toggle)
+        write_save(fd, rpg);
     close(fd);
     return;
 }
