@@ -187,7 +187,7 @@ void save_game(rpg_t *rpg);
 void draw_object(rpg_t *rpg);
 
 //ERROR_MANAGER
-int errors_manager(void);
+int errors_manager(char **env);
 int error_message(char *str);
 
 //MAIN

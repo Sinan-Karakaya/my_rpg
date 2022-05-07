@@ -11,14 +11,14 @@
 
 #include "my_rpg.h"
 
-int main(int ac, char **av)
+int main(int ac, char **av, char **env)
 {
     int debug_mode = handle_args(ac, av);
     rpg_t *rpg = malloc(sizeof(rpg_t));
 
     if (debug_mode == -1)
         return 0;
-    if (!rpg || errors_manager() == 84 || init_sfml(rpg, debug_mode))
+    if (!rpg || errors_manager(env) == 84 || init_sfml(rpg, debug_mode))
         return 84;
     if (sfRenderWindow_isOpen(rpg->window))
         if (init_all(rpg) == 84)
