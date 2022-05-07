@@ -23,6 +23,7 @@
 #define BUTTONSO rpg->menu->option->buttons
 
 //INITIALIZATION
+int init_tris(rpg_t *game);
 int init_all(rpg_t *rpg);
 int init_keybind(rpg_t *rpg);
 int init_buttons(rpg_t *rpg);
