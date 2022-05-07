@@ -52,9 +52,9 @@ The following tools were used in this project:
 
 ## :white_check_mark: Requirements ##
 
-Before starting :checkered_flag:, you need to have:
-[Git](https://git-scm.com)
-[GCC](https://gcc.gnu.org/)
+Before starting :checkered_flag:, you need to have: <br>
+[Git](https://git-scm.com) <br>
+[GCC](https://gcc.gnu.org/) <br>
 and [CSFML](https://www.sfml-dev.org/download/csfml/index-fr.php) installed.
 
 ## :checkered_flag: Starting ##
