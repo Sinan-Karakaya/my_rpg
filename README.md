@@ -25,6 +25,10 @@ It must use the CSFML library and needs some technical requirements. Other than
 that, we were free to make it however we wanted, so we decided to take inspiration
 from Octopath Traveler, a game made by Square Enix that has a stunning artistic direction.
 
+<br>
+
+:warning: This project only works under Linux and Mac for the moment! (Windows version is in progress)
+
 ## :sparkles: Features ##
 
 :heavy_check_mark: RPG game
