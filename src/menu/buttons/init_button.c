@@ -30,6 +30,8 @@ static sfText *init_text(sfVector2f pos, const char *txt, sfVector2u size)
     sfVector2f origin = {0};
     sfFloatRect rect = {0};
 
+    if (!font || !text)
+        return NULL;
     sfText_setPosition(text, pos);
     sfText_setString(text, txt);
     sfText_setColor(text, sfBlack);
@@ -47,24 +49,19 @@ static sfText *init_text(sfVector2f pos, const char *txt, sfVector2u size)
 
 static button_t *build_button(char *txt, sfVector2f pos, int ptr, char *name)
 {
-    button_t *button = NULL;
+    button_t *button = malloc(sizeof(button_t));
     sfVector2u size = {0};
     sfVector2f size_rect = {88, 52};
     const sfTexture *texture_temp = NULL;
 
-    button = malloc(sizeof(button_t));
     if (!button)
         return NULL;
-    button->hover = false;
-    button->is_hover = false;
-    button->toggle = false;
-    button->sprite = init_sprite(pos, name);
-    if (!button->sprite)
+    button->hover = false, button->is_hover = false, button->toggle = false;
+    if (!(button->sprite = init_sprite(pos, name)))
         return NULL;
     texture_temp = sfSprite_getTexture(button->sprite);
     size = sfTexture_getSize(texture_temp);
-    button->text = init_text(pos, txt, size);
-    button->ptr_function = ptr;
+    button->text = init_text(pos, txt, size), button->ptr_function = ptr;
     button->rect = sfRectangleShape_create();
     if (!button->rect || !button->text)
         return NULL;

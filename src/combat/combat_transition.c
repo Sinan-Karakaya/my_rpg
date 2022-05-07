@@ -36,6 +36,10 @@ static void change_music(sfMusic *music, char *path)
     sfMusic_stop(music);
     sfMusic_destroy(music);
     music = sfMusic_createFromFile(path);
+    if (music == NULL) {
+        ERROR(path);
+        return;
+    }
     sfMusic_play(music);
     sfMusic_setLoop(music, sfTrue);
 }

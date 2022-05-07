@@ -19,6 +19,8 @@ static sfSprite *init_sprite(sfVector2f pos, const char *filename)
     sfSprite *sprite = sfSprite_create();
     sfVector2f scaling = {3, 3};
 
+    if (!texture || !sprite)
+        return (NULL);
     sfSprite_setScale(sprite, scaling);
     sfSprite_setPosition(sprite, pos);
     sfSprite_setTexture(sprite, texture, sfTrue);

@@ -41,6 +41,8 @@ void y_sorter(rpg_t *rpg)
     sfRectangleShape *bat = sfRectangleShape_create();
     sfSprite *sprite = sfSprite_create();
 
+    if (!bat || !sprite)
+        return;
     sfSprite_setTexture(sprite, rpg->world->texture_o->texture, sfTrue);
     for (int i = 1; i < MAP_X - 1; i++) {
         y_sorter_bis(rpg, sprite, i);

@@ -130,6 +130,9 @@ static char *replace_str(char *name, char *new)
     for (; name[i] != ':'; i++);
     i += 2;
     my_return = malloc(sizeof(char) * (i + my_strlen(new)) + 1);
+
+    if (my_return == NULL)
+        return NULL;
     my_strncpy(my_return, name, i);
     my_return = my_strcat(my_return, new);
     return my_return;

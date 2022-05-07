@@ -29,8 +29,6 @@ static int init_button_option_ig(rpg_t *rpg)
 {
     rpg->menu->option->buttons->lst_bt[0] = create_button("Sounds",
     (sfVector2f){910, 200}, 100, "assets/menu/button.png");
-    rpg->menu->option->buttons->lst_bt[0] = create_button("Sounds",
-    (sfVector2f){910, 200}, 100, "assets/menu/button.png");
     rpg->menu->option->buttons->lst_bt[1] = create_button("Key Bindings",
     (sfVector2f){910, 350}, 100, "assets/menu/button.png");
     rpg->menu->option->buttons->lst_bt[2] = create_button("Menu",
@@ -70,6 +68,7 @@ static int init_button_keys_ig_bis(rpg_t *rpg)
 
 static int init_button_keys_ig(rpg_t *rpg)
 {
+    rpg->menu->main->buttons->lst_bt[4]->toggle = true;
     rpg->menu->option->buttons->lst_bt[9] = create_button_2("\tMove Up : Z",
     (sfVector2f){480, 200}, 100, "assets/menu/button.png");
     rpg->menu->option->buttons->lst_bt[10] =
@@ -107,11 +106,9 @@ int init_all_buttons(rpg_t *rpg)
     (sfVector2f){910, 800}, 100, "assets/menu/button.png");
     rpg->menu->main->buttons->lst_bt[6] = create_button("Keybinds",
     (sfVector2f){1440, 540}, 100, "assets/menu/button.png");
-    for (size_t i = 0; i < 7; i++) {
+    for (size_t i = 0; i < 7; i++)
         if (rpg->menu->main->buttons->lst_bt[i] == NULL)
             return 84;
-    }
-    rpg->menu->main->buttons->lst_bt[4]->toggle = true;
     if (init_button_option_ig(rpg) == 84 || init_button_keys_ig(rpg) == 84)
         return 84;
     return 0;

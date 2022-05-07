@@ -23,8 +23,12 @@ int init_sfml(rpg_t *rpg, int debug_mode)
     if (!rpg->debug)
         return 1;
     rpg->debug->text = sfText_create();
+    if (!rpg->debug->text)
+        return 1;
     sfText_setPosition(rpg->debug->text, (sfVector2f){10, 10});
     rpg->debug->font = sfFont_createFromFile(FONT_PATH);
+    if (!rpg->debug->font)
+        return 1;
     sfText_setFont(rpg->debug->text, rpg->debug->font);
     sfText_setOutlineColor(rpg->debug->text, sfBlack);
     sfText_setOutlineThickness(rpg->debug->text, 1);
@@ -40,6 +44,8 @@ static int change_texture_class(rpg_t *rpg, char *path, char *path_ow)
     sfSprite_setTexture(rpg->combat->player->sprite,
     rpg->combat->player->texture, sfFalse);
     OW->texture = sfTexture_createFromFile(path_ow, NULL);
+    if (!OW->texture)
+        return 84;
     sfSprite_setTexture(OW->spr, OW->texture, sfFalse);
     return 0;
 }

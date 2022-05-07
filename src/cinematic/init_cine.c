@@ -61,7 +61,11 @@ static int init_bis(rpg_t *rpg)
     if (rpg->cine->sfx == NULL)
         return 84;
     rpg->cine->sfx->sound = sfSound_create();
+    if (rpg->cine->sfx->sound == NULL)
+        return 84;
     rpg->cine->sfx->buffer = sfSoundBuffer_createFromFile(CAR_SFX);
+    if (rpg->cine->sfx->buffer == NULL)
+        return 84;
     sfSound_setBuffer(rpg->cine->sfx->sound, rpg->cine->sfx->buffer);
     sfSound_setVolume(rpg->cine->sfx->sound, 40);
     init_player_cine(rpg);

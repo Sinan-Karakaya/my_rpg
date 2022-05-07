@@ -53,12 +53,11 @@ static int init_button_inventory(rpg_t *rpg)
         return 84;
     if ((int)(y = for_loop(rpg, x, y)) == -1)
         return 84;
-    for (size_t i = 30, y = 0; i < INVENTORY_BUTTONS->nbr_bt; i++) {
+    for (size_t i = 30, y = 0; i < INVENTORY_BUTTONS->nbr_bt; i++, y++) {
         rpg->menu->inventory->buttons->lst_bt[i] = create_slots(" ",
         (sfVector2f){1490, 180 + 140 * y}, 100, "assets/menu/slots.png");
         if (!rpg->menu->inventory->buttons->lst_bt[i])
             return 84;
-        y++;
     }
     return 0;
 }

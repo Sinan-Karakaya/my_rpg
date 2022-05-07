@@ -15,6 +15,8 @@ char *my_strcat(char *dest, char const *src)
     int j = 0;
     char *ret = malloc(sizeof(char) * my_strlen(dest) + my_strlen(src) + 2);
 
+    if (!ret)
+        return (NULL);
     my_memset(ret, 0, my_strlen(dest) + my_strlen(src) + 2);
     for (; dest[i]; i++)
         ret[i] = dest[i];

@@ -54,7 +54,7 @@ void draw_quest_list(rpg_t *rpg)
     sfText *side_text = sfText_create();
     sfFont *font = sfFont_createFromFile("assets/pnj/alagard.ttf");
 
-    if (!text || !side_text)
+    if (!text || !side_text || !font)
         return;
     text = init_npc_quest();
     sfText_setFont(text, font);
