@@ -13,10 +13,10 @@ const char *catch_line[] = {""
 your help.\nThe village was attacked by a Valkyrie.\n\
 We need you to end her reign of terror!\n \
 Go see the damages at the village by yourself, at the North-East."
-, "Welcome Hero, as you can see our vilage is quite in a sorry state.\n\
+, "Welcome Hero, as you can see our village is quite in a sorry state.\n\
 The monsters are preventing us from getting wood to repair our village.\n \
 Do you think you could take care of it ?\nYou'll find them in the forest \
-at the West from the vilage."
+at the West from the village."
 , "Test4"
 , "Test5"};
 
