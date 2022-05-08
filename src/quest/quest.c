@@ -31,6 +31,7 @@ static sfText *init_npc_quest(void)
     sfText_setPosition(text, pos);
     return text;
 }
+
 static sfText *init_npc_side_quest(void)
 {
     sfText *text = sfText_create();

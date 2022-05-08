@@ -25,6 +25,7 @@ static int init_button_option_ig_bis(rpg_t *rpg)
     }
     return 0;
 }
+
 static int init_button_option_ig(rpg_t *rpg)
 {
     rpg->menu->option->buttons->lst_bt[0] = create_button("Sounds",
