@@ -76,8 +76,8 @@ static int ow_aabb_bis(rpg_t *rpg, int i, sfVector2f set)
         point[0] = to_2d(point_3d, rpg, set);
         point_3d = (sfVector3f){(i + 4), height[i][j], j};
         point[1] = to_2d(point_3d, rpg, set);
-        sfRectangleShape_setSize(coll, (sfVector2f){CALCUL_1(x, y, i, j)};
-        sfRectangleShape_setPosition(coll, (sfVector2f){CALCUL_2(x, y, i, j)};
+        sfRectangleShape_setSize(coll, (sfVector2f){CALCUL_1(x, y, i, j)});
+        sfRectangleShape_setPosition(coll, (sfVector2f){CALCUL_2(x, y, i, j)});
         if (bis_again(rpg, coll))
             return 1;
     } sfRectangleShape_destroy(coll);
