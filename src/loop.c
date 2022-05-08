@@ -49,6 +49,9 @@ static void gameloop_bis(rpg_t *rpg)
     sfRenderWindow_drawText(rpg->window, rpg->end->text, NULL);
     if (rpg->scene == DEATH)
         draw_game_over(rpg);
+    if (!cmb_is_in_bounds(rpg->cam) && rpg->combat->player->life <
+    rpg->combat->player->max_life)
+        rpg->combat->player->life = rpg->combat->player->max_life;
 }
 
 static int gameloop(rpg_t *rpg)
