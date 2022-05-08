@@ -25,6 +25,7 @@ static void chose_scene(rpg_t *rpg)
     if (rpg->combat->player->cmb_state == RPG_COMBAT_PLAYER_DEATH)
         do_transition_death(rpg, rpg->combat->transt);
 }
+
 static void do_cinematic(rpg_t *rpg)
 {
     cinematic(rpg);
