@@ -51,7 +51,7 @@ typedef struct menu_option_s {
     bool is_active;
     bool is_main;
     bool music;
-    bool shaders;
+    sfShader *shaders;
     bool keybinds;
 } menu_option_t;
 

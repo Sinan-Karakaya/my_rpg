@@ -33,7 +33,7 @@ static void destroy_rpg(rpg_t *rpg)
     sfClock_destroy(rpg->game_clock);
     destroy_ow(rpg->overworld);
     free(rpg->texture);
-    if (IS_SHADER == 1) {
+    if (rpg->menu->option->shaders != NULL) {
         sfShader_destroy(rpg->shader->get);
         sfSprite_destroy(rpg->shader->sh_sprite);
         sfTexture_destroy(rpg->shader->sh_texture);
