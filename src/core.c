@@ -45,7 +45,6 @@ int main(int ac, char **av, char **env)
     fill_map(rpg);
     srand(time(NULL));
     do_loop(rpg);
-    save_game(rpg);
-    free_rpg(rpg);
+    save_game(rpg), free_rpg(rpg);
     return 0;
 }
