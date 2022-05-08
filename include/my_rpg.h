@@ -156,6 +156,7 @@ void do_parralax_keyinput(rpg_t *rpg);
 void do_button_howtoplay(rpg_t *rpg, bt_list_t *bt_list, sfEvent event);
 int detect_click_on_bt_2(bt_list_t *bt_list, sfEvent event, size_t s,
 size_t e);
+int create_buttons_main_bis(rpg_t *rpg);
 
 //INVENTORY
 void print_inventory(rpg_t *rpg);
