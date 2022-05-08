@@ -36,7 +36,7 @@ void draw_npc(rpg_t *rpg)
         sfSprite_setTextureRect(sp, (sfIntRect){offset.x - 100, offset.y +
         100, 100, -100});
         sfSprite_setPosition(sp, point[0]);
-        sfSprite_setScale(sp, SCALE_PNJ_X, SCALE_PNJ_Y);
+        sfSprite_setScale(sp, (sfVector2f){S_PNJ_X, S_PNJ_Y});
         sfRenderWindow_drawSprite(rpg->window, sp, NULL);
     }
     sfSprite_destroy(sp);

@@ -57,7 +57,7 @@ static void draw_obj_bis(rpg_t *rpg, int **height, sfSprite *sp, int j)
         offset = get_object_pos(i, j, rpg);
         point[0] = to2d((sfVector3f){i, height[i][j], j}, rpg);
         point[1] = to2d((sfVector3f){(i + 4), height[i][j], j}, rpg);
-        sfSprite_setTextureRect(DRAW_BIS_TEX DRAW_BIS_REC);
+        sfSprite_setTextureRect(sp, (sfIntRect){DRAW_REC});
         sfSprite_setPosition(sp, point[0]);
         sfSprite_setScale(sp, (sfVector2f){(point[1].x - point[0].x) /
         150, -(point[1].x - point[0].x) / 150});
