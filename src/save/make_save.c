@@ -55,7 +55,6 @@ static void save_pos(const int fd, rpg_t *rpg)
     save_inventory(fd, rpg);
 }
 
-
 static void write_save(const int fd, rpg_t *rpg)
 {
     char *level = int_to_str(STAT->level);
