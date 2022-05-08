@@ -88,7 +88,7 @@ int init_inventory(rpg_t *rpg)
 
 int init_class_menu(rpg_t *rpg)
 {
-    if  (!(rpg->menu->class = malloc(sizeof(menu_class_t))))
+    if (!(rpg->menu->class = malloc(sizeof(menu_class_t))))
         return 84;
     rpg->menu->class->texture = sfTexture_createFromFile(CLASS_MENU, NULL);
     if (!rpg->menu->class->texture || !(CLASS_SPRITE_MENU = sfSprite_create()))

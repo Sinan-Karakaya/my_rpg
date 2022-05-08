@@ -21,8 +21,8 @@ static void do_parralax_bis(rpg_t *rpg)
     sfVector2f mouse_pos;
     sfVector2f actual_pos;
 
-    mouse_pos = (sfVector2f){sfMouse_getPositionRenderWindow(rpg->window).x/ 5
-    , sfMouse_getPositionRenderWindow(rpg->window).y / 5};
+    mouse_pos = (sfVector2f){sfMouse_getPositionRenderWindow(rpg->window).x
+    / 5, sfMouse_getPositionRenderWindow(rpg->window).y / 5};
     actual_pos = (sfVector2f){mouse_pos.x + 960, mouse_pos.y + 100};
     parralax(rpg, actual_pos, 10);
     actual_pos.y = mouse_pos.y + 250;
@@ -42,8 +42,8 @@ void do_parralax_keybind(rpg_t *rpg)
     sfVector2f mouse_pos;
     sfVector2f actual_pos;
 
-    mouse_pos = (sfVector2f){sfMouse_getPositionRenderWindow(rpg->window).x/ 5
-    , sfMouse_getPositionRenderWindow(rpg->window).y / 5};
+    mouse_pos = (sfVector2f){sfMouse_getPositionRenderWindow(rpg->window).x
+    / 5, sfMouse_getPositionRenderWindow(rpg->window).y / 5};
     actual_pos = (sfVector2f){mouse_pos.x + 200, mouse_pos.y + 100};
     parralax(rpg, actual_pos, 9);
     actual_pos.y = mouse_pos.y + 250;
@@ -60,8 +60,8 @@ void do_parralax_keyinput(rpg_t *rpg)
     sfVector2f mouse_pos;
     sfVector2f actual_pos;
 
-    mouse_pos = (sfVector2f){sfMouse_getPositionRenderWindow(rpg->window).x/ 5
-    , sfMouse_getPositionRenderWindow(rpg->window).y / 5};
+    mouse_pos = (sfVector2f){sfMouse_getPositionRenderWindow(rpg->window).x
+    / 5, sfMouse_getPositionRenderWindow(rpg->window).y / 5};
     actual_pos = (sfVector2f){mouse_pos.x + 656, mouse_pos.y + 340};
     parralax(rpg, actual_pos, 18);
 }

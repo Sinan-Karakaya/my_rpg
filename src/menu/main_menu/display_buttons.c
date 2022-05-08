@@ -39,8 +39,8 @@ void display_buttons_main(rpg_t *rpg)
     sfVector2f mouse_pos;
     sfVector2f actual_pos;
 
-    mouse_pos = (sfVector2f){sfMouse_getPositionRenderWindow(rpg->window).x/ 5
-    , sfMouse_getPositionRenderWindow(rpg->window).y / 5};
+    mouse_pos = (sfVector2f){sfMouse_getPositionRenderWindow(rpg->window).x
+    / 5, sfMouse_getPositionRenderWindow(rpg->window).y / 5};
     actual_pos = (sfVector2f){mouse_pos.x + 656, mouse_pos.y + 285};
     parralax(rpg, actual_pos, 0);
     actual_pos.y = mouse_pos.y + 445, parralax(rpg, actual_pos, 1);
@@ -60,8 +60,8 @@ void display_buttons_option(rpg_t *rpg)
 {
     sfVector2f mouse_pos, actual_pos;
 
-    mouse_pos = (sfVector2f){sfMouse_getPositionRenderWindow(rpg->window).x/ 5
-    , sfMouse_getPositionRenderWindow(rpg->window).y / 5};
+    mouse_pos = (sfVector2f){sfMouse_getPositionRenderWindow(rpg->window).x
+    / 5, sfMouse_getPositionRenderWindow(rpg->window).y / 5};
     actual_pos = (sfVector2f){mouse_pos.x + 656, mouse_pos.y + 285};
     parralax(rpg, actual_pos, 4);
     actual_pos.y = mouse_pos.y + 445, parralax(rpg, actual_pos, 5);

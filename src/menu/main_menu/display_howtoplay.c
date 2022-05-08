@@ -31,8 +31,8 @@ int display_howtoplay(rpg_t *rpg)
 {
     sfVector2f mouse_pos, actual_pos;
 
-    mouse_pos = (sfVector2f){sfMouse_getPositionRenderWindow(rpg->window).x/ 5
-    , sfMouse_getPositionRenderWindow(rpg->window).y / 5};
+    mouse_pos = (sfVector2f){sfMouse_getPositionRenderWindow(rpg->window).x
+    / 5, sfMouse_getPositionRenderWindow(rpg->window).y / 5};
     actual_pos = (sfVector2f){mouse_pos.x + 656, mouse_pos.y + 700};
     parralax(rpg, actual_pos, 9);
     sfRenderWindow_drawSprite(rpg->window, rpg->menu->option->howtoplay, NULL);

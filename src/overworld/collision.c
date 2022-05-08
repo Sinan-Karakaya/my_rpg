@@ -21,8 +21,7 @@ static bool check_aabb(rpg_t *rpg, sfRectangleShape *sp)
     if (do_aabb_sprites_rectangle(rpg->overworld->spr, sp)) {
         rpg->ow_can_move = false;
         return true;
-    }
-    else {
+    } else {
         rpg->ow_can_move = true;
         return false;
     }
