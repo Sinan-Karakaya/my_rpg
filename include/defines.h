@@ -52,6 +52,10 @@ write(2, "\n", 1);
 #define ARIAL_FONT "assets/font/arial/arial.ttf"
 #define HUD_PATH "assets/hud/hud_guide.png"
 
+#define ENV_PR "assets/environement/pr.png"
+#define ENV_PP "assets/environement/pp.png"
+#define ENV_PO "assets/environement/po.png"
+
 #define STAT rpg->combat->player->stat
 
 #define SLASH_PATH "assets/combat/slash.png"
@@ -73,6 +77,8 @@ write(2, "\n", 1);
 #define OLBERIC_WIDTH 23
 #define OLBERIC_HEIGHT 45
 #define OLBERIC_HEALTH 100
+
+#define P_TEXTU rpg->combat->player->texture
 
 #define BEAR_PATH "assets/combat/bear.png"
 #define BEAR_HEIGHT 98
@@ -101,7 +107,7 @@ write(2, "\n", 1);
 #define SCALE_PNJ_X (sfVector2f){(point[1].x - point[0].x) / 150
 #define SCALE_PNJ_Y -(point[1].x - point[0].x) / 150}
 #define HEIGHT rpg->world->height_map
-#define CREATE_CHAT sfTexture_createFromFile("assets/pnj/chatbox.png", NULL)
+#define CHAT "assets/pnj/chatbox.png", NULL
 #define SET_TEX sfSprite_setTexture
 #define TEX_CB rpg->world->gui.chatbox_texture,
 
