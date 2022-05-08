@@ -112,8 +112,8 @@ $(NAME): $(OBJ)
 	$(CC) $(OBJ) -o $(NAME) $(CFLAGS) $(LDFLAGS)
 
 clean:
-	rm -f $(OBJ)
-	rm -f $(TMP)
+	$(RM) $(OBJ)
+	$(RM) $(TMP)
 	make clean -C lib/my/
 
 fclean: clean
