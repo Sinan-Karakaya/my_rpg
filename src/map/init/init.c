@@ -65,6 +65,27 @@ int init_npc(rpg_t *rpg)
     return 0;
 }
 
+static int init_world_bis(rpg_t *game)
+{
+    game->world->world_clock = sfClock_create();
+    game->world->texture_map =  str_to_int_tab("./maps/texture.map", 1, 17);
+    game->world->height_map =  str_to_int_tab("./maps/height.map", -1 , 0);
+    game->world->texture_o = init_struct_texture("assets/environement/po.png",
+    game);
+    game->world->texture_n = init_struct_texture("assets/environement/pr.png",
+    game);
+    game->world->texture_p = init_struct_texture("assets/environement/pp.png",
+    game);
+    if (!game->world->texture_map || !game->world->height_map)
+        return 84;
+    game->world->rendered_spr = malloc(sizeof(sfSprite*));
+    if (!game->world->rendered_spr)
+        return 84;
+    game->world->rendered_spr[0] = NULL;
+    game->world->olberick_pos = (sfVector2i){0, 0};
+    return 0;
+}
+
 int init_world(rpg_t *game)
 {
     game->world = malloc(sizeof(world_t));
@@ -79,36 +100,9 @@ int init_world(rpg_t *game)
     sfVector2i zero = {0, 0};
     for (int i = 0; i < NB_NPC; i++)
         game->world->npc_list[i] = (npc_t){"", zero, 0, 0, 0 , 0, 0};
-    game->world->world_clock = sfClock_create();
-    game->world->texture_map =  str_to_int_tab("texture.map", 1, 17);
-    game->world->height_map =  str_to_int_tab("height.map", -1 , 0);
-    game->world->texture_o = init_struct_texture("assets/environement/po.png",
-    game);
-    game->world->texture_n = init_struct_texture("assets/environement/pr.png",
-    game);
-    game->world->texture_p = init_struct_texture("assets/environement/pp.png",
-    game);
-    if (!game->world->texture_map || !game->world->height_map)
+    if (init_world_bis(game))
         return 84;
-    game->world->rendered_spr = malloc(sizeof(sfSprite*));
-    if (!game->world->rendered_spr)
-        return 84;
-    game->world->rendered_spr[0] = NULL;
-    game->world->olberick_pos = (sfVector2i){0, 0};
     if (sfShader_isAvailable())
         game->world->shader = SHADE;
     return 0;
-}
-
-void destroy_world(rpg_t *game)
-{
-    for (int i = 0; i < MAP_X; i++) {
-        free(game->world->height_map[i]);
-        free(game->world->object_map[i]);
-        free(game->world->texture_map[i]);
-    }
-    free(game->world->height_map);
-    free(game->world->object_map);
-    free(game->world->texture_map);
-    sfClock_destroy(game->world->world_clock);
 }
