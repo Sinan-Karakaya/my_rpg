@@ -137,6 +137,7 @@ void display_buttons_keybinds_menu(rpg_t *rpg);
 void display_buttons_music_menu(rpg_t *rpg);
 void do_button_music_menu_interact(rpg_t *rpg, int i);
 void change_texture(bt_list_t *buttons, size_t start, size_t end);
+int display_howtoplay(rpg_t *rpg);
 
 //BUTTONS
 void buttons_controls_menu(rpg_t *rpg, bt_list_t *bt_list, sfEvent event);
@@ -152,6 +153,7 @@ button_t *create_button_2(char *str, sfVector2f pos, int ptr_f, char *img);
 void do_parralax_keybind(rpg_t *rpg);
 void replace_text(rpg_t *rpg, int button);
 void do_parralax_keyinput(rpg_t *rpg);
+void do_button_howtoplay(rpg_t *rpg, bt_list_t *bt_list, sfEvent event);
 int detect_click_on_bt_2(bt_list_t *bt_list, sfEvent event, size_t s,
 size_t e);
 
@@ -192,6 +194,9 @@ int error_message(char *str);
 
 //MAIN
 void do_loop(rpg_t *rpg);
+
+//SPRITE
+sfSprite *sprite_create(char *path);
 
 //DESTROY
 void destroy_menu(menu_t *m);

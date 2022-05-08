@@ -53,6 +53,7 @@ SRC = src/core.c	\
 	  src/menu/options/display_keybind.c \
 	  src/menu/options/keybindings.c \
 	  src/menu/main_menu/display_buttons.c \
+	  src/menu/main_menu/display_howtoplay.c	\
 	  src/menu/options/option_ig.c \
 	  src/menu/options/display_options_ig.c \
 	  src/menu/inventory/print_inventory.c	\
@@ -63,6 +64,7 @@ SRC = src/core.c	\
 	  src/menu/inventory/utils_bis.c	\
 	  src/menu/inventory/init_text.c	\
 	  src/menu/inventory/init_stats.c	\
+	  src/menu/create_sprite.c	\
 	  src/overworld/oveworld_loop.c \
 	  src/overworld/player_overworld.c \
 	  src/overworld/collision.c \

@@ -83,6 +83,8 @@ int print_my_menus(rpg_t *rpg)
         (rpg->window);
     if (rpg->menu->is_music == true && rpg->menu->is_main == false)
         display_buttons_music_menu(rpg), sfRenderWindow_display(rpg->window);
+    if (rpg->menu->is_howtoplay && !rpg->menu->is_main)
+        display_howtoplay(rpg);
     return 0;
 }
 
@@ -91,7 +93,8 @@ int menuloop(rpg_t *rpg)
     while ((rpg->menu->is_main && sfRenderWindow_isOpen(rpg->window))
     || (rpg->menu->is_option && sfRenderWindow_isOpen(rpg->window))
     || (rpg->menu->is_keybind && sfRenderWindow_isOpen(rpg->window))
-    || (rpg->menu->is_music && sfRenderWindow_isOpen(rpg->window))) {
+    || (rpg->menu->is_music && sfRenderWindow_isOpen(rpg->window))
+    || (rpg->menu->is_howtoplay && sfRenderWindow_isOpen(rpg->window))) {
         if (manage_controls(rpg) == 1)
             return 1;
         print_parralax(rpg);

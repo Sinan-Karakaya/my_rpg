@@ -47,9 +47,11 @@ typedef struct menu_main_s {
 
 typedef struct menu_option_s {
     bt_list_t *buttons;
+    sfSprite *howtoplay;
     bool is_active;
     bool is_main;
     bool music;
+    bool shaders;
     bool keybinds;
 } menu_option_t;
 
@@ -88,6 +90,7 @@ typedef struct menu {
     bool is_closed;
     bool is_class;
     bool no_class;
+    bool is_howtoplay;
     menu_main_t *main;
     menu_option_t *option;
     menu_inventory_t *inventory;

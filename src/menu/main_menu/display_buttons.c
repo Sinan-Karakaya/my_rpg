@@ -43,12 +43,13 @@ void display_buttons_main(rpg_t *rpg)
     , sfMouse_getPositionRenderWindow(rpg->window).y / 5};
     actual_pos = (sfVector2f){mouse_pos.x + 656, mouse_pos.y + 285};
     parralax(rpg, actual_pos, 0);
-    actual_pos.y = mouse_pos.y + 445;
-    parralax(rpg, actual_pos, 1);
-    actual_pos.y = mouse_pos.y + 600;
+    actual_pos.y = mouse_pos.y + 445, parralax(rpg, actual_pos, 1);
+    actual_pos = (sfVector2f){mouse_pos.x + 656, mouse_pos.y + 125};
     parralax(rpg, actual_pos, 2);
+    actual_pos = (sfVector2f){mouse_pos.x + 656, mouse_pos.y + 600};
+    parralax(rpg, actual_pos, 3);
 
-    for (size_t i = 0; i < 3; i++) {
+    for (size_t i = 0; i < 4; i++) {
         sfRenderWindow_drawSprite(rpg->window, BUTTONS->lst_bt[i]->sprite,
         NULL);
         sfRenderWindow_drawText(rpg->window, BUTTONS->lst_bt[i]->text, NULL);
@@ -57,21 +58,20 @@ void display_buttons_main(rpg_t *rpg)
 
 void display_buttons_option(rpg_t *rpg)
 {
-    sfVector2f mouse_pos;
-    sfVector2f actual_pos;
+    sfVector2f mouse_pos, actual_pos;
 
     mouse_pos = (sfVector2f){sfMouse_getPositionRenderWindow(rpg->window).x/ 5
     , sfMouse_getPositionRenderWindow(rpg->window).y / 5};
     actual_pos = (sfVector2f){mouse_pos.x + 656, mouse_pos.y + 285};
-    parralax(rpg, actual_pos, 3);
-    actual_pos.y = mouse_pos.y + 445;
     parralax(rpg, actual_pos, 4);
-    actual_pos.y = mouse_pos.y + 600;
-    parralax(rpg, actual_pos, 5);
-    change_texture(BUTTONS, 4, 5);
+    actual_pos.y = mouse_pos.y + 445, parralax(rpg, actual_pos, 5);
+    actual_pos.y = mouse_pos.y + 600, parralax(rpg, actual_pos, 6);
+    change_texture(BUTTONS, 5, 6);
     actual_pos = (sfVector2f){mouse_pos.x + 920, mouse_pos.y + 450};
-    parralax(rpg, actual_pos, 6);
-    for (size_t i = 3; i < 7; i++) {
+    parralax(rpg, actual_pos, 7);
+    actual_pos.x = mouse_pos.x + 395, parralax(rpg, actual_pos, 8);
+    change_texture(BUTTONS, 8, 9);
+    for (size_t i = 4; i < 9; i++) {
         sfRenderWindow_drawSprite(rpg->window, BUTTONS->lst_bt[i]->sprite,
         NULL);
         sfRenderWindow_drawText(rpg->window, BUTTONS->lst_bt[i]->text, NULL);
