@@ -103,6 +103,6 @@ int init_world(rpg_t *game)
     if (init_world_bis(game))
         return 84;
     if (sfShader_isAvailable())
-        game->world->shader = SHADE;
+        game->world->shader = NULL;
     return 0;
 }

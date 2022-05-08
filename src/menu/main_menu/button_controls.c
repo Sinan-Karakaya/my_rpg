@@ -41,10 +41,10 @@ static void do_button_opt(rpg_t *rpg, int i)
         rpg->menu->is_option = false;
     }
     if (i == 8) {
-        if (rpg->menu->option->shaders)
-            rpg->menu->option->shaders = false;
+        if (rpg->texture->shader)
+            rpg->texture->shader = NULL;
         else
-            rpg->menu->option->shaders = true;
+            rpg->texture->shader = SHADE;
     }
 }
 

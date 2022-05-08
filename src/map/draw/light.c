@@ -22,8 +22,9 @@ static sfVector3f get_normal(sfVector3f p1, sfVector3f p2, sfVector3f p3)
 
 int light(rpg_t *rpg , int i, int j, int n)
 {
-    if (IS_SHADER == 0)
+    if (rpg->texture->shader == NULL) {
         return 0;
+    }
     sfVector3f point_3d1;
     sfVector3f point_3d2;
     sfVector3f point_3d3;
