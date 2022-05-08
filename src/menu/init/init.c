@@ -30,7 +30,7 @@ static int init_menu_bis(rpg_t *rpg)
     rpg->menu->option->is_active = false, rpg->menu->option->music = false;
     rpg->menu->option->keybinds = false, rpg->menu->option->is_main = false;
     rpg->menu->is_keybind = false, rpg->menu->is_music = false;
-    rpg->menu->option->shaders = false, rpg->menu->is_howtoplay = false;
+    rpg->menu->option->shaders = NULL, rpg->menu->is_howtoplay = false;
     return 0;
 }
 

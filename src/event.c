@@ -29,7 +29,7 @@ static void player_movement(rpg_t *rpg)
 {
     if (rpg->event.key.code == KEYDOWN && IN_OVERWORLD &&
     cam_is_in_bounds(rpg->cam.x, rpg->cam.y - 40) && ow_aabb(rpg,
-    (sfVector2f){0,-40}) == 0) {
+    (sfVector2f){0, -40}) == 0) {
         rpg->cam.y -= 200 * rpg->dt;
         spawn_ennemy(rpg);
     } if (rpg->event.key.code == KEYUP && IN_OVERWORLD &&

@@ -25,15 +25,19 @@ static void chose_scene(rpg_t *rpg)
     if (rpg->combat->player->cmb_state == RPG_COMBAT_PLAYER_DEATH)
         do_transition_death(rpg, rpg->combat->transt);
 }
+static void do_cinematic(rpg_t *rpg)
+{
+    cinematic(rpg);
+    if (rpg->cine->transition)
+        do_transition_cine(rpg, rpg->combat->transt);
+}
 
 static void gameloop_bis(rpg_t *rpg)
 {
     if (rpg->menu->option->is_active == true) {
         display_options_ig(rpg);
     } else if (rpg->scene == CINEMATIC || rpg->cine->transition) {
-        cinematic(rpg);
-        if (rpg->cine->transition)
-            do_transition_cine(rpg, rpg->combat->transt);
+        do_cinematic(rpg);
     } else {
         chose_scene(rpg);
         draw_all(rpg);
@@ -53,8 +57,7 @@ static int gameloop(rpg_t *rpg)
     && rpg->menu->is_main != true) {
         sfRenderWindow_clear(rpg->window, sfBlack);
         while (sfRenderWindow_pollEvent(rpg->window, &rpg->event))
-            if (event(rpg) == 1)
-                return 1;
+        event(rpg);
         gameloop_bis(rpg);
         sfRenderWindow_display(rpg->window);
     }
