@@ -139,6 +139,7 @@ void do_button_music_menu_interact(rpg_t *rpg, int i);
 void change_texture(bt_list_t *buttons, size_t start, size_t end);
 int display_howtoplay(rpg_t *rpg);
 void option_ig_bis(rpg_t *rpg, int button, sfEvent event, bt_list_t *bt_list);
+void do_button_music_ig(rpg_t *rpg, int i);
 
 //BUTTONS
 void buttons_controls_menu(rpg_t *rpg, bt_list_t *bt_list, sfEvent event);

@@ -95,6 +95,7 @@ SRC = src/core.c	\
 	  src/save/read_save_bis.c \
 	  src/init_sfml.c \
 	  src/map/destroy_world.c \
+	  src/menu/options/options_ig_bis.c \
 
 OBJ = $(SRC:.c=.o)
 TMP = $(SRC:.c=.c.tmp)

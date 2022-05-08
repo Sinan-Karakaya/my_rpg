@@ -52,7 +52,7 @@ static void do_button_music_bis_ig(rpg_t *rpg, int i)
     }
 }
 
-static void do_button_music_ig(rpg_t *rpg, int i)
+void do_button_music_ig(rpg_t *rpg, int i)
 {
     if (i == 4) {
         if (rpg->sounds->is_played == true) {

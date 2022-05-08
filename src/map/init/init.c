@@ -70,9 +70,9 @@ static int init_world_bis(rpg_t *game)
     game->world->world_clock = sfClock_create();
     game->world->texture_map =  str_to_int_tab("./maps/texture", 1, 17);
     game->world->height_map =  str_to_int_tab("./maps/height", -1 , 0);
-    game->world->texture_o = init_struct_texture(ENV_PO, game);
-    game->world->texture_n = init_struct_texture(ENV_PR, game);
-    game->world->texture_p = init_struct_texture(ENV_PP, game);
+    game->world->texture_o = do_init_struct_texture(ENV_PO, game);
+    game->world->texture_n = do_init_struct_texture(ENV_PR, game);
+    game->world->texture_p = do_init_struct_texture(ENV_PP, game);
     if (!game->world->texture_map || !game->world->height_map)
         return 84;
     game->world->rendered_spr = malloc(sizeof(sfSprite*));
