@@ -17,16 +17,16 @@ static int assign_ennemy_stat(entity_t *e, char *name, int id)
         return 84;
     if (id == 0) {
         e->life = 1000, e->max_life = 1000;
-        e->is_npc = true, e->stat->attack = 31;
-        e->stat->defense = 10, e->name = name;
+        e->is_npc = true, e->stat->attack = 25;
+        e->stat->defense = 8, e->name = name;
     } if (id == 1) {
         e->life = 230, e->max_life = 230;
-        e->is_npc = true, e->stat->attack = 22;
-        e->stat->defense = 8, e->name = name;
+        e->is_npc = true, e->stat->attack = 20;
+        e->stat->defense = 6, e->name = name;
     } if (id == 2) {
         e->life = 160, e->max_life = 160;
-        e->is_npc = true, e->stat->attack = 16;
-        e->stat->defense = 6, e->name = name;
+        e->is_npc = true, e->stat->attack = 18;
+        e->stat->defense = 3, e->name = name;
     }
     init_gauge_bar(e);
     return 0;
