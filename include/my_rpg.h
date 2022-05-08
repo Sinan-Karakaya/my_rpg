@@ -100,7 +100,7 @@ void draw_water(rpg_t *rpg);
 int **create_map(int heigth, int width);
 int init_world(rpg_t *game);
 int init_cam(rpg_t *game);
-sfRenderStates *init_struct_texture(char *path, rpg_t *rpg);
+sfRenderStates *do_init_struct_texture(char *path, rpg_t *rpg);
 float perlin(float x, float y, float res);
 void destroy_world(rpg_t *game);
 int **str_to_int_tab(char *string, int n, int case_);
@@ -138,6 +138,7 @@ void display_buttons_music_menu(rpg_t *rpg);
 void do_button_music_menu_interact(rpg_t *rpg, int i);
 void change_texture(bt_list_t *buttons, size_t start, size_t end);
 int display_howtoplay(rpg_t *rpg);
+void option_ig_bis(rpg_t *rpg, int button, sfEvent event, bt_list_t *bt_list);
 
 //BUTTONS
 void buttons_controls_menu(rpg_t *rpg, bt_list_t *bt_list, sfEvent event);

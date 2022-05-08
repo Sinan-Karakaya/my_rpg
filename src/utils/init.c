@@ -84,7 +84,7 @@ int init_all(rpg_t *rpg)
     } else {
         assign_class_valid_save(rpg);
         rpg->scene = OVERWORLD;
-    } rpg->texture = init_struct_texture("assets/environement/pr.png", rpg);
+    } rpg->texture = do_init_struct_texture("assets/environement/pr.png", rpg);
     if (!rpg->texture)
         return 84;
     if (play_music(rpg) == 84)

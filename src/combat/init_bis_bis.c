@@ -25,21 +25,19 @@ static int assign_bis(rpg_t *rpg)
 int assign_class(rpg_t *rpg)
 {
     if (rpg->combat->player->stat->class == RPG_CLASS_WARRIOR) {
-        rpg->combat->player->texture = sfTexture_createFromFile(
-        OLBERIC_WA_PATH, NULL);
+        P_TEXTU = sfTexture_createFromFile(OLBERIC_WA_PATH, NULL);
         OW->texture = sfTexture_createFromFile(OLBERIC_OW_PATH, NULL);
         if (!rpg->combat->player->texture || !OW->texture)
-            return (84);
+            return 84;
         sfSprite_setTexture(OW->spr, OW->texture, sfFalse);
         sfSprite_setTexture(rpg->combat->player->sprite,
         rpg->combat->player->texture, sfFalse);
         rpg->combat->player->stat->attack += 5;
     } if (rpg->combat->player->stat->class == RPG_CLASS_CLERIC) {
-        rpg->combat->player->texture = sfTexture_createFromFile(
-        OLBERIC_CL_PATH, NULL);
+        P_TEXTU = sfTexture_createFromFile(OLBERIC_CL_PATH, NULL);
         OW->texture = sfTexture_createFromFile(OLBERIC_OW_CL_PATH, NULL);
         if (!rpg->combat->player->texture || !OW->texture)
-            return (84);
+            return 84;
         sfSprite_setTexture(rpg->combat->player->sprite,
         rpg->combat->player->texture, sfFalse);
         sfSprite_setTexture(OW->spr, OW->texture, sfFalse);

@@ -88,21 +88,11 @@ static void do_button_keybinding_ig(rpg_t *rpg, int i)
 void buttons_controls_option_ig(rpg_t *rpg, bt_list_t *bt_list, sfEvent event)
 {
     int button;
-
     if (rpg->menu->option->is_active && rpg->menu->option->is_main) {
         button = detect_click_on_bt(bt_list, event, 0, 4);
         do_button_option_ig(rpg, button);
     } if (rpg->menu->option->music && rpg->menu->option->is_active) {
-        button = detect_click_on_bt(bt_list, event, 4, 5);
-        if (button == -1)
-            button = detect_click_on_bt_2(bt_list, event, 5, 6);
-        if (button == -1)
-            button = detect_click_on_bt(bt_list, event, 6, 7);
-        if (button == -1)
-            button = detect_click_on_bt_2(bt_list, event, 7, 8);
-        if (button == -1)
-            button = detect_click_on_bt(bt_list, event, 8, 9);
-        do_button_music_ig(rpg, button);
+        option_ig_bis(rpg, button, event, bt_list);
     } if (rpg->menu->option->keybinds && rpg->menu->option->is_active) {
         button = detect_click_on_bt_2(bt_list, event, 9, 17);
         if (button == -1)

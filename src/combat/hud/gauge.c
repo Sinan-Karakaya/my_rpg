@@ -12,11 +12,12 @@
 
 static int init_second_gauge(entity_t *entity)
 {
+    if (my_strcmp(entity->name, "bear") == 0)
+        entity->bar->pos.x -= 60, entity->bar->pos.y += 20;
     sfRectangleShape_setFillColor(entity->bar->rect, entity->bar->color);
     sfRectangleShape_setPosition(entity->bar->rect, entity->bar->pos);
     sfRectangleShape_setSize(entity->bar->rect, entity->bar->size);
-    entity->bar->rect_grey = sfRectangleShape_create();
-    if (!entity->bar->rect_grey)
+    if (!(entity->bar->rect_grey = sfRectangleShape_create()))
         return 84;
     entity->bar->grey_color = sfColor_fromRGB(175, 164, 162);
     sfRectangleShape_setFillColor(entity->bar->rect_grey,
@@ -30,8 +31,7 @@ static int init_second_gauge(entity_t *entity)
     } else{
         sfRectangleShape_setSize(entity->bar->rect_grey,
         (sfVector2f){(entity->max_life - entity->life) / 5, 10});
-    }
-    return 0;
+    } return 0;
 }
 
 int init_gauge_bar(entity_t *entity)
@@ -53,10 +53,7 @@ int init_gauge_bar(entity_t *entity)
     } else {
         entity->bar->pos.x -= 20;
         entity->bar->size = (sfVector2f){entity->max_life, 10};
-    }
-    if (my_strcmp(entity->name, "bear") == 0)
-        entity->bar->pos.x -= 60, entity->bar->pos.y += 20;
-    if (init_second_gauge(entity))
+    } if (init_second_gauge(entity))
         return 84;
     return 0;
 }

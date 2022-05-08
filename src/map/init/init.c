@@ -8,7 +8,7 @@
 #include <stdlib.h>
 #include "my_rpg.h"
 
-sfRenderStates *init_struct_texture(char *path, rpg_t *rpg)
+sfRenderStates *do_init_struct_texture(char *path, rpg_t *rpg)
 {
     sfRenderStates *tex = malloc(sizeof(sfRenderStates));
 
@@ -50,7 +50,7 @@ int init_npc(rpg_t *rpg)
 {
     rpg->world->gui.actual_quest = 0;
     rpg->world->gui.chatbox_sprite = sfSprite_create();
-    rpg->world->gui.chatbox_texture = CREATE_CHAT;
+    rpg->world->gui.chatbox_texture = sfTexture_createFromFile(CHAT);
     rpg->world->gui.text = sfText_create();
     if (!rpg->world->gui.chatbox_sprite || !rpg->world->gui.text
     || !rpg->world->gui.chatbox_texture)
@@ -68,14 +68,11 @@ int init_npc(rpg_t *rpg)
 static int init_world_bis(rpg_t *game)
 {
     game->world->world_clock = sfClock_create();
-    game->world->texture_map =  str_to_int_tab("./maps/texture.map", 1, 17);
-    game->world->height_map =  str_to_int_tab("./maps/height.map", -1 , 0);
-    game->world->texture_o = init_struct_texture("assets/environement/po.png",
-    game);
-    game->world->texture_n = init_struct_texture("assets/environement/pr.png",
-    game);
-    game->world->texture_p = init_struct_texture("assets/environement/pp.png",
-    game);
+    game->world->texture_map =  str_to_int_tab("./maps/texture", 1, 17);
+    game->world->height_map =  str_to_int_tab("./maps/height", -1 , 0);
+    game->world->texture_o = do_init_struct_texture(ENV_PO, game);
+    game->world->texture_n = do_init_struct_texture(ENV_PR, game);
+    game->world->texture_p = do_init_struct_texture(ENV_PP, game);
     if (!game->world->texture_map || !game->world->height_map)
         return 84;
     game->world->rendered_spr = malloc(sizeof(sfSprite*));

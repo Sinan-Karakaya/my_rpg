@@ -22,9 +22,8 @@ static sfVector3f get_normal(sfVector3f p1, sfVector3f p2, sfVector3f p3)
 
 int light(rpg_t *rpg , int i, int j, int n)
 {
-    if (rpg->texture->shader == NULL) {
+    if (rpg->texture->shader == NULL)
         return 0;
-    }
     sfVector3f point_3d1;
     sfVector3f point_3d2;
     sfVector3f point_3d3;
@@ -41,6 +40,6 @@ int light(rpg_t *rpg , int i, int j, int n)
     point_3d3 = (sfVector3f){i + 1, HEIGHT[i + 1][j + 1], j + 1};
     normal = get_normal(point_3d1, point_3d2, point_3d3);
     sfShader_setVec3Uniform(rpg->texture->shader, "normal", normal);
-    sfShader_setVec3Uniform(rpg->texture->shader, "light_dir"
-    , (sfVector3f){-1, 1, cos_a});
+    sfShader_setVec3Uniform(rpg->texture->shader, "light_dir",
+    (sfVector3f){-1, 1, cos_a});
 }
