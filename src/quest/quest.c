@@ -10,8 +10,8 @@
 #include "my_rpg.h"
 
 const char *quest_line[] = {""
-, "Trouver le village."
-, "Trouver la foret"
+, "Find the village."
+, "Kill monsters in the forest."
 , "Test4"
 , "Test5"};
 

@@ -9,13 +9,14 @@
 #include <math.h>
 
 const char *catch_line[] = {""
-, "Bonjour HERO, je t ai invoque en ces heures troubles, nous avons besoin \
-de ton aide.\nLe village a ete attaque par une valkyrie.\n\
-On aurait besoin de toi pour mettre fin a son regne de \
-terreur.\nPasse au VILLAGE pour voir les degats !"
-, "Bonjour, HERO comme tu peux le voir, notre village est en bien piteux etat.\
-\nDes monstres nous empeche d avoir le bois necessaire pour reconstruire le \
-village.\nPourrais tu t'en occuper ?\n"
+, "Welcome Hero, if we summoned you in those trying times, it's because we need\
+your help.\nThe village was attacked by a Valkyrie.\n\
+We need you to end her reign of terror!\n \
+Go see the damages at the village by yourself, at the North-East."
+, "Welcome Hero, as you can see our vilage is quite in a sorry state.\n\
+The monsters are preventing us from getting wood to repair our village.\n \
+Do you think you could take care of it ?\nYou'll find them in the forest \
+at the West from the vilage."
 , "Test4"
 , "Test5"};
 

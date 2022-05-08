@@ -43,7 +43,7 @@ write(2, "\n", 1);
 
 #define IN_OVERWORLD (rpg->scene == OVERWORLD)
 #define OVERWORLD_MUSIC "assets/music/vista.ogg"
-#define BATTLE_MUSIC NULL
+#define BATTLE_MUSIC "assets/music/combat.ogg"
 
 // Thanks Epitech's norm
 #define OW rpg->overworld

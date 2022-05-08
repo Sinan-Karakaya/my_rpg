@@ -21,27 +21,23 @@ void do_transition_death(rpg_t *rpg, transt_t *e)
         rpg->combat->transition_cmb = false;
     }
     sfRectangleShape_setFillColor(e->rect, color);
-    //sfRenderWindow_drawRectangleShape(rpg->window, e->rect, NULL);
     sfClock_restart(e->clock);
 }
 
-static void change_music(sfMusic *music, char *path)
+static void change_music(rpg_t *rpg, char *path)
 {
-    sfMusic *temp;
-
-    if ((temp = sfMusic_createFromFile(path)) == NULL) {
-        ERROR(path);
+    if (sfMusic_getStatus(rpg->sounds->music) != sfPlaying)
         return;
-    } sfMusic_destroy(temp);
-    sfMusic_stop(music);
-    sfMusic_destroy(music);
-    music = sfMusic_createFromFile(path);
-    if (music == NULL) {
+    sfMusic_stop(rpg->sounds->music);
+    sfMusic_destroy(rpg->sounds->music);
+    rpg->sounds->music = sfMusic_createFromFile(path);
+    if (rpg->sounds->music == NULL) {
         ERROR(path);
         return;
     }
-    sfMusic_play(music);
-    sfMusic_setLoop(music, sfTrue);
+    sfMusic_play(rpg->sounds->music);
+    sfMusic_setLoop(rpg->sounds->music, sfTrue);
+    sfMusic_setVolume(rpg->sounds->music, rpg->sounds->sound_music);
 }
 
 void do_transition_cmb(rpg_t *rpg, transt_t *e)
@@ -55,7 +51,7 @@ void do_transition_cmb(rpg_t *rpg, transt_t *e)
     } else if (rpg->scene == COMBAT && color.a == 255) {
         rpg->scene = OVERWORLD;
         rpg->cam.r = 2;
-        //change_music(rpg->sounds->music, OVERWORLD_MUSIC);
+        change_music(rpg, OVERWORLD_MUSIC);
     } if (rpg->scene == OVERWORLD && color.a > 0) {
         color.a -= 5;
     } else if (rpg->scene == OVERWORLD && color.a == 0) {
@@ -97,7 +93,7 @@ void do_transition_ow(rpg_t *rpg, transt_t *e)
     } else if (rpg->scene == OVERWORLD && color.a == 255) {
         rpg->scene = COMBAT;
         rpg->cam.r = 0;
-        // change_music(rpg->sounds->music, BATTLE_MUSIC);
+        change_music(rpg, BATTLE_MUSIC);
     } if (rpg->scene == COMBAT && color.a > 0) {
         color.a -= 5;
     } else if (rpg->scene == COMBAT && color.a == 0)
