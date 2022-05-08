@@ -14,31 +14,37 @@ static void do_button_main(rpg_t *rpg, int i)
         rpg->menu->is_main = false;
     } else if (i == 0 && !rpg->menu->no_class) {
         rpg->menu->is_main = false;
-    } if (i == 1) {
-        rpg->menu->is_option = true;
-        rpg->menu->is_main = false;
-    }
-    if (i == 2) {
+    } if (i == 1)
+        rpg->menu->is_option = true, rpg->menu->is_main = false;
+    if (i == 2)
+        rpg->menu->is_howtoplay = true, rpg->menu->is_main = false;
+    if (i == 3) {
         rpg->menu->is_closed = true;
         rpg->menu->is_main = false;
         sfRenderWindow_close(rpg->window);
     }
 }
 
-static void do_button_option(rpg_t *rpg, int i)
+static void do_button_opt(rpg_t *rpg, int i)
 {
-    if (i == 3) {
+    if (i == 4) {
         rpg->menu->is_music = true, rpg->menu->is_option = false;
-    } if (i == 4) {
+    } if (i == 5) {
         if (rpg->debug_toggle)
             rpg->debug_toggle = false;
         else
             rpg->debug_toggle = true;
-    } if (i == 5)
+    } if (i == 6)
         rpg->menu->is_main = true, rpg->menu->is_option = false;
-    if (i == 6) {
+    if (i == 7) {
         rpg->menu->is_main = false, rpg->menu->is_keybind = true;
         rpg->menu->is_option = false;
+    }
+    if (i == 8) {
+        if (rpg->menu->option->shaders)
+            rpg->menu->option->shaders = false;
+        else
+            rpg->menu->option->shaders = true;
     }
 }
 
@@ -71,23 +77,21 @@ static void do_button_music_menu(rpg_t *rpg, bt_list_t *bt_list, sfEvent event)
 
 void buttons_controls_menu(rpg_t *rpg, bt_list_t *bt_list, sfEvent event)
 {
-    int button = -1;
+    int bt = -1;
 
     if (rpg->menu->is_main == true && !rpg->menu->is_option &&
-    !rpg->menu->is_keybind) {
-        button = detect_click_on_bt(bt_list, event, 0, 3);
-        do_button_main(rpg, button);
-    }
-    if (rpg->menu->is_option == true) {
-        button = detect_click_on_bt(bt_list, event, 3, 7);
-        do_button_option(rpg, button);
-    }
+    !rpg->menu->is_keybind)
+        bt = detect_click_on_bt(bt_list, event, 0, 4), do_button_main(rpg, bt);
+    if (rpg->menu->is_option == true)
+        bt = detect_click_on_bt(bt_list, event, 4, 9), do_button_opt(rpg, bt);
     if (rpg->menu->is_keybind == true) {
-        button = detect_click_on_bt_2(BUTTONSO, event, 9, 17);
-        if (button == -1)
-            button = detect_click_on_bt(BUTTONSO, event, 17, 18);
-        do_button_keybinding_menu(rpg, button);
+        bt = detect_click_on_bt_2(BUTTONSO, event, 9, 17);
+        if (bt == -1)
+            bt = detect_click_on_bt(BUTTONSO, event, 17, 18);
+        do_button_keybinding_menu(rpg, bt);
     }
     if (rpg->menu->is_music == true)
         do_button_music_menu(rpg, BUTTONSO, event);
+    if (rpg->menu->is_howtoplay)
+        do_button_howtoplay(rpg, BUTTONS, event);
 }

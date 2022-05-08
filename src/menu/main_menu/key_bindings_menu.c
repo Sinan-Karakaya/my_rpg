@@ -37,12 +37,10 @@ void display_buttons_music_menu(rpg_t *rpg)
     parralax(rpg, actual_pos, 4);
     actual_pos = (sfVector2f){mouse_pos.x + 656 - 88, mouse_pos.y + 250};
     parralax(rpg, actual_pos, 5);
-    actual_pos.y = mouse_pos.y + 550;
-    parralax(rpg, actual_pos, 7);
+    actual_pos.y = mouse_pos.y + 550, parralax(rpg, actual_pos, 7);
     actual_pos = (sfVector2f){mouse_pos.x + 656, mouse_pos.y + 400};
     parralax(rpg, actual_pos, 6);
-    actual_pos.y = mouse_pos.y + 700;
-    parralax(rpg, actual_pos, 8);
+    actual_pos.y = mouse_pos.y + 700, parralax(rpg, actual_pos, 8);
     for (size_t i = 4; i < 9; i++) {
         sfRenderWindow_drawSprite(rpg->window, BUTTONSO->lst_bt[i]->sprite,
         NULL);
