@@ -64,11 +64,11 @@ static int ow_aabb_bis(rpg_t *rpg, int i, sfVector2f set)
 {
     sfVector3f point_3d;
     sfVector2f *point = rpg->cam.render->point;
-    sfRectangleShape *collide = sfRectangleShape_create();
+    sfRectangleShape *coll = sfRectangleShape_create();
     int **height = rpg->world->height_map;
-    if (!collide)
+    if (!coll)
         return -1;
-    sfRectangleShape_setFillColor(collide, sfRed);
+    sfRectangleShape_setFillColor(coll, sfRed);
     for (int j = MAP_Y - 1; j > 0; j--) {
         if (rpg->world->object_map[i][j] == 0)
             continue;
@@ -76,11 +76,11 @@ static int ow_aabb_bis(rpg_t *rpg, int i, sfVector2f set)
         point[0] = to_2d(point_3d, rpg, set);
         point_3d = (sfVector3f){(i + 4), height[i][j], j};
         point[1] = to_2d(point_3d, rpg, set);
-        sfRectangleShape_setSize(collide, (sfVector2f){CALCUL_1(x, y, i, j)};
-        sfRectangleShape_setPosition(collide, (sfVector2f){CALCUL_2(x, y, i, j)};
-        if (bis_again(rpg, collide))
+        sfRectangleShape_setSize(coll, (sfVector2f){CALCUL_1(x, y, i, j)};
+        sfRectangleShape_setPosition(coll, (sfVector2f){CALCUL_2(x, y, i, j)};
+        if (bis_again(rpg, coll))
             return 1;
-    } sfRectangleShape_destroy(collide);
+    } sfRectangleShape_destroy(coll);
     return 0;
 }
 
