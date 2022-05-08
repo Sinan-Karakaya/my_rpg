@@ -68,8 +68,8 @@ int init_npc(rpg_t *rpg)
 static int init_world_bis(rpg_t *game)
 {
     game->world->world_clock = sfClock_create();
-    game->world->texture_map =  str_to_int_tab("./maps/texture.map", 1, 17);
-    game->world->height_map =  str_to_int_tab("./maps/height.map", -1 , 0);
+    game->world->texture_map = str_to_int_tab("./maps/texture.map", 1, 17);
+    game->world->height_map = str_to_int_tab("./maps/height.map", -1 , 0);
     game->world->texture_o = init_struct_texture("assets/environement/po.png",
     game);
     game->world->texture_n = init_struct_texture("assets/environement/pr.png",
