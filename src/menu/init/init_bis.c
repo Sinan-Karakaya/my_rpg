@@ -76,13 +76,13 @@ int init_inventory(rpg_t *rpg)
             return 84;
         rpg->menu->inventory->slots[i]->item_id = 0;
         rpg->menu->inventory->slots[i]->sprite = NULL;
-    }
-    if (init_button_inventory(rpg) == 84)
+    } if (init_button_inventory(rpg) == 84)
         return 84;
-    rpg->combat->player->stat->stuff = malloc(sizeof(stuff_t));
-    if (!rpg->combat->player->stat->stuff)
+    if (!(rpg->combat->player->stat->stuff = malloc(sizeof(stuff_t))))
         return 84;
     STUFF->life = 0, STUFF->defense = 0, STUFF->attack = 0;
+    rpg->menu->inventory->slots[0]->item_id = 2;
+    rpg->menu->inventory->slots[1]->item_id = 2;
     return 0;
 }
 
