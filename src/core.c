@@ -25,7 +25,7 @@ int main(int ac, char **av, char **env)
             return 84;
     rpg->world->npc_list[0] = (npc_t){"", (sfVector2i){18, 18},
     1, 50, 20, 20, 20};
-    rpg->world->npc_list[1] =(npc_t){"", (sfVector2i){110, 75},
+    rpg->world->npc_list[1] = (npc_t){"", (sfVector2i){110, 75},
     2, 78, 78, 20, 20};
     fill_map(rpg);
     srand(time(NULL));
