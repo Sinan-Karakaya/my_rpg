@@ -88,19 +88,16 @@ int init_inventory(rpg_t *rpg)
 
 int init_class_menu(rpg_t *rpg)
 {
-    rpg->menu->class = malloc(sizeof(menu_class_t));
-    if  (!rpg->menu->class)
+    if  (!(rpg->menu->class = malloc(sizeof(menu_class_t))))
         return 84;
     rpg->menu->class->texture = sfTexture_createFromFile(CLASS_MENU, NULL);
-    rpg->menu->class->sprite = sfSprite_create();
-    if (!rpg->menu->class->texture || !rpg->menu->class->sprite)
+    if (!rpg->menu->class->texture || !(CLASS_SPRITE_MENU = sfSprite_create()))
         return 84;
     sfSprite_setTexture(rpg->menu->class->sprite, rpg->menu->class->texture,
     sfFalse);
     sfSprite_setPosition(rpg->menu->class->sprite, (sfVector2f){0, 0});
     rpg->menu->class->font = sfFont_createFromFile(FONT_PATH);
-    rpg->menu->class->text = sfText_create();
-    if (!rpg->menu->class->font || !rpg->menu->class->text)
+    if (!rpg->menu->class->font || !(rpg->menu->class->text = sfText_create()))
         return 84;
     sfText_setFont(rpg->menu->class->text, rpg->menu->class->font);
     sfText_setCharacterSize(rpg->menu->class->text, 30);

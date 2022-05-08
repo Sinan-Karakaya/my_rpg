@@ -37,6 +37,7 @@ write(2, "\n", 1);
 #define MENU_MID "assets/menu/midground.png"
 
 #define CLASS_MENU "assets/menu/class_selection.png"
+#define CLASS_SPRITE_MENU rpg->menu->class->sprite
 
 #define SHADER_PATH "shader/fragment_shader.fs"
 
@@ -50,6 +51,7 @@ write(2, "\n", 1);
 #define PLAYER_OW_IDLE_W 20
 
 #define FONT_PATH "assets/font/itc-souvenir/Souvenir-Bold.otf"
+#define ARIAL_FONT "assets/font/arial/arial.ttf"
 #define HUD_PATH "assets/hud/hud_guide.png"
 
 #define STAT rpg->combat->player->stat

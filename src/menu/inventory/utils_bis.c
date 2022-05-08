@@ -35,7 +35,6 @@ void loop_int_to_str(int data[], int *big_num, int *pos, char *str)
     for (int i = data[0]; i >= 0; i--) {
         gen = gen_base_nbr(i);
         n = data[1] / gen;
-
         data[1] -= n * gen;
         update_bignum(&n, *big_num);
         *big_num += 1;

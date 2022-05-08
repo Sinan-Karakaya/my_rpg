@@ -54,8 +54,7 @@ static button_t *build_button(char *txt, sfVector2f pos, int ptr, char *name)
     sfVector2f size_rect = {88, 52};
     const sfTexture *texture_temp = NULL;
 
-    button = malloc(sizeof(button_t));
-    if (!button)
+    if (!(button = malloc(sizeof(button_t))))
         return NULL;
     button->hover = false, button->is_hover = false;
     button->toggle = false, button->sprite = init_sprite(pos, name);

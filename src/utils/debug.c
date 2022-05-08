@@ -10,7 +10,7 @@
 #include "my.h"
 #include "my_rpg.h"
 
-char *convert_to_str(float fl)
+static char *convert_to_str(float fl)
 {
     char *result;
     int num = fl;

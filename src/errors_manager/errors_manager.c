@@ -93,10 +93,10 @@ int errors_manager(char **env)
 {
     int fd = 0;
 
-    if (check_env(env) == 84) {
-        write(2, "Error occured in the env.\n", 26);
-        return 84;
-    }
+    // if (check_env(env) == 84) {
+    //     write(2, "Error occured in the env.\n", 26);
+    //     return 84;
+    // }
     for (size_t i = 0; errors[i] != NULL; i++) {
         fd = open(errors[i], O_RDONLY);
         if (fd < 3) {

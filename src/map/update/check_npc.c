@@ -19,6 +19,16 @@ village.\nPourrais tu t'en occuper ?\n"
 , "Test4"
 , "Test5"};
 
+static void chech_quest_bis(rpg_t *rpg, int type)
+{
+    if (type == rpg->world->gui.actual_quest + 1)
+        rpg->world->gui.actual_quest = type;
+    sfRenderWindow_drawSprite(rpg->window, rpg->world->gui.chatbox_sprite,
+    NULL);
+    sfText_setString(rpg->world->gui.text, catch_line[type]);
+    sfRenderWindow_drawText(rpg->window, rpg->world->gui.text, NULL);
+}
+
 void check_quest(rpg_t *rpg)
 {
     sfVector2f pos;
@@ -33,12 +43,7 @@ void check_quest(rpg_t *rpg)
         pos = to2d((sfVector3f){p.x, height[p.x][p.y], p.y}, rpg);
         distance = sqrt(pow(960 - pos.x, 2) + pow(540 - pos.y, 2));
         if (distance < 150) {
-            if (type == rpg->world->gui.actual_quest + 1)
-                rpg->world->gui.actual_quest = type;
-            sfRenderWindow_drawSprite(rpg->window
-            , rpg->world->gui.chatbox_sprite, NULL);
-            sfText_setString(rpg->world->gui.text, catch_line[type]);
-            sfRenderWindow_drawText(rpg->window, rpg->world->gui.text, NULL);
+            chech_quest_bis(rpg, type);
         }
     }
 }

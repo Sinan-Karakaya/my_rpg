@@ -11,6 +11,15 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
+static void create_my_text_bis(sfText *text, sfVector2f pos, const char *stat)
+{
+    sfText_setPosition(text, pos);
+    sfText_setFont(text, sfFont_createFromFile(ARIAL_FONT));
+    sfText_setString(text, stat);
+    sfText_setColor(text, sfBlack);
+    sfText_setCharacterSize(text, 40);
+}
+
 static sfText *create_my_text(sfVector2f pos, int value, int stuff_value)
 {
     sfText *my_text = sfText_create();
@@ -18,7 +27,8 @@ static sfText *create_my_text(sfVector2f pos, int value, int stuff_value)
     char *stat_stuff = int_to_str(stuff_value);
     char *stat_total = malloc(sizeof(char) * (my_strlen(stat_player)
     + my_strlen(stat_stuff) + 2));
-    size_t i = 0, j = 0;
+    size_t i = 0;
+    size_t j = 0;
 
     if (!stat_total || !my_text || !stat_player || !stat_stuff)
         return NULL;
@@ -28,12 +38,7 @@ static sfText *create_my_text(sfVector2f pos, int value, int stuff_value)
     for (j = i + 1, i = 0; stat_stuff[i] != '\0'; j++, i++)
         stat_total[j] = stat_stuff[i];
     stat_total[j] = '\0';
-    sfText_setPosition(my_text, pos);
-    sfText_setFont(my_text, sfFont_createFromFile("assets/font/arial/arial.ttf"
-    ));
-    sfText_setString(my_text, stat_total);
-    sfText_setColor(my_text, sfBlack);
-    sfText_setCharacterSize(my_text, 40);
+    create_my_text_bis(my_text, pos, stat_total);
     return my_text;
 }
 
@@ -44,8 +49,7 @@ static sfText *create_my_text_lvl(sfVector2f pos, int value)
     if (!my_text)
         return NULL;
     sfText_setPosition(my_text, pos);
-    sfText_setFont(my_text, sfFont_createFromFile("assets/font/arial/arial.ttf"
-    ));
+    sfText_setFont(my_text, sfFont_createFromFile(ARIAL_FONT));
     sfText_setString(my_text, int_to_str(value));
     sfText_setColor(my_text, sfBlack);
     sfText_setCharacterSize(my_text, 40);
