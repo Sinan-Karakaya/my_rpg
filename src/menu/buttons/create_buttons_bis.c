@@ -17,6 +17,7 @@ int create_buttons_main_bis(rpg_t *rpg)
     (sfVector2f){1440, 540}, 100, "assets/menu/button.png");
     rpg->menu->main->buttons->lst_bt[8] = create_button("Shaders",
     (sfVector2f){750, 540}, 100, "assets/menu/button.png");
+    rpg->menu->main->buttons->lst_bt[8]->toggle = false;
     rpg->menu->main->buttons->lst_bt[9] = create_button("Back",
     (sfVector2f){910, 540}, 100, "assets/menu/button.png");
     return 0;
