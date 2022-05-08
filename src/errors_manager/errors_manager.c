@@ -62,9 +62,11 @@ const char *errors[] = {
 static char *my_strndup(char *src, int n)
 {
     char *new = malloc(sizeof(char) * (n + 1));
+    int i = 0;
 
-    for (int i = 0; i < n; i++)
+    for (; i < n; i++)
         new[i] = src[i];
+    new[i] = '\0';
     return new;
 }
 

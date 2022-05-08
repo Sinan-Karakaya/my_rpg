@@ -71,7 +71,7 @@ void print_inventory(rpg_t *rpg)
             sfRenderWindow_drawSprite(rpg->window,
             rpg->menu->inventory->slots[x]->sprite, NULL);
         }
-    } init_my_text(rpg->combat->player->stat);
+    } init_my_text(rpg->combat->player->stat, rpg);
     if (rpg->combat->player->stat->text_attack != NULL)
         sfRenderWindow_drawText(rpg->window, PLAYER_STATS->text_attack, NULL);
     if (rpg->combat->player->stat->text_defense != NULL)

@@ -176,7 +176,7 @@ int check_all_keys(rpg_t *rpg, int key);
 void clearstrnbr(char *str, int len);
 void loop_int_to_str(int data[], int *big_num, int *pos, char *str);
 char *int_to_str(int nb);
-int init_my_text(stats_t *stat);
+int init_my_text(stats_t *stat, rpg_t *rpg);
 
 //CLASS MENU
 int init_class_menu(rpg_t *rpg);

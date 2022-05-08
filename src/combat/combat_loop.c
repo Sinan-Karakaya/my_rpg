@@ -27,17 +27,17 @@ static void check_player_state(entity_t *player, combat_t *combat, rpg_t *rpg)
 
 static void get_input(entity_t *player, combat_t *combat, rpg_t *rpg)
 {
-    if (sfKeyboard_isKeyPressed(sfKeyA) &&
+    if (sfKeyboard_isKeyPressed(KEYATK) &&
     player->cmb_state == RPG_COMBAT_PLAYER_IDLE) {
         player->cmb_state = RPG_COMBAT_PLAYER_ATTACK;
         combat->state = RPG_COMBAT_ATTACKING;
         player->rect_left_i = 6;
         player->rect_left_w = 6;
-    } if (sfKeyboard_isKeyPressed(sfKeyP) &&
+    } if (sfKeyboard_isKeyPressed(KEYPROTECT) &&
     player->cmb_state == RPG_COMBAT_PLAYER_IDLE) {
         player->cmb_state = RPG_COMBAT_PLAYER_PROTECT;
         combat->state = RPG_COMBAT_ENNEMY;
-    } if (sfKeyboard_isKeyPressed(sfKeyR) &&
+    } if (sfKeyboard_isKeyPressed(KEYRUN) &&
     player->cmb_state == RPG_COMBAT_PLAYER_IDLE) {
         combat->transition_cmb = true;
     } if (sfKeyboard_isKeyPressed(sfKeyH) &&

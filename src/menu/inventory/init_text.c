@@ -67,7 +67,7 @@ static void destroy_my_text(sfText *my_text)
     }
 }
 
-int init_my_text(stats_t *stat)
+int init_my_text(stats_t *stat, rpg_t *rpg)
 {
     int fd = open("assets/font/arial/arial.ttf", O_RDONLY);
 
@@ -83,7 +83,7 @@ int init_my_text(stats_t *stat)
     stat->text_defense = create_my_text((sfVector2f){515, 508},
     stat->defense, stat->stuff->defense);
     stat->text_life = create_my_text((sfVector2f){450, 608},
-    stat->life, stat->stuff->life);
+    rpg->combat->player->max_life, stat->stuff->life);
     stat->text_level = create_my_text_lvl((sfVector2f){470, 460}, stat->level);
     return 0;
 }

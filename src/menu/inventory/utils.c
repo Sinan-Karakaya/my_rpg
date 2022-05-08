@@ -52,6 +52,8 @@ char *int_to_str(int nb)
     check_bignum(&nb, &big_num, &n);
     nb_count = count_nbr(nb)-1;
     str = my_calloc(sizeof(char), nb_count + 3);
+    if (!str)
+        return NULL;
     clearstrnbr(str, nb_count + 2);
     data[0] = nb_count;
     data[1] = nb;
