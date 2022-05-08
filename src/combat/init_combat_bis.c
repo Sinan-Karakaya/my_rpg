@@ -32,7 +32,7 @@ static int assign_ennemy_stat(entity_t *e, char *name, int id)
     return 0;
 }
 
-static void create_ennemy_bis(entity_t *e, char *name, int id)
+static void create_ennemy_bis(entity_t *e, int id)
 {
     if (id == 1) {
         e->pos = (sfVector2f){RES_X / 5, RES_Y / 2 + 20};
@@ -55,7 +55,7 @@ int create_ennemy(entity_t *e, char *name, char *path, int id)
         e->pos = (sfVector2f){RES_X / 5, RES_Y / 3};
         e->rect = (sfIntRect){0, 0, BOSS_WIDTH, BOSS_HEIGHT};
         sfSprite_setTextureRect(e->sprite, e->rect);
-    } create_ennemy_bis(e, name, id);
+    } create_ennemy_bis(e, id);
     sfSprite_setPosition(e->sprite, e->pos);
     sfSprite_setScale(e->sprite, (sfVector2f){2, 2});
     if (assign_ennemy_stat(e, name, id))
